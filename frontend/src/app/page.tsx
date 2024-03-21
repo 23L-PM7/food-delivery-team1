@@ -1,6 +1,13 @@
 import { Footer } from "./components/Footer";
+import Header from "./components/Header";
+import { Category } from "./components/category";
+
 export default function Home() {
   return (
-    <div>hi</div>
+    <div className="container mx-auto">
+      <Header />
+      <Category />
+      <Footer />
+    </div>
   );
 }
