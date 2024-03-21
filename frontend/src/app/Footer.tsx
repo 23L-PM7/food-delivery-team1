@@ -5,8 +5,8 @@ import { Instagram } from "./components/icons/Socials";
 import { Twitter } from "./components/icons/Socials";
 export function Footer() {
   return (
-    <div className="container mx-auto">
-      <div className="bg-green-500  w-[1440px] h-[545px]  relative">
+    <div className="">
+      <div className="bg-green-500  w-full h-[545px]  relative">
         <div className="inset-0 absolute p-[120px] border-b">
             <div className="flex  justify-center">
             <Logo/>

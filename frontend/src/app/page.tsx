@@ -4,7 +4,7 @@ import { Category } from "./components/category";
 
 export default function Home() {
   return (
-    <div className="container mx-auto">
+    <div className="">
    <Header />
    <Category />
    <Footer/>
