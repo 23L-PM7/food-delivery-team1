@@ -1,10 +1,11 @@
 import { Category } from "./category"
+import { Footer } from "./Footer"
 
 export default function Home() {
     return (
-        <>
+        <div className="cntainer mx-auto">
         <Category />
-        <div className="bg-red-300">hello</div>
-        </>
+        <Footer/>
+        </div>
     )
 }
