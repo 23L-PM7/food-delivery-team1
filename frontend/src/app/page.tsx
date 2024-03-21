@@ -1,6 +1,8 @@
-
+import { Footer } from "./components/Footer";
 export default function Home() {
   return (
-    <div>hi</div>
+    <div className="container mx-auto">
+      <Footer/>
+    </div>
   );
 }
