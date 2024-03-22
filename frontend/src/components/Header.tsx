@@ -1,10 +1,6 @@
 export default function Header() {
   return (
-<<<<<<< HEAD
-    <div className="flex  mt-4 mb-4 m-auto w-full container">
-=======
-    <div className="flex  mt-4 mb-4 m-auto w-full">
->>>>>>> 385e4122c92009a1bbc0eeed749d7e95df84bf07
+    <div className="flex  mt-4 mb-4 mx-auto w-full container">
       <div className=" flex  mx-auto p-4 gap-2 ">
         <div>
           <a href="http://localhost:3000/" />
@@ -92,7 +88,7 @@ export default function Header() {
           <h2 className=" hover:text-green-600">Сагс</h2>
         </div>
 
-        <div className="flex items-center  gap-2">
+        <div className="flex items-center  gap-2 hover:">
           <svg
             width="18"
             height="18"
