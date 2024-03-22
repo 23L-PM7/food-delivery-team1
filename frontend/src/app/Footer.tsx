@@ -17,7 +17,7 @@ export function Footer() {
             <a>Холбоо барих</a>
             <a href="http://localhost:3000/about">Хоолны цэс</a>
             <a>Үйлчилгээний нөхцөл</a>
-            <a>Хүргэлтийн бүс</a>
+            <a href="http://localhost:3000/deliveryzone">Хүргэлтийн бүс</a>
             <a>Нууцлалын бодлого</a>
           </div>
           <div className="flex justify-center gap-5 mt-[40px] ">
