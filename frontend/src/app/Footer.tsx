@@ -1,16 +1,16 @@
-import { BackgroundPic } from "./components/icons/backgroundPic";
-import { Logo } from "./components/icons/Logo";
-import { Facebook } from "./components/icons/Socials";
-import { Instagram } from "./components/icons/Socials";
-import { Twitter } from "./components/icons/Socials";
+import { BackgroundPic } from "../components/icons/backgroundPic";
+import { Logo } from "../components/icons/Logo";
+import { Facebook } from "../components/icons/Socials";
+import { Instagram } from "../components/icons/Socials";
+import { Twitter } from "../components/icons/Socials";
 export function Footer() {
   return (
     <div className="">
       <div className="bg-green-500  w-full h-[545px]  relative">
         <div className="inset-0 absolute p-[120px] border-b">
           <div className="flex  justify-center items-center gap-2">
-            <Logo />
-            <h1 className="text-white font-semibold font-medium">Food Delivery</h1>
+             <Logo/>
+            <h1 className="text-white  font-medium">Food Delivery</h1>
           </div>
           <div className="flex mt-[40px] justify-around text-white hover:underline">
             <h1>Нүүр</h1>

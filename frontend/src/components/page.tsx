@@ -1,4 +1,4 @@
-import { Footer } from "../Footer"
+import { Footer } from "../app/Footer"
 import Header from "./Header"
 import { Category } from "./category"
 
