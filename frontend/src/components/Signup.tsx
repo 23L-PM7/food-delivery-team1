@@ -58,7 +58,7 @@ export default function Signup() {
       checkbox === false
     ) {
       return setCheck("disabled"), setError("Please Fill all fields");
-    } else if (password === secondpass) {
+    } else if (password !== secondpass) {
       return setCheck("disabled"), setError("Passwords don't match");
     } else {
       return setCheck("");
