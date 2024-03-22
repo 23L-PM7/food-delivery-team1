@@ -1,10 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Eye } from "./icons/eyeclosed";
 
 export default function Signup() {
   // form is fully filled check
-  const [check, setCheck] = useState("");
+  const [check, setCheck] = useState("disabled");
 
   // form data
   const [name, setName] = useState("");
@@ -14,11 +14,44 @@ export default function Signup() {
   const [secondpass, setSecondpass] = useState("");
 
   // onchange
-  const changeName = () => {};
+  const changeName = (event) => {
+    setName(event.target.value);
+  };
+  const changeEmail = (event) => {
+    setEmail(event.target.value);
+  };
+  const changeAddress = (event) => {
+    setAddress(event.target.value);
+  };
+  const changePassword = (event) => {
+    setPassword(event.target.value);
+  };
+  const changeSecondpass = (event) => {
+    setSecondpass(event.target.value);
+  };
 
-  // const signUp = () => {
-  //   if (name)
-  // }
+  // useEffect
+  useEffect(() => {
+    checkForm();
+  });
+
+  // signup function checking input
+  const checkForm = () => {
+    if (
+      name === "" ||
+      email === "" ||
+      password === "" ||
+      secondpass === "" ||
+      name === null ||
+      email === null ||
+      password === null ||
+      secondpass === null
+    ) {
+      return setCheck("disabled");
+    } else {
+      return setCheck("");
+    }
+  };
 
   return (
     <div className="flex flex-col items-center gap-y-4 m-3">
@@ -48,6 +81,8 @@ export default function Signup() {
           </div>
           <input
             type="text"
+            value={email}
+            onChange={changeEmail}
             placeholder="И-мэйл хаягаа оруулна уу"
             className="input bg-gray-100 rounded-none w-full border border-gray-200"
           />
@@ -59,6 +94,8 @@ export default function Signup() {
           </div>
           <input
             type="text"
+            value={address}
+            onChange={changeAddress}
             placeholder="Та хаягаа оруулна уу"
             className="input bg-gray-100 rounded-none w-full border border-gray-200"
           />
@@ -69,7 +106,12 @@ export default function Signup() {
             <span className="label-text">Нууц үг</span>
           </div>
           <label className="input flex items-center justify-between bg-gray-100 rounded-none border border-gray-200">
-            <input type="password" placeholder="Нууц үгээ оруулна уу" />
+            <input
+              type="password"
+              value={password}
+              onChange={changePassword}
+              placeholder="Нууц үгээ оруулна уу"
+            />
             <button>
               <Eye />
             </button>
@@ -81,7 +123,12 @@ export default function Signup() {
             <span className="label-text">Нууц үг давтах</span>
           </div>
           <label className="input flex items-center justify-between bg-gray-100 rounded-none border border-gray-200">
-            <input type="password" placeholder="Нууц үгээ оруулна уу" />
+            <input
+              type="password"
+              value={secondpass}
+              onChange={changeSecondpass}
+              placeholder="Нууц үгээ оруулна уу"
+            />
             <button>
               <Eye />
             </button>
@@ -97,7 +144,7 @@ export default function Signup() {
         </div>
         {/* burtguuleh button */}
         <button
-          className="btn bg-green-500 text-white max-w-none hover:bg-green-500 btn-disabled"
+          className="btn bg-green-500 text-white max-w-none hover:bg-green-500"
           disabled={check}
         >
           Бүртгүүлэх
