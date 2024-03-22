@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <div className="flex">
+    <div className="flex w-[1440px] h-[57px] mt-4 mb-4">
       <div className=" flex justify-end mx-auto p-4">
         <svg
           width="41"
@@ -46,32 +46,32 @@ export default function Header() {
             </li>{" "}
           </ul>
         </div>{" "}
-        hi
       </div>
 
       <main className="flex justify-start gap-7 p-4">
         <div>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M19 19L13 13M15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 4.13401 4.13401 1 8 1C11.866 1 15 4.13401 15 8Z"
-              stroke="black"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-
           <input
             type="text"
-            className="block w-full p-2 ps-10 text-sm border rounded-lg border-black"
+            className="block w-full p-2 ps-10 text-sm border rounded-lg border-black relative order-1"
             placeholder="Хайх"
           />
+          <div className=" absolute order-1">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 19L13 13M15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 4.13401 4.13401 1 8 1C11.866 1 15 4.13401 15 8Z"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
         </div>
         <div className="flex ">
           <svg
