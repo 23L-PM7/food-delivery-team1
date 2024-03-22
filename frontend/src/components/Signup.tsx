@@ -12,6 +12,10 @@ export default function Signup() {
   const [address, setAddress] = useState("");
   const [password, setPassword] = useState("");
   const [secondpass, setSecondpass] = useState("");
+  const [error, setError] = useState("");
+
+  // form terms agreement
+  const [checkbox, setCheckbox] = useState(false);
 
   // onchange
   const changeName = (event) => {
@@ -30,12 +34,17 @@ export default function Signup() {
     setSecondpass(event.target.value);
   };
 
-  // useEffect
+  // checkbox check checker
+  const changeCheckbox = (event) => {
+    setCheckbox(event.target.checked);
+  };
+
+  // useEffect baingiin field buglusun uguig shalgana, bas agree checkbox shalgana
   useEffect(() => {
     checkForm();
   });
 
-  // signup function checking input
+  // signup function checking input, error message togtmol shalgana, password match shalgana
   const checkForm = () => {
     if (
       name === "" ||
@@ -45,9 +54,12 @@ export default function Signup() {
       name === null ||
       email === null ||
       password === null ||
-      secondpass === null
+      secondpass === null ||
+      checkbox === false
     ) {
-      return setCheck("disabled");
+      return setCheck("disabled"), setError("Please Fill all fields");
+    } else if (password === secondpass) {
+      return setCheck("disabled"), setError("Passwords don't match");
     } else {
       return setCheck("");
     }
@@ -139,7 +151,11 @@ export default function Signup() {
       <div className="w-[384px] flex flex-col gap-y-4">
         {/* agree to terms */}
         <div className="flex gap-x-3">
-          <input type="checkbox" className="checkbox" />
+          <input
+            onChange={changeCheckbox}
+            type="checkbox"
+            className="checkbox"
+          />
           <h3 className="">Үйлчилгээний нөхцөл зөвшөөрөх</h3>
         </div>
         {/* burtguuleh button */}
@@ -149,6 +165,7 @@ export default function Signup() {
         >
           Бүртгүүлэх
         </button>
+        <h1 className="text-red-700">{error}</h1>
       </div>
     </div>
   );
