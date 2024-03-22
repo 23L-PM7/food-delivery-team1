@@ -1,8 +1,9 @@
 export default function Header() {
   return (
     <div className="flex w-[1440px] h-[57px] mt-4 mb-4">
-      <div className=" flex justify-end mx-auto p-4">
+      <div className=" flex justify-end mx-auto p-4 gap-2">
         <svg
+          className=""
           width="41"
           height="41"
           viewBox="0 0 41 41"
@@ -23,7 +24,7 @@ export default function Header() {
             <li>
               <a
                 href="#"
-                className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                className="block py-2 px-3 rounded  hover:bg-gray-100"
               >
                 НҮҮР
               </a>
@@ -31,7 +32,7 @@ export default function Header() {
             <li>
               <a
                 href="#"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                className="block py-2 px-3  hover:bg-gray-100 hover:text-green-600"
               >
                 ХООЛНЫ ЦЭС
               </a>
@@ -39,7 +40,7 @@ export default function Header() {
             <li>
               <a
                 href="#"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                className="block py-2 px-3 rounded hover:bg-gray-100  md:hover:text-white-700 "
               >
                 ХҮРГЭЛТИЙН БҮС
               </a>
@@ -48,17 +49,12 @@ export default function Header() {
         </div>{" "}
       </div>
 
-      <main className="flex justify-start gap-7 p-4">
-        <div>
-          <input
-            type="text"
-            className="block w-full p-2 ps-10 text-sm border rounded-lg border-black relative order-1"
-            placeholder="Хайх"
-          />
-          <div className=" absolute order-1">
+      <main className="flex justify-start ">
+        <div className="flex border border-black  w-[260px] h-[40px]">
+          <label className=" flex items-center gap-2">
             <svg
-              width="20"
-              height="20"
+              width="20px"
+              height="20px"
               viewBox="0 0 20 20"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -71,9 +67,10 @@ export default function Header() {
                 stroke-linejoin="round"
               />
             </svg>
-          </div>
+            <input type="text" className="grow" placeholder="Хайх" />
+          </label>
         </div>
-        <div className="flex ">
+        <div className="flex gap-2 p-2 4 2 4  py-2 px-3">
           <svg
             width="22"
             height="20"
@@ -89,7 +86,7 @@ export default function Header() {
 
           <h2>Сагс</h2>
         </div>
-        <div className="flex">
+        <div className="flex gap-2 p-2 4 2 4 py-2 px-3">
           <svg
             width="18"
             height="18"
@@ -102,8 +99,7 @@ export default function Header() {
               fill="black"
             />
           </svg>
-        </div>
-        <div>
+
           <h2>Нэвтрэх</h2>
         </div>
       </main>
