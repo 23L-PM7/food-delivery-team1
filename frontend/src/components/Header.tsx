@@ -33,7 +33,10 @@ export default function Header() {
               </a>
             </li>
             <li>
-              <a href="http://localhost:3000/about" className="block py-2 px-3  hover:text-green-600">
+              <a
+                href="http://localhost:3000/about"
+                className="block py-2 px-3  hover:text-green-600"
+              >
                 ХООЛНЫ ЦЭС
               </a>
             </li>
@@ -88,7 +91,7 @@ export default function Header() {
           <h2 className=" hover:text-green-600">Сагс</h2>
         </div>
 
-        <div className="flex items-center  gap-2">
+        <div className="flex items-center  gap-2 hover:">
           <svg
             width="18"
             height="18"
