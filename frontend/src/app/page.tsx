@@ -4,11 +4,12 @@ import { Category } from "./components/category";
 
 export default function Home() {
   return (
-    <div className="">
-   <Header />
-   <Category />
-   <Footer/>
-   </div>
-
+    <div>
+       <Header />
+      <div className="container mx-auto">
+        <Category />
+      </div>
+      <Footer />
+    </div>
   );
 }

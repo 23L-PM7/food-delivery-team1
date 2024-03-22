@@ -24,6 +24,11 @@ export function Footer() {
           <Instagram/>
           <Twitter/>
           </div>
+          <div className="flex justify-center flex-col">
+            <h1>© 2024 Pinecone Foods LLC</h1>
+            <h1>Зохиогчийн эрх хуулиар хамгаалагдсан.</h1>
+            
+            </div>
           
         </div>
         <BackgroundPic />
