@@ -1,10 +1,6 @@
 export default function Header() {
   return (
-<<<<<<< HEAD
     <div className="flex  mt-4 mb-4 m-auto w-full">
-=======
-    <div className="flex  mt-4 mb-4 m-auto">
->>>>>>> ea7d70d1a95cfb140d1616118f6954c7ea651de3
       <div className=" flex  mx-auto p-4 gap-2 ">
         <svg
           className="gap-2"
