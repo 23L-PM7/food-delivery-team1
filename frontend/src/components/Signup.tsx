@@ -17,6 +17,10 @@ export default function Signup() {
   // form terms agreement
   const [checkbox, setCheckbox] = useState(false);
 
+  // password visible useState
+  const [visible, setVisible] = useState("password");
+  const [visible2, setVisible2] = useState("password");
+
   // onchange
   const changeName = (event) => {
     setName(event.target.value);
@@ -32,6 +36,22 @@ export default function Signup() {
   };
   const changeSecondpass = (event) => {
     setSecondpass(event.target.value);
+  };
+
+  // visible passwords
+  const visiblePassword = () => {
+    if (visible == "password") {
+      setVisible("text");
+    } else {
+      setVisible("password");
+    }
+  };
+  const visibleSecondpass = () => {
+    if (visible2 == "password") {
+      setVisible2("text");
+    } else {
+      setVisible2("password");
+    }
   };
 
   // checkbox check checker
@@ -119,12 +139,12 @@ export default function Signup() {
           </div>
           <label className="input flex items-center justify-between bg-gray-100 rounded-none border border-gray-200">
             <input
-              type="password"
+              type={visible}
               value={password}
               onChange={changePassword}
               placeholder="Нууц үгээ оруулна уу"
             />
-            <button>
+            <button onClick={visiblePassword}>
               <Eye />
             </button>
           </label>
@@ -136,12 +156,12 @@ export default function Signup() {
           </div>
           <label className="input flex items-center justify-between bg-gray-100 rounded-none border border-gray-200">
             <input
-              type="password"
+              type={visible2}
               value={secondpass}
               onChange={changeSecondpass}
               placeholder="Нууц үгээ оруулна уу"
             />
-            <button>
+            <button onClick={visibleSecondpass}>
               <Eye />
             </button>
           </label>
