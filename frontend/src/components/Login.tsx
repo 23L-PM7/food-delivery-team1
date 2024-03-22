@@ -1,4 +1,57 @@
+"use client";
+import { useEffect, useState } from "react";
+import { Eye } from "./icons/eyeclosed";
+
+
+
 export function Login() {
+
+  const [check, setCheck] = useState("disabled");
+
+
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+const [checkbox, setCheckbox] = useState(false);
+const [error, setError] = useState("");
+
+
+
+const changeEmail = (event) => {
+  setEmail(event.target.value);
+};
+
+const changePassword = (event) => {
+  setPassword(event.target.value);
+};
+
+
+
+
+
+const changeCheckbox = (event) => {
+  setCheckbox(event.target.checked);
+};
+
+useEffect(() => {
+  checkForm();
+});
+
+const checkForm = () => {
+  if (
+   
+    email === "" ||
+    password === "" ||
+    checkbox === false
+  ) {
+    return setCheck("disabled"), setError("Please Fill all fields");
+  } else if (password !== email) {
+    return setCheck("disabled"), setError("Passwords don't match");
+  } else {
+    return setCheck("");
+  }
+};
+
+
   return (
     <div className="container mx-auto w-[549px] p-[32px]  mt-[111px] mb-[76px]">
       <h1 className="flex justify-center font-bold text-xl">Нэвтрэх</h1>
@@ -18,6 +71,8 @@ export function Login() {
             type="text"
             className="grow"
             placeholder="Имэйл хаягаа оруулна уу"
+            value={email}
+            onChange={changeEmail}
           />
         </label>
       </div>
@@ -35,12 +90,13 @@ export function Login() {
               d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
             />
           </svg>
-          <input type="password" className="grow" placeholder="Нууц үг" />
+          <input type="password" className="grow" placeholder="Нууц үг"  value={password}
+              onChange={changePassword} />
         </label>
         <p className="flex justify-end cursor-pointer">Нууц үг сэргээх</p>
       </div>
       <div className="mt-[48px] flex flex-col items-center cursor-pointer">
-        <button className="w-full btn glass">Нэвтрэх</button>
+        <button className="w-full btn glass"  disabled={check}>Нэвтрэх</button>
         <p className="my-[32px]">Эсвэл</p>
         <button className="w-full btn btn-outline btn-success">
           Бүртгүүлэх

@@ -1,5 +1,6 @@
 export default function Header() {
   return (
+<<<<<<< HEAD
     <div className="flex  mt-4 mb-4 mx-auto w-full container  p-4 gap-2 items-center">
       <div>
         <a href="http://localhost:3000/about" />
@@ -20,6 +21,58 @@ export default function Header() {
             fill="black"
           />
         </svg>
+=======
+    <div className="flex  mt-4 mb-4  w-full">
+      <div className=" flex  container mx-auto p-4 gap-2 ">
+        <div>
+          <a href="http://localhost:3000/about" />
+          <svg
+            className="gap-2 "
+            width="41"
+            height="41"
+            viewBox="0 0 41 41"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9.85857 9.5397L5.65344 17.4105C5.12868 18.3956 4.86572 19.4767 4.86572 20.5592C4.86572 21.6419 5.12868 22.7228 5.65344 23.7079L9.85857 31.5789C10.6336 33.0327 12.1494 33.9407 13.799 33.9407H18.2656V31.711H18.2641C17.4401 31.711 16.6822 31.2577 16.2946 30.5309L12.0911 22.6584C11.7398 22.0022 11.5647 21.2815 11.5647 20.5592C11.5647 19.8369 11.7398 19.1163 12.0911 18.4602L16.2946 10.5878C16.6822 9.86077 17.4401 9.40758 18.2641 9.40758H18.2656V7.17773H13.799C12.1494 7.17773 10.6336 8.08589 9.85857 9.5397Z"
+              fill="black"
+            />
+            <path
+              d="M35.3421 17.4106L31.1371 9.53976C30.3619 8.08579 28.8462 7.17779 27.1967 7.17779H22.7299V9.40747H22.7316C23.5556 9.40747 24.3135 9.86082 24.7009 10.5876L28.9044 18.4601C29.2559 19.1163 29.4307 19.837 29.4307 20.5593C29.4307 21.2816 29.2559 22.0022 28.9044 22.6585L24.7009 30.5307C24.3135 31.2577 23.5556 31.7109 22.7316 31.7109H22.7299V33.9408H27.1967C28.8462 33.9408 30.3619 33.0328 31.1371 31.5788L35.3421 23.708C35.8667 22.7229 36.1298 21.6418 36.1298 20.5593C36.1298 19.4767 35.8667 18.3957 35.3421 17.4106Z"
+              fill="black"
+            />
+          </svg>
+        </div>
+        <div className="items-center">
+          <ul className="flex  font-medium">
+            <li>
+              <a
+                href=""
+                className="block py-2 px-3 rounded  hover:text-green-600"
+              >
+                НҮҮР
+              </a>
+            </li>
+            <li>
+              <a
+                href="http://localhost:3000/about"
+                className="block py-2 px-3  hover:text-green-600"
+              >
+                ХООЛНЫ ЦЭС
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="block py-2 px-3 rounded hover:text-green-600"
+              >
+                ХҮРГЭЛТИЙН БҮС
+              </a>
+            </li>{" "}
+          </ul>
+        </div>{" "}
+>>>>>>> 33da02f390aa238b10270e5d97ae2b6a9a5e9b2e
       </div>
       <div className="items-center">
         <ul className="flex  font-medium">
