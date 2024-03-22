@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import { Category } from "@/components/category";
 import { Footer } from "../Footer";
-import { Map } from "@/components/footerInfo";
 
 export default function FoodMenu() {
   return (
@@ -9,7 +8,6 @@ export default function FoodMenu() {
       <Header />
       <Category />
       <Footer />
-      <Map />
     </div>
   );
 }

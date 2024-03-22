@@ -1,7 +1,9 @@
+import { Map } from "@/components/footerInfo";
+
 export default function DeliveryZone() {
-    return (
-      <div>
-         
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Map />
+    </div>
+  );
+}
