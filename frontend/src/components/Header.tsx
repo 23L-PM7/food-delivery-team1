@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <div className="flex  mt-4 mb-4 m-auto ">
+    <div className="flex  mt-4 mb-4 m-auto">
       <div className=" flex  mx-auto p-4 gap-2 ">
         <svg
           className="gap-2"
