@@ -19,16 +19,17 @@ export function Footer() {
           <h1>Хүргэлтийн бүс</h1>
           <h1>Нууцлалын бодлого</h1>
           </div>
-          <div className="flex justify-center gap-5 mt-[40px] border-b">
+          <div className="flex justify-center gap-5 mt-[40px] ">
           <Facebook/>
           <Instagram/>
           <Twitter/>
           </div>
-          <div className="flex justify-center flex-col">
+          <div className="border-b mt-[40px]"></div>
+          <div className="mt-[40px] flex flex-col items-center text-white">
             <h1>© 2024 Pinecone Foods LLC</h1>
             <h1>Зохиогчийн эрх хуулиар хамгаалагдсан.</h1>
-            
             </div>
+            
           
         </div>
         <BackgroundPic />
