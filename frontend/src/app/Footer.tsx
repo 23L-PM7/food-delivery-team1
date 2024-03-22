@@ -12,13 +12,13 @@ export function Footer() {
             <Logo />
             <h1 className="text-white  font-medium">Food Delivery</h1>
           </div>
-          <div className="flex mt-[40px] justify-around text-white hover:underline">
-            <h1>Нүүр</h1>
-            <h1>Холбоо барих</h1>
-            <h1>Хоолны цэс</h1>
-            <h1>Үйлчилгээний нөхцөл</h1>
-            <h1>Хүргэлтийн бүс</h1>
-            <h1>Нууцлалын бодлого</h1>
+          <div className="flex mt-[40px] justify-around text-white hover:underline sm:gap-[96px]">
+            <a href="http://localhost:3000">Нүүр</a>
+            <a>Холбоо барих</a>
+            <a href="http://localhost:3000/about">Хоолны цэс</a>
+            <a>Үйлчилгээний нөхцөл</a>
+            <a>Хүргэлтийн бүс</a>
+            <a>Нууцлалын бодлого</a>
           </div>
           <div className="flex justify-center gap-5 mt-[40px] ">
             <a href="https://www.facebook.com/login/">
