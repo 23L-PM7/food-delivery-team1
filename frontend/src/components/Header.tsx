@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <div className="flex w-[1440px] h-[57px] mt-4 mb-4 m-auto">
+    <div className="flex  mt-4 mb-4 m-auto ">
       <div className=" flex  mx-auto p-4 gap-2 ">
         <svg
           className="gap-2"
@@ -23,7 +23,7 @@ export default function Header() {
           <ul className="flex  font-medium">
             <li>
               <a
-                href="#"
+                href="http://localhost:3000/about"
                 className="block py-2 px-3 rounded  hover:text-green-600"
               >
                 НҮҮР
@@ -68,7 +68,7 @@ export default function Header() {
             <input type="text" className="grow" placeholder="Хайх" />
           </label>
         </div>
-        <div className="flex py-2 px-5 gap-2">
+        <div className="flex py-2 px-5 gap-2  ">
           <svg
             width="22"
             height="20"
@@ -85,7 +85,7 @@ export default function Header() {
 
           <h2 className=" hover:text-green-600">Сагс</h2>
         </div>
-        <div className="flex items-center mt-[-8px] gap-2">
+        <div className="flex items-center  gap-2">
           <svg
             width="18"
             height="18"
