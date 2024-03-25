@@ -35,7 +35,7 @@ export default function Header() {
           </li>
           <li>
             <a
-              href="http://localhost:3000/about"
+              href="http://localhost:3000/menu"
               className="block py-2 px-3  hover:text-green-600"
             >
               ХООЛНЫ ЦЭС
