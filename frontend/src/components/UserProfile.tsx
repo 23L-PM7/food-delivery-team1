@@ -1,4 +1,4 @@
-import { Person } from "./icons/ProfileIcons";
+import { Pencil, Person } from "./icons/ProfileIcons";
 
 export function UserProfile() {
   return (
@@ -15,9 +15,16 @@ export function UserProfile() {
       </div>
 
       <div>
-        <div className="bg-[#F6F6F6] w-full rounded px-[20px] py-[8px]">
-            <div className="bg-[#FFFFFF]">
+        <div className="bg-[#F6F6F6] w-full rounded px-[20px] py-[8px] flex items-center justify-between">
+            <div className="bg-[#FFFFFF] w-[48px] h-[48px] p-3 rounded-full">
             <Person/>
+            </div>
+            <div>
+                <h1>Таны нэр</h1>
+                <h1>УгтахБаяр</h1>
+            </div>
+            <div>
+                <Pencil/>
             </div>
             
         </div>

@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <div className=" container mx-auto w-full flex  mt-4 mb-4 p-4 gap-2 items-center justify-between">
       <div className=" flex items-center w-3/6 gap-[8px]">
-        <a href="http://localhost:3000/about" />
+        <a href="http://localhost:3000" />
         <svg
           className="gap-2 "
           width="41"
