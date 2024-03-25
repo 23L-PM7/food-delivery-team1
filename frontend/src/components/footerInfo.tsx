@@ -71,6 +71,7 @@ export function Map() {
         </div>
         {/*  */}
       </div>
+      <div className="flex gap-2  w-full pl-4"></div>
     </div>
   );
 }
