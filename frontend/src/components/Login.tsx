@@ -44,7 +44,9 @@ export function Login() {
       password === null ||
       checkbox === false
     ) {
-      return setCheck("disabled"), setError("Password 8-аас их оронтой байна.");
+      return setCheck("disabled"), setError("");
+    } else  if (password.length !== 8 ) {
+      return setCheck("Password 8-аас их оронтой байна.");
     } else {
       return setCheck("");
     }
@@ -113,7 +115,7 @@ export function Login() {
         <button className="w-full btn bg-green-500 hover:bg-green-500" disabled={check}>
           Нэвтрэх
         </button>
-        <h1 className="text-red-700">{error}</h1>
+        <h1 className="text-red-700 mt-3">{error}</h1>
         <p className="my-[32px]">Эсвэл</p>
 
         <a href="http://localhost:3000/ari" className="w-full btn btn-outline btn-success">
