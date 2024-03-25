@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import { Footer } from "./Footer";
 import Header from "../components/Header";
 import { Login } from "@/components/Login";
@@ -13,5 +14,15 @@ export default function Home() {
        <UserProfile/>
       <Footer />
     </div>
+=======
+import {Mainbutton} from "@/app/components/Mainbutton"
+
+export default function Home() {
+  return (
+    <>
+      <Mainbutton/>
+
+    </>
+>>>>>>> Stashed changes
   );
 }
