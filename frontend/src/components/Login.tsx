@@ -45,7 +45,7 @@ export function Login() {
       checkbox === false
     ) {
       return setCheck("disabled"), setError("");
-    } else  if (password.length !== 8 ) {
+    } else  if (password.length < 8 ) {
       return setCheck("Password 8-аас их оронтой байна.");
     } else {
       return setCheck("");
