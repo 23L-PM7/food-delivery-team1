@@ -102,19 +102,26 @@ export function Login() {
         <p className="flex justify-end cursor-pointer">Нууц үг сэргээх</p>
       </div>
       <div className="mt-[48px] flex flex-col items-center cursor-pointer">
-      <input
+      <div className="flex gap-x-3 mb-[20px]">
+          <input
             onChange={changeCheckbox}
             type="checkbox"
             className="checkbox"
           />
-        <button className="w-full btn glass hover:bg-green-500" disabled={check}>
+          <h3 className="">Нэвтрэхийг зөвшөөрөх</h3>
+        </div>
+        <button className="w-full btn bg-green-500 hover:bg-green-500" disabled={check}>
           Нэвтрэх
         </button>
         <h1 className="text-red-700">{error}</h1>
         <p className="my-[32px]">Эсвэл</p>
-        <button className="w-full btn btn-outline btn-success">
+
+        <a href="http://localhost:3000/ari" className="w-full btn btn-outline btn-success">
+        <button>
           Бүртгүүлэх
         </button>
+        </a>
+       
       </div>
     </div>
   );
