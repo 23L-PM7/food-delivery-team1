@@ -12,7 +12,7 @@ export function Map() {
         <div className="w-[588px] h-[388px] bg-white drop-shadow-lg rounded-lg text-black flex justify-center items-center pb-5">
           <div className="h-5/6 w-11/12 flex flex-col">
             {/* firsthalf */}
-            <div className="border-b-[1px] border-green-600 h-[19%] flex it">
+            <div className="border-b-[1px] border-green-600 h-[19%] flex">
               <h1 className="font-semibold text-xl">A бүс</h1>
             </div>
             {/* second half */}
