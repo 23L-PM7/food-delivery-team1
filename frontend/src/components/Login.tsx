@@ -2,55 +2,53 @@
 import { useEffect, useState } from "react";
 import { Eye } from "./icons/eyeclosed";
 
-
-
 export function Login() {
-
   const [check, setCheck] = useState("disabled");
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [checkbox, setCheckbox] = useState(false);
+  const [error, setError] = useState("");
 
-const [email, setEmail] = useState("");
-const [password, setPassword] = useState("");
-const [checkbox, setCheckbox] = useState(false);
-const [error, setError] = useState("");
+  const [visible, setVisible] = useState("password");
 
+  const changeEmail = (event) => {
+    setEmail(event.target.value);
+  };
 
+  const changePassword = (event) => {
+    setPassword(event.target.value);
+  };
 
-const changeEmail = (event) => {
-  setEmail(event.target.value);
-};
+  const visiblePassword = () => {
+    if (visible == "password") {
+      setVisible("text");
+    } else {
+      setVisible("password");
+    }
+  };
 
-const changePassword = (event) => {
-  setPassword(event.target.value);
-};
+  const changeCheckbox = (event) => {
+    setCheckbox(event.target.checked);
+  };
 
+  useEffect(() => {
+    checkForm();
+  });
 
-
-
-
-const changeCheckbox = (event) => {
-  setCheckbox(event.target.checked);
-};
-
-useEffect(() => {
-  checkForm();
-});
-
-const checkForm = () => {
-  if (
-   
-    email === "" ||
-    password === "" ||
-    checkbox === false
-  ) {
-    return setCheck("disabled"), setError("Please Fill all fields");
-  } else if (password !== email) {
-    return setCheck("disabled"), setError("Passwords don't match");
-  } else {
-    return setCheck("");
-  }
-};
-
+  const checkForm = () => {
+    if (
+      email === "" ||
+      password === "" ||
+      email === null ||
+      password === null ||
+      checkbox === false
+    ) {
+      return setCheck("disabled"), setError("Password 8-аас их оронтой байна.");
+    } else {
+      return setCheck("");
+    }
+  };
 
   return (
     <div className="container mx-auto w-[549px] p-[32px]  mt-[111px] mb-[76px]">
@@ -90,17 +88,40 @@ const checkForm = () => {
               d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
             />
           </svg>
-          <input type="password" className="grow" placeholder="Нууц үг"  value={password}
-              onChange={changePassword} />
+          <input
+            type={visible}
+            className="grow"
+            placeholder="Нууц үг"
+            value={password}
+            onChange={changePassword}
+          />
+           <button onClick={visiblePassword}>
+              <Eye />
+            </button>
         </label>
         <p className="flex justify-end cursor-pointer">Нууц үг сэргээх</p>
       </div>
       <div className="mt-[48px] flex flex-col items-center cursor-pointer">
-        <button className="w-full btn glass"  disabled={check}>Нэвтрэх</button>
+      <div className="flex gap-x-3 mb-[20px]">
+          <input
+            onChange={changeCheckbox}
+            type="checkbox"
+            className="checkbox"
+          />
+          <h3 className="">Нэвтрэхийг зөвшөөрөх</h3>
+        </div>
+        <button className="w-full btn bg-green-500 hover:bg-green-500" disabled={check}>
+          Нэвтрэх
+        </button>
+        <h1 className="text-red-700">{error}</h1>
         <p className="my-[32px]">Эсвэл</p>
-        <button className="w-full btn btn-outline btn-success">
+
+        <a href="http://localhost:3000/ari" className="w-full btn btn-outline btn-success">
+        <button>
           Бүртгүүлэх
         </button>
+        </a>
+       
       </div>
     </div>
   );
