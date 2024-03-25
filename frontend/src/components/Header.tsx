@@ -27,7 +27,7 @@ export default function Header() {
         <ul className="flex  font-medium">
           <li>
             <a
-              href=""
+              href="http://localhost:3000"
               className="block py-2 px-3 rounded  hover:text-green-600"
             >
               НҮҮР
@@ -43,7 +43,7 @@ export default function Header() {
           </li>
           <li>
             <a
-              href="#"
+              href="http://localhost:3000/deliveryzone"
               className="block py-2 px-3 rounded hover:text-green-600"
             >
               ХҮРГЭЛТИЙН БҮС
