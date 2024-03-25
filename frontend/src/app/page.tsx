@@ -1,7 +1,7 @@
 import { Footer } from "./Footer";
 import Header from "../components/Header";
-import { Category } from "../components/category";
 import { Login } from "@/components/Login";
+import { UserProfile } from "@/components/UserProfile";
 
 
 export default function Home() {
@@ -10,6 +10,7 @@ export default function Home() {
        <Header />
       
        <Login/>
+       <UserProfile/>
       <Footer />
     </div>
   );
