@@ -10,11 +10,14 @@ export function UserProfile() {
     <div className="container mx-auto  w-[432px] px-[20px] mb-[40px]">
       <div className="">
         <div className="avatar flex justify-center">
-          <div className="w-24 rounded-full">
+          <div className="w-24 rounded-full relative">
             <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
           </div>
+          <div className="bg-[#FFFFFF] w-[48px] h-[48px] p-3 border rounded-full absolute ">
+            <Pencil />
+          </div>
         </div>
-        <Pencil />
+
         <h1 className="flex justify-center font-bold text-[28px] mt-[40px]">
           УгтахБаяр
         </h1>
@@ -105,7 +108,7 @@ export function UserProfile() {
       >
         Хадгалах
       </button>
-      <dialog id="myDialog">
+      <dialog className="bg-transparent" id="myDialog">
         <div role="alert" className="alert alert-success">
           <svg
             xmlns="http://www.w3.org/2000/svg"
