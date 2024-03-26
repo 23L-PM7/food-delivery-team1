@@ -9,11 +9,11 @@ export function UserProfile() {
   return (
     <div className="container mx-auto  w-[432px] px-[20px] mb-[40px]">
       <div className="">
-        <div className="avatar flex justify-center">
-          <div className="w-24 rounded-full relative">
+        <div className="avatar flex justify-center relative">
+          <div className="w-24 rounded-full">
             <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
           </div>
-          <div className="bg-[#FFFFFF] w-[48px] h-[48px] p-3 border rounded-full absolute ">
+          <div className="bg-[#FFFFFF] w-[34px] h-[34px] p-2 border rounded-full absolute bottom-0 right-[135px]">
             <Pencil />
           </div>
         </div>
@@ -67,7 +67,7 @@ export function UserProfile() {
             <Timer />
           </div>
           <div className="w-8/12">
-            <h1 className="text-base">Захиалгын түүх</h1>
+            <h1 className="text-base ">Захиалгын түүх</h1>
           </div>
         </div>
 
@@ -77,7 +77,7 @@ export function UserProfile() {
           </div>
           <div className="w-8/12">
             <h1
-              className="text-base"
+              className="text-base cursor-pointer"
               onClick={() => document.getElementById("my_modal_1").showModal()}
             >
               Гарах
