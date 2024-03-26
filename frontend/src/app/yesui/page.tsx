@@ -6,8 +6,8 @@ export default function Yesui() {
   return (
     <div>
       <Ded />
-      {/* <Cap />
-      <No /> */}
+      <Cap />
+      <No />
     </div>
   );
 }
