@@ -45,7 +45,11 @@ export function Login() {
       checkbox === false
     ) {
       return setCheck("disabled"), setError("");
+<<<<<<< HEAD
+    } else if (password.length !== 8) {
+=======
     } else  if (password.length < 8 ) {
+>>>>>>> bf36c8b33fb983fa1d711c6cd6b7d1f2309c3ab3
       return setCheck("Password 8-аас их оронтой байна.");
     } else {
       return setCheck("");
@@ -97,14 +101,14 @@ export function Login() {
             value={password}
             onChange={changePassword}
           />
-           <button onClick={visiblePassword}>
-              <Eye />
-            </button>
+          <button onClick={visiblePassword}>
+            <Eye />
+          </button>
         </label>
         <p className="flex justify-end cursor-pointer">Нууц үг сэргээх</p>
       </div>
       <div className="mt-[48px] flex flex-col items-center cursor-pointer">
-      <div className="flex gap-x-3 mb-[20px]">
+        <div className="flex gap-x-3 mb-[20px]">
           <input
             onChange={changeCheckbox}
             type="checkbox"
@@ -112,18 +116,21 @@ export function Login() {
           />
           <h3 className="">Нэвтрэхийг зөвшөөрөх</h3>
         </div>
-        <button className="w-full btn bg-green-500 hover:bg-green-500" disabled={check}>
+        <button
+          className="w-full btn bg-green-500 hover:bg-green-500"
+          disabled={check}
+        >
           Нэвтрэх
         </button>
         <h1 className="text-red-700 mt-3">{error}</h1>
         <p className="my-[32px]">Эсвэл</p>
 
-        <a href="http://localhost:3000/ari" className="w-full btn btn-outline btn-success">
-        <button>
-          Бүртгүүлэх
-        </button>
+        <a
+          href="http://localhost:3000/ari"
+          className="w-full btn btn-outline btn-success"
+        >
+          <button>Бүртгүүлэх</button>
         </a>
-       
       </div>
     </div>
   );
