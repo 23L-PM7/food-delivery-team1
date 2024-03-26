@@ -4,6 +4,7 @@ import { PopupSignin } from "@/components/popupSignin";
 import { Confirmation } from "@/components/forgotpass/sentConfirmation";
 import { NewPassword } from "@/components/forgotpass/newpassword";
 import { PassSetAlert } from "@/components/forgotpass/passwordAlert";
+import { AdminDashboard } from "@/components/adminComp/adminDashboard";
 
 export default function Home() {
   return (
@@ -13,7 +14,8 @@ export default function Home() {
       {/* <Forgot /> */}
       {/* <Confirmation /> */}
       {/* <NewPassword /> */}
-      <PassSetAlert />
+      {/* <PassSetAlert /> */}
+      <AdminDashboard />
     </div>
   );
 }
