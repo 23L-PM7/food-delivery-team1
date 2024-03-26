@@ -15,7 +15,7 @@ export function Footer() {
           <div className="flex mt-[40px] justify-around text-white hover:underline sm:gap-[96px]">
             <a href="http://localhost:3000">Нүүр</a>
             <a>Холбоо барих</a>
-            <a href="http://localhost:3000/about">Хоолны цэс</a>
+            <a href="http://localhost:3000/menu">Хоолны цэс</a>
             <a>Үйлчилгээний нөхцөл</a>
             <a href="http://localhost:3000/deliveryzone">Хүргэлтийн бүс</a>
             <a>Нууцлалын бодлого</a>

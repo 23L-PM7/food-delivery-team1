@@ -3,9 +3,9 @@ import { Login } from "./Login";
 
 export default function Header() {
   return (
-    <div className=" container mx-auto w-full flex  mt-4 mb-4 p-4 gap-2 items-center justify-between">
+    <div className=" container mx-auto  flex  mt-4 mb-4 p-4 gap-2 items-center justify-between">
       <div className=" flex items-center w-3/6 gap-[8px]">
-        <a href="http://localhost:3000/about" />
+        <a href="http://localhost:3000" />
         <svg
           className="gap-2 "
           width="41"
@@ -36,7 +36,7 @@ export default function Header() {
             </li>
             <li>
               <a
-                href="http://localhost:3000/about"
+                href="http://localhost:3000/menu"
                 className="block py-2 px-3  hover:text-green-600"
               >
                 ХООЛНЫ ЦЭС
@@ -64,7 +64,7 @@ export default function Header() {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className=" gap-2"
-            >
+>
               <path
                 d="M19 19L13 13M15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 4.13401 4.13401 1 8 1C11.866 1 15 4.13401 15 8Z"
                 stroke="black"
