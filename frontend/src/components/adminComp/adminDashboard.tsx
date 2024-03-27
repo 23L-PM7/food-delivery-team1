@@ -1,3 +1,6 @@
+import { AdminFoodContent } from "./adminFoodcontent";
+import { AdminGreyhead } from "./adminGreyhead";
+
 export function AdminDashboard() {
   return (
     <div className="bg-gray-100 flex flex-col justify-center items-center p-20 gap-y-5">
@@ -22,28 +25,11 @@ export function AdminDashboard() {
           </label>
         </div>
         {/* table of contents titles */}
-        <div className="w-full bg-gray-100 h-[44px] flex items-center justify-evenly drop-shadow-md">
-          <div className="h-full w-[21%] flex items-center pl-5">
-            <h3 className="text-xs text-slate-600">Order Name</h3>
-          </div>
-          <div className="h-full w-[15%] flex items-center pl-5">
-            <h3 className="text-xs text-slate-600">Buyer Info</h3>
-          </div>
-          <div className="h-full w-[21%] flex items-center pl-5">
-            <h3 className="text-xs text-slate-600">Payment</h3>
-          </div>
-          <div className="h-full w-[21%] flex items-center pl-5">
-            <h3 className="text-xs text-slate-600">Address</h3>
-          </div>
-          <div className="h-full w-[14%] flex items-center pl-5">
-            <h3 className="text-xs text-slate-600">Delivery State</h3>
-          </div>
-          <div className="h-full w-[8%] flex items-center pl-5">
-            <h3 className="text-xs text-slate-600"></h3>
-          </div>
-        </div>
+        <AdminGreyhead />
         {/* contents mapped */}
-        <div className=""></div>
+        <div className="w-full h-full">
+          <AdminFoodContent />
+        </div>
       </div>
       {/* page selector with numbers */}
       <div className="w-[1024px] h-[60px] flex justify-between items-end pt-5 border-t-[1px]">
@@ -62,14 +48,14 @@ export function AdminDashboard() {
           </svg>
           Previous
         </button>
-
+        {/* pagination */}
         <div className="join">
-          <button className="join-item btn btn-sm btn-active">1</button>
-          <button className="join-item btn btn-sm">2</button>
+          <button className="join-item btn btn-sm">1</button>
+          <button className="join-item btn btn-sm btn-active">2</button>
           <button className="join-item btn btn-sm">3</button>
           <button className="join-item btn btn-sm">4</button>
         </div>
-
+        {/* end of pagination */}
         <button className="btn btn-sm bg-white h-[36px]">
           Next
           <svg
