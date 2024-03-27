@@ -1,6 +1,45 @@
+"use client";
 import { Span } from "next/dist/trace";
+import { useEffect, useState } from "react";
 
 function OrderCon() {
+  const [districtId, setDistrictId] = useState("");
+  const [microDistrictId, setMicroDistrictid] = useState("");
+  const [street, setStreet] = useState("");
+  const [houseLocation, setHouseLocation] = useState("");
+  const [phone, setPhone] = useState("");
+  const [radio, setRadio] = useState("");
+  const [toggle, setToggle] = useState("");
+  const [allDone, setAllDone] = useState("btn-disabled");
+
+  useEffect(() => {
+    checkFields();
+  });
+
+  function checkFields() {
+    if (
+      districtId == null ||
+      districtId == "" ||
+      microDistrictId == null ||
+      microDistrictId == "" ||
+      street == null ||
+      street == "" ||
+      houseLocation == null ||
+      houseLocation == "" ||
+      phone == null ||
+      phone == ""
+    ) {
+      setAllDone("btn-disabled");
+    } else {
+      setAllDone("");
+    }
+  }
+
+  const changeRadio = (event) => {
+    setRadio(event.target.value);
+    console.log(radio);
+  };
+
   return (
     <div className="flex justify-center mb-12 gap-24">
       <main className=" block rounded-xl">
@@ -22,54 +61,73 @@ function OrderCon() {
           </div>
         </div>
         <main
-          className="w-[432px] h-[612px] block border-2 gap-4 p-6
+          className="w-[432px] h-[612px] block border-2  p-6 gap-4
         "
         >
-          Хаяг аа оруулна уу
-          <select className="select select-ghost w-full max-w-xs">
-            <option disabled selected>
-              Дүүрэг сонгоно уу
-            </option>
-            <option>Баянзүрх дүүрэг</option>
-            <option>Хан-Уул дүүрэг</option>
-            <option>Баянгол дүүрэг</option>
-            <option>Сонгинохайрхан дүүрэг</option>
-            <option>Чингэлтэй дүүрэг</option>
-          </select>
-          <select className="select select-ghost w-full max-w-xs">
-            <option disabled selected>
-              Хороо сонгоно уу
-            </option>
-            <option>1-р хороо</option>
-            <option>2-р хорооue</option>
-            <option>3-р хороо</option>
-            <option>4-р хороо</option>
-            <option>5-р хороо</option>
-            <option>5-р хороо</option>
-            <option>7-р хороо</option>
-          </select>
-          <select className="select select-ghost w-full max-w-xs">
-            <option disabled selected>
-              Байр, гудамж сонгоно уу
-            </option>
-
-            <option>Нархан хотхон</option>
-            <option>26-р байр</option>
-            <option>Хоймор хотхон</option>
-            <option>45-р байр</option>
-            <option>Зайсан хотхон </option>
-          </select>
-          <label className="form-control">
+          <div className="gap-4">
+            Хаяг аа оруулна уу
+            <select
+              value={districtId}
+              onChange={(e) => setDistrictId(e.target.value)}
+              className={`${
+                districtId ? "bg-green-500 text-white" : ""
+              } select select-ghost max-w-xs w-[384px] h-12`}
+            >
+              <option>Дүүрэг сонгоно уу</option>
+              <option>Баянзүрх дүүрэг</option>
+              <option>Хан-Уул дүүрэг</option>
+              <option>Баянгол дүүрэг</option>
+              <option>Сонгинохайрхан дүүрэг</option>
+              <option>Чингэлтэй дүүрэг</option>
+            </select>
+          </div>
+          <div className="py-4">
+            <select
+              onChange={(e) => setMicroDistrictid(e.target.value)}
+              value={microDistrictId}
+              className={` ${
+                microDistrictId ? "bg-green-500 text-white" : ""
+              } select select-ghost w-[384px] h-12 max-w-xs`}
+            >
+              <option selected>Хороо сонгоно уу</option>
+              <option>1-р хороо</option>
+              <option>2-р хороо</option>
+              <option>3-р хороо</option>
+              <option>4-р хороо</option>
+              <option>5-р хороо</option>
+              <option>5-р хороо</option>
+              <option>7-р хороо</option>
+            </select>
+          </div>
+          <div className="mb-8">
+            <select
+              onChange={(e) => setStreet(e.target.value)}
+              value={street}
+              className={` ${
+                street ? "bg-green-500 text-white" : ""
+              } select select-ghost w-[384px] h-12 max-w-xs`}
+            >
+              <option>Байр, гудамж сонгоно уу</option>
+              <option className="text-base">Нархан хотхон</option>
+              <option>26-р байр</option>
+              <option>Хоймор хотхон</option>
+              <option>45-р байр</option>
+              <option>Зайсан хотхон </option>
+            </select>
+          </div>
+          <label className={` form-control`}>
             <div className="label">
               <span className="label-text">Нэмэлт мэдээлэл</span>
               <span className="label-text-alt"></span>
             </div>
             <textarea
-              className="textarea textarea-bordered h-24"
+              onChange={(e) => setHouseLocation(e.target.value)}
+              value={houseLocation}
+              className={` ${houseLocation} textarea textarea-bordered h-24`}
               placeholder="Орц, давхар, орцны код ..."
             ></textarea>
             <div className="label">
-              <span className="label-text-alt"></span>
+              <span className="label-text-alt"></span>rr
               <span className="label-text-alt"></span>
             </div>
           </label>
@@ -78,11 +136,13 @@ function OrderCon() {
               <span className="label-text">Утасны дугаар*</span>
               <span className="label-text-alt"></span>
             </div>
-            <input
-              type="text"
+            {/* <input
+              onChange={(e) => setPhone(e.target.value)}
+              value={phone}
+              className={` ${phone} input input-bordered w-full max-w-xs`}
+              type="number"
               placeholder="Утасны дугаараа оруулна уу"
-              className="input input-bordered w-full max-w-xs"
-            />
+            /> */}
             <div className="label">
               <span className="label-text-alt"></span>
               <span className="label-text-alt"></span>
@@ -90,18 +150,23 @@ function OrderCon() {
           </label>
           <p>Төлбөр төлөх</p>
           <div className="flex">
-            {" "}
             <div className="block">
               <span>
-                {" "}
-                <input type="checkbox" id="myCheck" />
+                <Checkbox {...label} defaultChecked color="default" />
+                {/* <input
+                  value="belen"
+                  checked={radio === "belen"}
+                  onChange={changeRadio}
+                  type="radio"
+                  name="radio-1"
+                  className="radio"
+                /> */}
               </span>
               <span className="label-text">Бэлнээр </span>
-            </div>{" "}
+            </div>
             <div className="block">
               <span>
-                {" "}
-                <input type="checkbox" id="myCheck" />
+                <input type="radio" name="radio-1" className="radio" />
               </span>
               <span className="label-text ">Картаар</span>
             </div>
@@ -151,9 +216,12 @@ function OrderCon() {
               <h1>Нийт төлөх дүн</h1>
               <h1 className="font-bold">34,800₮</h1>
             </span>
-            <span className="px-2 py-3 w-[187px] h-[47px] bg-[#EEEFF2] text-center">
+
+            <button
+              className={`px-2 py-3 w-[187px] h-[47px] btn hover:bg-green-500 bg-green-600 text-white text-center ${allDone}`}
+            >
               Захиалах
-            </span>{" "}
+            </button>
           </main>
         </main>
       </main>
