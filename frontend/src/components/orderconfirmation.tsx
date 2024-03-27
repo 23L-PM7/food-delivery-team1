@@ -1,6 +1,9 @@
 "use client";
-import { Span } from "next/dist/trace";
+
 import { useEffect, useState } from "react";
+import * as React from "react";
+import { pink } from "@mui/material/colors";
+import Checkbox from "@mui/material/Checkbox";
 
 function OrderCon() {
   const [districtId, setDistrictId] = useState("");
@@ -41,7 +44,7 @@ function OrderCon() {
   };
 
   return (
-    <div className="flex justify-center mb-12 gap-24">
+    <div className="flex justify-center mb-[80px] gap-[180px]">
       <main className=" block rounded-xl">
         <div className="flex gap-2 px-4 py-6">
           <svg
@@ -71,7 +74,7 @@ function OrderCon() {
               onChange={(e) => setDistrictId(e.target.value)}
               className={`${
                 districtId ? "bg-green-500 text-white" : ""
-              } select select-ghost max-w-xs w-[384px] h-12`}
+              } select select-ghost max-w-xs w-[384px] h-12 bg-[#ECEDF0]`}
             >
               <option>Дүүрэг сонгоно уу</option>
               <option>Баянзүрх дүүрэг</option>
@@ -87,7 +90,7 @@ function OrderCon() {
               value={microDistrictId}
               className={` ${
                 microDistrictId ? "bg-green-500 text-white" : ""
-              } select select-ghost w-[384px] h-12 max-w-xs`}
+              } select select-ghost w-[384px] h-12 max-w-xs bg-[#ECEDF0]`}
             >
               <option selected>Хороо сонгоно уу</option>
               <option>1-р хороо</option>
@@ -99,13 +102,13 @@ function OrderCon() {
               <option>7-р хороо</option>
             </select>
           </div>
-          <div className="mb-8">
+          <div className="mb-8 w-[420px] h-12">
             <select
               onChange={(e) => setStreet(e.target.value)}
               value={street}
               className={` ${
                 street ? "bg-green-500 text-white" : ""
-              } select select-ghost w-[384px] h-12 max-w-xs`}
+              }  w-96 h-12 select select-ghost]  max-w-xs bg-[#ECEDF0]`}
             >
               <option>Байр, гудамж сонгоно уу</option>
               <option className="text-base">Нархан хотхон</option>
@@ -123,11 +126,11 @@ function OrderCon() {
             <textarea
               onChange={(e) => setHouseLocation(e.target.value)}
               value={houseLocation}
-              className={` ${houseLocation} textarea textarea-bordered h-24`}
+              className={` ${houseLocation} textarea textarea-bordered h-24 bg-[#ECEDF0]`}
               placeholder="Орц, давхар, орцны код ..."
             ></textarea>
             <div className="label">
-              <span className="label-text-alt"></span>rr
+              <span className="label-text-alt"></span>
               <span className="label-text-alt"></span>
             </div>
           </label>
@@ -136,13 +139,14 @@ function OrderCon() {
               <span className="label-text">Утасны дугаар*</span>
               <span className="label-text-alt"></span>
             </div>
-            {/* <input
+            <input
               onChange={(e) => setPhone(e.target.value)}
               value={phone}
-              className={` ${phone} input input-bordered w-full max-w-xs`}
+              className={` ${phone} input input-bordered w-full max-w-xs bg-[#ECEDF0]`}
               type="number"
               placeholder="Утасны дугаараа оруулна уу"
-            /> */}
+              s
+            />
             <div className="label">
               <span className="label-text-alt"></span>
               <span className="label-text-alt"></span>
@@ -152,21 +156,13 @@ function OrderCon() {
           <div className="flex">
             <div className="block">
               <span>
-                <Checkbox {...label} defaultChecked color="default" />
-                {/* <input
-                  value="belen"
-                  checked={radio === "belen"}
-                  onChange={changeRadio}
-                  type="radio"
-                  name="radio-1"
-                  className="radio"
-                /> */}
+                <Checkbox defaultChecked color="default" />
               </span>
               <span className="label-text">Бэлнээр </span>
             </div>
             <div className="block">
               <span>
-                <input type="radio" name="radio-1" className="radio" />
+                <Checkbox defaultChecked color="default" />
               </span>
               <span className="label-text ">Картаар</span>
             </div>
