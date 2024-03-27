@@ -8,9 +8,6 @@ export function Desktop() {
                 <BackgroundPic />
             </div>
             <div className="inset-0 absolute p-[120px] border-b">
-                <div className="flex  justify-center items-center gap-2">
-                    <Logo />
-                </div>
             </div>
         </div >
     );
