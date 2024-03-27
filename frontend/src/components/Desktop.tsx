@@ -8,6 +8,8 @@ export function Desktop() {
                 <BackgroundPic />
             </div>
             <div className="inset-0 absolute p-[120px] border-b">
+                <h1 className="text-white  text-[55px]"> Pinecone Food Delivery</h1>
+                <h1>Horem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
             </div>
         </div >
     );
