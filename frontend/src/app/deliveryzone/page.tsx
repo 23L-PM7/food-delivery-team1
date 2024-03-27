@@ -1,12 +1,13 @@
 import { Map } from "@/components/footerInfo";
-import { Terms } from "./terms";
-import { Privacy } from "./privacy";
+import Header from "@/components/Header";
+import { Footer } from "../Footer";
 
 export default function DeliveryZone() {
   return (
     <div>
-      <Terms />
-      <Privacy />
+      <Header />
+      <Map />
+      <Footer />
     </div>
   );
 }

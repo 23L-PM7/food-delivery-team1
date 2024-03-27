@@ -3,6 +3,7 @@ import { Logo } from "../components/icons/Logo";
 import { Facebook } from "../components/icons/Socials";
 import { Instagram } from "../components/icons/Socials";
 import { Twitter } from "../components/icons/Socials";
+import { Terms } from "./termsofservice/terms";
 export function Footer() {
   return (
     <div className="bg-green-500  w-full  relative">
@@ -16,9 +17,9 @@ export function Footer() {
           <a href="http://localhost:3000">Нүүр</a>
           <a>Холбоо барих</a>
           <a href="http://localhost:3000/menu">Хоолны цэс</a>
-          <a>Үйлчилгээний нөхцөл</a>
+          <a href="http://localhost:3000/termsofservice">Үйлчилгээний нөхцөл</a>
           <a href="http://localhost:3000/deliveryzone">Хүргэлтийн бүс</a>
-          <a>Нууцлалын бодлого</a>
+          <a >Нууцлалын бодлого</a>
         </div>
         <div className="flex justify-center gap-5 mt-[40px] ">
           <a href="https://www.facebook.com/login/">
