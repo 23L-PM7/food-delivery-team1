@@ -1,5 +1,10 @@
 "use client";
+import { access } from "fs";
 import { Login } from "./Login";
+
+function Access() {
+  document.getElementById("Haruul").showModal();
+}
 
 export default function Header() {
   return (
@@ -64,7 +69,7 @@ export default function Header() {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className=" gap-2"
->
+            >
               <path
                 d="M19 19L13 13M15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 4.13401 4.13401 1 8 1C11.866 1 15 4.13401 15 8Z"
                 stroke="black"
@@ -108,18 +113,17 @@ export default function Header() {
             />{" "}
           </svg>
           <button
-            onClick={() => document.getElementById("my_modal_2").showModal()}
+            onClick={() => Access()}
           >
             Нэвтрэх
           </button>
-          <dialog id="my_modal_2" className="modal">
-            <div className="modal-box">
-             <Login/>
-            </div>
+          <dialog id="Haruul" className="modal">
             <form method="dialog" className="modal-backdrop">
               <button>close</button>
             </form>
+            <Login />
           </dialog>
+
         </div>
       </div>
     </div>

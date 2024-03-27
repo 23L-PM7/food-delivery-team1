@@ -45,7 +45,11 @@ export function Login() {
       checkbox === false
     ) {
       return setCheck("disabled"), setError("");
+<<<<<<< HEAD
     } else if (password.length !== 8) {
+=======
+    } else if (password.length < 8) {
+>>>>>>> 39da3a40c660063723878b79ed6d2085ef91d5da
       return setCheck("Password 8-аас их оронтой байна.");
     } else {
       return setCheck("");
@@ -53,7 +57,7 @@ export function Login() {
   };
 
   return (
-    <div className="container mx-auto w-[549px] p-[32px]  mt-[111px] mb-[76px]">
+    <div className="container mx-auto w-[549px] p-[32px]  mt-[32px] mb-[76px] bg-white rounded-sm">
       <h1 className="flex justify-center font-bold text-xl">Нэвтрэх</h1>
       <div className="mt-[48px]">
         <h1>Имэйл </h1>
