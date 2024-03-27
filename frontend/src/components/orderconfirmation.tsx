@@ -44,7 +44,7 @@ function OrderCon() {
   };
 
   return (
-    <div className="flex justify-center mb-12 gap-24">
+    <div className="flex justify-center mb-[80px] gap-[180px]">
       <main className=" block rounded-xl">
         <div className="flex gap-2 px-4 py-6">
           <svg
@@ -74,7 +74,7 @@ function OrderCon() {
               onChange={(e) => setDistrictId(e.target.value)}
               className={`${
                 districtId ? "bg-green-500 text-white" : ""
-              } select select-ghost max-w-xs w-[384px] h-12`}
+              } select select-ghost max-w-xs w-[384px] h-12 bg-[#ECEDF0]`}
             >
               <option>Дүүрэг сонгоно уу</option>
               <option>Баянзүрх дүүрэг</option>
@@ -90,7 +90,7 @@ function OrderCon() {
               value={microDistrictId}
               className={` ${
                 microDistrictId ? "bg-green-500 text-white" : ""
-              } select select-ghost w-[384px] h-12 max-w-xs`}
+              } select select-ghost w-[384px] h-12 max-w-xs bg-[#ECEDF0]`}
             >
               <option selected>Хороо сонгоно уу</option>
               <option>1-р хороо</option>
@@ -102,13 +102,13 @@ function OrderCon() {
               <option>7-р хороо</option>
             </select>
           </div>
-          <div className="mb-8">
+          <div className="mb-8 w-[420px] h-12">
             <select
               onChange={(e) => setStreet(e.target.value)}
               value={street}
               className={` ${
                 street ? "bg-green-500 text-white" : ""
-              } select select-ghost w-[384px] h-12 max-w-xs`}
+              }  w-96 h-12 select select-ghost]  max-w-xs bg-[#ECEDF0]`}
             >
               <option>Байр, гудамж сонгоно уу</option>
               <option className="text-base">Нархан хотхон</option>
@@ -126,7 +126,7 @@ function OrderCon() {
             <textarea
               onChange={(e) => setHouseLocation(e.target.value)}
               value={houseLocation}
-              className={` ${houseLocation} textarea textarea-bordered h-24`}
+              className={` ${houseLocation} textarea textarea-bordered h-24 bg-[#ECEDF0]`}
               placeholder="Орц, давхар, орцны код ..."
             ></textarea>
             <div className="label">
@@ -142,9 +142,10 @@ function OrderCon() {
             <input
               onChange={(e) => setPhone(e.target.value)}
               value={phone}
-              className={` ${phone} input input-bordered w-full max-w-xs`}
+              className={` ${phone} input input-bordered w-full max-w-xs bg-[#ECEDF0]`}
               type="number"
               placeholder="Утасны дугаараа оруулна уу"
+              s
             />
             <div className="label">
               <span className="label-text-alt"></span>
