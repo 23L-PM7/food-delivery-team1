@@ -1,13 +1,13 @@
 import { Pluslogo } from "../../components/pluslogo";
 export function Privacy() {
   return (
-    <div className="flex flex-col gap-2  w-full pl-4">
+    <div className="container mx-auto flex flex-col gap-2 w-[1200px] mb-[52px]">
       <div className="flex gap-2">
         <Pluslogo />
         <h1 className="font-extrabold pb-5">Нууцлалын бодлого</h1>
       </div>
 
-      <div className="w-[1400px] h-[1153px] gap-24 ">
+      <div className="gap-24 ">
         <p className="text-lg indent-5">
           Mstars Food delivery нь Mstars Lab компанийн интернэт худалдааны албан
           ёсны вэбсайт бөгөөд энэхүү нөхцөл, журам нь уг вэбсайтаар үйлчлүүлэх,

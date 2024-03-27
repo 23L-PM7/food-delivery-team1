@@ -1,4 +1,4 @@
-import { Map } from "@/components/footerInfo";
+import { Map } from "@/app/deliveryzone/footerInfo";
 import Header from "@/components/Header";
 import { Footer } from "../Footer";
 

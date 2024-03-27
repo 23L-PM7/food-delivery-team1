@@ -1,9 +1,9 @@
-import Signup from "@/components/Signup";
-import { Forgot } from "@/components/forgotpass/forgotpass";
+import Signup from "@/app/signup/Signup";
+import { Forgot } from "@/app/forgotpass/forgotpass";
 import { PopupSignin } from "@/components/popupSignin";
-import { Confirmation } from "@/components/forgotpass/sentConfirmation";
-import { NewPassword } from "@/components/forgotpass/newpassword";
-import { PassSetAlert } from "@/components/forgotpass/passwordAlert";
+import { Confirmation } from "@/app/forgotpass/sentConfirmation";
+import { NewPassword } from "@/app/forgotpass/newpassword";
+import { PassSetAlert } from "@/app/forgotpass/passwordAlert";
 import { AdminDashboard } from "@/components/adminComp/adminDashboard";
 import Header from "@/components/Header";
 

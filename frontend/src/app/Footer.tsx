@@ -19,7 +19,7 @@ export function Footer() {
           <a href="http://localhost:3000/menu">Хоолны цэс</a>
           <a href="http://localhost:3000/termsofservice">Үйлчилгээний нөхцөл</a>
           <a href="http://localhost:3000/deliveryzone">Хүргэлтийн бүс</a>
-          <a >Нууцлалын бодлого</a>
+          <a href="http://localhost:3000/privacy">Нууцлалын бодлого</a>
         </div>
         <div className="flex justify-center gap-5 mt-[40px] ">
           <a href="https://www.facebook.com/login/">

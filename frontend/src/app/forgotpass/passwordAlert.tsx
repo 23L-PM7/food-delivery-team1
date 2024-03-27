@@ -1,4 +1,4 @@
-import { Check } from "../icons/check";
+import { Check } from "../../components/icons/check";
 
 export function PassSetAlert() {
   return (

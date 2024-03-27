@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Eye } from "./icons/eyeclosed";
+import { Eye } from "../../components/icons/eyeclosed";
 
 
 export default function Signup() {
@@ -87,7 +87,7 @@ export default function Signup() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-y-4 m-3">
+    <div className="flex flex-col items-center gap-y-4 m-3 mb-[107px] mt-[74px]">
       {/* burtguuleh title div */}
       <div className="">
         <h1 className="text-2xl font-bold">Бүртгүүлэх</h1>

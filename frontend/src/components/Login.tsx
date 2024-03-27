@@ -45,11 +45,8 @@ export function Login() {
       checkbox === false
     ) {
       return setCheck("disabled"), setError("");
-<<<<<<< HEAD
-    } else if (password.length !== 8) {
-=======
+
     } else if (password.length < 8) {
->>>>>>> 39da3a40c660063723878b79ed6d2085ef91d5da
       return setCheck("Password 8-аас их оронтой байна.");
     } else {
       return setCheck("");
@@ -114,7 +111,7 @@ export function Login() {
             type="checkbox"
             className="checkbox"
           />
-          <h3 className="">Нэвтрэхийг зөвшөөрөх</h3>
+          <a href="http://localhost:3000/forgotpass">Нэвтрэхийг зөвшөөрөх</a>
         </div>
         <button
           className="w-full btn bg-green-500 hover:bg-green-500"
@@ -126,7 +123,7 @@ export function Login() {
         <p className="my-[32px]">Эсвэл</p>
 
         <a
-          href="http://localhost:3000/ari"
+          href="http://localhost:3000/signup"
           className="w-full btn btn-outline btn-success"
         >
           <button>Бүртгүүлэх</button>

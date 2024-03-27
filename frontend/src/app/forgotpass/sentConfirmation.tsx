@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Eye } from "../icons/eyeclosed";
+import { Eye } from "../../components/icons/eyeclosed";
 
 export function Confirmation() {
   // usestate
