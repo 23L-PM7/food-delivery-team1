@@ -1,6 +1,9 @@
 "use client";
-import { Span } from "next/dist/trace";
+
 import { useEffect, useState } from "react";
+import * as React from "react";
+import { pink } from "@mui/material/colors";
+import Checkbox from "@mui/material/Checkbox";
 
 function OrderCon() {
   const [districtId, setDistrictId] = useState("");
@@ -127,7 +130,7 @@ function OrderCon() {
               placeholder="Орц, давхар, орцны код ..."
             ></textarea>
             <div className="label">
-              <span className="label-text-alt"></span>rr
+              <span className="label-text-alt"></span>
               <span className="label-text-alt"></span>
             </div>
           </label>
@@ -136,13 +139,13 @@ function OrderCon() {
               <span className="label-text">Утасны дугаар*</span>
               <span className="label-text-alt"></span>
             </div>
-            {/* <input
+            <input
               onChange={(e) => setPhone(e.target.value)}
               value={phone}
               className={` ${phone} input input-bordered w-full max-w-xs`}
               type="number"
               placeholder="Утасны дугаараа оруулна уу"
-            /> */}
+            />
             <div className="label">
               <span className="label-text-alt"></span>
               <span className="label-text-alt"></span>
@@ -152,21 +155,13 @@ function OrderCon() {
           <div className="flex">
             <div className="block">
               <span>
-                <Checkbox {...label} defaultChecked color="default" />
-                {/* <input
-                  value="belen"
-                  checked={radio === "belen"}
-                  onChange={changeRadio}
-                  type="radio"
-                  name="radio-1"
-                  className="radio"
-                /> */}
+                <Checkbox defaultChecked color="default" />
               </span>
               <span className="label-text">Бэлнээр </span>
             </div>
             <div className="block">
               <span>
-                <input type="radio" name="radio-1" className="radio" />
+                <Checkbox defaultChecked color="default" />
               </span>
               <span className="label-text ">Картаар</span>
             </div>
