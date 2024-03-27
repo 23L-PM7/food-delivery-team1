@@ -2,7 +2,7 @@ import { Pluslogo } from "./pluslogo";
 
 export function Map() {
   return (
-    <div className=" flex flex-col items-center gap-5 w-[1200px]">
+    <div className="container mx-auto flex flex-col items-center gap-5 w-[1200px]">
       <img className="w-full h-auto" src="./images/map.png" />
       <div className="flex gap-2  w-full pl-4">
         <Pluslogo />

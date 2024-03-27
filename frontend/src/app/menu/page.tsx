@@ -5,13 +5,13 @@ import Menu from "../mnde/menu";
 
 export default function Home() {
   return (
-    <div className="w-full">
+    <div>
       <Header />
       <div className="container mx-auto">
-      <Category />
-      <Menu />
+        <Category />
+        <Menu />
       </div>
-      
+
       <Footer />
     </div>
   );
