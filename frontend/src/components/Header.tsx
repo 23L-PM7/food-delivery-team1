@@ -60,30 +60,6 @@ export default function Header() {
       </div>
 
       <div className="flex items-center w-3/6 justify-end">
-<<<<<<< HEAD
-        <div className="flex border border-black  w-[260px] h-[40px] gap-4">
-          <label className=" flex items-center gap-2 py-5 px-3">
-            <svg
-              width="20px"
-              height="20px"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className=" gap-2"
-            >
-              <path
-                d="M19 19L13 13M15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 4.13401 4.13401 1 8 1C11.866 1 15 4.13401 15 8Z"
-                stroke="black"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            <input type="text" className="grow" placeholder="Хайх" />
-          </label>
-        </div>
-        <div className="flex py-2 px-5 gap-2  group">
-=======
         <label className="input input-bordered border-black flex items-center gap-2 w-[260px] h-[36px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +76,6 @@ export default function Header() {
           <input type="text" className="grow" placeholder="Хайх" />
         </label>
         <div className="flex py-2 px-5 gap-2  ">
->>>>>>> 86270fafa413cbc7b4d8259acf89220bc8f48a4f
           <svg
             width="22"
             height="20"
@@ -131,16 +106,7 @@ export default function Header() {
               fill="currentColor"
             />{" "}
           </svg>
-<<<<<<< HEAD
-          <button
-            className=" group-hover:text-green-600"
-            onClick={() => Access()}
-          >
-            Нэвтрэх
-          </button>
-=======
           <button onClick={() => Access()}>Нэвтрэх</button>
->>>>>>> 86270fafa413cbc7b4d8259acf89220bc8f48a4f
           <dialog id="Haruul" className="modal">
             <form method="dialog" className="modal-backdrop">
               <button>close</button>
