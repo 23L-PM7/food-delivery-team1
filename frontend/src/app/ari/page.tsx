@@ -11,7 +11,7 @@ import { AdminCategory } from "@/components/adminComp/adminCategory";
 
 export default function Home() {
   return (
-    <div>
+    <div className="h-dvh">
       <Header />
       {/* <Signup />
       <PopupSignin /> */}
