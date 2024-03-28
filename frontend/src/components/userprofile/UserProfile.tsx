@@ -1,11 +1,22 @@
 "use client";
 
-import { Call, Exit, Mail, Pencil, Person, Timer } from "./icons/ProfileIcons";
+import { useState } from "react";
+import { Call, Exit, Mail, Pencil, Person, Timer } from "../icons/ProfileIcons";
+import { UserData } from "./Userpro";
+
+
 function myFunction() {
   document.getElementById("myDialog").showModal();
 }
 
+
+
 export function UserProfile() {
+  const [userpro, setUserpro] = useState("");
+
+
+
+
   return (
     <div className="container mx-auto  w-[432px] px-[20px] mb-[40px]">
       <div className="">
@@ -30,7 +41,7 @@ export function UserProfile() {
           </div>
           <div className="w-8/12">
             <h1 className="text-xs text-[#888A99]">Таны нэр</h1>
-            <h1 className="text-base">УгтахБаяр</h1>
+            <h1 className="text-base">{UserData.name}</h1>
           </div>
           <div className="w-2/12 justify-end flex">
             <Pencil />
