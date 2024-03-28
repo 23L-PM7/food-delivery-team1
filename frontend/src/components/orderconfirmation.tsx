@@ -21,13 +21,18 @@ function OrderCon() {
   const [green, setGreen] = useState("hidden");
   const [mainhidden, setMainHidden] = useState("flex");
   const [alert, setAlert] = useState("hidden");
+  const [newmain, setNewMain] = useState("hidden");
 
   useEffect(() => {
     checkFields();
   });
+  function alertOnclick() {
+    setMainHidden("hidden");
+    setAlert("hidden");
+    setNewMain("flex");
+  }
 
   function buttonMain() {
-    setMainHidden("hidden");
     setAlert("flex");
   }
 
@@ -64,7 +69,10 @@ function OrderCon() {
   return (
     <main>
       {" "}
-      <div role="alert" className={`alert ${alert}`}>
+      <div
+        role="alert"
+        className={`alert block bg-white rounded-e-none z-0 ${alert}`}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -81,11 +89,13 @@ function OrderCon() {
         <span>we use cookies for no reason.</span>
         <div>
           <button className="btn btn-sm">Deny</button>
-          <button className="btn btn-sm btn-primary">Accept</button>
+          <button onClick={alertOnclick} className="btn btn-sm btn-primary">
+            Accept
+          </button>
         </div>
       </div>
       <div
-        className={`flex justify-center mb-[80px] gap-[180px] ${mainhidden}`}
+        className={`flex justify-center mb-[80px] gap-[180px] relative ${mainhidden}`}
       >
         <main className=" block rounded-xl">
           <div className="flex gap-2 px-4 py-6">
@@ -292,6 +302,52 @@ function OrderCon() {
           </main>
         </main>
       </div>
+      <li className="flex justify-center mb-[80px] gap-[180px]">
+        <main
+          onClick={alertOnclick}
+          className={`w-[432px] h-[612px]  border-2 p-6  block ${newmain}`}
+        >
+          <h1>Захиалгын түүх</h1>
+          <br />
+          <br />
+          <br />
+          <div className="flex gap-2 px-4 py-6">
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 48 48"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="24" cy="24" r="23.5" stroke="#0468C8" />
+              <circle cx="24" cy="24" r="12" fill="#0468C8" />
+            </svg>
+            <p className="flex">
+              <div className="block">
+                <h5>Алхам 1</h5>
+                <h1>Хаягийн мэдээлэл оруулах</h1>
+                <h5>Хүлээгдэж байна</h5>
+              </div>
+              <h1>2024/04/26</h1>
+            </p>
+          </div>
+        </main>
+        <main
+          onClick={alertOnclick}
+          className={`w-[432px] h-[612px]  border-2 p-6 block ${newmain}`}
+        >
+          <div>
+            {" "}
+            <h1 className=" mb-10">Захиалгын дэлгэрэнгүй</h1>
+          </div>
+          <br />
+          <div className="flex">
+            <h5>Main pizza</h5>
+
+            <h5>(1)</h5>
+          </div>
+        </main>
+      </li>
     </main>
   );
 }
