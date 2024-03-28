@@ -2,6 +2,7 @@
 
 import { Login } from "./Login";
 
+
 const array = [
   {
     title: "НҮҮР",
@@ -9,13 +10,17 @@ const array = [
   },
   {
     title: "ХООЛНЫ ЦЭС",
-    href: "http://localhost:3000",
+    href: "http://localhost:3000/menu",
   },
   {
     title: "ХҮРГЭЛТИЙН БҮС",
-    href: "http://localhost:3000",
+    href: "http://localhost:3000/deliveryzone",
   },
 ];
+
+function Access() {
+  document.getElementById("Haruul").showModal();
+}
 
 export default function Header() {
   return (
