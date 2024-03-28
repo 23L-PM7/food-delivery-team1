@@ -15,30 +15,32 @@ export function Containers() {
         {/*  */}
       </div>
       <div>
-        <h1> Хоолны нэр</h1>
-        <input
-          type="text"
-          placeholder="Placeholder"
-          className="input h-[56px] border-none input-bordered input-lg w-full max-w-xxl bg-gray-200"
-        />
-        <h1>Хоолны ангилал</h1>
-        <input
-          type="text"
-          placeholder="Placeholder"
-          className="input h-[56px] border-none input-bordered input-lg w-full max-w-xxl bg-gray-200"
-        />
-        <h1>Хоолны орц</h1>
-        <input
-          type="text"
-          placeholder="Placeholder"
-          className="input h-[56px] border-none input-bordered input-lg w-full max-w-xxl bg-gray-200"
-        />
-        <h1>Хоолны үнэ</h1>
-        <input
-          type="text"
-          placeholder="Placeholder"
-          className="input h-[56px] border-none input-bordered input-lg w-full max-w-xxl bg-gray-200"
-        />
+        <div>
+          <h1>Хоолны нэр</h1>
+          <input
+            type="text"
+            placeholder="Хоолны нэр"
+            className="input h-[56px] border-none input-bordered input-lg w-full max-w-xxl bg-gray-200"
+          />
+          <h1>Хоолны ангилал</h1>
+          <input
+            type="text"
+            placeholder="Placeholder"
+            className="input h-[56px] border-none input-bordered input-lg w-full max-w-xxl bg-gray-200"
+          />
+          <h1>Хоолны орц</h1>
+          <input
+            type="text"
+            placeholder="Placeholder"
+            className="input h-[56px] border-none input-bordered input-lg w-full max-w-xxl bg-gray-200"
+          />
+          <h1>Хоолны үнэ</h1>
+          <input
+            type="text"
+            placeholder="Placeholder"
+            className="input h-[56px] border-none input-bordered input-lg w-full max-w-xxl bg-gray-200"
+          />
+        </div>
       </div>
     </div>
   );
