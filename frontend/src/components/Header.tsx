@@ -54,9 +54,9 @@ export default function Header() {
               >
                 ХҮРГЭЛТИЙН БҮС
               </a>
-            </li>{" "}
+            </li>
           </ul>
-        </div>{" "}
+        </div>
       </div>
 
       <div className="flex items-center w-3/6 justify-end">
