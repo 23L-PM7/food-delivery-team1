@@ -19,8 +19,8 @@ export default function Home() {
       {/* <Confirmation /> */}
       {/* <NewPassword /> */}
       {/* <PassSetAlert /> */}
-      {/* <AdminDashboard /> */}
-      <AdminCategory />
+      <AdminDashboard />
+      {/* <AdminCategory /> */}
     </div>
   );
 }
