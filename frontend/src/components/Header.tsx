@@ -8,7 +8,7 @@ function Access() {
 
 export default function Header() {
   return (
-    <div className=" container mx-auto  flex  mt-4 mb-4 p-4 gap-2 items-center justify-between">
+    <div className="container mx-auto text-sm font-semibold flex h-[57px] gap-2 items-center justify-between">
       <div className=" flex items-center w-3/6 gap-[8px]">
         <a href="http://localhost:3000" />
         <svg
@@ -30,7 +30,7 @@ export default function Header() {
           />
         </svg>
         <div className="items-center">
-          <ul className="flex  font-medium">
+          <ul className="flex">
             <li>
               <a
                 href="http://localhost:3000"
@@ -54,12 +54,13 @@ export default function Header() {
               >
                 ХҮРГЭЛТИЙН БҮС
               </a>
-            </li>{" "}
+            </li>
           </ul>
-        </div>{" "}
+        </div>
       </div>
 
       <div className="flex items-center w-3/6 justify-end">
+<<<<<<< HEAD
         <div className="flex border border-black  w-[260px] h-[40px] gap-4">
           <label className=" flex items-center gap-2 py-5 px-3">
             <svg
@@ -82,6 +83,24 @@ export default function Header() {
           </label>
         </div>
         <div className="flex py-2 px-5 gap-2  group">
+=======
+        <label className="input input-bordered border-black flex items-center gap-2 w-[260px] h-[36px]">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            className="w-4 h-4 opacity-70"
+          >
+            <path
+              fillRule="evenodd"
+              d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+              clipRule="evenodd"
+            />
+          </svg>
+          <input type="text" className="grow" placeholder="Хайх" />
+        </label>
+        <div className="flex py-2 px-5 gap-2  ">
+>>>>>>> 86270fafa413cbc7b4d8259acf89220bc8f48a4f
           <svg
             width="22"
             height="20"
@@ -112,12 +131,16 @@ export default function Header() {
               fill="currentColor"
             />{" "}
           </svg>
+<<<<<<< HEAD
           <button
             className=" group-hover:text-green-600"
             onClick={() => Access()}
           >
             Нэвтрэх
           </button>
+=======
+          <button onClick={() => Access()}>Нэвтрэх</button>
+>>>>>>> 86270fafa413cbc7b4d8259acf89220bc8f48a4f
           <dialog id="Haruul" className="modal">
             <form method="dialog" className="modal-backdrop">
               <button>close</button>
