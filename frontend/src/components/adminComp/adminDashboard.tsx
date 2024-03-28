@@ -3,7 +3,7 @@ import { AdminGreyhead } from "./adminGreyhead";
 
 export function AdminDashboard() {
   return (
-    <div className="bg-gray-100 flex flex-col justify-center items-center p-20 gap-y-5">
+    <div className="bg-gray-100 flex flex-col items-center gap-y-5 h-full pt-10">
       <div className="w-[1024px] h-[624px] bg-white rounded-3xl drop-shadow-sm">
         {/* title with search bar */}
         <div className="flex w-full justify-between p-5 items-center">

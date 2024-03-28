@@ -60,7 +60,7 @@ export default function Header() {
       </div>
 
       <div className="flex items-center w-3/6 justify-end">
-        <label className="input input-bordered border-black flex items-center gap-2 w-[356px] h-[36px]">
+        <label className="input input-bordered border-black flex items-center gap-2 w-[260px] h-[36px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
@@ -73,7 +73,7 @@ export default function Header() {
               clipRule="evenodd"
             />
           </svg>
-          <input type="text" className="grow" placeholder="Search" />
+          <input type="text" className="grow" placeholder="Хайх" />
         </label>
         <div className="flex py-2 px-5 gap-2  ">
           <svg
