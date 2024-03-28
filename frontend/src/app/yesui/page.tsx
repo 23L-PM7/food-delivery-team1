@@ -2,6 +2,7 @@ import { No, SuccessGreen, SuccessYellow } from "./errors/no";
 import { Cap } from "./errors/cap";
 import { Ded } from "./errors/sign";
 import { Containers } from "./sale/containers";
+import React, { useState } from "react";
 
 export default function Yesui() {
   return (
