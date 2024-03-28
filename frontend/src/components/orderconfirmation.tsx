@@ -152,9 +152,8 @@ function OrderCon() {
               <select
                 value={districtId}
                 onChange={(e) => setDistrictId(e.target.value)}
-                className={`${
-                  districtId ? "bg-green-500 text-white" : ""
-                } select select-ghost max-w-xs w-[384px] h-12 bg-[#ECEDF0]`}
+                className={`${districtId ? "bg-green-500 text-white" : ""
+                  } select select-ghost max-w-xs w-[384px] h-12 bg-[#ECEDF0]`}
               >
                 <option>Дүүрэг сонгоно уу</option>
                 <option>Баянзүрх дүүрэг</option>
@@ -168,9 +167,8 @@ function OrderCon() {
               <select
                 onChange={(e) => setMicroDistrictid(e.target.value)}
                 value={microDistrictId}
-                className={` ${
-                  microDistrictId ? "bg-green-500 text-white" : ""
-                } select select-ghost w-[384px] h-12 max-w-xs bg-[#ECEDF0]`}
+                className={` ${microDistrictId ? "bg-green-500 text-white" : ""
+                  } select select-ghost w-[384px] h-12 max-w-xs bg-[#ECEDF0]`}
               >
                 <option selected>Хороо сонгоно уу</option>
                 <option>1-р хороо</option>
@@ -186,9 +184,8 @@ function OrderCon() {
               <select
                 onChange={(e) => setStreet(e.target.value)}
                 value={street}
-                className={` ${
-                  street ? "bg-green-500 text-white" : ""
-                }  w-96 h-12 select select-ghost]  max-w-xs bg-[#ECEDF0]`}
+                className={` ${street ? "bg-green-500 text-white" : ""
+                  }  w-96 h-12 select select-ghost]  max-w-xs bg-[#ECEDF0]`}
               >
                 <option>Байр, гудамж сонгоно уу</option>
                 <option className="text-base">Нархан хотхон</option>
