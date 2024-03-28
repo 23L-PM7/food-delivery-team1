@@ -2,9 +2,20 @@
 
 import { Login } from "./Login";
 
-function Access() {
-  document.getElementById("Haruul").showModal();
-}
+const array = [
+  {
+    title: "НҮҮР",
+    href: "http://localhost:3000",
+  },
+  {
+    title: "ХООЛНЫ ЦЭС",
+    href: "http://localhost:3000",
+  },
+  {
+    title: "ХҮРГЭЛТИЙН БҮС",
+    href: "http://localhost:3000",
+  },
+];
 
 export default function Header() {
   return (
@@ -31,30 +42,16 @@ export default function Header() {
         </svg>
         <div className="items-center">
           <ul className="flex">
-            <li>
-              <a
-                href="http://localhost:3000"
-                className="block py-2 px-3 rounded  hover:text-green-600"
-              >
-                НҮҮР
-              </a>
-            </li>
-            <li>
-              <a
-                href="http://localhost:3000/menu"
-                className="block py-2 px-3  hover:text-green-600"
-              >
-                ХООЛНЫ ЦЭС
-              </a>
-            </li>
-            <li>
-              <a
-                href="http://localhost:3000/deliveryzone"
-                className="block py-2 px-3 rounded hover:text-green-600"
-              >
-                ХҮРГЭЛТИЙН БҮС
-              </a>
-            </li>
+            {array.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  className="block py-2 px-3 rounded  hover:text-green-600"
+                >
+                  {item.title}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
@@ -75,7 +72,7 @@ export default function Header() {
           </svg>
           <input type="text" className="grow" placeholder="Хайх" />
         </label>
-        <div className="flex py-2 px-5 gap-2  ">
+        <div className="flex py-2 px-5 gap-2  group">
           <svg
             width="22"
             height="20"
@@ -106,7 +103,12 @@ export default function Header() {
               fill="currentColor"
             />{" "}
           </svg>
-          <button onClick={() => Access()}>Нэвтрэх</button>
+          <button
+            className="group-hover:text-green-600"
+            onClick={() => Access()}
+          >
+            Нэвтрэх
+          </button>
           <dialog id="Haruul" className="modal">
             <form method="dialog" className="modal-backdrop">
               <button>close</button>

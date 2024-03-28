@@ -1,6 +1,6 @@
 export default function Zurag() {
     return (
-        <div className="relative overflow-hidden w-fit">
+        <div className="relative overflow-hidden w-fit" >
             <div className="absolute 20% bg-green-600 text-white w-[69px] h-[35px] left-[197px] top-[16px] rounded-[16px] border-[1px] flex item-center justify-center">20%
             </div>
         <img src="./images/menu food photos/menu breakfast-1.png"></img>

@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { Eye } from "../../components/icons/eyeclosed";
 
-
 export default function Signup() {
   // form is fully filled check
   const [check, setCheck] = useState("disabled");
