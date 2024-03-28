@@ -9,10 +9,9 @@ function myFunction() {
   document.getElementById("myDialog").showModal();
 }
 
-
-
 export function UserProfile() {
   const [userpro, setUserpro] = useState("");
+
 
 
 
