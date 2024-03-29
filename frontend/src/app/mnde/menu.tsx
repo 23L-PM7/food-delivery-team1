@@ -26,7 +26,7 @@ export default function Menu() {
                     </div>
                 ))}
                 <div>
-                    <Hover />
+                    {/* <Hover /> */}
                 </div>
             </div>
         </div>
