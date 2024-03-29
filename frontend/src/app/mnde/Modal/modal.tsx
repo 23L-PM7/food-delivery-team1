@@ -9,7 +9,8 @@ export default function Modal() {
   };
 
   const minusFoodQuantity = () => {
-    setFoodquantity(foodQuantity - 1);
+    if (foodQuantity - 1 && foodQuantity < -1) {
+    }
   };
 
   return (

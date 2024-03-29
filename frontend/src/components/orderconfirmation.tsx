@@ -4,10 +4,8 @@ import { useEffect, useState } from "react";
 import * as React from "react";
 
 import Checkbox from "@mui/material/Checkbox";
-import { useAccordionButton } from "react-bootstrap";
-import { Mainbutton } from "./herobutton/Mainbutton";
+
 import { locations, district, horoo } from "../data/data";
-import { dividerClasses } from "@mui/material";
 
 function OrderCon() {
   const [districtId, setDistrictId] = useState("");
@@ -63,7 +61,7 @@ function OrderCon() {
     }
   }
 
-  const changeRadio = (event) => {
+  const changeRadio = (event: any) => {
     setRadio(event.target.value);
     console.log(radio);
   };
