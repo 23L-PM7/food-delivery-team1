@@ -1,4 +1,5 @@
 import { foodlist } from "./datalist";
+import Hover from "./hover/hover";
 
 export default function Menu() {
     return (
@@ -19,13 +20,14 @@ export default function Menu() {
                                 {food.tittle}
                             </div>
                             <div className="font-semibold text-lg text-[#18BA51] mt-[2px]">
-                                {food.price}
+                                {food.price}₮
                             </div>
                         </div>
                     </div>
                 ))}
-
-
+                <div>
+                    <Hover />
+                </div>
             </div>
         </div>
 
