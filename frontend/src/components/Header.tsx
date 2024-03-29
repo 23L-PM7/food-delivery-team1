@@ -2,7 +2,6 @@
 
 import { Login } from "./Login";
 
-
 const array = [
   {
     title: "НҮҮР",
@@ -25,10 +24,9 @@ function Access() {
 export default function Header() {
   return (
     <div className="container mx-auto text-sm font-semibold flex h-[57px] gap-2 items-center justify-between">
-      <div className=" flex items-center w-3/6 gap-[8px]">
+      <div className="flex items-center w-3/6">
         <a href="http://localhost:3000" />
         <svg
-          className="gap-2 "
           width="41"
           height="41"
           viewBox="0 0 41 41"
