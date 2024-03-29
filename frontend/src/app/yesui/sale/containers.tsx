@@ -4,6 +4,20 @@ import { useState } from "react";
 import Select from "react-select";
 
 export function Containers() {
+  const category = [
+    { name: "breakfast" },
+    { name: "lunch" },
+    { name: "dinner" },
+    { name: "desert" },
+  ];
+
+  const options = category.map((category) => {
+    return {
+      // value: category.id,
+      label: category.name,
+    };
+  });
+
   return (
     <div className="w-[587px] m-5 border rounded-2xl">
       <div className="flex h-[64px]  justify-center border-b border-gray-200">
@@ -27,21 +41,21 @@ export function Containers() {
           className="input h-[56px] border-none input-bordered input-lg w-full bg-gray-200"
         />
         <h1>Хоолны ангилал</h1>
-        <input
-          type="text"
-          placeholder="Placeholder"
-          className="input h-[56px] border-none input-bordered input-lg w-full bg-gray-200"
+        <Select
+          options={options}
+          // defaultValue={selectedOption}
+          // onChange={(value) => setSelectedOption(value)}
         />
         <h1>Хоолны орц</h1>
         <input
           type="text"
-          placeholder="Placeholder"
+          placeholder="Хоолны орц"
           className="input h-[56px] border-none input-bordered input-lg w-full bg-gray-200"
         />
         <h1>Хоолны үнэ</h1>
         <input
           type="text"
-          placeholder="Placeholder"
+          placeholder="Хоолны үнэ"
           className="input h-[56px] border-none input-bordered input-lg w-full bg-gray-200"
         />
         <div className="flex gap-2 ">
@@ -51,7 +65,7 @@ export function Containers() {
         <div>
           <input
             type="text"
-            placeholder="Placeholder"
+            placeholder="Хямдралтай эсэх"
             className="input h-[56px] border-none input-bordered input-lg w-full bg-gray-200"
           />
 
@@ -59,7 +73,7 @@ export function Containers() {
           <div className="bg-gray-100 rounded-xl w-[284px] h-[122px] gap-3 flex flex-col items-center justify-center">
             <h1 className="font-bold text-zinc-700">Add image for the food</h1>
             <button className=" w-[114px] h-[40px] btn bg-zinc-700 text-white">
-              Add image
+              Add file
             </button>
           </div>
         </div>
