@@ -1,4 +1,5 @@
 "use client";
+import Basket from "./Modal/basket";
 import Modal from "./Modal/modal";
 import { foodlist } from "./datalist";
 
@@ -30,7 +31,8 @@ export default function Menu() {
           </div>
         ))}
         <div>
-          <Modal />
+          {/* <Modal /> */}
+          <Basket />
         </div>
       </div>
     </div>
