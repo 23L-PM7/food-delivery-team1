@@ -26,7 +26,7 @@ export function Forgot() {
   };
 
   return (
-    <div className="w-[448px] mx-auto flex justify-center items-center">
+    <div className="w-[448px] mx-auto flex justify-center items-center mt-[86px] mb-[131px]">
       <div className="w-[384px] flex flex-col gap-y-5">
         <div className="w-full flex justify-center">
           <h1 className="text-2xl font-bold">Нууц үг сэргээх</h1>
