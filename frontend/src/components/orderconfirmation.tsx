@@ -2,10 +2,9 @@
 
 import { useEffect, useState } from "react";
 import * as React from "react";
-import { pink } from "@mui/material/colors";
+
 import Checkbox from "@mui/material/Checkbox";
-import { useAccordionButton } from "react-bootstrap";
-import { Mainbutton } from "./Mainbutton";
+import { Datanuud } from "@/app/confirmation/data";
 
 function OrderCon() {
   const [districtId, setDistrictId] = useState("");
@@ -152,47 +151,39 @@ function OrderCon() {
               <select
                 value={districtId}
                 onChange={(e) => setDistrictId(e.target.value)}
-                className={`${districtId ? "bg-green-500 text-white" : ""
-                  } select select-ghost max-w-xs w-[384px] h-12 bg-[#ECEDF0]`}
+                className={`${
+                  districtId ? "bg-green-500 text-white" : ""
+                } select select-ghost max-w-xs w-[384px] h-12 bg-[#ECEDF0]`}
               >
-                <option>Дүүрэг сонгоно уу</option>
-                <option>Баянзүрх дүүрэг</option>
-                <option>Хан-Уул дүүрэг</option>
-                <option>Баянгол дүүрэг</option>
-                <option>Сонгинохайрхан дүүрэг</option>
-                <option>Чингэлтэй дүүрэг</option>
+                {Datanuud.map((horoo) => (
+                  <option> {horoo.title}</option>
+                ))}
               </select>
             </div>
             <div className="py-4">
               <select
                 onChange={(e) => setMicroDistrictid(e.target.value)}
                 value={microDistrictId}
-                className={` ${microDistrictId ? "bg-green-500 text-white" : ""
-                  } select select-ghost w-[384px] h-12 max-w-xs bg-[#ECEDF0]`}
+                className={` ${
+                  microDistrictId ? "bg-green-500 text-white" : ""
+                } select select-ghost w-[384px] h-12 max-w-xs bg-[#ECEDF0]`}
               >
-                <option selected>Хороо сонгоно уу</option>
-                <option>1-р хороо</option>
-                <option>2-р хороо</option>
-                <option>3-р хороо</option>
-                <option>4-р хороо</option>
-                <option>5-р хороо</option>
-                <option>5-р хороо</option>
-                <option>7-р хороо</option>
+                {array1.map((horoolol) => (
+                  <option selected>{horoolol.title}</option>
+                ))}
               </select>
             </div>
             <div className="mb-8 w-[420px] h-12">
               <select
                 onChange={(e) => setStreet(e.target.value)}
                 value={street}
-                className={` ${street ? "bg-green-500 text-white" : ""
-                  }  w-96 h-12 select select-ghost]  max-w-xs bg-[#ECEDF0]`}
+                className={` ${
+                  street ? "bg-green-500 text-white" : ""
+                }  w-96 h-12 select select-ghost]  max-w-xs bg-[#ECEDF0]`}
               >
-                <option>Байр, гудамж сонгоно уу</option>
-                <option className="text-base">Нархан хотхон</option>
-                <option>26-р байр</option>
-                <option>Хоймор хотхон</option>
-                <option>45-р байр</option>
-                <option>Зайсан хотхон </option>
+                {array3.map((house) => (
+                  <option>{house.title}</option>
+                ))}
               </select>
             </div>
             <label className={` form-control`}>
