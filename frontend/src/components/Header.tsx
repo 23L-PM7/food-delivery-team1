@@ -27,11 +27,6 @@ export default function Header() {
       <div className="flex items-center w-3/6">
         <a href="http://localhost:3000" />
         <svg
-<<<<<<< HEAD
-          href="http://localhost:3000"
-          className="gap-2 "
-=======
->>>>>>> ff7299c7bdf4661f052b4b7533e30683aa30e1c4
           width="41"
           height="41"
           viewBox="0 0 41 41"

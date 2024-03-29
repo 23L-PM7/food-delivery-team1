@@ -4,12 +4,8 @@ import { useEffect, useState } from "react";
 import * as React from "react";
 
 import Checkbox from "@mui/material/Checkbox";
-<<<<<<< HEAD
-import { Datanuud } from "@/app/confirmation/data";
-=======
 import { useAccordionButton } from "react-bootstrap";
 import { Mainbutton } from "./herobutton/Mainbutton";
->>>>>>> ff7299c7bdf4661f052b4b7533e30683aa30e1c4
 
 function OrderCon() {
   const [districtId, setDistrictId] = useState("");
