@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Select from "react-select";
+import Select, { StylesConfig } from "react-select";
 
 export function Containers() {
   const category = [
@@ -10,6 +10,10 @@ export function Containers() {
     { name: "dinner" },
     { name: "desert" },
   ];
+
+  //
+
+  //
 
   const options = category.map((category) => {
     return {
@@ -42,6 +46,14 @@ export function Containers() {
         />
         <h1>Хоолны ангилал</h1>
         <Select
+          styles={{
+            control: (baseStyles, state) => ({
+              ...baseStyles,
+              borderColor: state.isFocused ? "grey" : "black",
+              backgroundColor: "rgb(229 231 235)",
+              height: "56px",
+            }),
+          }}
           options={options}
           // defaultValue={selectedOption}
           // onChange={(value) => setSelectedOption(value)}
