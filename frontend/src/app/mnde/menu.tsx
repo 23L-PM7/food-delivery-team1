@@ -1,4 +1,3 @@
-import Card from "./card";
 import { foodlist } from "./datalist";
 
 export default function Menu() {
