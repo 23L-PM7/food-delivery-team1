@@ -1,6 +1,11 @@
 "use client";
 import { useState } from "react";
-import { TripleDot, TripleDotBlack, TripleDotWhite } from "../icons/tripledot";
+import {
+  GreyAdd,
+  TripleDot,
+  TripleDotBlack,
+  TripleDotWhite,
+} from "../icons/tripledot";
 
 export function AdminCategory() {
   const [color, setColor] = useState("Black");
@@ -22,7 +27,7 @@ export function AdminCategory() {
     <div className="bg-gray-100">
       <div className="w-full container flex mx-auto">
         {/* categories */}
-        <div className="w-[28%] flex flex-col gap-y-5 pl-1 bg-white">
+        <div className="w-[28%] flex flex-col gap-y-5 pl-1 bg-white pt-4">
           {/* Food Menu */}
           <div className="w-[258px]">
             <h2 className="text-xl font-bold">Food Menu</h2>
@@ -37,12 +42,18 @@ export function AdminCategory() {
                 </button>
               </div>
             ))}
+            <button>
+              <div className="btn btn-sm bg-white h-[40px] flex">
+                <GreyAdd />
+                <h1 className="text-gray-500">Create new Category</h1>
+              </div>
+            </button>
           </div>
         </div>
         {/* second half */}
         <div className="w-full bg-gray-100">
           {/* title with button */}
-          <div className="flex justify-between h-[67px] items-center">
+          <div className="flex justify-between h-[67px] items-center pl-5">
             <h2 className="text-xl font-bold">Breakfast</h2>
             <button className="btn btn-sm bg-green-500 text-white hover:bg-green-400 h-[35px]">
               Add new food
