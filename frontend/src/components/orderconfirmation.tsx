@@ -6,6 +6,8 @@ import * as React from "react";
 import Checkbox from "@mui/material/Checkbox";
 import { useAccordionButton } from "react-bootstrap";
 import { Mainbutton } from "./herobutton/Mainbutton";
+import { locations, district, horoo } from "../data/data";
+import { dividerClasses } from "@mui/material";
 
 function OrderCon() {
   const [districtId, setDistrictId] = useState("");
@@ -156,7 +158,7 @@ function OrderCon() {
                   districtId ? "bg-green-500 text-white" : ""
                 } select select-ghost max-w-xs w-[384px] h-12 bg-[#ECEDF0]`}
               >
-                {Datanuud.map((horoo) => (
+                {locations.map((horoo) => (
                   <option> {horoo.title}</option>
                 ))}
               </select>
@@ -169,7 +171,7 @@ function OrderCon() {
                   microDistrictId ? "bg-green-500 text-white" : ""
                 } select select-ghost w-[384px] h-12 max-w-xs bg-[#ECEDF0]`}
               >
-                {array1.map((horoolol) => (
+                {district.map((horoolol) => (
                   <option selected>{horoolol.title}</option>
                 ))}
               </select>
@@ -182,7 +184,7 @@ function OrderCon() {
                   street ? "bg-green-500 text-white" : ""
                 }  w-96 h-12 select select-ghost]  max-w-xs bg-[#ECEDF0]`}
               >
-                {array3.map((house) => (
+                {horoo.map((house) => (
                   <option>{house.title}</option>
                 ))}
               </select>
@@ -296,29 +298,6 @@ function OrderCon() {
           onClick={alertOnclick}
           className={`w-[432px] h-[612px]  border-2 p-6  block ${newmain}`}
         >
-          {/* <h1>Захиалгын түүх</h1>
-          
-          <div className="flex gap-2 px-4 py-6">
-            <svg
-              width="48"
-              height="48"
-              viewBox="0 0 48 48"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle cx="24" cy="24" r="23.5" stroke="#0468C8" />
-              <circle cx="24" cy="24" r="12" fill="#0468C8" />
-            </svg>
-            <p className="flex">
-              <div className="block">
-                <h5>Алхам 1</h5>
-                <h1>Хаягийн мэдээлэл оруулах</h1>
-                <h5>Хүлээгдэж байна</h5>
-              </div>
-              <h1>2024/04/26</h1>
-            </p>
-            
-          </div> */}
           <svg
             width="384"
             height="120"
@@ -391,17 +370,6 @@ function OrderCon() {
               fill="#272727"
             />
           </svg>
-
-          {/* <div>
-            {" "}
-            <h1 className=" mb-10">Захиалгын дэлгэрэнгүй</h1>
-          </div>
-          <br />
-          <div className="flex">
-            <h5>Main pizza</h5>
-
-            <h5>(1)</h5>
-          </div> */}
         </main>
       </li>
     </main>
