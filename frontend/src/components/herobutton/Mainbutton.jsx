@@ -30,16 +30,16 @@ const buttonMain =
 export function Mainbutton() {
 
   return (
-    <div className="container mx-auto flex gap-[47px] max-w-[1200px] p-[16px] ">
+    <div className="container mx-auto  flex gap-[47px] max-w-[1200px]">
       {buttonMain.map((item) => (
-        <div className="btn no-animation hover:bg-white drop-shadow-xl w-3/12 h-[155px] bg-white rounded-xl p-[16px] g-[15px]">
+        <div className="no-animation cursor-pointer hover:bg-white drop-shadow-xl w-3/12 h-[155px] bg-white rounded-xl p-[16px]">
           <div>
-            <div className="p-[15px]">
+            <div className="p-[15px] w-[60px] h-[60px]">
               <div>{item.icon}</div>
             </div>
-            <div className="flex flex-col g-[4px] p-[4px]">
-              <div className="font-bold flex ">{item.title}</div>
-              <div className="font-normal">{item.description}</div>
+            <div className="flex flex-col gap-[4px] h-[48px]">
+              <div className="font-bold text-[18px] ">{item.title}</div>
+              <div className="text-[14px] font-normal text-gray-600">{item.description}</div>
             </div>
           </div>
         </div>

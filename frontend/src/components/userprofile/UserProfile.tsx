@@ -121,10 +121,10 @@ export function UserProfile() {
               Та системээс гарахдаа итгэлтэй байна уу?
             </p>
             <div className="modal-action p-0 mt-0 justify-center ">
-              <form method="dialog">
-                <button className="btn bg-green-100 hover:bg-green-500 w-6/12">
-                  Тийм{" "}
-                </button>
+              <form method="dialog" className="w-full ">
+                <a className="btn bg-green-100 hover:bg-green-500 w-6/12" href="http://localhost:3000/login">
+                  Тийм
+                </a>
                 <button className="btn w-6/12 bg-green-100 hover:bg-green-500">
                   Үгүй
                 </button>

@@ -29,7 +29,9 @@ export default function Menu() {
             </div>
           </div>
         ))}
-        <Modal />
+        <div>
+          <Hover />
+        </div>
       </div>
     </div>
   );
