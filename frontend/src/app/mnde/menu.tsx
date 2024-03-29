@@ -1,6 +1,6 @@
 "use client";
+import Modal from "./Modal/modal";
 import { foodlist } from "./datalist";
-import Modal from "./hover/modal";
 
 export default function Menu() {
   return (
@@ -30,7 +30,7 @@ export default function Menu() {
           </div>
         ))}
         <div>
-          <Hover />
+          <Modal />
         </div>
       </div>
     </div>
