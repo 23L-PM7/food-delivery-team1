@@ -101,7 +101,7 @@ export function Login() {
             <Eye />
           </button>
         </label>
-        <p className="flex justify-end cursor-pointer">Нууц үг сэргээх</p>
+        <a className="flex justify-end cursor-pointer" href="http://localhost:3000/forgotpass">Нууц үг сэргээх</a>
       </div>
       <div className="mt-[48px] flex flex-col items-center cursor-pointer">
         <div className="flex gap-x-3 mb-[20px]">
@@ -110,7 +110,7 @@ export function Login() {
             type="checkbox"
             className="checkbox"
           />
-          <a href="http://localhost:3000/forgotpass">Нэвтрэхийг зөвшөөрөх</a>
+          <a >Нэвтрэхийг зөвшөөрөх</a>
         </div>
         <button
           className="w-full btn bg-green-500 hover:bg-green-500"

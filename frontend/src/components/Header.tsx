@@ -9,22 +9,29 @@ const array = [
   },
   {
     title: "ХООЛНЫ ЦЭС",
-    href: "http://localhost:3000",
+    href: "http://localhost:3000/menu",
   },
   {
     title: "ХҮРГЭЛТИЙН БҮС",
-    href: "http://localhost:3000",
+    href: "http://localhost:3000/deliveryzone",
   },
 ];
+
+function Access() {
+  document.getElementById("Haruul").showModal();
+}
 
 export default function Header() {
   return (
     <div className="container mx-auto text-sm font-semibold flex h-[57px] gap-2 items-center justify-between">
-      <div className=" flex items-center w-3/6 gap-[8px]">
+      <div className="flex items-center w-3/6">
         <a href="http://localhost:3000" />
         <svg
+<<<<<<< HEAD
           href="http://localhost:3000"
           className="gap-2 "
+=======
+>>>>>>> ff7299c7bdf4661f052b4b7533e30683aa30e1c4
           width="41"
           height="41"
           viewBox="0 0 41 41"
