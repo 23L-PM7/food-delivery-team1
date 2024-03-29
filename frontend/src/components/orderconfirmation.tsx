@@ -6,6 +6,7 @@ import * as React from "react";
 import Checkbox from "@mui/material/Checkbox";
 import { useAccordionButton } from "react-bootstrap";
 import { Mainbutton } from "./herobutton/Mainbutton";
+// import { location } from "../data/data.json";
 
 function OrderCon() {
   const [districtId, setDistrictId] = useState("");
@@ -182,7 +183,7 @@ function OrderCon() {
                   street ? "bg-green-500 text-white" : ""
                 }  w-96 h-12 select select-ghost]  max-w-xs bg-[#ECEDF0]`}
               >
-                {array3.map((house) => (
+                {location.map((house) => (
                   <option>{house.title}</option>
                 ))}
               </select>
