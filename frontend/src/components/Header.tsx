@@ -2,6 +2,21 @@
 
 import { Login } from "./Login";
 
+const array = [
+  {
+    title: "НҮҮР",
+    href: "http://localhost:3000",
+  },
+  {
+    title: "ХООЛНЫ ЦЭС",
+    href: "http://localhost:3000/menu",
+  },
+  {
+    title: "ХҮРГЭЛТИЙН БҮС",
+    href: "http://localhost:3000/deliveryzone",
+  },
+];
+
 function Access() {
   document.getElementById("Haruul").showModal();
 }
@@ -9,16 +24,14 @@ function Access() {
 export default function Header() {
   return (
     <div className="container mx-auto text-sm font-semibold flex h-[57px] gap-2 items-center justify-between">
-      <div className=" flex items-center w-3/6 gap-[8px]">
+      <div className="flex items-center w-3/6">
         <a href="http://localhost:3000" />
         <svg
-          className="gap-2 "
           width="41"
           height="41"
           viewBox="0 0 41 41"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          href="http://localhost:3000"
         >
           <path
             d="M9.85857 9.5397L5.65344 17.4105C5.12868 18.3956 4.86572 19.4767 4.86572 20.5592C4.86572 21.6419 5.12868 22.7228 5.65344 23.7079L9.85857 31.5789C10.6336 33.0327 12.1494 33.9407 13.799 33.9407H18.2656V31.711H18.2641C17.4401 31.711 16.6822 31.2577 16.2946 30.5309L12.0911 22.6584C11.7398 22.0022 11.5647 21.2815 11.5647 20.5592C11.5647 19.8369 11.7398 19.1163 12.0911 18.4602L16.2946 10.5878C16.6822 9.86077 17.4401 9.40758 18.2641 9.40758H18.2656V7.17773H13.799C12.1494 7.17773 10.6336 8.08589 9.85857 9.5397Z"
@@ -31,30 +44,16 @@ export default function Header() {
         </svg>
         <div className="items-center">
           <ul className="flex">
-            <li>
-              <a
-                href="http://localhost:3000"
-                className="block py-2 px-3 rounded  hover:text-green-600"
-              >
-                НҮҮР
-              </a>
-            </li>
-            <li>
-              <a
-                href="http://localhost:3000/menu"
-                className="block py-2 px-3  hover:text-green-600"
-              >
-                ХООЛНЫ ЦЭС
-              </a>
-            </li>
-            <li>
-              <a
-                href="http://localhost:3000/deliveryzone"
-                className="block py-2 px-3 rounded hover:text-green-600"
-              >
-                ХҮРГЭЛТИЙН БҮС
-              </a>
-            </li>
+            {array.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  className="block py-2 px-3 rounded  hover:text-green-600"
+                >
+                  {item.title}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
@@ -75,7 +74,7 @@ export default function Header() {
           </svg>
           <input type="text" className="grow" placeholder="Хайх" />
         </label>
-        <div className="flex py-2 px-5 gap-2  ">
+        <div className="flex py-2 px-5 gap-2  group">
           <svg
             width="22"
             height="20"
@@ -106,7 +105,12 @@ export default function Header() {
               fill="currentColor"
             />{" "}
           </svg>
-          <button onClick={() => Access()}>Нэвтрэх</button>
+          <button
+            className="group-hover:text-green-600"
+            onClick={() => Access()}
+          >
+            Нэвтрэх
+          </button>
           <dialog id="Haruul" className="modal">
             <form method="dialog" className="modal-backdrop">
               <button>close</button>

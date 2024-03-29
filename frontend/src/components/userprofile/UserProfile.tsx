@@ -2,20 +2,37 @@
 
 import { useState } from "react";
 import { Call, Exit, Mail, Pencil, Person, Timer } from "../icons/ProfileIcons";
-import { UserData } from "./Userpro";
 
+
+
+const UserData =
+  [
+    {
+      title: "Таны нэр",
+      name: "УгтахБаяр",
+      icon: <Person />,
+      icon2: <Pencil />,
+    },
+    {
+      title: "Утасны дугаар",
+      number: "88883345",
+      icon: <Call />,
+      icon2: <Pencil />,
+    },
+    {
+      title: "Имэйл хаяг",
+      email: "Ugtakhbayr@gmail.com",
+      icon: <Mail />,
+      icon2: <Pencil />,
+    },
+  ]
 
 function myFunction() {
   document.getElementById("myDialog").showModal();
 }
 
-
-
 export function UserProfile() {
-  const [userpro, setUserpro] = useState("");
-
-
-
+  const [edit, setEdit] = useState("");
 
   return (
     <div className="container mx-auto  w-[432px] px-[20px] mb-[40px]">
@@ -35,20 +52,23 @@ export function UserProfile() {
       </div>
 
       <div>
-        <div className="bg-[#F6F6F6] w-full rounded px-[20px] py-[8px] flex items-center  gap-[8px] mt-[40px]">
-          <div className="bg-[#FFFFFF] w-[48px] h-[48px] p-3 rounded-full">
-            <Person />
+        {UserData.map((item) => (
+          <div className="bg-[#F6F6F6] w-full rounded px-[20px] py-[8px] flex items-center  gap-[8px] mt-[16px]">
+            <div className="bg-[#FFFFFF] w-[48px] h-[48px] p-3 rounded-full">
+              {item.icon}
+            </div>
+            <div className="w-8/12">
+              <h1 className="text-xs text-[#888A99]">{item.title} </h1>
+              <h1 className="text-base">{item.name}{item.number}{item.email}</h1>
+            </div>
+            <div className="w-2/12 justify-end flex">
+              {item.icon2}
+            </div>
           </div>
-          <div className="w-8/12">
-            <h1 className="text-xs text-[#888A99]">Таны нэр</h1>
-            <h1 className="text-base">{UserData.name}</h1>
-          </div>
-          <div className="w-2/12 justify-end flex">
-            <Pencil />
-          </div>
-        </div>
+        ))}
 
-        <div className="bg-[#F6F6F6] w-full rounded px-[20px] py-[8px] flex items-center  gap-[8px] mt-[16px]">
+
+        {/* <div className="bg-[#F6F6F6] w-full rounded px-[20px] py-[8px] flex items-center  gap-[8px] mt-[16px]">
           <div className="bg-[#FFFFFF] w-[48px] h-[48px] p-3 rounded-full">
             <Call />
           </div>
@@ -71,7 +91,7 @@ export function UserProfile() {
           <div className="w-2/12 justify-end flex">
             <Pencil />
           </div>
-        </div>
+        </div> */}
 
         <div className=" w-full rounded px-[20px] py-[8px] flex items-center  gap-[8px] mt-[16px]">
           <div className="bg-[#FFFFFF] w-[48px] h-[48px] p-3 rounded-full border">
@@ -101,10 +121,10 @@ export function UserProfile() {
               Та системээс гарахдаа итгэлтэй байна уу?
             </p>
             <div className="modal-action p-0 mt-0 justify-center ">
-              <form method="dialog">
-                <button className="btn bg-green-100 hover:bg-green-500 w-6/12">
-                  Тийм{" "}
-                </button>
+              <form method="dialog" className="w-full ">
+                <a className="btn bg-green-100 hover:bg-green-500 w-6/12" href="http://localhost:3000/login">
+                  Тийм
+                </a>
                 <button className="btn w-6/12 bg-green-100 hover:bg-green-500">
                   Үгүй
                 </button>
@@ -137,6 +157,6 @@ export function UserProfile() {
           <span>Мэдээлэл амжилттай хадгалагдлаа</span>
         </div>
       </dialog>
-    </div>
+    </div >
   );
 }
