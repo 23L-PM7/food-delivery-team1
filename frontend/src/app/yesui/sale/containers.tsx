@@ -8,7 +8,7 @@ export function Containers() {
     { name: "breakfast" },
     { name: "lunch" },
     { name: "dinner" },
-    { name: "desert" },
+    { name: "dessert" },
   ];
 
   //
