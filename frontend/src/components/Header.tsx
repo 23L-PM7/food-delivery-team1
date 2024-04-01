@@ -23,7 +23,7 @@ function Access() {
 
 export default function Header() {
   return (
-    <div className="container mx-auto text-sm font-semibold flex h-[57px] gap-2 items-center justify-between">
+    <div className="container mx-auto text-sm font-semibold flex h-[57px] gap-2 items-center justify-between w-full">
       <div className="flex items-center w-3/6">
         <a href="http://localhost:3000">
           <svg
