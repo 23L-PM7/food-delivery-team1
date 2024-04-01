@@ -30,7 +30,7 @@ const buttonMain =
 export function Mainbutton() {
 
   return (
-    <div className="container mx-auto  flex gap-[47px] max-w-[1200px]">
+    <div className="container mx-auto  flex gap-[47px] max-w-[1200px] mt-[122px] mb-[122px]">
       {buttonMain.map((item) => (
         <div className="no-animation cursor-pointer hover:bg-white drop-shadow-xl w-3/12 h-[155px] bg-white rounded-xl p-[16px]">
           <div>

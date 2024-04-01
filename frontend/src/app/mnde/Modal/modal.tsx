@@ -2,15 +2,19 @@
 import { useState } from "react";
 
 export default function Modal() {
-  const [foodQuantity, setFoodquantity] = useState(1);
+  let [foodQuantity, setFoodquantity] = useState(1);
 
-  const incementFoodQuantity = () => {
-    setFoodquantity(foodQuantity + 1);
-  };
+  function incementFoodQuantity() {
+    foodQuantity = foodQuantity + 1;
+    setFoodquantity(foodQuantity);
+  }
 
   const minusFoodQuantity = () => {
-    setFoodquantity(foodQuantity - 1);
-  };
+    if (foodQuantity > 0) {
+      foodQuantity = foodQuantity - 1;
+      setFoodquantity(foodQuantity);
+    }
+  }
 
   return (
     <div
@@ -37,11 +41,11 @@ export default function Modal() {
           </div>
           <div className="flex flex-col gap-[32px] justify-center">
             <div className="flex flex-col gap-[2px] w-[384px]">
-              <div className="font-semibold text-lg text-[#000000]">
+              <div className="font-semibold  text-[#000000] text-xl">
                 food name
               </div>
               <div className="font-semibold text-lg text-[#18BA51] mt-[2px]">
-                Хэдэн ₮
+                122323 ₮
               </div>
             </div>
             <div className="flex flex-col gap-[2px]">
