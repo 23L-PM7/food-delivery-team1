@@ -20,7 +20,7 @@ const CategoryList = [
 
 export function Category() {
   return (
-    <div className="w-full px-[120px] py-[32px]">
+    <div className="max-w-[1200px] container mx-auto mt-[32px] mb-[86px]">
       <div className="w-full flex justify-between gap-x-[26px]">
         {CategoryList.map((item) => (
           <button className="btn w-[280px] h-[43px] outline-slate-200 text-black hover:bg-green-500 hover:text-white bg-transparent">
