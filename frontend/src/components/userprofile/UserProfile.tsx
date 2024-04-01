@@ -1,38 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { Call, Exit, Mail, Pencil, Person, Timer } from "../icons/ProfileIcons";
-
-
-
-const UserData =
-  [
-    {
-      title: "Таны нэр",
-      name: "УгтахБаяр",
-      icon: <Person />,
-      icon2: <Pencil />,
-    },
-    {
-      title: "Утасны дугаар",
-      number: "88883345",
-      icon: <Call />,
-      icon2: <Pencil />,
-    },
-    {
-      title: "Имэйл хаяг",
-      email: "Ugtakhbayr@gmail.com",
-      icon: <Mail />,
-      icon2: <Pencil />,
-    },
-  ]
+import { UserData } from "./Userpro";
+import { Exit, Pencil, Timer } from "../icons/ProfileIcons";
 
 function myFunction() {
   document.getElementById("myDialog").showModal();
+  // const myTimeout = setTimeout(myFunction, 5000);
 }
 
 export function UserProfile() {
   const [edit, setEdit] = useState("");
+  const [Timeout, setTimeout] = useState("");
+
 
   return (
     <div className="container mx-auto  w-[432px] px-[20px] mb-[40px]">

@@ -1,9 +1,23 @@
+import { Call, Exit, Mail, Pencil, Person, Timer } from "../icons/ProfileIcons";
+
 export const UserData =
     [
         {
+            title: "Таны нэр",
             name: "УгтахБаяр",
+            icon: <Person />,
+            icon2: <Pencil />,
+        },
+        {
+            title: "Утасны дугаар",
             number: "88883345",
+            icon: <Call />,
+            icon2: <Pencil />,
+        },
+        {
+            title: "Имэйл хаяг",
             email: "Ugtakhbayr@gmail.com",
-            image: "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
-        }
+            icon: <Mail />,
+            icon2: <Pencil />,
+        },
     ]

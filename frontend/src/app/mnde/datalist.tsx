@@ -43,7 +43,7 @@ export const foodlist = [
   },
   {
     id: 8,
-    tittle: "Yoghurt",
+    tittle: "Yogurt",
     img: "./images/menu food photos/menu-8.png",
     price: 14800,
   },

@@ -1,4 +1,17 @@
-import { Pluslogo } from "../../components/pluslogo";
+import { Pluslogo } from "../../components/icons/pluslogo";
+
+const TermsData =
+  [
+    {
+      description: "",
+    },
+    {
+      description: "",
+    },
+    {
+      description: "",
+    },
+  ]
 
 export function Terms() {
   return (
@@ -9,6 +22,7 @@ export function Terms() {
       </div>
 
       <div className=" gap-24 ">
+
         <p className="text-lg indent-5">
           Mstars Food delivery нь Mstars Lab компанийн интернэт худалдааны албан
           ёсны вэбсайт бөгөөд энэхүү нөхцөл, журам нь уг вэбсайтаар үйлчлүүлэх,

@@ -1,4 +1,4 @@
-import { Pluslogo } from "@/components/pluslogo";
+import { Pluslogo } from "@/components/icons/pluslogo";
 
 export function Map() {
   return (

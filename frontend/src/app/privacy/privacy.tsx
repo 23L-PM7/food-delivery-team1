@@ -1,4 +1,4 @@
-import { Pluslogo } from "../../components/pluslogo";
+import { Pluslogo } from "../../components/icons/pluslogo";
 export function Privacy() {
   return (
     <div className="container mx-auto flex flex-col gap-2 w-[1200px] mb-[52px]">
