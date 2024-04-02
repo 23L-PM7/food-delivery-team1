@@ -18,9 +18,8 @@ export function Modal() {
   }
 
   return (
-
-    <div className=" flex w-[981px] h-[564px] container mx-auto p-[32px] gap-[33px] bg-white rounded-2xl">
-
+    <div className=" flex w-[981px] h-[564px] container mx-auto p-[32px] gap-[33px] bg-white rounded-2xl relative">
+      <button className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 ">✕</button>
       <div className="">
         <img
           className="object-cover w-[500px] h-[500px]"
@@ -31,7 +30,7 @@ export function Modal() {
       <div className="flex flex-col gap-[32px] justify-center">
         <div className="flex flex-col gap-[2px] w-[384px]">
           <div className="font-semibold  text-[#000000] text-xl">
-            food name
+            Торт
           </div>
           <div className="font-semibold text-lg text-[#18BA51] mt-[2px]">
             122323 ₮
@@ -44,7 +43,7 @@ export function Modal() {
           </div>
         </div>
         <div className="font-semibold text-lg text-[#000000]">Тоо</div>
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <button
             className="btn bg-[#18BA51] text-[#FFFFFF]"
             onClick={minusFoodQuantity}

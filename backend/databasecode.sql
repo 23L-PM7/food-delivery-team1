@@ -1,1 +1,0 @@
--- Ene dotor database dere oruulj ajluulsan kodoo bicheerei

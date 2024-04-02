@@ -16,7 +16,7 @@ function ShowFood() {
 export default function Menu() {
 
     return (
-        <div className="grid grid-rows-3 grid-cols-4 gap-x-[24px] gap-y-[60px] container mx-auto max-w-[1200px]">
+        <div className="grid grid-rows-3 grid-cols-4 gap-x-[24px] gap-y-[60px] container mx-auto max-w-[1200px]" id="my_modal_2">
             {foodlist.map((food) => (
                 <div>
                     <div className="relative overflow-hidden w-fit">
@@ -39,9 +39,6 @@ export default function Menu() {
             <div>
             </div>
             <dialog id="my_modal_3" className="modal">
-                <form method="dialog">
-                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                </form>
                 <Modal />
             </dialog>
         </div>
