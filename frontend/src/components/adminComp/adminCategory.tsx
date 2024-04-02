@@ -10,18 +10,27 @@ import {
 import { SideCategory } from "./adminCategorySelect";
 
 export function AdminCategory() {
-  const [openModal, setOpenModal] = useState("");
+  const [openCreate, setOpenCreate] = useState(false);
 
-  const openCategoryModal = () => {
-    if (openModal == "") {
-      setOpenModal("modal-open");
-    } else {
-      setOpenModal("");
-    }
+  const openCreateModal = () => {
+    setOpenCreate(!openCreate);
   };
 
+  const category = [
+    {
+      name: "Breakfast",
+      id: 123,
+    },
+    { name: "Lunch", id: 124 },
+    {
+      name: "Dinner",
+      id: 125,
+    },
+    { name: "Dessert", id: 126 },
+  ];
+
   const clearField = () => {};
-  // bg-green-500 text-white
+
   return (
     <div className="">
       <div className="w-full container flex mx-auto">
@@ -33,8 +42,14 @@ export function AdminCategory() {
           </div>
           {/* category mapped */}
           <div className="w-[258px] flex flex-col gap-y-5">
-            <SideCategory />
-            <button onClick={openCategoryModal}>
+            {category.map((item, index) => (
+              <SideCategory
+                zindex={100 - index}
+                label={item.name}
+                id={item.id}
+              />
+            ))}
+            <button onClick={openCreateModal}>
               <div className="btn btn-sm bg-white h-[40px] flex">
                 <GreyAdd />
                 <h1 className="text-gray-500">Create new Category</h1>
@@ -61,11 +76,14 @@ export function AdminCategory() {
           </div>
         </div>
       </div>
-      {/* modal */}
-      <dialog id="create_category" className={`modal ${openModal}`}>
+      {/* modal for creation */}
+      <dialog
+        id="create_category"
+        className={`modal ${openCreate ? "modal-open" : ""}`}
+      >
         <div className="modal-box p-0">
           <div className="flex w-full justify-between items-center p-4 border-b-[1px]">
-            <button onClick={openCategoryModal} className="text-xl font-bold">
+            <button onClick={openCreateModal} className="text-xl font-bold">
               X
             </button>
             <h1 className="text-2xl font-semibold">Create New Category</h1>
@@ -97,9 +115,23 @@ export function AdminCategory() {
           </div>
         </div>
         <form method="dialog" className="modal-backdrop">
-          <button onClick={openCategoryModal}>close</button>
+          <button onClick={openCreateModal}>close</button>
         </form>
       </dialog>
     </div>
   );
 }
+
+// const Category = ({ name }) => {
+
+//   const modal = () => <div>modal</div>;
+//   return (
+//     <div>
+//       {name}
+//       <modal />
+//     </div>
+//   );
+// };
+
+// <Category name="food">
+// <Category name="food">
