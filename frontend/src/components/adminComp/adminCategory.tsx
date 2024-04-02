@@ -21,7 +21,7 @@ export function AdminCategory() {
   };
 
   const clearField = () => {};
-  // bg-green-500 text-white
+
   return (
     <div className="">
       <div className="w-full container flex mx-auto">
