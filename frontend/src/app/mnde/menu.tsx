@@ -1,39 +1,50 @@
 "use client";
+
+
+import { useState } from "react";
 import Basket from "./Modal/basket";
-import Modal from "./Modal/modal";
+import { SellChip } from "./Sellchip";
 import { foodlist } from "./datalist";
+import { Food } from "@/components/icons/HeroCard";
+import { Modal } from "./Modal/modal";
+
+function ShowFood() {
+    document.getElementById('my_modal_3').showModal()
+}
+
 
 export default function Menu() {
+
     return (
-        <div className="container mx-auto px-[120px] mt-[54px] mb-[86px]">
-            <div className="grid grid-rows-3 grid-cols-4 gap-x-[24px] gap-y-[60px]">
-                {foodlist.map((food) => (
-                    <div>
-                        <div className="relative overflow-hidden w-fit">
-                            <div className="absolute 20% bg-green-600 text-white w-[69px] h-[35px] left-[197px] top-[16px] rounded-[16px] border-[1px] flex item-center justify-center">
-                                20%
-                            </div>
-                            <img src={food.img}></img>
-                            <div className="absolute h-full w-full bg-black/50 bottom-0 right-0 flex items-center justify-center opacity-0 hover:opacity-100 rounded-2xl">
-                                <button className="bg-white text-black p-[8px] w-[166px] h-[40px] rounded-[100px]">
-                                    Edit
-                                </button>
-                            </div>
+        <div className="grid grid-rows-3 grid-cols-4 gap-x-[24px] gap-y-[60px] container mx-auto max-w-[1200px]">
+            {foodlist.map((food) => (
+                <div>
+                    <div className="relative overflow-hidden w-fit">
+                        <div className="absolute right-6 top-4">
+                            <SellChip />
                         </div>
-                        <div className="flex flex-col mt-[14px]">
-                            <div className="font-semibold text-lg text-[#000000]">
-                                {food.tittle}
-                            </div>
-                            <div className="font-semibold text-lg text-[#18BA51] mt-[2px]">
-                                {food.price}₮
-                            </div>
+                        <div className="w-[282px] h-[196px] ease-in">
+                            <img className="object-fill rounded-lg" onClick={() => ShowFood()} src={food.img}></img>
                         </div>
                     </div>
-                ))}
-                <div>
-                    <Modal />
+                    <div className="flex flex-col mt-[14px]">
+                        <h1 className="font-semibold text-lg">{food.tittle}</h1>
+                        <div className="flex gap-2">
+                            <p className="font-semibold text-lg text-green-600">{food.price}₮</p>
+                            <p className="font-semibold text-lg line-through ">{food.saleprice}₮</p>
+                        </div>
+                    </div>
                 </div>
+            ))}
+            <div>
             </div>
+            <dialog id="my_modal_3" className="modal">
+                <form method="dialog">
+                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                </form>
+                <Modal />
+            </dialog>
         </div>
+
     );
 }

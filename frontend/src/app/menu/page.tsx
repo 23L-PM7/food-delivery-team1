@@ -7,11 +7,8 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <div className="container mx-auto">
-        <Category />
-        <Menu />
-      </div>
-
+      <Category />
+      <Menu />
       <Footer />
     </div>
   );

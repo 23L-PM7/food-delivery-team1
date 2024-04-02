@@ -14,7 +14,6 @@ export default function Home() {
       <Desktop />
       <Mainbutton />
       <Menu />
-      <UserProfile />
       <Footer />
     </div>
   );
