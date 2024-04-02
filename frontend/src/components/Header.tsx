@@ -23,7 +23,7 @@ function Access() {
 
 export default function Header() {
   return (
-    <div className="container mx-auto text-sm font-semibold flex h-[57px] gap-2 items-center justify-between w-full">
+    <div className="container mx-auto text-sm font-semibold flex h-[57px] gap-2 items-center justify-between w-full md:flex sm:block">
       <div className="flex items-center w-3/6">
         <a href="http://localhost:3000">
           <svg
@@ -59,7 +59,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="flex items-center w-3/6 justify-end">
+      <div className=" items-center w-3/6 justify-end hidden md:flex">
         <label className="input input-bordered border-black flex items-center gap-2 w-[260px] h-[36px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"

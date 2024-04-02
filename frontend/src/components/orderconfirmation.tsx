@@ -19,7 +19,7 @@ function OrderCon() {
   const [wait, setWait] = useState("Хүлээгдэж байна");
   const [icon, setIcon] = useState("flex");
   const [green, setGreen] = useState("hidden");
-  const [mainhidden, setMainHidden] = useState("flex");
+  // const [mainhidden, setMainHidden] = useState("flex");
   const [alert, setAlert] = useState("hidden");
   const [newmain, setNewMain] = useState("hidden");
 
@@ -27,7 +27,7 @@ function OrderCon() {
     checkFields();
   });
   function alertOnclick() {
-    setMainHidden("hidden");
+    // setMainHidden("hidden");
     setAlert("hidden");
     setNewMain("flex");
   }
@@ -95,7 +95,7 @@ function OrderCon() {
         </div>
       </div>
       <div
-        className={`flex justify-center mb-[80px] gap-[180px] relative ${mainhidden}`}
+        className={`block md:flex justify-center mb-[80px] md:gap-40 mx-auto relative`}
       >
         <main className=" block rounded-xl">
           <div className="flex gap-2 px-4 py-6">
