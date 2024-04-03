@@ -3,16 +3,12 @@ import Menu from "@/app/mnde/menu";
 import { useState } from "react";
 
 export function Nogoonplus() {
-  const [extend, setExtend] = useState("h-[280px]");
-  const [hide, setHide] = useState(" Бүгдийг харах");
+  const [hide, setHide] = useState(false);
   const handleExtend = () => {
-    setExtend("");
-    if (extend == "h-[280px]") {
-      setExtend("");
-      setHide("Нуух");
+    if (hide) {
+      setHide(false);
     } else {
-      setHide("Бүгдийг харах");
-      setExtend("h-[280px]");
+      setHide(true);
     }
   };
 
@@ -36,10 +32,10 @@ export function Nogoonplus() {
           <h1 className="font-bold">Хямдралтай</h1>
         </div>
         <button onClick={handleExtend} className="btn btn-link text-green-700">
-          {hide}
+          {hide ? "Бүгдийг харах >" : "Нуух >"}
         </button>
       </div>
-      <div className={`${extend}`}>
+      <div className={`${hide ? "h-[280px]" : ""}`}>
         <Menu />
       </div>
     </div>
