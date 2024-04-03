@@ -6,6 +6,11 @@ export function Nogoonplus() {
   const [extend, setExtend] = useState("h-[280px]");
   const handleExtend = () => {
     setExtend("");
+    if (extend == "h-[280px]") {
+      setExtend("");
+    } else {
+      setExtend("h-[280px]");
+    }
   };
 
   return (
