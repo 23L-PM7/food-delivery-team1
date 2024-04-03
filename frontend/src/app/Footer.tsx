@@ -4,7 +4,13 @@ import { Facebook } from "../components/icons/Socials";
 import { Instagram } from "../components/icons/Socials";
 import { Twitter } from "../components/icons/Socials";
 import { Terms } from "./termsofservice/terms";
+
+
+
+
+
 export function Footer() {
+
   return (
     <div className="bg-green-500  w-full h-full relative">
       <BackgroundPic />
