@@ -1,21 +1,8 @@
 "use client";
 
 import { Login } from "./Login";
-
-const array = [
-  {
-    title: "НҮҮР",
-    href: "http://localhost:3000",
-  },
-  {
-    title: "ХООЛНЫ ЦЭС",
-    href: "http://localhost:3000/menu",
-  },
-  {
-    title: "ХҮРГЭЛТИЙН БҮС",
-    href: "http://localhost:3000/deliveryzone",
-  },
-];
+import { Drawers } from "./drawers";
+import { Navbar } from "./navbar";
 
 function Access() {
   document.getElementById("Haruul").showModal();
@@ -23,8 +10,11 @@ function Access() {
 
 export default function Header() {
   return (
-    <div className="container mx-auto text-sm font-semibold flex h-[57px] gap-2 items-center justify-between max-w-[1200px]">
-      <div className="flex items-center w-3/6">
+    <div
+      className="container mx-auto text-sm font-semibold flex h-[57px] gap-2 items-center lg:justify-between 
+    max-w-[1200px]"
+    >
+      <div className="lg:flex items-center w-3/6 block justify-start">
         <a href="http://localhost:3000">
           <svg
             width="41"
@@ -43,23 +33,10 @@ export default function Header() {
             />
           </svg>
         </a>
-        <div className="items-center  hidden lg:flex">
-          <ul className="flex ">
-            {array.map((item) => (
-              <li>
-                <a
-                  href={item.href}
-                  className="block py-2 px-3 rounded  hover:text-green-600"
-                >
-                  {item.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <Navbar />
       </div>
 
-      <div className=" items-center w-3/6 justify-end flex">
+      <div className=" items-center w-3/6 flex justify-end ">
         <label className="input input-bordered border-black items-center gap-2 w-[260px] h-[36px]  hidden lg:flex">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +67,7 @@ export default function Header() {
             />
           </svg>
 
-          <h2 className=" cursor-pointer group-hover:text-green-600">Сагс</h2>
+          <h2 className=" group-hover:text-green-600">Сагс</h2>
         </div>
         <div className="flex items-center  gap-2 group">
           <svg
@@ -112,49 +89,49 @@ export default function Header() {
           >
             Нэвтрэх
           </button>
-          {/* <Login /> */}
-          {/* Open the modal using document.getElementById('ID').showModal() method */}
-
           <dialog id="Haruul" className="modal">
-            <div className="modal-box max-w-none w-[549px]">
-              <Login />
-            </div>
             <form method="dialog" className="modal-backdrop">
               <button>close</button>
             </form>
+            <Login />
           </dialog>
-
         </div>
         <div className="dropdown">
-          <button>
-            <div className="btn btn-ghost btn-circle">
+          <button></button>
+        </div>
+        <div className="drawer drawer-end z-10 py-2 px-5 gap-2 flex lg:hidden justify-end w-11">
+          <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+          <div className="drawer-content">
+            {/* Page content here */}
+            <label htmlFor="my-drawer-4" className="">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
+                className="inline-block w-5 h-5 stroke-current hover:text-green-600"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h7"
-                />
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
               </svg>
-            </div>
-          </button>
-          <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-            <li>
-              <a>Homepage</a>
-            </li>
-            <li>
-              <a>Portfolio</a>
-            </li>
-            <li>
-              <a>About</a>
-            </li>
-          </ul>
+            </label>
+          </div>
+          <div className="drawer-side">
+            <label
+              htmlFor="my-drawer-4"
+              aria-label="close sidebar"
+              className="drawer-overlay"
+            ></label>
+            <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+              {/* Sidebar content here */}
+              <li className="block">
+                <Drawers />
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

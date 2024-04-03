@@ -1,6 +1,5 @@
 import { BackgroundPic } from "../components/icons/backgroundPic";
 
-
 export function Desktop() {
   return (
     <div className="bg-green-500  w-full h-[788px] relative">
