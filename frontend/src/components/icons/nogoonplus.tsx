@@ -3,7 +3,7 @@ import Menu from "@/app/mnde/menu";
 import { useState } from "react";
 
 export function Nogoonplus() {
-  const [hide, setHide] = useState(false);
+  const [hide, setHide] = useState(true);
   const handleExtend = () => {
     if (hide) {
       setHide(false);
