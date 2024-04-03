@@ -53,7 +53,7 @@ export function Login() {
   };
 
   return (
-    <div className="container mx-auto w-[549px] p-[32px]  mt-[32px] mb-[76px] bg-white rounded-sm">
+    <div className="container mx-auto w-[448px]  mt-[32px] mb-[76px] bg-white rounded-sm">
       <h1 className="flex justify-center font-bold text-xl">Нэвтрэх</h1>
       <div className="mt-[48px]">
         <h1>Имэйл </h1>
