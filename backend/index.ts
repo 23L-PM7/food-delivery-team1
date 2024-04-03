@@ -4,16 +4,15 @@ import { connectDB } from "./database/connect";
 
 
 const app = express();
-const port = 8080;
-
+const port = 7770;
 
 app.use(cors());
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-connectDB();
 
+connectDB();
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}...`);
