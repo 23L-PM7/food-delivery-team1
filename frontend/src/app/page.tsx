@@ -10,8 +10,6 @@ import { Category } from "@/components/category";
 import { useState } from "react";
 
 export default function Home() {
-  const [extend, setExtend] = useState("h-[280px]");
-
   return (
     <div>
       <Header />
@@ -19,9 +17,6 @@ export default function Home() {
       <Mainbutton />
 
       <Nogoonplus />
-      <div className={`${extend}`}>
-        <Menu />
-      </div>
 
       <Footer />
     </div>
