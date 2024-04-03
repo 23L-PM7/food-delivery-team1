@@ -1,6 +1,4 @@
 import { UsersModel } from "../models/user.model";
-import jwt from "jsonwebtoken";
-
 
 export async function getUsers(req: any, res: any) {
     const users = await UsersModel.find();
@@ -9,21 +7,19 @@ export async function getUsers(req: any, res: any) {
 }
 
 export async function createUsers(req: any, res: any) {
-    const { name, email, password, phoneNumber, role } = req.body;
+    const { id, name, email, password, phoneNumber, role } = req.body;
     console.log(req.body);
 
     const users = await UsersModel.create({
-        name: "sad",
-        email: "sadasd",
-        password: "12432",
-        phoneNumber: "qweqweqw23424",
+        id: id,
+        name: name,
+        email: email,
+        password: password,
+        phoneNumber: phoneNumber,
         role: role,
     });
     res.json(users);
 }
-
-
-
 
 export async function updateUsers(req: any, res: any) {
     const { name, email, password, phoneNumber, role } = req.body;
