@@ -4,40 +4,6 @@ import { Facebook } from "../components/icons/Socials";
 import { Instagram } from "../components/icons/Socials";
 import { Twitter } from "../components/icons/Socials";
 import { Terms } from "./termsofservice/terms";
-
-export const footerlists = [
-  {
-    id: 1,
-    tittle: "Нүүр",
-    href: "http://localhost:3000",
-  },
-  {
-    id: 2,
-    tittle: "Холбоо барих",
-    href: "",
-  },
-  {
-    id: 3,
-    tittle: "Хоолны цэс",
-    href: "http://localhost:3000/menu",
-  },
-  {
-    id: 4,
-    tittle: "Үйлчилгээний нөхцөл",
-    href: "http://localhost:3000/termsofservice",
-  },
-  {
-    id: 5,
-    tittle: "Хүргэлтийн бүс",
-    href: "http://localhost:3000/deliveryzone",
-  },
-  {
-    id: 6,
-    tittle: "Нууцлалын бодлого",
-    href: "http://localhost:3000/privacy",
-  },
-];
-
 export function Footer() {
   return (
     <div className="bg-green-500  w-full relative">
@@ -47,15 +13,40 @@ export function Footer() {
           <Logo />
           <h1 className="text-white  font-medium">Food Delivery</h1>
         </div>
-        <div className="mx-auto grid grid-rows-3 grid-cols-2 mt-[15px] justify-center place-content-center text-center sm:flex sm:mt-[20px] md:mt-[30px] 2xl:mt-[40px] sm:justify-around text-white gap-[10px] sm:gap-[15px] md:gap-[30px] lg:gap-[50px] xl:gap-[75px] 2xl:gap-[95px]">
-          {footerlists.map((footerlist) => (
-            <a
-              href={footerlist.href}
-              className="text-[10px] md:text-[12px] 2xl:text-[16px] hover:underline"
-            >
-              {footerlist.tittle}
-            </a>
-          ))}
+        <div className="mx-auto grid grid-rows-3 grid-cols-2 mt-[15px] justify-center place-content-center text-center 2xl:flex sm:mt-[20px] 2xl:mt-[40px] 2xl:justify-around text-white gap-[10px] sm:gap-[15px] 2xl:gap-[95px]">
+          <a
+            href="http://localhost:3000"
+            className="text-[10px] 2xl:text-[16px] hover:underline"
+          >
+            Нүүр
+          </a>
+          <a className="text-[10px] 2xl:text-[16px] hover:underline">
+            Холбоо барих
+          </a>
+          <a
+            className="text-[10px] 2xl:text-[16px] hover:underline"
+            href="http://localhost:3000/menu"
+          >
+            Хоолны цэс
+          </a>
+          <a
+            className="text-[10px] 2xl:text-[16px] hover:underline"
+            href="http://localhost:3000/termsofservice"
+          >
+            Үйлчилгээний нөхцөл
+          </a>
+          <a
+            className="text-[10px] 2xl:text-[16px] hover:underline"
+            href="http://localhost:3000/deliveryzone"
+          >
+            Хүргэлтийн бүс
+          </a>
+          <a
+            className="text-[10px] 2xl:text-[16px] hover:underline"
+            href="http://localhost:3000/privacy"
+          >
+            Нууцлалын бодлого
+          </a>
         </div>
         <div className="flex justify-center gap-1.5 sm:gap-2.5 2xl:gap-5 mt-[15px] 2xl:mt-[40px] ">
           <a

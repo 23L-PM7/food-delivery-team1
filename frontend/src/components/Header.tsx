@@ -90,7 +90,7 @@ export default function Header() {
             />
           </svg>
 
-          <h2 className=" group-hover:text-green-600">Сагс</h2>
+          <h2 className=" cursor-pointer group-hover:text-green-600">Сагс</h2>
         </div>
         <div className="flex items-center  gap-2 group">
           <svg
@@ -112,12 +112,18 @@ export default function Header() {
           >
             Нэвтрэх
           </button>
+          {/* <Login /> */}
+          {/* Open the modal using document.getElementById('ID').showModal() method */}
+
           <dialog id="Haruul" className="modal">
+            <div className="modal-box max-w-none w-[549px]">
+              <Login />
+            </div>
             <form method="dialog" className="modal-backdrop">
               <button>close</button>
             </form>
-            <Login />
           </dialog>
+
         </div>
       </div>
     </div>
