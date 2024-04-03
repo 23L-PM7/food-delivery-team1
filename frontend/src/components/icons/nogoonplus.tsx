@@ -4,11 +4,14 @@ import { useState } from "react";
 
 export function Nogoonplus() {
   const [extend, setExtend] = useState("h-[280px]");
+  const [hide, setHide] = useState(" Бүгдийг харах");
   const handleExtend = () => {
     setExtend("");
     if (extend == "h-[280px]") {
       setExtend("");
+      setHide("Нуух");
     } else {
+      setHide("Бүгдийг харах");
       setExtend("h-[280px]");
     }
   };
@@ -33,7 +36,7 @@ export function Nogoonplus() {
           <h1 className="font-bold">Хямдралтай</h1>
         </div>
         <button onClick={handleExtend} className="btn btn-link text-green-700">
-          Бүгдийг харах{" >"}
+          {hide}
         </button>
       </div>
       <div className={`${extend}`}>
