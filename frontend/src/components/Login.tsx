@@ -1,16 +1,34 @@
 "use client";
+
+
 import { useEffect, useState } from "react";
 import { Eye } from "./icons/eyeclosed";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 export function Login() {
   const [check, setCheck] = useState("disabled");
 
+
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [checkbox, setCheckbox] = useState(false);
   const [error, setError] = useState("");
 
   const [visible, setVisible] = useState("password");
+
+  // const getLogin = async () => {
+  //   try {
+  //     fetcher("users/login").then((response: any) => {
+  //       setGetUser(response.data);
+  //     });
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //     alert("An error occured while creating the new user");
+  //   }
+  // };
+
+
 
   const changeEmail = (event) => {
     setEmail(event.target.value);
@@ -28,10 +46,6 @@ export function Login() {
     }
   };
 
-  const changeCheckbox = (event) => {
-    setCheckbox(event.target.checked);
-  };
-
   useEffect(() => {
     checkForm();
   });
@@ -41,8 +55,7 @@ export function Login() {
       email === "" ||
       password === "" ||
       email === null ||
-      password === null ||
-      checkbox === false
+      password === null
     ) {
       return setCheck("disabled"), setError("");
     } else if (password.length < 8) {
@@ -101,17 +114,9 @@ export function Login() {
             <Eye />
           </button>
         </label>
-        <a className="flex justify-end cursor-pointer" href="http://localhost:3000/forgotpass">Нууц үг сэргээх</a>
+        <a className="flex justify-end cursor-pointer mt-[8px]" href="http://localhost:3000/forgotpass">Нууц үг сэргээх</a>
       </div>
       <div className="mt-[48px] flex flex-col items-center cursor-pointer">
-        <div className="flex gap-x-3 mb-[20px]">
-          <input
-            onChange={changeCheckbox}
-            type="checkbox"
-            className="checkbox"
-          />
-          <a >Нэвтрэхийг зөвшөөрөх</a>
-        </div>
         <button
           className="w-full btn bg-green-500 hover:bg-green-500"
           disabled={check}

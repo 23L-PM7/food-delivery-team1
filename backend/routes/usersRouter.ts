@@ -7,9 +7,19 @@ import {
     deleteUsers,
 } from "../controller/users.controller";
 
+import {
+    deleteLogin,
+    getLogin,
+    updateLogin,
+    createLogin,
+} from "../controller/users.controller";
 
 const usersRouter = express.Router();
 
+usersRouter.get("/login", getLogin);
+usersRouter.post("/login", createLogin);
+usersRouter.put("/login", updateLogin);
+usersRouter.delete("/login", deleteLogin);
 
 
 usersRouter.get("/signup", getUsers);
