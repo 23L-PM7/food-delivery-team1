@@ -1,15 +1,18 @@
 import express from "express";
 import cors from "cors";
 import { connectDB } from "./database/connect";
+import usersRouter from "./routes/usersRouter";
+
+
 
 
 const app = express();
-const port = 7770;
+const port = 9090;
 
 app.use(cors());
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+app.use(express.json());
+
+app.use("/users", usersRouter);
 
 
 connectDB();
