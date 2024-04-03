@@ -24,11 +24,6 @@ export function Modal() {
 
   return (
     <div className=" flex w-[981px] h-[564px] container mx-auto p-[32px] gap-[33px] bg-white rounded-2xl relative">
-      <form method="dialog">
-        <button className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4">
-          X
-        </button>
-      </form>
       <div className="">
         <img
           className="object-cover w-[500px] h-[500px]"
@@ -38,6 +33,11 @@ export function Modal() {
 
       <div className="flex flex-col gap-[32px] justify-center">
         <div className="flex flex-col gap-[2px] w-[384px]">
+          <form method="dialog">
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4">
+              X
+            </button>
+          </form>
           <div className="font-semibold  text-[#000000] text-xl">Торт</div>
           <div className="font-semibold text-lg text-[#18ba51] mt-[2px]">
             122323 ₮
