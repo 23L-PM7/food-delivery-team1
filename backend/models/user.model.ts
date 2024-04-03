@@ -2,10 +2,11 @@ import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-const userSchema = new Schema({
+const usersSchema = new Schema({
     id: ObjectId,
     name: String,
     email: String,
+    phoneNumber: Number,
     password: String,
     role: {
         type: String,
@@ -14,6 +15,6 @@ const userSchema = new Schema({
     },
 });
 
-export const UserModel = mongoose.model("User", userSchema);
+export const UsersModel = mongoose.model("User", usersSchema);
 
 
