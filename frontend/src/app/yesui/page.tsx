@@ -3,6 +3,7 @@ import { Cap } from "./errors/cap";
 import { Ded } from "./errors/sign";
 import { Containers } from "./sale/containers";
 import React, { useState } from "react";
+import { Nogoonplus } from "@/components/icons/nogoonplus";
 
 export default function Yesui() {
   return (
@@ -12,7 +13,8 @@ export default function Yesui() {
       <No /> */}
       {/* <SuccessGreen /> */}
       {/* <SuccessYellow /> */}
-      <Containers />
+      {/* <Containers /> */}
+      <Nogoonplus />
     </div>
   );
 }
