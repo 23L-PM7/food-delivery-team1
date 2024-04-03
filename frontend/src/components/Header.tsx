@@ -90,7 +90,7 @@ export default function Header() {
             />
           </svg>
 
-          <h2 className=" group-hover:text-green-600">Сагс</h2>
+          <h2 className=" cursor-pointer group-hover:text-green-600">Сагс</h2>
         </div>
         <div className="flex items-center  gap-2 group">
           <svg
