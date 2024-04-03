@@ -1,7 +1,7 @@
 "use client";
 
 import { Login } from "./Login";
-import { Drawers } from "./drawers";
+
 import { Navbar } from "./navbar";
 
 function Access() {
@@ -127,8 +127,20 @@ export default function Header() {
             ></label>
             <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
               {/* Sidebar content here */}
-              <li className="block">
-                <Drawers />
+              <li>
+                <a href="http://localhost:3000">
+                  <h1 className=" hover:text-green-600">НҮҮР</h1>
+                </a>
+              </li>
+              <li>
+                <a href="http://localhost:3000/menu">
+                  <h1 className=" hover:text-green-600">ХООЛНЫ ЦЭС</h1>
+                </a>
+              </li>
+              <li>
+                <a href="http://localhost:3000/deliveryzone">
+                  <h1 className=" hover:text-green-600">ХҮРГЭЛТИЙН БҮС</h1>
+                </a>
               </li>
             </ul>
           </div>

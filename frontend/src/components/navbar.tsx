@@ -15,13 +15,13 @@ const array = [
 
 export const Navbar = () => {
   return (
-    <div className="items-center  hidden lg:flex ">
+    <div className=" hidden lg:flex ">
       {array.map((item) => (
         <ul className=" ">
           <li>
             <a
               href={item.href}
-              className="block lg:py-2 lg:px-3 rounded  hover:text-green-600"
+              className="lg:py-2 lg:px-3 rounded  hover:text-green-600"
             >
               {item.title}
             </a>
