@@ -32,7 +32,7 @@ export function Modal() {
           <div className="font-semibold  text-[#000000] text-xl">
             Торт
           </div>
-          <div className="font-semibold text-lg text-[#18BA51] mt-[2px]">
+          <div className="font-semibold text-lg text-[#18ba51] mt-[2px]">
             122323 ₮
           </div>
         </div>
