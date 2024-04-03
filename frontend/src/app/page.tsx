@@ -7,7 +7,7 @@ import { Desktop } from "@/components/Desktop";
 
 export default function Home() {
   return (
-    <div className="container">
+    <div>
       <Header />
       <Desktop />
       <Mainbutton />
