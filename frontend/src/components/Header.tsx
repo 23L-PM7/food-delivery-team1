@@ -43,8 +43,8 @@ export default function Header() {
             />
           </svg>
         </a>
-        <div className="items-center">
-          <ul className="flex">
+        <div className="items-center  hidden lg:flex">
+          <ul className="flex ">
             {array.map((item) => (
               <li>
                 <a
@@ -59,8 +59,8 @@ export default function Header() {
         </div>
       </div>
 
-      <div className=" items-center w-3/6 justify-end hidden md:flex">
-        <label className="input input-bordered border-black flex items-center gap-2 w-[260px] h-[36px]">
+      <div className=" items-center w-3/6 justify-end flex">
+        <label className="input input-bordered border-black items-center gap-2 w-[260px] h-[36px]  hidden lg:flex">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
@@ -73,7 +73,7 @@ export default function Header() {
               clipRule="evenodd"
             />
           </svg>
-          <input type="text" className="grow" placeholder="Хайх" />
+          <input type="text" className="grow " placeholder="Хайх" />
         </label>
         <div className="flex py-2 px-5 gap-2  group">
           <svg
@@ -118,6 +118,37 @@ export default function Header() {
             </form>
             <Login />
           </dialog>
+        </div>
+        <div className="dropdown">
+          <button>
+            <div className="btn btn-ghost btn-circle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h7"
+                />
+              </svg>
+            </div>
+          </button>
+          <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+            <li>
+              <a>Homepage</a>
+            </li>
+            <li>
+              <a>Portfolio</a>
+            </li>
+            <li>
+              <a>About</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
