@@ -20,7 +20,7 @@ export function Footer() {
           >
             Нүүр
           </a>
-          <a className="text-[10px] 2xl:text-[16px] hover:underline">
+          <a className="text-[10px] 2xl:text-[16px] cursor-pointer hover:underline">
             Холбоо барих
           </a>
           <a
@@ -30,19 +30,19 @@ export function Footer() {
             Хоолны цэс
           </a>
           <a
-            className="text-[10px] 2xl:text-[16px] hover:underline"
+            className="text-[10px] cursor-pointer 2xl:text-[16px] hover:underline"
             href="http://localhost:3000/termsofservice"
           >
             Үйлчилгээний нөхцөл
           </a>
           <a
-            className="text-[10px] 2xl:text-[16px] hover:underline"
+            className="cursor-pointer text-[10px] 2xl:text-[16px] hover:underline"
             href="http://localhost:3000/deliveryzone"
           >
             Хүргэлтийн бүс
           </a>
           <a
-            className="text-[10px] 2xl:text-[16px] hover:underline"
+            className=" cursor-pointer text-[10px] 2xl:text-[16px] hover:underline"
             href="http://localhost:3000/privacy"
           >
             Нууцлалын бодлого
