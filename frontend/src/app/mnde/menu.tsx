@@ -80,7 +80,7 @@ function ShowFood() {
 export default function Menu() {
   return (
     <div
-      className="grid grid-rows-3 grid-cols-4 gap-x-[24px] gap-y-[60px] container mx-auto max-w-[1200px]"
+      className="grid grid-rows-12 grid-cols-1 sm:grid-rows-6 sm-grid-cols-2 md:grid-rows-6 md:grid-cols-2 lg:grid-rows-4 lg:grid-cols-3 xl:grid-rows-3 xl:grid-cols-4 2xl:grid-rows-3 2xl:grid-cols-4 2xl:gap-x-[24px] 2xl:gap-y-[60px] container mx-auto 2xl:max-w-[1200px]"
       id="my_modal_2"
     >
       {foodlist.map((food) => (
