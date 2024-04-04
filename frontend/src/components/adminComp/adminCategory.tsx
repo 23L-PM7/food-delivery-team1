@@ -18,17 +18,16 @@ export function AdminCategory() {
 
   const createCategory = async () => {
     console.log(name);
-   
-      // const data = await categoryMutator("category", { name });
-      await axios
-        .post("http://localhost:9090/category", {
-          name,
-        })
-        .then(() => {
-          setName("");
-          setOpenCreate(!openCreate);
-        });
-    }
+
+    // const data = await categoryMutator("category", { name });
+    await axios
+      .post("http://localhost:9090/category/create", {
+        name,
+      })
+      .then(() => {
+        setName("");
+        setOpenCreate(!openCreate);
+      });
   };
 
   const category = [
