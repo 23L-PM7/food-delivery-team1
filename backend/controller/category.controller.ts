@@ -14,7 +14,7 @@ export async function createCategory(req: any, res: any) {
     id: id,
     name: name,
   });
-  res.send("Successfully created.");
+  res.json(category);
 }
 
 export async function updateCategory(req: any, res: any) {

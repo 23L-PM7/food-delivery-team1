@@ -18,10 +18,9 @@ export function AdminCategory() {
   const createCategory = async () => {
     if (name == null || name == "") {
       return;
-    } else if (name.length <= 3) {
-      return;
+
     } else {
-      const data = await categoryMutator("category", { name });
+      await categoryMutator("category", { name });
       setName("");
       setOpenCreate(!openCreate);
     }
