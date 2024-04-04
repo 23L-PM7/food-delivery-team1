@@ -110,7 +110,7 @@ export function SideCategory(props: ChildProps) {
               Clear
             </button>
             <button className="btn btn-sm h-[40px] btn-neutral text-white">
-              Continue
+              Edit
             </button>
           </div>
         </div>
