@@ -17,24 +17,31 @@ export function Login() {
 
   const [visible, setVisible] = useState("password");
 
-  // const getLogin = async () => {
-  //   try {
-  //     fetcher("users/login").then((response: any) => {
-  //       setGetUser(response.data);
-  //     });
-  //   } catch (error) {
-  //     console.error("Error:", error);
-  //     alert("An error occured while creating the new user");
-  //   }
-  // };
 
+  function UserLogin() {
+    console.log({ email, password });
+    axios
+      .post("http://localhost:9090/users/login", {
+        email: email,
+        password: password,
+      })
+      .then(() => {
+        alert("Success");
+        localStorage.setItem("login", `${email}:${password}`);
+        window.location = "/";
+      })
+      .catch((e) => {
+        if (e.response.status === 401) {
+          alert("Username or password is correct");
+        }
+      });
+  }
 
-
-  const changeEmail = (event) => {
+  const changeEmail = (event: any) => {
     setEmail(event.target.value);
   };
 
-  const changePassword = (event) => {
+  const changePassword = (event: any) => {
     setPassword(event.target.value);
   };
 
@@ -120,6 +127,7 @@ export function Login() {
         <button
           className="w-full btn bg-green-500 hover:bg-green-500"
           disabled={check}
+          onClick={UserLogin}
         >
           Нэвтрэх
         </button>
