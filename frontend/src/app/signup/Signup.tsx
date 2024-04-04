@@ -31,17 +31,7 @@ export default function Signup() {
   const [visible2, setVisible2] = useState("password");
 
   function createUsers() {
-    // if (!name || !email || !address || !password || !secondpass) {
-    //   alert("Бүх талбарыг бөглөнө үү!");
-    //   return;
-    // }
-    // else if (check == "") {
-    //   alert(
-    //     "Үйлчилгээний нөхцөл болон нууцлалын бодлогыг уншиж танилцан зөвшөөрнө үү!",
-    //   );
-    //   return;
-    // }
-    // try {
+
     console.log({
       name,
       email,
