@@ -15,11 +15,10 @@ export function Modal() {
       foodQuantity = foodQuantity - 1;
       setFoodquantity(foodQuantity);
     }
-  }
+  };
 
   return (
     <div className=" flex w-[981px] h-[564px] container mx-auto p-[32px] gap-[33px] bg-white rounded-2xl relative">
-      <button className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 ">✕</button>
       <div className="">
         <img
           className="object-cover w-[500px] h-[500px]"
@@ -28,10 +27,13 @@ export function Modal() {
       </div>
 
       <div className="flex flex-col gap-[32px] justify-center">
+        <form method="dialog">
+          <button className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4">
+            X
+          </button>
+        </form>
         <div className="flex flex-col gap-[2px] w-[384px]">
-          <div className="font-semibold  text-[#000000] text-xl">
-            Торт
-          </div>
+          <div className="font-semibold  text-[#000000] text-xl">Торт</div>
           <div className="font-semibold text-lg text-[#18ba51] mt-[2px]">
             122323 ₮
           </div>
@@ -65,3 +67,4 @@ export function Modal() {
     </div>
   );
 }
+
