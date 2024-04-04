@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { foodlist } from "../datalist";
 
 export function Modal() {
   let [foodQuantity, setFoodquantity] = useState(1);

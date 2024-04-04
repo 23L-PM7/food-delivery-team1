@@ -1,19 +1,30 @@
 "use client";
 import { useState } from "react";
-import {
-  GreyAdd,
-  TripleDot,
-  TripleDotBlack,
-  TripleDotWhite,
-  GreenPlus,
-} from "../icons/tripledot";
+import { GreyAdd, GreenPlus } from "../icons/tripledot";
 import { SideCategory } from "./adminCategorySelect";
+import { categoryMutator } from "@/util/categoryFetcher";
+import { categoryFetcher } from "@/util/categoryFetcher";
 
 export function AdminCategory() {
   const [openCreate, setOpenCreate] = useState(false);
+  // const [category, setCategory] = useState([])
+  const [name, setName] = useState("");
 
   const openCreateModal = () => {
     setOpenCreate(!openCreate);
+    setName("");
+  };
+
+  const createCategory = async () => {
+    if (name == null || name == "") {
+      return;
+    } else if (name.length <= 3) {
+      return;
+    } else {
+      const data = await categoryMutator("category", { name });
+      setName("");
+      setOpenCreate(!openCreate);
+    }
   };
 
   const category = [
@@ -29,7 +40,9 @@ export function AdminCategory() {
     { name: "Dessert", id: 126 },
   ];
 
-  const clearField = () => {};
+  const clearField = () => {
+    setName("");
+  };
 
   return (
     <div className="">
@@ -97,8 +110,10 @@ export function AdminCategory() {
               </div>
               <input
                 type="text"
+                value={name}
                 placeholder="Category Name"
                 className="input input-bordered w-full bg-gray-200"
+                onChange={(e) => setName(e.target.value)}
               />
             </label>
           </div>
@@ -109,8 +124,11 @@ export function AdminCategory() {
             >
               Clear
             </button>
-            <button className="btn btn-sm h-[40px] btn-neutral text-white">
-              Continue
+            <button
+              onClick={createCategory}
+              className="btn btn-sm h-[40px] btn-neutral text-white"
+            >
+              Create
             </button>
           </div>
         </div>
