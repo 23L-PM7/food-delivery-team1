@@ -18,8 +18,8 @@ export async function createCategory(req: any, res: any) {
 }
 
 export async function updateCategory(req: any, res: any) {
-  const { name } = req.body;
   const { id } = req.params;
+  const { name } = req.body;
 
   const category = await CategoryModel.findByIdAndUpdate(id, {
     name: name,
