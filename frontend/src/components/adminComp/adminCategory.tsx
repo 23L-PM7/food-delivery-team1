@@ -21,7 +21,7 @@ export function AdminCategory() {
 
     // const data = await categoryMutator("category", { name });
     await axios
-      .post("http://localhost:9090/category", {
+      .post("http://localhost:9090/category/create", {
         name,
       })
       .then(() => {
