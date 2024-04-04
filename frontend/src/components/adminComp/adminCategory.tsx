@@ -20,14 +20,18 @@ export function AdminCategory() {
     console.log(name);
 
     // const data = await categoryMutator("category", { name });
-    await axios
-      .post("http://localhost:9090/category/create", {
-        name,
-      })
-      .then(() => {
-        setName("");
-        setOpenCreate(!openCreate);
-      });
+    if (name == "" || name == null) {
+      return;
+    } else {
+      await axios
+        .post("http://localhost:9090/category/create", {
+          name,
+        })
+        .then(() => {
+          setName("");
+          setOpenCreate(!openCreate);
+        });
+    }
   };
 
   const category = [
