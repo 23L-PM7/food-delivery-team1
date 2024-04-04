@@ -4,6 +4,7 @@ import { GreyAdd, GreenPlus } from "../icons/tripledot";
 import { SideCategory } from "./adminCategorySelect";
 import { categoryMutator } from "@/util/categoryFetcher";
 import { categoryFetcher } from "@/util/categoryFetcher";
+import axios from "axios";
 
 export function AdminCategory() {
   const [openCreate, setOpenCreate] = useState(false);
@@ -16,14 +17,17 @@ export function AdminCategory() {
   };
 
   const createCategory = async () => {
-    if (name == null || name == "") {
-      return;
-    } else if (name.length <= 3) {
-      return;
-    } else {
-      const data = await categoryMutator("category", { name });
-      setName("");
-      setOpenCreate(!openCreate);
+    console.log(name);
+   
+      // const data = await categoryMutator("category", { name });
+      await axios
+        .post("http://localhost:9090/category", {
+          name,
+        })
+        .then(() => {
+          setName("");
+          setOpenCreate(!openCreate);
+        });
     }
   };
 
