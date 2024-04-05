@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   GreyAdd,
   TripleDot,
@@ -7,12 +7,13 @@ import {
   TripleDotWhite,
 } from "../icons/tripledot";
 import { Pen } from "../icons/pen";
+import axios from "axios";
 import { Trash } from "../icons/trash";
 
 type ChildProps = {
   zindex: number;
   label: string;
-  id: number;
+  id: string;
 };
 
 // id: number, label: string
@@ -28,6 +29,13 @@ export function SideCategory(props: ChildProps) {
 
   const selectCategory = () => {
     setSelected(!selected);
+  };
+
+  useEffect(() => {}, []);
+
+  const deleteCategory = async (id: string) => {
+    console.log(id);
+    await axios.delete(`http://localhost:9090/category/delete/${id}`);
   };
 
   const clearField = () => {};
@@ -66,7 +74,10 @@ export function SideCategory(props: ChildProps) {
               </button>
             </li>
             <li>
-              <button className="text-red-500 flex justify-start">
+              <button
+                onClick={() => deleteCategory(id)}
+                className="text-red-500 flex justify-start"
+              >
                 <Trash />
                 Delete category
               </button>

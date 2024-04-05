@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GreyAdd, GreenPlus } from "../icons/tripledot";
 import { SideCategory } from "./adminCategorySelect";
 import { categoryMutator } from "@/util/categoryFetcher";
@@ -18,8 +18,14 @@ export function AdminCategory() {
   };
 
   const fetchCategory = async () => {
-    await axios.get("http://localhost:9090/category/create");
+    await axios.get("http://localhost:9090/category").then((response) => {
+      setCategory(response.data);
+    });
   };
+
+  useEffect(() => {
+    fetchCategory();
+  }, []);
 
   const createCategory = async () => {
     console.log(name);
@@ -35,6 +41,7 @@ export function AdminCategory() {
         .then(() => {
           setName("");
           setOpenCreate(!openCreate);
+          fetchCategory();
         });
     }
   };
@@ -54,6 +61,7 @@ export function AdminCategory() {
 
   const clearField = () => {
     setName("");
+    console.log({ category });
   };
 
   return (
@@ -67,11 +75,11 @@ export function AdminCategory() {
           </div>
           {/* category mapped */}
           <div className="w-[258px] flex flex-col gap-y-5">
-            {category.map((item, index) => (
+            {category.map((item: any, index: any) => (
               <SideCategory
                 zindex={100 - index}
                 label={item.name}
-                id={item.id}
+                id={item._id}
               />
             ))}
             <button onClick={openCreateModal}>

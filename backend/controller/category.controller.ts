@@ -21,7 +21,7 @@ export async function updateCategory(req: any, res: any) {
   const { id } = req.params;
   const { name } = req.body;
 
-  const category = await CategoryModel.findByIdAndUpdate(id, {
+  await CategoryModel.findByIdAndUpdate(id, {
     name: name,
   });
   res.send("Successfully updated.");
@@ -29,6 +29,6 @@ export async function updateCategory(req: any, res: any) {
 export async function deleteCategory(req: any, res: any) {
   const { id } = req.params;
 
-  const category = await CategoryModel.findByIdAndDelete(id);
+  await CategoryModel.findByIdAndDelete(id);
   res.send("Successfully deleted.");
 }
