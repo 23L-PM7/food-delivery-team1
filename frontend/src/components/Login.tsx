@@ -138,6 +138,7 @@ export function Login() {
           href="http://localhost:3000/ari"
           className="w-full btn btn-outline btn-success"
         >
+
           <button>Бүртгүүлэх</button>
         </a>
       </div>
