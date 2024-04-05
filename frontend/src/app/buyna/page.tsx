@@ -1,10 +1,13 @@
 import Header from "@/components/Header";
-import { AdminDashboard } from "@/components/adminComp/adminDashboard";
+import { AdminCategory } from "@/components/adminComp/adminCategory";
+import { Footer } from "../Footer";
 
 export default function Buynaa() {
   return (
     <div>
       <Header />
+      <AdminCategory />
+      <Footer />
     </div>
   );
 }
