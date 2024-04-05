@@ -23,7 +23,7 @@ export default function Menu() {
             <div className="absolute right-6 top-4">
               <SellChip />
             </div>
-            <div className="w-[282px] h-[196px] ease-in">
+            <div className="w-[282px] h-[196px] ease-in cursor-pointer">
               <img
                 className="object-fill rounded-lg"
                 onClick={() => ShowFood()}

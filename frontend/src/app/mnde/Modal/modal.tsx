@@ -36,6 +36,12 @@ export default function Modal() {
             122323 ₮
           </div>
         </div>
+        <div className="flex flex-col gap-[2px]">
+          <div className="font-semibold text-lg text-[#000000]">Орц</div>
+          <div className="bg-[#F6F6F6] p-[8px] rounded-[8px] text-[#767676]">
+            Хулуу, төмс, давс
+          </div>
+        </div>
         <div className="font-semibold text-lg text-[#000000]">Тоо</div>
         <div className="flex justify-between items-center">
           <button
