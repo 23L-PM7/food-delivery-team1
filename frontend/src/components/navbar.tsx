@@ -17,7 +17,7 @@ export const Navbar = () => {
   return (
     <div className=" hidden lg:flex ">
       {array.map((item) => (
-        <ul className=" ">
+        <ul>
           <li>
             <a
               href={item.href}
