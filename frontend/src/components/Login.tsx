@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Eye } from "./icons/eyeclosed";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { Fetcher, mutator } from "@/app/util";
 
 export function Login() {
   const [check, setCheck] = useState("disabled");
@@ -17,24 +18,30 @@ export function Login() {
 
   const [visible, setVisible] = useState("password");
 
+  // useEffect(() => {
+  //   Fetcher("login").then(data => {
+  //     console.log(data);
+  //   });
+  // } []);
 
   function UserLogin() {
-    console.log({ email, password });
-    axios
-      .post("http://localhost:9090/users/login", {
-        email: email,
-        password: password,
-      })
-      .then(() => {
-        alert("Success");
-        localStorage.setItem("login", `${email}:${password}`);
-        window.location = "/";
-      })
-      .catch((e) => {
-        if (e.response.status === 401) {
-          alert("Username or password is correct");
-        }
-      });
+    mutator("login", { email, password });
+    // console.log({ email, password });
+    // axios
+    //   .post("http://localhost:9090/users/login", {
+    //     email: email,
+    //     password: password,
+    //   })
+    //   .then(() => {
+    //     alert("Success");
+    //     localStorage.setItem("login", `${email}:${password}`);
+    //     window.location = "/";
+    //   })
+    //   .catch((e) => {
+    //     if (e.response.status === 401) {
+    //       alert("Username or password is correct");
+    //     }
+    //   });
   }
 
   const changeEmail = (event: any) => {
@@ -65,7 +72,7 @@ export function Login() {
       password === null
     ) {
       return setCheck("disabled"), setError("");
-    } else if (password.length !== 8) {
+    } else if (password.length < 8) {
       return setCheck("Password 8-аас их оронтой байна.");
     } else {
       return setCheck("");
