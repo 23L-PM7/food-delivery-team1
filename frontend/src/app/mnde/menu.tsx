@@ -4,7 +4,8 @@ import { useState } from "react";
 import Basket from "./Modal/basket";
 import { SellChip } from "./Sellchip";
 import { foodlist } from "./datalist";
-import { Modal } from "./Modal/modal";
+import Modal from "./Modal/modal";
+
 
 function ShowFood() {
   document.getElementById("my_modal_3").showModal();

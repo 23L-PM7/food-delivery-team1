@@ -2,12 +2,11 @@
 import { useState } from "react";
 
 export default function Modal() {
-  const [foodQuantity, setFoodquantity] = useState(1);
-
-  const incementFoodQuantity = () => {
-    setFoodquantity(foodQuantity + 1);
-  };
-
+  let [foodQuantity, setFoodquantity] = useState(1);
+  function incementFoodQuantity() {
+    foodQuantity = foodQuantity + 1;
+    setFoodquantity(foodQuantity);
+  }
   const minusFoodQuantity = () => {
     if (foodQuantity > 0) {
       foodQuantity = foodQuantity - 1;
@@ -37,8 +36,28 @@ export default function Modal() {
             122323 ₮
           </div>
         </div>
+        <div className="font-semibold text-lg text-[#000000]">Тоо</div>
+        <div className="flex justify-between items-center">
+          <button
+            className="btn bg-[#18BA51] text-[#FFFFFF]"
+            onClick={minusFoodQuantity}
+          >
+            {" "}
+            -{" "}
+          </button>
+          <div>{foodQuantity}</div>
+          <button
+            className="btn bg-[#18BA51] text-[#FFFFFF]"
+            onClick={incementFoodQuantity}
+          >
+            {" "}
+            +{" "}
+          </button>
+        </div>
+        <button className="btn bg-[#18BA51] text-[#FFFFFF]">Сагслах</button>
       </div>
     </div>
   );
 }
+
 
