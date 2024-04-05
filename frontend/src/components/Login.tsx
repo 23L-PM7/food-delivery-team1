@@ -12,11 +12,11 @@ export function Login() {
 
   const [visible, setVisible] = useState("password");
 
-  const changeEmail = (event) => {
+  const changeEmail = (event: any) => {
     setEmail(event.target.value);
   };
 
-  const changePassword = (event) => {
+  const changePassword = (event: any) => {
     setPassword(event.target.value);
   };
 
@@ -28,7 +28,7 @@ export function Login() {
     }
   };
 
-  const changeCheckbox = (event) => {
+  const changeCheckbox = (event: any) => {
     setCheckbox(event.target.checked);
   };
 
@@ -45,7 +45,7 @@ export function Login() {
       checkbox === false
     ) {
       return setCheck("disabled"), setError("");
-    } else if (password.length < 8) {
+    } else if (password.length !== 8) {
       return setCheck("Password 8-аас их оронтой байна.");
     } else {
       return setCheck("");
@@ -53,7 +53,7 @@ export function Login() {
   };
 
   return (
-    <div className="container mx-auto w-[448px]  mt-[32px] mb-[76px] bg-white rounded-sm">
+    <div className="container mx-auto w-[549px] p-[32px]  mt-[32px] mb-[76px] bg-white rounded-sm">
       <h1 className="flex justify-center font-bold text-xl">Нэвтрэх</h1>
       <div className="mt-[48px]">
         <h1>Имэйл </h1>
@@ -101,7 +101,7 @@ export function Login() {
             <Eye />
           </button>
         </label>
-        <a className="flex justify-end cursor-pointer" href="http://localhost:3000/forgotpass">Нууц үг сэргээх</a>
+        <p className="flex justify-end cursor-pointer">Нууц үг сэргээх</p>
       </div>
       <div className="mt-[48px] flex flex-col items-center cursor-pointer">
         <div className="flex gap-x-3 mb-[20px]">
@@ -110,7 +110,7 @@ export function Login() {
             type="checkbox"
             className="checkbox"
           />
-          <a >Нэвтрэхийг зөвшөөрөх</a>
+          <h3 className="">Нэвтрэхийг зөвшөөрөх</h3>
         </div>
         <button
           className="w-full btn bg-green-500 hover:bg-green-500"
@@ -122,7 +122,7 @@ export function Login() {
         <p className="my-[32px]">Эсвэл</p>
 
         <a
-          href="http://localhost:3000/signup"
+          href="http://localhost:3000/ari"
           className="w-full btn btn-outline btn-success"
         >
           <button>Бүртгүүлэх</button>
