@@ -18,14 +18,14 @@ export function Login() {
 
   const [visible, setVisible] = useState("password");
 
-  // useEffect(() => {
-  //   Fetcher("login").then(data => {
-  //     console.log(data);
-  //   });
-  // } []);
 
-  function UserLogin() {
-    mutator("login", { email, password });
+  async function UserLogin() {
+    const data = await mutator("login", { email, password });
+    const { accessToken } = data;
+
+    localStorage.setItem("accessToken", accessToken);
+    window.location = "/";
+
     // console.log({ email, password });
     // axios
     //   .post("http://localhost:9090/users/login", {
