@@ -1,18 +1,17 @@
 import { UsersModel } from "../models/user.model";
 import jwt from "jsonwebtoken";
 
-export async function getUsers(req: any, res: any) {
+export async function getUsers(require: any, res: any) {
   const users = await UsersModel.find();
 
   res.json(users);
 }
 
 export async function createUsers(req: any, res: any) {
-  const { id, name, email, password, phoneNumber, role } = req.body;
+  const { name, email, password, phoneNumber, role } = req.body;
   console.log(req.body);
 
   const users = await UsersModel.create({
-    id: id,
     name: name,
     email: email,
     password: password,
@@ -45,23 +44,51 @@ export async function deleteUsers(req: any, res: any) {
 ////////////////////LOGIN HESEG////////////////////
 
 export async function getLogin(req: any, res: any) {
-  res.json(["dorj", "dolgor"]);
+  const users = await UsersModel.find();
+  const accessToken = req.get("access-token");
+
+  if (!accessToken) {
+    return res.sendStatus(403);
+  }
+
+  try {
+    const decoded = jwt.verify(accessToken, "secret-team2");
+    console.log({ decoded });
+    res.json(users);
+  } catch (error) {
+    return res.sendStatus(403);
+  }
 }
+
 
 export async function createLogin(req: any, res: any) {
   const { email, password } = req.body;
   console.log(req.body);
 
-  UsersModel.findOne({ email: "bat@gmail.com" });
-  const loggedin = true;
+  const user = await UsersModel.findOne({ email: email });
 
-  if (loggedin) {
-    const access = jwt.sign({ email: email, password: password }, "dd");
-    res.json({ access });
+
+
+  if (!user) {
+    res
+      .status(400)
+      .json({ message: "Та бүртгэлгүй байгаа учир бүртгүүлнэ үү" });
+    return;
+  }
+
+  if (user.password !== password) {
+    res.status(400).json({ message: "Username or password is correct." });
+    return;
+  }
+
+  if (user) {
+    const accesstoken = jwt.sign({ email: email }, "secret-team2");
+    res.json({ accesstoken });
   }
 
   res.sendStatus(401);
 }
+
 
 export async function updateLogin(req: any, res: any) {
   const { email, password } = req.body;

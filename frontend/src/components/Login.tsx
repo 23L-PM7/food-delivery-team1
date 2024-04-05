@@ -17,8 +17,6 @@ export function Login() {
 
   const [visible, setVisible] = useState("password");
 
-<<<<<<< HEAD
-=======
 
   function UserLogin() {
     console.log({ email, password });
@@ -39,7 +37,6 @@ export function Login() {
       });
   }
 
->>>>>>> 3384f54fafd92b0f5e1db339727274c5b59d8be7
   const changeEmail = (event: any) => {
     setEmail(event.target.value);
   };
@@ -56,13 +53,6 @@ export function Login() {
     }
   };
 
-<<<<<<< HEAD
-  const changeCheckbox = (event: any) => {
-    setCheckbox(event.target.checked);
-  };
-
-=======
->>>>>>> 3384f54fafd92b0f5e1db339727274c5b59d8be7
   useEffect(() => {
     checkForm();
   });
@@ -131,23 +121,9 @@ export function Login() {
             <Eye />
           </button>
         </label>
-<<<<<<< HEAD
-        <p className="flex justify-end cursor-pointer">Нууц үг сэргээх</p>
-      </div>
-      <div className="mt-[48px] flex flex-col items-center cursor-pointer">
-        <div className="flex gap-x-3 mb-[20px]">
-          <input
-            onChange={changeCheckbox}
-            type="checkbox"
-            className="checkbox"
-          />
-          <h3 className="">Нэвтрэхийг зөвшөөрөх</h3>
-        </div>
-=======
         <a className="flex justify-end cursor-pointer mt-[8px]" href="http://localhost:3000/forgotpass">Нууц үг сэргээх</a>
       </div>
       <div className="mt-[48px] flex flex-col items-center cursor-pointer">
->>>>>>> 3384f54fafd92b0f5e1db339727274c5b59d8be7
         <button
           className="w-full btn bg-green-500 hover:bg-green-500"
           disabled={check}

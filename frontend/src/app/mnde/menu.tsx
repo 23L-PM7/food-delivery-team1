@@ -4,9 +4,7 @@ import { useState } from "react";
 import Basket from "./Modal/basket";
 import { SellChip } from "./Sellchip";
 import { foodlist } from "./datalist";
-<<<<<<< HEAD
 
-[];
 
 export function Modal() {
   let [foodQuantity, setFoodquantity] = useState(1);
@@ -73,9 +71,7 @@ export function Modal() {
     </div>
   );
 }
-=======
-import { Modal } from "./Modal/modal";
->>>>>>> 3384f54fafd92b0f5e1db339727274c5b59d8be7
+
 
 function ShowFood() {
   document.getElementById("my_modal_3").showModal();
