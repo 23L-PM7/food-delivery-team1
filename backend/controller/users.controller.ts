@@ -82,7 +82,7 @@ export async function createLogin(req: any, res: any) {
   }
 
   if (user) {
-    const accesstoken = jwt.sign({ email: email }, "secret-team2");
+    const accesstoken = jwt.sign({ email: email }, "dmngo");
     res.json({ accesstoken });
   }
 
