@@ -10,10 +10,15 @@ export function AdminCategory() {
   const [openCreate, setOpenCreate] = useState(false);
   // const [category, setCategory] = useState([])
   const [name, setName] = useState("");
+  const [category, setCategory] = useState([]);
 
   const openCreateModal = () => {
     setOpenCreate(!openCreate);
     setName("");
+  };
+
+  const fetchCategory = async () => {
+    await axios.get("http://localhost:9090/category/create");
   };
 
   const createCategory = async () => {
@@ -34,18 +39,18 @@ export function AdminCategory() {
     }
   };
 
-  const category = [
-    {
-      name: "Breakfast",
-      id: 123,
-    },
-    { name: "Lunch", id: 124 },
-    {
-      name: "Dinner",
-      id: 125,
-    },
-    { name: "Dessert", id: 126 },
-  ];
+  // const category = [
+  //   {
+  //     name: "Breakfast",
+  //     id: 123,
+  //   },
+  //   { name: "Lunch", id: 124 },
+  //   {
+  //     name: "Dinner",
+  //     id: 125,
+  //   },
+  //   { name: "Dessert", id: 126 },
+  // ];
 
   const clearField = () => {
     setName("");
