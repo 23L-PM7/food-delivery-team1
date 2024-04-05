@@ -90,10 +90,12 @@ export default function Header() {
             Нэвтрэх
           </button>
           <dialog id="Haruul" className="modal">
+            <div className="modal-box max-w-none w-[549px]">
+              <Login />
+            </div>
             <form method="dialog" className="modal-backdrop">
               <button>close</button>
             </form>
-            <Login />
           </dialog>
         </div>
         <div className="dropdown">

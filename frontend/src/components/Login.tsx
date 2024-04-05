@@ -1,22 +1,50 @@
 "use client";
+
+
 import { useEffect, useState } from "react";
 import { Eye } from "./icons/eyeclosed";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 export function Login() {
   const [check, setCheck] = useState("disabled");
 
+
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [checkbox, setCheckbox] = useState(false);
   const [error, setError] = useState("");
 
   const [visible, setVisible] = useState("password");
 
-  const changeEmail = (event) => {
+<<<<<<< HEAD
+=======
+
+  function UserLogin() {
+    console.log({ email, password });
+    axios
+      .post("http://localhost:9090/users/login", {
+        email: email,
+        password: password,
+      })
+      .then(() => {
+        alert("Success");
+        localStorage.setItem("login", `${email}:${password}`);
+        window.location = "/";
+      })
+      .catch((e) => {
+        if (e.response.status === 401) {
+          alert("Username or password is correct");
+        }
+      });
+  }
+
+>>>>>>> 3384f54fafd92b0f5e1db339727274c5b59d8be7
+  const changeEmail = (event: any) => {
     setEmail(event.target.value);
   };
 
-  const changePassword = (event) => {
+  const changePassword = (event: any) => {
     setPassword(event.target.value);
   };
 
@@ -28,10 +56,13 @@ export function Login() {
     }
   };
 
-  const changeCheckbox = (event) => {
+<<<<<<< HEAD
+  const changeCheckbox = (event: any) => {
     setCheckbox(event.target.checked);
   };
 
+=======
+>>>>>>> 3384f54fafd92b0f5e1db339727274c5b59d8be7
   useEffect(() => {
     checkForm();
   });
@@ -41,11 +72,10 @@ export function Login() {
       email === "" ||
       password === "" ||
       email === null ||
-      password === null ||
-      checkbox === false
+      password === null
     ) {
       return setCheck("disabled"), setError("");
-    } else if (password.length < 8) {
+    } else if (password.length !== 8) {
       return setCheck("Password 8-аас их оронтой байна.");
     } else {
       return setCheck("");
@@ -53,7 +83,7 @@ export function Login() {
   };
 
   return (
-    <div className="container mx-auto w-[448px]  mt-[32px] mb-[76px] bg-white rounded-sm">
+    <div className="container mx-auto w-[549px] p-[32px]  mt-[32px] mb-[76px] bg-white rounded-sm">
       <h1 className="flex justify-center font-bold text-xl">Нэвтрэх</h1>
       <div className="mt-[48px]">
         <h1>Имэйл </h1>
@@ -101,7 +131,8 @@ export function Login() {
             <Eye />
           </button>
         </label>
-        <a className="flex justify-end cursor-pointer" href="http://localhost:3000/forgotpass">Нууц үг сэргээх</a>
+<<<<<<< HEAD
+        <p className="flex justify-end cursor-pointer">Нууц үг сэргээх</p>
       </div>
       <div className="mt-[48px] flex flex-col items-center cursor-pointer">
         <div className="flex gap-x-3 mb-[20px]">
@@ -110,11 +141,17 @@ export function Login() {
             type="checkbox"
             className="checkbox"
           />
-          <a >Нэвтрэхийг зөвшөөрөх</a>
+          <h3 className="">Нэвтрэхийг зөвшөөрөх</h3>
         </div>
+=======
+        <a className="flex justify-end cursor-pointer mt-[8px]" href="http://localhost:3000/forgotpass">Нууц үг сэргээх</a>
+      </div>
+      <div className="mt-[48px] flex flex-col items-center cursor-pointer">
+>>>>>>> 3384f54fafd92b0f5e1db339727274c5b59d8be7
         <button
           className="w-full btn bg-green-500 hover:bg-green-500"
           disabled={check}
+          onClick={UserLogin}
         >
           Нэвтрэх
         </button>
@@ -122,7 +159,7 @@ export function Login() {
         <p className="my-[32px]">Эсвэл</p>
 
         <a
-          href="http://localhost:3000/signup"
+          href="http://localhost:3000/ari"
           className="w-full btn btn-outline btn-success"
         >
           <button>Бүртгүүлэх</button>

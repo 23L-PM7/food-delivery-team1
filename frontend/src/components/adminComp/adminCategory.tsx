@@ -1,19 +1,37 @@
 "use client";
 import { useState } from "react";
-import {
-  GreyAdd,
-  TripleDot,
-  TripleDotBlack,
-  TripleDotWhite,
-  GreenPlus,
-} from "../icons/tripledot";
+import { GreyAdd, GreenPlus } from "../icons/tripledot";
 import { SideCategory } from "./adminCategorySelect";
+import { categoryMutator } from "@/util/categoryFetcher";
+import { categoryFetcher } from "@/util/categoryFetcher";
+import axios from "axios";
 
 export function AdminCategory() {
   const [openCreate, setOpenCreate] = useState(false);
+  // const [category, setCategory] = useState([])
+  const [name, setName] = useState("");
 
   const openCreateModal = () => {
     setOpenCreate(!openCreate);
+    setName("");
+  };
+
+  const createCategory = async () => {
+    console.log(name);
+
+    // const data = await categoryMutator("category", { name });
+    if (name == "" || name == null) {
+      return;
+    } else {
+      await axios
+        .post("http://localhost:9090/category/create", {
+          name,
+        })
+        .then(() => {
+          setName("");
+          setOpenCreate(!openCreate);
+        });
+    }
   };
 
   const category = [
@@ -29,7 +47,9 @@ export function AdminCategory() {
     { name: "Dessert", id: 126 },
   ];
 
-  const clearField = () => {};
+  const clearField = () => {
+    setName("");
+  };
 
   return (
     <div className="">
@@ -97,8 +117,10 @@ export function AdminCategory() {
               </div>
               <input
                 type="text"
+                value={name}
                 placeholder="Category Name"
                 className="input input-bordered w-full bg-gray-200"
+                onChange={(e) => setName(e.target.value)}
               />
             </label>
           </div>
@@ -109,8 +131,11 @@ export function AdminCategory() {
             >
               Clear
             </button>
-            <button className="btn btn-sm h-[40px] btn-neutral text-white">
-              Continue
+            <button
+              onClick={createCategory}
+              className="btn btn-sm h-[40px] btn-neutral text-white"
+            >
+              Create
             </button>
           </div>
         </div>
