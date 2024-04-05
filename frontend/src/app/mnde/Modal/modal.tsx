@@ -1,13 +1,12 @@
 "use client";
 import { useState } from "react";
 
-export function Modal() {
-  let [foodQuantity, setFoodquantity] = useState(1);
+export default function Modal() {
+  const [foodQuantity, setFoodquantity] = useState(1);
 
-  function incementFoodQuantity() {
-    foodQuantity = foodQuantity + 1;
-    setFoodquantity(foodQuantity);
-  }
+  const incementFoodQuantity = () => {
+    setFoodquantity(foodQuantity + 1);
+  };
 
   const minusFoodQuantity = () => {
     if (foodQuantity > 0) {
@@ -38,32 +37,8 @@ export function Modal() {
             122323 ₮
           </div>
         </div>
-        <div className="flex flex-col gap-[2px]">
-          <div className="font-semibold text-lg text-[#000000]">Орц</div>
-          <div className="bg-[#F6F6F6] p-[8px] rounded-[8px] text-[#767676]">
-            Хулуу, төмс, давс
-          </div>
-        </div>
-        <div className="font-semibold text-lg text-[#000000]">Тоо</div>
-        <div className="flex justify-between items-center">
-          <button
-            className="btn bg-[#18BA51] text-[#FFFFFF]"
-            onClick={minusFoodQuantity}
-          >
-            {" "}
-            -{" "}
-          </button>
-          <div>{foodQuantity}</div>
-          <button
-            className="btn bg-[#18BA51] text-[#FFFFFF]"
-            onClick={incementFoodQuantity}
-          >
-            {" "}
-            +{" "}
-          </button>
-        </div>
-        <button className="btn bg-[#18BA51] text-[#FFFFFF]">Сагслах</button>
       </div>
     </div>
   );
 }
+
