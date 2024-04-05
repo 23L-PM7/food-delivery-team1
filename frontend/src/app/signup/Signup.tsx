@@ -1,12 +1,21 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import { Eye } from "../../components/icons/eyeclosed";
+import React from "react";
+import axios from "axios";
+import Link from "next/link";
+import { useRouter } from "next/router";
+
+
+
 
 export default function Signup() {
   // form is fully filled check
   const [check, setCheck] = useState("disabled");
 
   // form data
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
@@ -21,20 +30,49 @@ export default function Signup() {
   const [visible, setVisible] = useState("password");
   const [visible2, setVisible2] = useState("password");
 
+  function createUsers() {
+
+    console.log({
+      name,
+      email,
+      address,
+      password,
+      secondpass,
+    });
+    axios
+      .post("http://localhost:9090/users/signup", {
+        name,
+        email,
+        address,
+        password,
+        secondpass,
+      })
+      .then(() => {
+        setName("");
+        setEmail("");
+        setAddress("");
+        setPassword("");
+        setSecondpass("");
+      })
+      .catch((error) => {
+        console.error("Error creating user", error);
+      });
+  }
+
   // onchange
-  const changeName = (event) => {
+  const changeName = (event: any) => {
     setName(event.target.value);
   };
-  const changeEmail = (event) => {
+  const changeEmail = (event: any) => {
     setEmail(event.target.value);
   };
-  const changeAddress = (event) => {
+  const changeAddress = (event: any) => {
     setAddress(event.target.value);
   };
-  const changePassword = (event) => {
+  const changePassword = (event: any) => {
     setPassword(event.target.value);
   };
-  const changeSecondpass = (event) => {
+  const changeSecondpass = (event: any) => {
     setSecondpass(event.target.value);
   };
 
@@ -55,7 +93,7 @@ export default function Signup() {
   };
 
   // checkbox check checker
-  const changeCheckbox = (event) => {
+  const changeCheckbox = (event: any) => {
     setCheckbox(event.target.checked);
   };
 
@@ -182,6 +220,7 @@ export default function Signup() {
         <button
           className="btn bg-green-500 text-white max-w-none hover:bg-green-500"
           disabled={check}
+          onClick={createUsers}
         >
           Бүртгүүлэх
         </button>
