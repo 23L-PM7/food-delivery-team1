@@ -6,7 +6,6 @@ import { SellChip } from "./Sellchip";
 import { foodlist } from "./datalist";
 import { Modal } from "./Modal/modal";
 
-
 function ShowFood() {
   document.getElementById("my_modal_3").showModal();
 }
@@ -23,7 +22,7 @@ export default function Menu() {
             <div className="absolute right-6 top-4">
               <SellChip />
             </div>
-            <div className="w-[282px] h-[196px] cursor-pointer ease-in">
+            <div className="w-[282px] h-[196px] ease-in">
               <img
                 className="object-fill rounded-lg"
                 onClick={() => ShowFood()}
