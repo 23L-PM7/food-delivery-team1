@@ -135,7 +135,7 @@ export function Login() {
         <p className="my-[32px]">Эсвэл</p>
 
         <a
-          href="http://localhost:3000/ari"
+          href="http://localhost:3000/signup"
           className="w-full btn btn-outline btn-success"
         >
 
