@@ -95,6 +95,9 @@ export default function Signup() {
   // checkbox check checker
   const changeCheckbox = (event: any) => {
     setCheckbox(event.target.checked);
+    alert(
+      "Үйлчилгээний нөхцөл болон нууцлалын бодлогыг уншиж танилцан зөвшөөрнө үү!",
+    );
   };
 
   // useEffect baingiin field buglusun uguig shalgana, bas agree checkbox shalgana
