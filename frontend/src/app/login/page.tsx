@@ -6,7 +6,10 @@ export default function Home() {
     return (
         <div>
             <Header />
-            <Login />
+            <div className="container mx-auto w-[549px]">
+                <Login />
+            </div>
+
             <Footer />
         </div>
     );
