@@ -10,7 +10,6 @@ export default function Home() {
       <Header />
       <Category />
       <Menu />
-
       <Footer />
     </div>
   );

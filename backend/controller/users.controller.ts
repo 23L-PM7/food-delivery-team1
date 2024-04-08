@@ -61,14 +61,11 @@ export async function getLogin(req: any, res: any) {
   }
 }
 
-
 export async function createLogin(req: any, res: any) {
   const { email, password } = req.body;
   console.log(req.body);
 
   const user = await UsersModel.findOne({ email: email });
-
-
 
   if (!user) {
     res
@@ -89,7 +86,6 @@ export async function createLogin(req: any, res: any) {
 
   res.sendStatus(401);
 }
-
 
 export async function updateLogin(req: any, res: any) {
   const { email, password } = req.body;

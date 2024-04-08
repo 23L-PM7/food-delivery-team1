@@ -14,12 +14,13 @@ type ChildProps = {
   zindex: number;
   label: string;
   id: string;
+  fetchCat: () => void;
 };
 
 // id: number, label: string
 
 export function SideCategory(props: ChildProps) {
-  const { zindex, label, id } = props;
+  const { zindex, label, id, fetchCat } = props;
   const [selected, setSelected] = useState(false);
   const [openEdit, setEdit] = useState(false);
 
@@ -36,6 +37,7 @@ export function SideCategory(props: ChildProps) {
   const deleteCategory = async (id: string) => {
     console.log(id);
     await axios.delete(`http://localhost:9090/category/delete/${id}`);
+    fetchCat();
   };
 
   const clearField = () => {};
