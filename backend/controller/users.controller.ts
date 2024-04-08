@@ -1,5 +1,6 @@
 import { UsersModel } from "../models/user.model";
 import jwt from "jsonwebtoken";
+import { checkAuth } from "../middlewares/check-auth";
 
 export async function getUsers(require: any, res: any) {
   const users = await UsersModel.find();
@@ -52,7 +53,7 @@ export async function getLogin(req: any, res: any) {
   }
 
   try {
-    const decoded = jwt.verify(accessToken, "secret-team2");
+    const decoded = jwt.verify(accessToken, "dmngo");
     console.log({ decoded });
     res.json(users);
   } catch (error) {

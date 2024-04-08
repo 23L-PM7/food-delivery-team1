@@ -5,12 +5,13 @@ import { Eye } from "../../components/icons/eyeclosed";
 import React from "react";
 import axios from "axios";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 
 
 
 export default function Signup() {
+  const router = useRouter();
   // form is fully filled check
   const [check, setCheck] = useState("disabled");
 
@@ -30,34 +31,28 @@ export default function Signup() {
   const [visible, setVisible] = useState("password");
   const [visible2, setVisible2] = useState("password");
 
-  function createUsers() {
 
-    console.log({
-      name,
-      email,
-      address,
-      password,
-      secondpass,
-    });
-    axios
-      .post("http://localhost:9090/users/signup", {
+  const createUsers = async () => {
+    if (!checkForm) {
+      return;
+    }
+    try {
+      await axios.post("http://localhost:9090/users/signup", {
         name,
         email,
         address,
         password,
         secondpass,
-      })
-      .then(() => {
-        setName("");
-        setEmail("");
-        setAddress("");
-        setPassword("");
-        setSecondpass("");
-      })
-      .catch((error) => {
-        console.error("Error creating user", error);
       });
-  }
+      router.push("/login");
+    } catch (error) {
+      console.error("Error:", error);
+      alert("fdgfdg");
+    }
+  };
+
+
+
 
   // onchange
   const changeName = (event: any) => {
@@ -95,6 +90,9 @@ export default function Signup() {
   // checkbox check checker
   const changeCheckbox = (event: any) => {
     setCheckbox(event.target.checked);
+    alert(
+      "Үйлчилгээний нөхцөл болон нууцлалын бодлогыг уншиж танилцан зөвшөөрнө үү!!",
+    );
   };
 
   // useEffect baingiin field buglusun uguig shalgana, bas agree checkbox shalgana
