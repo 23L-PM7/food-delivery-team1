@@ -82,6 +82,7 @@ export function AdminCategory() {
                 zindex={100 - index}
                 label={item.name}
                 id={item._id}
+                fetchCat={() => fetchCategory()}
               />
             ))}
             <button onClick={openCreateModal}>
