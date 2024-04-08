@@ -15,8 +15,7 @@ const CategoryList = [
     id: 4,
     title: "Dessert",
   },
-]
-
+];
 
 export function Category() {
   return (

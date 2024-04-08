@@ -26,7 +26,7 @@ export function Containers() {
     <div className=" container mx-auto m-5 border rounded-2xl">
       <div className="flex justify-between">
         {" "}
-        <button className="p-5 ">
+        <button className="p-5  text-gray-900 font-fold">
           {" "}
           <label
             htmlFor="my_modal_6"
