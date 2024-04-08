@@ -12,6 +12,7 @@ export function AdminCategory() {
   // const [category, setCategory] = useState([])
   const [name, setName] = useState("");
   const [category, setCategory] = useState([]);
+  const [isOpenCategoryModal, setIsOpenCategoryModal] = useState(false);
 
   const openCreateModal = () => {
     setOpenCreate(!openCreate);
@@ -78,9 +79,11 @@ export function AdminCategory() {
           <div className="w-[258px] flex flex-col gap-y-5">
             {category.map((item: any, index: any) => (
               <SideCategory
+                key={100 - index}
                 zindex={100 - index}
                 label={item.name}
                 id={item._id}
+                fetchCat={() => fetchCategory()}
               />
             ))}
             <button onClick={openCreateModal}>
@@ -106,11 +109,8 @@ export function AdminCategory() {
             <dialog id="my_modal_3" className="modal">
               <div className="modal-box">
                 <form method="dialog">
-                  <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                    ✕
-                  </button>
+                  <Containers />
                 </form>
-                <Containers />
               </div>
             </dialog>
           </div>
@@ -131,22 +131,6 @@ export function AdminCategory() {
       >
         <div className="modal-box p-0">
           <div className="flex w-full justify-between items-center p-4 border-b-[1px]">
-            <button
-              className="btn"
-              onClick={() => document.getElementById("my_modal_3").showModal()}
-            >
-              open modal
-            </button>
-            <dialog id="my_modal_3" className="modal">
-              <div className="modal-box">
-                <form method="dialog">
-                  <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                    ✕
-                  </button>
-                </form>
-                <Containers />
-              </div>
-            </dialog>
             <h1 className="text-2xl font-semibold">Create New Category</h1>
 
             <h1 className="text-xl font-bold text-white">x</h1>

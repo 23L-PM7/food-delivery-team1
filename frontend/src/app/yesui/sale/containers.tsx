@@ -23,13 +23,23 @@ export function Containers() {
   });
 
   return (
-    <div className="w-[587px] m-5 border rounded-2xl">
-      <div className="flex h-[64px]  justify-center border-b border-gray-200">
-        <div className="w-[10%] flex items-center justify-center text-2xl ">
-          <h1 className="font-sm">x</h1>
-        </div>
-        <div className="w-[80%] flex justify-center items-center">
-          <h1 className="font-bold text-2xl">Create food</h1>
+    <div className=" container mx-auto m-5 border rounded-2xl">
+      <div className="flex justify-between">
+        {" "}
+        <button className="p-5  text-gray-900 font-fold">
+          {" "}
+          <label
+            htmlFor="my_modal_6"
+            onClick={() => document.getElementById("my_modal_3").close()}
+          >
+            X
+          </label>
+        </button>
+        <div className="flex h-[64px]  justify-center border-b border-gray-200">
+          <div className="w-[10%] flex items-center justify-center text-2xl "></div>
+          <div className="w-[80%] flex justify-center items-center">
+            <h1 className="font-bold text-2xl w-60">Create food</h1>
+          </div>
         </div>
         {/* just for centering the main title CREATE FOOD */}
         <div className="w-[10%]">

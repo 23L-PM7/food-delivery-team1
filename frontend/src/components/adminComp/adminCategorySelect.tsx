@@ -14,31 +14,50 @@ type ChildProps = {
   zindex: number;
   label: string;
   id: string;
+  fetchCat: () => void;
 };
 
 // id: number, label: string
 
 export function SideCategory(props: ChildProps) {
-  const { zindex, label, id } = props;
+  const { zindex, label, id, fetchCat } = props;
   const [selected, setSelected] = useState(false);
   const [openEdit, setEdit] = useState(false);
+  const [updatedName, setUpdatedName] = useState("");
 
   const openEditModal = () => {
     setEdit(!openEdit);
+    setUpdatedName(label);
   };
 
   const selectCategory = () => {
     setSelected(!selected);
   };
 
-  useEffect(() => {}, []);
-
   const deleteCategory = async (id: string) => {
-    console.log(id);
     await axios.delete(`http://localhost:9090/category/delete/${id}`);
+    fetchCat();
   };
 
-  const clearField = () => {};
+  const updateCategory = async (id: string) => {
+    await axios
+      .put(`http://localhost:9090/category/update/${id}`, {
+        updatedName,
+      })
+      .then(() => {
+        setUpdatedName("");
+      });
+    fetchCat();
+    setEdit(false);
+  };
+
+  const changeUpdatedName = (event: any) => {
+    setUpdatedName(event.target.value);
+  };
+
+  const clearSpace = () => {
+    setUpdatedName("");
+  };
 
   return (
     <>
@@ -110,17 +129,22 @@ export function SideCategory(props: ChildProps) {
                 type="text"
                 placeholder="Category Name"
                 className="input input-bordered w-full bg-gray-200"
+                value={updatedName}
+                onChange={changeUpdatedName}
               />
             </label>
           </div>
           <div className="flex justify-end p-4 gap-3">
             <button
-              onClick={clearField}
+              onClick={clearSpace}
               className="btn btn-sm h-[40px] btn-outline"
             >
               Clear
             </button>
-            <button className="btn btn-sm h-[40px] btn-neutral text-white">
+            <button
+              onClick={() => updateCategory(id)}
+              className="btn btn-sm h-[40px] btn-neutral text-white"
+            >
               Edit
             </button>
           </div>
