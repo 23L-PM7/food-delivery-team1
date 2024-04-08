@@ -32,7 +32,6 @@ export function AdminCategory() {
   const createCategory = async () => {
     console.log(name);
 
-    // const data = await categoryMutator("category", { name });
     if (name == "" || name == null) {
       return;
     } else {
@@ -47,19 +46,6 @@ export function AdminCategory() {
         });
     }
   };
-
-  // const category = [
-  //   {
-  //     name: "Breakfast",
-  //     id: 123,
-  //   },
-  //   { name: "Lunch", id: 124 },
-  //   {
-  //     name: "Dinner",
-  //     id: 125,
-  //   },
-  //   { name: "Dessert", id: 126 },
-  // ];
 
   const clearField = () => {
     setName("");

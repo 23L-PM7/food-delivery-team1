@@ -17,8 +17,6 @@ type ChildProps = {
   fetchCat: () => void;
 };
 
-// id: number, label: string
-
 export function SideCategory(props: ChildProps) {
   const { zindex, label, id, fetchCat } = props;
   const [selected, setSelected] = useState(false);
