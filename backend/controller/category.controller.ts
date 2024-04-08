@@ -19,10 +19,10 @@ export async function createCategory(req: any, res: any) {
 
 export async function updateCategory(req: any, res: any) {
   const { id } = req.params;
-  const { name } = req.body;
+  const { updatedName } = req.body;
 
   await CategoryModel.findByIdAndUpdate(id, {
-    name: name,
+    name: updatedName,
   });
   res.send("Successfully updated.");
 }
