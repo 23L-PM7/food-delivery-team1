@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 
 export default function Modal() {
   let [foodQuantity, setFoodquantity] = useState(1);
@@ -22,7 +22,6 @@ export default function Modal() {
           src="https://images.unsplash.com/photo-1542691457-cbe4df041eb2?q=80&w=3840&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ></img>
       </div>
-
 
       <div className="flex flex-col gap-[32px] justify-center">
         <form method="dialog">
@@ -60,10 +59,38 @@ export default function Modal() {
             +{" "}
           </button>
         </div>
-        <button className="btn bg-[#18BA51] text-[#FFFFFF]">Сагслах</button>
+        <Drawer>hi</Drawer>
       </div>
     </div>
   );
 }
 
-
+type DrawerProps = {
+  children: ReactNode;
+};
+const Drawer = ({ children }: DrawerProps) => {
+  return (
+    <div className="drawer drawer-end">
+      <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content">
+        <label
+          htmlFor="my-drawer"
+          className="btn bg-[#18BA51] text-[#FFFFFF] drawer-button"
+        >
+          Сагслах
+        </label>
+      </div>
+      <div className="drawer-side items-end justify-end ">
+        <label
+          htmlFor="my-drawer"
+          aria-label="close sidebar"
+          className="drawer-overlay"
+        ></label>
+        <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+          {/* Sidebar content here */}
+          {children}
+        </ul>
+      </div>
+    </div>
+  );
+};

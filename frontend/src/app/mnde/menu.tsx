@@ -6,11 +6,6 @@ import { SellChip } from "./Sellchip";
 import { foodlist } from "./datalist";
 import Modal from "./Modal/modal";
 
-
-function ShowFood() {
-  document.getElementById("my_modal_3").showModal();
-}
-
 export default function Menu() {
   return (
     <div
@@ -18,35 +13,55 @@ export default function Menu() {
       id="my_modal_2"
     >
       {foodlist.map((food) => (
-        <div>
-          <div className="relative overflow-hidden w-fit">
-            <div className="absolute right-6 top-4">
-              <SellChip />
-            </div>
-            <div className="w-[282px] h-[196px] ease-in cursor-pointer">
-              <img
-                className="object-fill rounded-lg"
-                onClick={() => ShowFood()}
-                src={food.img}
-              ></img>
-            </div>
-          </div>
-          <div className="flex flex-col mt-[14px]">
-            <h1 className="font-semibold text-lg">{food.tittle}</h1>
-            <div className="flex gap-2">
-              <p className="font-semibold text-lg text-green-600">
-                {food.price}₮
-              </p>
-              <p className="font-semibold text-lg line-through ">
-                {food.saleprice}₮
-              </p>
-            </div>
-          </div>
-        </div>
+        <FoodCard key={food.id} {...food} />
       ))}
-      <dialog id="my_modal_3" className="modal">
-        <Modal />
-      </dialog>
     </div>
   );
 }
+
+type FoodCardProps = {
+  id: number;
+
+  img: string;
+  title: string;
+  price: number;
+  saleprice?: number;
+};
+
+const FoodCard = (props: FoodCardProps) => {
+  const { id, img, title, price, saleprice } = props;
+
+  const modalId = `food-modal-${id}`;
+
+  const showModal = () => {
+    document.getElementById(modalId).showModal();
+  };
+  const hideModal = () => {
+    document.getElementById(modalId).close();
+  };
+
+  return (
+    <>
+      <div onClick={showModal}>
+        <div className="relative overflow-hidden w-fit">
+          <div className="absolute right-6 top-4">
+            <SellChip />
+          </div>
+          <div className="w-[282px] h-[196px] ease-in cursor-pointer">
+            <img className="object-fill rounded-lg" src={img}></img>
+          </div>
+        </div>
+        <div className="flex flex-col mt-[14px]">
+          <h1 className="font-semibold text-lg">{title}</h1>
+          <div className="flex gap-2">
+            <p className="font-semibold text-lg text-green-600">{price}₮</p>
+            <p className="font-semibold text-lg line-through ">{saleprice}₮</p>
+          </div>
+        </div>
+        <dialog id={modalId} className="modal">
+          <Modal />
+        </dialog>
+      </div>
+    </>
+  );
+};

@@ -38,15 +38,20 @@ export function SideCategory(props: ChildProps) {
   };
 
   const updateCategory = async (id: string) => {
-    await axios
-      .put(`http://localhost:9090/category/update/${id}`, {
-        updatedName,
-      })
-      .then(() => {
-        setUpdatedName("");
-      });
-    fetchCat();
-    setEdit(false);
+    if (updatedName == "" || updatedName == null) {
+      alert("Empty form");
+      return;
+    } else {
+      await axios
+        .put(`http://localhost:9090/category/update/${id}`, {
+          updatedName,
+        })
+        .then(() => {
+          setUpdatedName("");
+        });
+      fetchCat();
+      setEdit(false);
+    }
   };
 
   const changeUpdatedName = (event: any) => {
