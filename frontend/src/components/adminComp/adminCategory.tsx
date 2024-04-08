@@ -79,6 +79,7 @@ export function AdminCategory() {
           <div className="w-[258px] flex flex-col gap-y-5">
             {category.map((item: any, index: any) => (
               <SideCategory
+                key={100 - index}
                 zindex={100 - index}
                 label={item.name}
                 id={item._id}
