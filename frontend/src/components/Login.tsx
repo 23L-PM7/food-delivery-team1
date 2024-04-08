@@ -20,11 +20,22 @@ export function Login() {
 
 
   async function UserLogin() {
-    const data = await mutator("login", { email, password });
+    const data = await mutator("users/login", { email, password });
+    localStorage.setItem("accessToken", data.accessToken);
+    window.location = "/";
     const { accessToken } = data;
 
-    localStorage.setItem("accessToken", accessToken);
-    window.location = "/";
+    if (!accessToken) {
+      return res.sendStatus(403);
+    }
+
+    try {
+      var decoded = jwt.verify(token, 'wrong-secret');
+    } catch(err) {
+      // err
+    }
+
+    
 
     // console.log({ email, password });
     // axios
