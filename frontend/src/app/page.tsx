@@ -15,9 +15,7 @@ export default function Home() {
       <Header />
       <Desktop />
       <Mainbutton />
-
       <Nogoonplus />
-
       <Footer />
     </div>
   );

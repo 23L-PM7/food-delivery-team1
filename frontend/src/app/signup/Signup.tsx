@@ -47,7 +47,7 @@ export default function Signup() {
       router.push("/login");
     } catch (error) {
       console.error("Error:", error);
-      alert("fdgfdg");
+      alert("");
     }
   };
 
