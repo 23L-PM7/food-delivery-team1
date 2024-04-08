@@ -47,7 +47,7 @@ export default function Signup() {
       router.push("/login");
     } catch (error) {
       console.error("Error:", error);
-      alert("");
+      alert("There was an error creating a new user.");
     }
   };
 
