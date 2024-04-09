@@ -6,6 +6,7 @@ import { Eye } from "./icons/eyeclosed";
 import { useRouter } from "next/navigation";
 import { LoginFetcher, LoginMutator } from "@/app/util";
 
+
 export function Login() {
   const [check, setCheck] = useState("disabled");
 
@@ -29,8 +30,9 @@ export function Login() {
       localStorage.setItem("accesstoken", data.accesstoken);
       router.push("/");
     } catch (error) {
-      console.error("Error", error);
-      alert("Username or password is correct.");
+      console.error("Error", error.response.data.alert);
+      alert(error.response.data.alert);
+      // alert(error.response.data.message);
     }
   };
 
