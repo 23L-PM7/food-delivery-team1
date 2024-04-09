@@ -76,7 +76,7 @@ export async function createLogin(req: any, res: any) {
 
   if (user.password !== password) {
     res.status(401)
-      .json({ message: "Username or password is correct." });
+      .json({ message: "Username or password is incorrect." });
     return;
   }
 
@@ -84,7 +84,6 @@ export async function createLogin(req: any, res: any) {
     const accesstoken = jwt.sign({ email: email }, "dmngo");
     res.json({ accesstoken });
   }
-
   res.sendStatus(401);
 }
 

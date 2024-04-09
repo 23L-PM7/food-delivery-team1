@@ -31,7 +31,7 @@ export function Nogoonplus() {
           </svg>
           <h1 className="font-bold">Хямдралтай</h1>
         </div>
-        <button onClick={handleExtend} className="btn btn-link text-green-700">
+        <button className="btn btn-link text-green-700">
           {hide ? "Бүгдийг харах >" : "Нуух >"}
         </button>
       </div>

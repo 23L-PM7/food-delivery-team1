@@ -21,7 +21,6 @@ export default function Menu() {
 
 type FoodCardProps = {
   id: number;
-
   img: string;
   title: string;
   price: number;
