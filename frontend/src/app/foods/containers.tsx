@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import Select, { StylesConfig } from "react-select";
 import axios from "axios";
+import { collectGenerateParams } from "next/dist/build/utils";
 
 type ChildProps = {
   openTheModal: () => void;
@@ -10,24 +11,32 @@ type ChildProps = {
 
 export function Containers(props: ChildProps) {
   const { openTheModal } = props;
-  const [category, setCategory] = useState([]);
+  const [name, setFoodName] = useState("");
+  const [ingeredient, setIngeredient] = useState("");
 
-  const fetchCategory = async () => {
-    await axios.get("http://localhost:9090/category").then((response) => {
-      setCategory(response.data);
-    });
+  // const fetchCategory = async () => {
+  //   await axios.get("http://localhost:9090/category").then((response) => {});
+  // };
+
+  // useEffect(() => {
+  //   fetchCategory();
+  // }, []);
+
+  const createFoods = async () => {
+    console.log(name);
+    if (name == "" || name == null) {
+    } else {
+      await axios
+        .post("http://localhost:9090/foods/create", {
+          name,
+          ingeredient,
+        })
+        .then(() => {
+          setFoodName("");
+          setIngeredient("");
+        });
+    }
   };
-
-  useEffect(() => {
-    fetchCategory();
-  }, []);
-
-  const options = category.map((category: any) => {
-    return {
-      key: category._id,
-      label: category.name,
-    };
-  });
 
   return (
     <div className="w-[587px] bg-white mx-auto m-5 border rounded-2xl">
@@ -53,6 +62,8 @@ export function Containers(props: ChildProps) {
           type="text"
           placeholder="Хоолны нэр"
           className="input h-[45px] border-none input-bordered input-lg w-full bg-gray-200"
+          value={name}
+          onChange={(e) => setFoodName(e.target.value)}
         />
         <h1>Хоолны ангилал</h1>
         <Select
@@ -64,7 +75,6 @@ export function Containers(props: ChildProps) {
               height: "45px",
             }),
           }}
-          options={options}
           // defaultValue={selectedOption}
           // onChange={(value) => setSelectedOption(value)}
         />
@@ -73,6 +83,8 @@ export function Containers(props: ChildProps) {
           type="text"
           placeholder="Хоолны орц"
           className="input h-[45px] border-none input-bordered input-lg w-full bg-gray-200"
+          value={ingeredient}
+          onChange={(e) => setIngeredient(e.target.value)}
         />
         <h1>Хоолны үнэ</h1>
         <input
@@ -104,7 +116,10 @@ export function Containers(props: ChildProps) {
         <button className="btn w-[109px]  h-[40px] bg-white text-zinc-800">
           Clear
         </button>
-        <button className="btn w-[109px] h-[40px] bg-zinc-700 text-white">
+        <button
+          onClick={createFoods}
+          className="btn w-[109px] h-[40px] bg-zinc-700 text-white"
+        >
           Continue
         </button>
       </div>
