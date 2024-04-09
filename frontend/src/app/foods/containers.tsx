@@ -1,39 +1,39 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Select, { StylesConfig } from "react-select";
+import axios from "axios";
 
-export function Containers() {
-  const category = [
-    { name: "breakfast" },
-    { name: "lunch" },
-    { name: "dinner" },
-    { name: "dessert" },
-  ];
+type ChildProps = {
+  openTheModal: () => void;
+};
 
-  //
+export function Containers(props: ChildProps) {
+  const { openTheModal } = props;
+  const [category, setCategory] = useState([]);
 
-  //
+  const fetchCategory = async () => {
+    await axios.get("http://localhost:9090/category").then((response) => {
+      setCategory(response.data);
+    });
+  };
 
-  const options = category.map((category) => {
+  useEffect(() => {
+    fetchCategory();
+  }, []);
+
+  const options = category.map((category: any) => {
     return {
-      // value: category.id,
+      key: category._id,
       label: category.name,
     };
   });
 
   return (
-    <div className=" container mx-auto m-5 border rounded-2xl">
+    <div className="w-[587px] bg-white mx-auto m-5 border rounded-2xl">
       <div className="flex justify-between">
-        {" "}
-        <button className="p-5  text-gray-900 font-fold">
-          {" "}
-          <label
-            htmlFor="my_modal_6"
-            onClick={() => document.getElementById("my_modal_3").close()}
-          >
-            X
-          </label>
+        <button onClick={openTheModal} className="p-5 text-gray-900 font-bold">
+          X
         </button>
         <div className="flex h-[64px]  justify-center border-b border-gray-200">
           <div className="w-[10%] flex items-center justify-center text-2xl "></div>
@@ -52,7 +52,7 @@ export function Containers() {
         <input
           type="text"
           placeholder="Хоолны нэр"
-          className="input h-[56px] border-none input-bordered input-lg w-full bg-gray-200"
+          className="input h-[45px] border-none input-bordered input-lg w-full bg-gray-200"
         />
         <h1>Хоолны ангилал</h1>
         <Select
@@ -61,7 +61,7 @@ export function Containers() {
               ...baseStyles,
               borderColor: state.isFocused ? "grey" : "black",
               backgroundColor: "rgb(229 231 235)",
-              height: "56px",
+              height: "45px",
             }),
           }}
           options={options}
@@ -72,13 +72,13 @@ export function Containers() {
         <input
           type="text"
           placeholder="Хоолны орц"
-          className="input h-[56px] border-none input-bordered input-lg w-full bg-gray-200"
+          className="input h-[45px] border-none input-bordered input-lg w-full bg-gray-200"
         />
         <h1>Хоолны үнэ</h1>
         <input
           type="text"
           placeholder="Хоолны үнэ"
-          className="input h-[56px] border-none input-bordered input-lg w-full bg-gray-200"
+          className="input h-[45px] border-none input-bordered input-lg w-full bg-gray-200"
         />
         <div className="flex gap-2 ">
           <input type="checkbox" className="toggle" />
@@ -88,7 +88,7 @@ export function Containers() {
           <input
             type="text"
             placeholder="Хямдралтай эсэх"
-            className="input h-[56px] border-none input-bordered input-lg w-full bg-gray-200"
+            className="input h-[45px] border-none input-bordered input-lg w-full bg-gray-200"
           />
 
           <h1 className="py-3">Хоолны зураг</h1>

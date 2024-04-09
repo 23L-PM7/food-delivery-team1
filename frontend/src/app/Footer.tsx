@@ -48,6 +48,7 @@ export function Footer() {
         <div className="mx-auto grid grid-rows-3 grid-cols-2 mt-[15px] justify-center place-content-center text-center sm:flex sm:mt-[20px] md:mt-[30px] 2xl:mt-[40px] sm:justify-around text-white gap-[10px] sm:gap-[15px] md:gap-[30px] lg:gap-[50px] xl:gap-[75px] 2xl:gap-[95px]">
           {footerlists.map((footerlist) => (
             <a
+              key={footerlist.id}
               href={footerlist.href}
               className="text-[10px] md:text-[12px] 2xl:text-[16px] hover:underline"
             >

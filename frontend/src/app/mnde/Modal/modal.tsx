@@ -75,7 +75,7 @@ const Drawer = ({ children }: DrawerProps) => {
       <div className="drawer-content">
         <label
           htmlFor="my-drawer"
-          className="btn bg-[#18BA51] text-[#FFFFFF] drawer-button"
+          className="btn bg-[#18BA51] text-[#FFFFFF] drawer-button w-full"
         >
           Сагслах
         </label>
@@ -86,7 +86,7 @@ const Drawer = ({ children }: DrawerProps) => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+        <ul className="menu w-[586px] h-full bg-white p-[32px]  min-h-full text-base-content">
           {/* Sidebar content here */}
           {children}
         </ul>

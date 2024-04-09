@@ -13,6 +13,7 @@ export function AdminCategory() {
   const [name, setName] = useState("");
   const [category, setCategory] = useState([]);
   const [isOpenCategoryModal, setIsOpenCategoryModal] = useState(false);
+  const [modalState, setModalState] = useState(false);
 
   const openCreateModal = () => {
     setOpenCreate(!openCreate);
@@ -23,6 +24,10 @@ export function AdminCategory() {
     await axios.get("http://localhost:9090/category").then((response) => {
       setCategory(response.data);
     });
+  };
+
+  const openTheModal = () => {
+    setModalState(!modalState);
   };
 
   useEffect(() => {
@@ -88,17 +93,10 @@ export function AdminCategory() {
 
             <button
               className="btn btn-sm bg-green-500 text-white hover:bg-green-400 h-[35px]"
-              onClick={() => document.getElementById("my_modal_3").showModal()}
+              onClick={openTheModal}
             >
               Add new food
             </button>
-            <dialog id="my_modal_3" className="modal">
-              <div className="modal-box">
-                <form method="dialog">
-                  <Containers />
-                </form>
-              </div>
-            </dialog>
           </div>
           {/* food content */}
           <div className="w-full h-full flex flex-col items-center pt-[50px] gap-5">
@@ -153,6 +151,12 @@ export function AdminCategory() {
         <form method="dialog" className="modal-backdrop">
           <button onClick={openCreateModal}>close</button>
         </form>
+      </dialog>
+      <dialog
+        id="my_modal_3"
+        className={modalState ? `modal modal-open` : `modal`}
+      >
+        <Containers openTheModal={() => openTheModal()} />
       </dialog>
     </div>
   );
