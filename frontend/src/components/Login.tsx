@@ -3,15 +3,13 @@
 
 import { useEffect, useState } from "react";
 import { Eye } from "./icons/eyeclosed";
-import axios from "axios";
-import { useRouter } from "next/router";
-import { Fetcher, mutator } from "@/app/util";
+import { useRouter } from "next/navigation";
+import { LoginFetcher, LoginMutator } from "@/app/util";
 
 export function Login() {
   const [check, setCheck] = useState("disabled");
 
-
-
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -19,41 +17,24 @@ export function Login() {
   const [visible, setVisible] = useState("password");
 
 
-  async function UserLogin() {
-    const data = await mutator("login", { email, password });
-    localStorage.setItem("accessToken", data.accessToken);
-    window.location = "/";
+  // async function UserLogin() {
+  //   const data = await LoginMutator("login", { email, password });
+  //   localStorage.setItem("accessToken", data.accessToken);
+  //   window.location = "/";
+  // }
+
+  const UserLogin = async () => {
+    try {
+      const data = await LoginMutator("login", { email, password });
+      localStorage.setItem("accesstoken", data.accesstoken);
+      router.push("/");
+    } catch (error) {
+      console.error("Error", error);
+      alert("Username or password is correct.");
+    }
+  };
 
 
-    // if (!accessToken) {
-    //   return res.sendStatus(403);
-    // }
-
-    // try {
-    //   var decoded = jwt.verify(accessToken, 'wrong-secret');
-    // } catch (err) {
-    //   // err
-    // }
-
-
-
-    // console.log({ email, password });
-    // axios
-    //   .post("http://localhost:9090/users/login", {
-    //     email: email,
-    //     password: password,
-    //   })
-    //   .then(() => {
-    //     alert("Success");
-    //     localStorage.setItem("login", `${email}:${password}`);
-    //     window.location = "/";
-    //   })
-    //   .catch((e) => {
-    //     if (e.response.status === 401) {
-    //       alert("Username or password is correct");
-    //     }
-    //   });
-  }
 
   const changeEmail = (event: any) => {
     setEmail(event.target.value);

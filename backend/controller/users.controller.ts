@@ -70,12 +70,13 @@ export async function createLogin(req: any, res: any) {
   if (!user) {
     res
       .status(401)
-      .json({ message: "Та бүртгэлгүй байгаа учир бүртгүүлнэ үү" });
+      .json({ alert: "Та бүртгэлгүй байгаа учир бүртгүүлнэ үү" });
     return;
   }
 
   if (user.password !== password) {
-    res.status(401).json({ message: "Username or password is correct." });
+    res.status(401)
+      .json({ message: "Username or password is correct." });
     return;
   }
 

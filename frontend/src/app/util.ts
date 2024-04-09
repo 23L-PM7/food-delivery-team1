@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export async function Fetcher(path: string) {
+export async function LoginFetcher(path: string) {
     const response: any = await axios.get(`http://localhost:9090/users/${path}`, {
         headers: {
             accessToken: localStorage.getItem("accsessToken") || "",
@@ -10,7 +10,7 @@ export async function Fetcher(path: string) {
 }
 
 
-export async function mutator(path: string, postData: {}) {
+export async function LoginMutator(path: string, postData: {}) {
     const response: any = await axios.post(`http://localhost:9090/users/${path}`, postData, {
         headers: {
             "access-token": localStorage.getItem("accessToken") || "",
