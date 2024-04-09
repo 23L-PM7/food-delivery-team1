@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Select, { StylesConfig } from "react-select";
+import axios from "axios";
 
 type ChildProps = {
   openTheModal: () => void;
@@ -9,21 +10,20 @@ type ChildProps = {
 
 export function Containers(props: ChildProps) {
   const { openTheModal } = props;
+  const [category, setCategory] = useState([]);
 
-  const category = [
-    { name: "breakfast" },
-    { name: "lunch" },
-    { name: "dinner" },
-    { name: "dessert" },
-  ];
+  const fetchCategory = async () => {
+    await axios.get("http://localhost:9090/category").then((response) => {
+      setCategory(response.data);
+    });
+  };
 
-  //
+  useEffect(() => {
+    fetchCategory();
+  }, [openTheModal()]);
 
-  //
-
-  const options = category.map((category) => {
+  const options = category.map((category: any) => {
     return {
-      // value: category.id,
       label: category.name,
     };
   });
