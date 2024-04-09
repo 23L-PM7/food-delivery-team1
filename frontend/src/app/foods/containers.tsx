@@ -20,10 +20,11 @@ export function Containers(props: ChildProps) {
 
   useEffect(() => {
     fetchCategory();
-  }, [openTheModal()]);
+  }, []);
 
   const options = category.map((category: any) => {
     return {
+      key: category._id,
       label: category.name,
     };
   });
@@ -51,7 +52,7 @@ export function Containers(props: ChildProps) {
         <input
           type="text"
           placeholder="Хоолны нэр"
-          className="input h-[56px] border-none input-bordered input-lg w-full bg-gray-200"
+          className="input h-[45px] border-none input-bordered input-lg w-full bg-gray-200"
         />
         <h1>Хоолны ангилал</h1>
         <Select
@@ -60,7 +61,7 @@ export function Containers(props: ChildProps) {
               ...baseStyles,
               borderColor: state.isFocused ? "grey" : "black",
               backgroundColor: "rgb(229 231 235)",
-              height: "56px",
+              height: "45px",
             }),
           }}
           options={options}
@@ -71,13 +72,13 @@ export function Containers(props: ChildProps) {
         <input
           type="text"
           placeholder="Хоолны орц"
-          className="input h-[56px] border-none input-bordered input-lg w-full bg-gray-200"
+          className="input h-[45px] border-none input-bordered input-lg w-full bg-gray-200"
         />
         <h1>Хоолны үнэ</h1>
         <input
           type="text"
           placeholder="Хоолны үнэ"
-          className="input h-[56px] border-none input-bordered input-lg w-full bg-gray-200"
+          className="input h-[45px] border-none input-bordered input-lg w-full bg-gray-200"
         />
         <div className="flex gap-2 ">
           <input type="checkbox" className="toggle" />
@@ -87,7 +88,7 @@ export function Containers(props: ChildProps) {
           <input
             type="text"
             placeholder="Хямдралтай эсэх"
-            className="input h-[56px] border-none input-bordered input-lg w-full bg-gray-200"
+            className="input h-[45px] border-none input-bordered input-lg w-full bg-gray-200"
           />
 
           <h1 className="py-3">Хоолны зураг</h1>
