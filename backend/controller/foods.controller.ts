@@ -28,7 +28,7 @@ export async function updateFoods(req: any, res: any) {
     image: image,
     ingeredient: ingeredient,
     price: price,
-  })
+  });
   res.json(foods);
 }
 export async function deleteFoods(req: any, res: any) {
