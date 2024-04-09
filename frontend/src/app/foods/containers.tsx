@@ -3,7 +3,13 @@
 import { useState } from "react";
 import Select, { StylesConfig } from "react-select";
 
-export function Containers() {
+type ChildProps = {
+  openTheModal: () => void;
+};
+
+export function Containers(props: ChildProps) {
+  const { openTheModal } = props;
+
   const category = [
     { name: "breakfast" },
     { name: "lunch" },
@@ -23,17 +29,10 @@ export function Containers() {
   });
 
   return (
-    <div className=" container mx-auto m-5 border rounded-2xl">
+    <div className="w-[587px] bg-white mx-auto m-5 border rounded-2xl">
       <div className="flex justify-between">
-        {" "}
-        <button className="p-5  text-gray-900 font-fold">
-          {" "}
-          <label
-            htmlFor="my_modal_6"
-            onClick={() => document.getElementById("my_modal_3").close()}
-          >
-            X
-          </label>
+        <button onClick={openTheModal} className="p-5 text-gray-900 font-bold">
+          X
         </button>
         <div className="flex h-[64px]  justify-center border-b border-gray-200">
           <div className="w-[10%] flex items-center justify-center text-2xl "></div>
