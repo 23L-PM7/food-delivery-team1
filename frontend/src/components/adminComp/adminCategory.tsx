@@ -5,7 +5,7 @@ import { SideCategory } from "./adminCategorySelect";
 import { categoryMutator } from "@/util/categoryFetcher";
 import { categoryFetcher } from "@/util/categoryFetcher";
 import axios from "axios";
-import { Containers } from "@/app/yesui/sale/containers";
+import { Containers } from "@/app/foods/containers";
 
 export function AdminCategory() {
   const [openCreate, setOpenCreate] = useState(false);
@@ -13,6 +13,7 @@ export function AdminCategory() {
   const [name, setName] = useState("");
   const [category, setCategory] = useState([]);
   const [isOpenCategoryModal, setIsOpenCategoryModal] = useState(false);
+  const [modalState, setModalState] = useState(false);
 
   const openCreateModal = () => {
     setOpenCreate(!openCreate);
@@ -25,6 +26,10 @@ export function AdminCategory() {
     });
   };
 
+  const openTheModal = () => {
+    setModalState(!modalState);
+  };
+
   useEffect(() => {
     fetchCategory();
   }, []);
@@ -32,7 +37,6 @@ export function AdminCategory() {
   const createCategory = async () => {
     console.log(name);
 
-    // const data = await categoryMutator("category", { name });
     if (name == "" || name == null) {
       return;
     } else {
@@ -47,19 +51,6 @@ export function AdminCategory() {
         });
     }
   };
-
-  // const category = [
-  //   {
-  //     name: "Breakfast",
-  //     id: 123,
-  //   },
-  //   { name: "Lunch", id: 124 },
-  //   {
-  //     name: "Dinner",
-  //     id: 125,
-  //   },
-  //   { name: "Dessert", id: 126 },
-  // ];
 
   const clearField = () => {
     setName("");
@@ -102,17 +93,10 @@ export function AdminCategory() {
 
             <button
               className="btn btn-sm bg-green-500 text-white hover:bg-green-400 h-[35px]"
-              onClick={() => document.getElementById("my_modal_3").showModal()}
+              onClick={openTheModal}
             >
               Add new food
             </button>
-            <dialog id="my_modal_3" className="modal">
-              <div className="modal-box">
-                <form method="dialog">
-                  <Containers />
-                </form>
-              </div>
-            </dialog>
           </div>
           {/* food content */}
           <div className="w-full h-full flex flex-col items-center pt-[50px] gap-5">
@@ -168,20 +152,12 @@ export function AdminCategory() {
           <button onClick={openCreateModal}>close</button>
         </form>
       </dialog>
+      <dialog
+        id="my_modal_3"
+        className={modalState ? `modal modal-open` : `modal`}
+      >
+        <Containers openTheModal={() => openTheModal()} />
+      </dialog>
     </div>
   );
 }
-
-// const Category = ({ name }) => {
-
-//   const modal = () => <div>modal</div>;
-//   return (
-//     <div>
-//       {name}
-//       <modal />
-//     </div>
-//   );
-// };
-
-// <Category name="food">
-// <Category name="food">

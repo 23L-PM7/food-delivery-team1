@@ -7,28 +7,33 @@ export async function getFoods(req: any, res: any) {
 }
 
 export async function createFoods(req: any, res: any) {
-  const { id, name } = req.body;
+  const { name, image, ingeredient, price } = req.body;
   console.log(req.body);
 
   const foods = await FoodsModel.create({
-    id: id,
     name: name,
+    image: image,
+    ingeredient: ingeredient,
+    price: price,
   });
   res.json(foods);
 }
 
 export async function updateFoods(req: any, res: any) {
   const { id } = req.params;
-  const { name } = req.body;
+  const { name, image, ingeredient, price } = req.body;
 
-  await FoodsModel.findByIdAndUpdate(id, {
+  const foods = await FoodsModel.findByIdAndUpdate(id, {
     name: name,
+    image: image,
+    ingeredient: ingeredient,
+    price: price,
   });
-  res.send("Successfully updated.");
+  res.json(foods);
 }
 export async function deleteFoods(req: any, res: any) {
   const { id } = req.params;
 
-  await FoodsModel.findByIdAndDelete(id);
-  res.send("Successfully deleted.");
+  const foods = await FoodsModel.findByIdAndDelete(id);
+  res.json(foods);
 }
