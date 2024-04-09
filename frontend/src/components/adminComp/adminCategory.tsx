@@ -5,7 +5,7 @@ import { SideCategory } from "./adminCategorySelect";
 import { categoryMutator } from "@/util/categoryFetcher";
 import { categoryFetcher } from "@/util/categoryFetcher";
 import axios from "axios";
-import { Containers } from "@/app/yesui/sale/containers";
+import { Containers } from "@/app/foods/containers";
 
 export function AdminCategory() {
   const [openCreate, setOpenCreate] = useState(false);
@@ -157,17 +157,3 @@ export function AdminCategory() {
     </div>
   );
 }
-
-// const Category = ({ name }) => {
-
-//   const modal = () => <div>modal</div>;
-//   return (
-//     <div>
-//       {name}
-//       <modal />
-//     </div>
-//   );
-// };
-
-// <Category name="food">
-// <Category name="food">
