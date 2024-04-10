@@ -21,6 +21,13 @@ export function Containers(props: ChildProps) {
     });
   };
 
+  const options = category.map((category: any) => {
+    return {
+      value: category.name,
+      label: category.name,
+    };
+  });
+
   useEffect(() => {
     fetchCategory();
   }, []);
@@ -70,6 +77,9 @@ export function Containers(props: ChildProps) {
         />
         <h1>Хоолны ангилал</h1>
         <Select
+          options={options}
+          // defaultValue={selectedOption}
+          // onChange={(value) => setSelectedOption(value)}
           styles={{
             control: (baseStyles, state) => ({
               ...baseStyles,
