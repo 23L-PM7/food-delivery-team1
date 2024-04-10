@@ -104,3 +104,9 @@ export async function deleteLogin(req: any, res: any) {
 
   res.json(usersLogin);
 }
+
+
+
+/////////////////FORGOT PASS//////////////////////////////
+
+

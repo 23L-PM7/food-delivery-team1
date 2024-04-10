@@ -1,11 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { LoginMutator } from "../util";
+import { useRouter } from "next/navigation";
+import axios from "axios";
 
 export function Forgot() {
   // usestate
   const [email, setEmail] = useState("");
   const [check, setCheck] = useState("disabled");
+  const router = useRouter();
+
+
+  const UserForgotpass = async () => {
+    await axios.post("http://localhost:9090/users/forgotpass ", {
+      email,
+    });
+  };
 
   //   useeffect plus check form
 
@@ -21,7 +32,7 @@ export function Forgot() {
     }
   };
 
-  const changeEmail = (event) => {
+  const changeEmail = (event: any) => {
     setEmail(event.target.value);
   };
 
@@ -48,6 +59,7 @@ export function Forgot() {
           <button
             className="btn bg-green-500 text-white max-w-none w-full hover:bg-green-500"
             disabled={check}
+            onClick={UserForgotpass}
           >
             Нэвтрэх
           </button>
