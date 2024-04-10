@@ -2,19 +2,17 @@
 import { useEffect, useState } from "react";
 import { GreyAdd, GreenPlus } from "../icons/tripledot";
 import { SideCategory } from "./adminCategorySelect";
-// import { categoryMutator } from "@/util/categoryFetcher";
-// import { categoryFetcher } from "@/util/categoryFetcher";
+import { categoryMutator } from "@/util/categoryFetcher";
+import { categoryFetcher } from "@/util/categoryFetcher";
 import axios from "axios";
 import { Containers } from "@/app/foods/containers";
 
 export function AdminCategory() {
   const [openCreate, setOpenCreate] = useState(false);
-  // const [category, setCategory] = useState([])
   const [name, setName] = useState("");
   const [category, setCategory] = useState([]);
   const [isOpenCategoryModal, setIsOpenCategoryModal] = useState(false);
   const [modalState, setModalState] = useState(false);
-  const [categories, setCategories] = useState([]);
 
   const openCreateModal = () => {
     setOpenCreate(!openCreate);
