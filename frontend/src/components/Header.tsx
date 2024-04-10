@@ -1,14 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import { Login } from "./Login";
 
 import { Navbar } from "./navbar";
 
-function Access() {
-  document.getElementById("Haruul").showModal();
-}
-
 export default function Header() {
+  function Access() {
+    document.getElementById("Haruul").showModal();
+  }
+
+  const [loginModal, setLoginModal] = useState(false);
+
   return (
     <div
       className="container mx-auto text-sm font-semibold flex h-[57px] gap-2 items-center lg:justify-between 
