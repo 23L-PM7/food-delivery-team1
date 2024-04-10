@@ -32,7 +32,7 @@ export function Login() {
     } catch (error) {
       console.error("Error", error.response.data.alert, error.response.data.message);
       alert(error.response.data.alert);
-      alert(error.response.data.message);
+      // alert(error.response.data.message);
     }
   };
 
