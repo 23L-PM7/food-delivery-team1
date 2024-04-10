@@ -113,7 +113,7 @@ export function AdminCategory() {
           </div>
           {/* food content */}
           <div className="w-full h-full flex flex-col items-center pt-[50px] gap-5">
-            {categories.map((category) => {
+            {categories.map((category: any) => {
               return <Category key={category.id} name={category.name} />;
             })}
             <GreenPlus />
