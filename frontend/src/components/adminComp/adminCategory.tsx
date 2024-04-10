@@ -16,18 +16,6 @@ export function AdminCategory() {
   const [modalState, setModalState] = useState(false);
   const [categories, setCategories] = useState([]);
 
-  useEffect(() => {
-    const getCategories = async () => {
-      try {
-        const response = await axios.get("http://localhost:9090/foods/");
-        setCategories(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getCategories();
-  }, []);
-
   const openCreateModal = () => {
     setOpenCreate(!openCreate);
     setName("");
@@ -113,9 +101,6 @@ export function AdminCategory() {
           </div>
           {/* food content */}
           <div className="w-full h-full flex flex-col items-center pt-[50px] gap-5">
-            {categories.map((category) => {
-              return <Category key={category.id} name={category.name} />;
-            })}
             <GreenPlus />
             <h1 className="text-gray-400">
               Уучлаарай, Таны меню хоосон байна.
@@ -176,6 +161,3 @@ export function AdminCategory() {
     </div>
   );
 }
-const Category = (name) => {
-  return <div className="py-2 px-3 border border-solid">{name}</div>;
-};
