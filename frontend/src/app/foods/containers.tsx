@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Select, { StylesConfig } from "react-select";
+import Select from "react-select";
 import axios from "axios";
 import { collectGenerateParams } from "next/dist/build/utils";
 
@@ -14,13 +14,13 @@ export function Containers(props: ChildProps) {
   const [name, setFoodName] = useState("");
   const [ingeredient, setIngeredient] = useState("");
 
-  // const fetchCategory = async () => {
-  //   await axios.get("http://localhost:9090/category").then((response) => {});
-  // };
+  const fetchCategory = async () => {
+    await axios.get("http://localhost:9090/category").then((response) => {});
+  };
 
-  // useEffect(() => {
-  //   fetchCategory();
-  // }, []);
+  useEffect(() => {
+    fetchCategory();
+  }, []);
 
   const createFoods = async () => {
     console.log(name);
