@@ -77,6 +77,7 @@ export function Containers(props: ChildProps) {
         />
         <h1>Хоолны ангилал</h1>
         <Select
+          instanceId="1234567"
           options={options}
           // defaultValue={selectedOption}
           // onChange={(value) => setSelectedOption(value)}
