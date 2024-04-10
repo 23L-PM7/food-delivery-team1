@@ -17,10 +17,9 @@ export const Navbar = () => {
   return (
     <div className=" hidden lg:flex ">
       {array.map((item, index) => (
-        <ul>
+        <ul key={100 - index}>
           <li>
             <a
-              key={100 - index}
               href={item.href}
               className="lg:py-2 lg:px-3 rounded  hover:text-green-600"
             >
