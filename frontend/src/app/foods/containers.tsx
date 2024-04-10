@@ -13,9 +13,12 @@ export function Containers(props: ChildProps) {
   const { openTheModal } = props;
   const [name, setFoodName] = useState("");
   const [ingeredient, setIngeredient] = useState("");
+  const [category, setCategory] = useState([]);
 
   const fetchCategory = async () => {
-    await axios.get("http://localhost:9090/category").then((response) => {});
+    await axios.get("http://localhost:9090/category").then((response) => {
+      setCategory(response.data);
+    });
   };
 
   useEffect(() => {
