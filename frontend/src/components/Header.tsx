@@ -6,11 +6,11 @@ import { Login } from "./Login";
 import { Navbar } from "./navbar";
 
 export default function Header() {
-  function Access() {
-    document.getElementById("Haruul").showModal();
-  }
-
   const [loginModal, setLoginModal] = useState(false);
+
+  function Access() {
+    setLoginModal(!loginModal);
+  }
 
   return (
     <div
@@ -96,11 +96,14 @@ export default function Header() {
           // 
           // 
           //  */}
-          <dialog id="Haruul" className="modal">
+          <dialog
+            id="Haruul"
+            className={loginModal ? `modal modal-open` : `modal`}
+          >
             <div className="modal-box max-w-none w-[549px]">
               <Login />
             </div>
-            <form method="dialog" className="modal-backdrop">
+            <form onClick={Access} method="dialog" className="modal-backdrop">
               <button>close</button>
             </form>
           </dialog>
