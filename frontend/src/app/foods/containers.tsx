@@ -12,7 +12,7 @@ type ChildProps = {
 export function Containers(props: ChildProps) {
   const { openTheModal } = props;
   const [name, setFoodName] = useState("");
-  const [ingeredient, setIngeredient] = useState("");
+  const [ingredient, setIngredient] = useState("");
   const [category, setCategory] = useState([]);
 
   const fetchCategory = async () => {
@@ -39,11 +39,11 @@ export function Containers(props: ChildProps) {
       await axios
         .post("http://localhost:9090/foods/create", {
           name,
-          ingeredient,
+          ingredient,
         })
         .then(() => {
           setFoodName("");
-          setIngeredient("");
+          setIngredient("");
         });
     }
   };
@@ -96,8 +96,8 @@ export function Containers(props: ChildProps) {
           type="text"
           placeholder="Хоолны орц"
           className="input h-[45px] border-none input-bordered input-lg w-full bg-gray-200"
-          value={ingeredient}
-          onChange={(e) => setIngeredient(e.target.value)}
+          value={ingredient}
+          onChange={(e) => setIngredient(e.target.value)}
         />
         <h1>Хоолны үнэ</h1>
         <input
