@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Select, { StylesConfig } from "react-select";
+import Select from "react-select";
 import axios from "axios";
 import { collectGenerateParams } from "next/dist/build/utils";
 
@@ -13,14 +13,17 @@ export function Containers(props: ChildProps) {
   const { openTheModal } = props;
   const [name, setFoodName] = useState("");
   const [ingeredient, setIngeredient] = useState("");
+  const [category, setCategory] = useState([]);
 
-  // const fetchCategory = async () => {
-  //   await axios.get("http://localhost:9090/category").then((response) => {});
-  // };
+  const fetchCategory = async () => {
+    await axios.get("http://localhost:9090/category").then((response) => {
+      setCategory(response.data);
+    });
+  };
 
-  // useEffect(() => {
-  //   fetchCategory();
-  // }, []);
+  useEffect(() => {
+    fetchCategory();
+  }, []);
 
   const createFoods = async () => {
     console.log(name);

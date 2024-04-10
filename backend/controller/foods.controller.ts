@@ -7,15 +7,18 @@ export async function getFoods(req: any, res: any) {
 }
 
 export async function createFoods(req: any, res: any) {
-  const { name, image, ingeredient, price } = req.body;
-  console.log(req.body);
+  const { name, image, ingredient, price } = req.body;
+  console.log({ name, image, ingredient, price });
 
   const foods = await FoodsModel.create({
     name: name,
-    image: image,
-    ingeredient: ingeredient,
-    price: price,
+    image: "",
+    ingredient: ingredient,
+    price: 100,
   });
+
+  console.log({ foods });
+
   res.json(foods);
 }
 
