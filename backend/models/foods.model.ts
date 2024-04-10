@@ -6,7 +6,7 @@ const foodsSchema = new Schema({
   id: ObjectId,
   name: String,
   image: String,
-  ingredient: String,
+  ingeredient: String,
   price: Number,
 });
 

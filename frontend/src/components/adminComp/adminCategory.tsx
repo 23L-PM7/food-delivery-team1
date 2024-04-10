@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react";
 import { GreyAdd, GreenPlus } from "../icons/tripledot";
 import { SideCategory } from "./adminCategorySelect";
-import { categoryMutator } from "@/util/categoryFetcher";
-import { categoryFetcher } from "@/util/categoryFetcher";
+// import { categoryMutator } from "@/util/categoryFetcher";
+// import { categoryFetcher } from "@/util/categoryFetcher";
 import axios from "axios";
 import { Containers } from "@/app/foods/containers";
 
@@ -19,7 +19,7 @@ export function AdminCategory() {
   useEffect(() => {
     const getCategories = async () => {
       try {
-        const response = await axios.get("http://localhost:9090/foods/create");
+        const response = await axios.get("http://localhost:9090/foods/");
         setCategories(response.data);
       } catch (error) {
         console.log(error);
