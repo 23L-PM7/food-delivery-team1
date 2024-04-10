@@ -7,7 +7,7 @@ import { categoryFetcher } from "@/util/categoryFetcher";
 import axios from "axios";
 import { Containers } from "@/app/foods/containers";
 
-import FoodMap, { FoodCard } from "@/app/foods/createmodal";
+import FoodMap from "@/app/foods/createmodal";
 
 export function AdminCategory() {
   const [openCreate, setOpenCreate] = useState(false);
@@ -28,19 +28,12 @@ export function AdminCategory() {
     });
   };
 
-  // const fetchFoods = async () => {
-  //   await axios.get("http://localhost:9090/foods").then((response) => {
-  //     setFoods(response.data);
-  //   });
-  // };
-
   const openTheModal = () => {
     setModalState(!modalState);
   };
 
   useEffect(() => {
     fetchCategory();
-    // fetchFoods();
   }, []);
 
   const createCategory = async () => {
@@ -109,14 +102,11 @@ export function AdminCategory() {
           </div>
           {/* food content */}
           <div className="w-full h-full flex flex-col items-center pt-[50px] gap-5">
-            {foods.map((item: any) => (
-              <div>{item.name} </div>
-            ))}
             {/* <GreenPlus />
             <h1 className="text-gray-400">
               Уучлаарай, Таны меню хоосон байна.
             </h1> */}
-            <FoodCard />
+            <FoodMap />
           </div>
         </div>
       </div>

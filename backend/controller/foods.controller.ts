@@ -1,20 +1,21 @@
 import { FoodsModel } from "../models/foods.model";
 
-export async function getFoods(req: any, res: any) {
+export async function GetFoods(req: any, res: any) {
   const foods = await FoodsModel.find();
 
   res.json(foods);
 }
 
 export async function createFoods(req: any, res: any) {
-  const { name, image, ingredient, price } = req.body;
-  console.log({ name, image, ingredient, price });
+  const { name, image, ingredient, price, saleprice } = req.body;
+  console.log({ name, image, ingredient, price, saleprice });
 
   const foods = await FoodsModel.create({
     name: name,
-    image: "",
+    image: image,
     ingredient: ingredient,
-    price: 100,
+    price: price,
+    saleprice: saleprice,
   });
 
   console.log({ foods });
@@ -24,13 +25,14 @@ export async function createFoods(req: any, res: any) {
 
 export async function updateFoods(req: any, res: any) {
   const { id } = req.params;
-  const { name, image, ingeredient, price } = req.body;
+  const { name, image, ingeredient, price, saleprice } = req.body;
 
   const foods = await FoodsModel.findByIdAndUpdate(id, {
     name: name,
     image: image,
     ingeredient: ingeredient,
     price: price,
+    saleprice: saleprice,
   });
 
   res.json(foods);

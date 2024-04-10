@@ -13,6 +13,8 @@ export function Containers(props: ChildProps) {
   const { openTheModal } = props;
   const [name, setFoodName] = useState("");
   const [ingredient, setIngredient] = useState("");
+  const [price, setPrice] = useState("");
+  const [saleprice, setSalePrice] = useState("");
   const [category, setCategory] = useState([]);
 
   const fetchCategory = async () => {
@@ -40,10 +42,14 @@ export function Containers(props: ChildProps) {
         .post("http://localhost:9090/foods/create", {
           name,
           ingredient,
+          price,
+          saleprice,
         })
         .then(() => {
           setFoodName("");
           setIngredient("");
+          setPrice("");
+          setSalePrice("");
         });
     }
   };
@@ -103,6 +109,8 @@ export function Containers(props: ChildProps) {
         <h1>Хоолны үнэ</h1>
         <input
           type="text"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
           placeholder="Хоолны үнэ"
           className="input h-[45px] border-none input-bordered input-lg w-full bg-gray-200"
         />
@@ -115,13 +123,15 @@ export function Containers(props: ChildProps) {
             type="text"
             placeholder="Хямдралтай эсэх"
             className="input h-[45px] border-none input-bordered input-lg w-full bg-gray-200"
+            value={saleprice}
+            onChange={(e) => setSalePrice(e.target.value)}
           />
 
           <h1 className="py-3">Хоолны зураг</h1>
           <div className="bg-gray-100 rounded-xl w-[284px] h-[122px] gap-3 flex flex-col items-center justify-center">
             <h1 className="font-bold text-zinc-700">Add image for the food</h1>
             <button className=" w-[114px] h-[40px] btn bg-zinc-700 text-white">
-              Add file
+              <input type="file" />
             </button>
           </div>
         </div>

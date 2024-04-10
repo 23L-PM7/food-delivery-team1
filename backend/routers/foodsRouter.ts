@@ -1,7 +1,7 @@
 import express from "express";
 
 import {
-  getFoods,
+  GetFoods,
   createFoods,
   updateFoods,
   deleteFoods,
@@ -9,7 +9,7 @@ import {
 
 const foodsRouter = express.Router();
 
-foodsRouter.get("/", getFoods);
+foodsRouter.get("/", GetFoods);
 foodsRouter.post("/create", createFoods);
 foodsRouter.put("/update/:id", updateFoods);
 foodsRouter.delete("/delete/:id", deleteFoods);

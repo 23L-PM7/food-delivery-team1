@@ -8,6 +8,7 @@ const foodsSchema = new Schema({
   image: String,
   ingredient: String,
   price: Number,
+  saleprice: Number,
 });
 
 export const FoodsModel = mongoose.model("Foods", foodsSchema);
