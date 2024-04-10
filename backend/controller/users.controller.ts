@@ -19,6 +19,12 @@ export async function createUsers(req: any, res: any) {
     phoneNumber: phoneNumber,
     role: role,
   });
+  // if (users.email) {
+  //   res
+  //     .status(401)
+  //     .json({ alert: "Бүртгэлтэй И-Мэйл байна." });
+  //   return;
+  // }
   res.json(users);
 }
 
