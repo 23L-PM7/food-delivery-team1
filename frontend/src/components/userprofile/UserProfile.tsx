@@ -17,6 +17,21 @@ export function UserProfile() {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
 
+  const createProfile = async () => {
+    console.log(name);
+
+    await axios
+      .post("http://localhost:9090/users/update/create", {
+        name,
+        email,
+        phoneNumber,
+      })
+      .then(() => {
+        setName("");
+        setEmail("");
+        setPhoneNumber("");
+      });
+  }
 
 
   const updateUsers = async (id: string) => {
