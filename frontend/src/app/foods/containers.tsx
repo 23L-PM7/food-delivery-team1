@@ -7,15 +7,24 @@ import { collectGenerateParams } from "next/dist/build/utils";
 
 type ChildProps = {
   openTheModal: () => void;
+  fetchFoods: () => void;
 };
 
 export function Containers(props: ChildProps) {
-  const { openTheModal } = props;
+  const { openTheModal, fetchFoods } = props;
   const [name, setFoodName] = useState("");
   const [ingredient, setIngredient] = useState("");
   const [price, setPrice] = useState("");
   const [saleprice, setSalePrice] = useState("");
   const [category, setCategory] = useState([]);
+  const [selectedCategoryOption, setSelectedCategoryOption] = useState<any>();
+
+  console.log({ selectedCategoryOption });
+
+  const combined = () => {
+    fetchFoods();
+    createFoods();
+  };
 
   const fetchCategory = async () => {
     await axios.get("http://localhost:9090/category").then((response) => {
@@ -25,7 +34,7 @@ export function Containers(props: ChildProps) {
 
   const options = category.map((category: any) => {
     return {
-      value: category.name,
+      value: category._id,
       label: category.name,
     };
   });
@@ -44,12 +53,14 @@ export function Containers(props: ChildProps) {
           ingredient,
           price,
           saleprice,
+          foodcategory: selectedCategoryOption.name,
         })
         .then(() => {
           setFoodName("");
           setIngredient("");
           setPrice("");
           setSalePrice("");
+          setSelectedCategoryOption(undefined);
         });
     }
   };
@@ -85,8 +96,6 @@ export function Containers(props: ChildProps) {
         <Select
           instanceId="1234567" //eniig ustgaj bolku ju :,)
           options={options}
-          // defaultValue={selectedOption}
-          // onChange={(value) => setSelectedOption(value)}
           styles={{
             control: (baseStyles, state) => ({
               ...baseStyles,
@@ -95,8 +104,8 @@ export function Containers(props: ChildProps) {
               height: "45px",
             }),
           }}
-          // defaultValue={selectedOption}
-          // onChange={(value) => setSelectedOption(value)}
+          defaultValue={selectedCategoryOption}
+          onChange={(value) => setSelectedCategoryOption(value)}
         />
         <h1>Хоолны орц</h1>
         <input
@@ -141,7 +150,7 @@ export function Containers(props: ChildProps) {
           Clear
         </button>
         <button
-          onClick={createFoods}
+          onClick={combined}
           className="btn w-[109px] h-[40px] bg-zinc-700 text-white"
         >
           Continue

@@ -7,9 +7,6 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-
-
-
 export default function Signup() {
   const router = useRouter();
   // form is fully filled check
@@ -31,7 +28,6 @@ export default function Signup() {
   const [visible, setVisible] = useState("password");
   const [visible2, setVisible2] = useState("password");
 
-
   const createUsers = async () => {
     if (!checkForm) {
       return;
@@ -51,9 +47,6 @@ export default function Signup() {
       alert("There was an error creating a new user.");
     }
   };
-
-
-
 
   // onchange
   const changeName = (event: any) => {
@@ -92,7 +85,7 @@ export default function Signup() {
   const changeCheckbox = (event: any) => {
     setCheckbox(event.target.checked);
     alert(
-      "Үйлчилгээний нөхцөл болон нууцлалын бодлогыг уншиж танилцан зөвшөөрнө үү!!",
+      "Үйлчилгээний нөхцөл болон нууцлалын бодлогыг уншиж танилцан зөвшөөрнө үү!!"
     );
   };
 

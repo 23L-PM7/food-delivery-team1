@@ -2,12 +2,10 @@
 import { useEffect, useState } from "react";
 import { GreyAdd, GreenPlus } from "../icons/tripledot";
 import { SideCategory } from "./adminCategorySelect";
-import { categoryMutator } from "@/util/categoryFetcher";
-import { categoryFetcher } from "@/util/categoryFetcher";
 import axios from "axios";
 import { Containers } from "@/app/foods/containers";
-
 import FoodMap from "@/app/foods/createmodal";
+import { getFontOverrideCss } from "next/dist/server/font-utils";
 
 export function AdminCategory() {
   const [openCreate, setOpenCreate] = useState(false);
@@ -16,6 +14,13 @@ export function AdminCategory() {
   const [isOpenCategoryModal, setIsOpenCategoryModal] = useState(false);
   const [modalState, setModalState] = useState(false);
   const [foods, setFoods] = useState([]);
+  const [getfoods, setGetFoods] = useState([]);
+
+  const fetchFoods = async () => {
+    await axios.get("http://localhost:9090/foods").then((response) => {
+      setGetFoods(response.data);
+    });
+  };
 
   const openCreateModal = () => {
     setOpenCreate(!openCreate);
@@ -34,6 +39,7 @@ export function AdminCategory() {
 
   useEffect(() => {
     fetchCategory();
+    fetchFoods();
   }, []);
 
   const createCategory = async () => {
@@ -106,7 +112,14 @@ export function AdminCategory() {
             <h1 className="text-gray-400">
               Уучлаарай, Таны меню хоосон байна.
             </h1> */}
-            <FoodMap />
+            <div
+              className="grid grid-rows-12 grid-cols-1 sm:grid-rows-6 sm-grid-cols-2 md:grid-rows-6 md:grid-cols-2 lg:grid-rows-4 lg:grid-cols-3 xl:grid-rows-3 xl:grid-cols-4 2xl:grid-rows-3 2xl:grid-cols-4 2xl:gap-x-[24px] 2xl:gap-y-[60px] container mx-auto 2xl:max-w-[1200px]"
+              id="my_modal_2"
+            >
+              {getfoods.map((foodsmap) => (
+                <FoodMap foods={foodsmap} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -158,7 +171,10 @@ export function AdminCategory() {
         id="my_modal_3"
         className={modalState ? `modal modal-open` : `modal`}
       >
-        <Containers openTheModal={() => openTheModal()} />
+        <Containers
+          fetchFoods={() => fetchFoods()}
+          openTheModal={() => openTheModal()}
+        />
       </dialog>
     </div>
   );
