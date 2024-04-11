@@ -17,7 +17,7 @@ export default function Yesui() {
       {/* <SuccessYellow /> */}
       {/* <Containers /> */}
       {/* <Nogoonplus /> */}
-      <Jejbox />
+      {/* <Jejbox /> */}
       <Hailt />
     </div>
   );
