@@ -114,7 +114,7 @@ export default function Header() {
         <div className="drawer drawer-end z-10 py-2 px-5 gap-2 flex lg:hidden justify-end w-11">
           <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content">
-            {/* Page content here */}
+
             <label htmlFor="my-drawer-4" className="">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

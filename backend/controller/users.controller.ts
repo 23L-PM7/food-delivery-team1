@@ -12,20 +12,27 @@ export async function createUsers(req: any, res: any) {
   const { name, email, password, phoneNumber, role } = req.body;
   console.log(req.body);
 
-  const users = await UsersModel.create({
+  // findOne
+
+  const user = await UsersModel.findOne({ email });
+
+  if (user) {
+    res
+      .status(401)
+      .json({ alert: "Бүртгэлтэй И-Мэйл байна." });
+    return;
+  }
+
+  const newUser = await UsersModel.create({
     name: name,
     email: email,
     password: password,
     phoneNumber: phoneNumber,
     role: role,
   });
-  // if (users.email) {
-  //   res
-  //     .status(401)
-  //     .json({ alert: "Бүртгэлтэй И-Мэйл байна." });
-  //   return;
-  // }
-  res.json(users);
+
+
+  res.json(newUser);
 }
 
 export async function updateUsers(req: any, res: any) {
