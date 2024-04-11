@@ -4,6 +4,7 @@ import { Ded } from "./errors/sign";
 import { Containers } from "../foods/containers";
 import React, { useState } from "react";
 import { Nogoonplus } from "@/components/icons/nogoonplus";
+import { Jejbox } from "./baihgu";
 
 export default function Yesui() {
   return (
@@ -14,7 +15,8 @@ export default function Yesui() {
       {/* <SuccessGreen /> */}
       {/* <SuccessYellow /> */}
       {/* <Containers /> */}
-      <Nogoonplus />
+      {/* <Nogoonplus /> */}
+      <Jejbox />
     </div>
   );
 }
