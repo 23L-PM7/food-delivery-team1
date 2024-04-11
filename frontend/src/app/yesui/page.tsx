@@ -5,6 +5,7 @@ import { Containers } from "../foods/containers";
 import React, { useState } from "react";
 import { Nogoonplus } from "@/components/icons/nogoonplus";
 import { Jejbox } from "./baihgu";
+import { Hailt } from "./hailt";
 
 export default function Yesui() {
   return (
@@ -17,6 +18,7 @@ export default function Yesui() {
       {/* <Containers /> */}
       {/* <Nogoonplus /> */}
       <Jejbox />
+      <Hailt />
     </div>
   );
 }
