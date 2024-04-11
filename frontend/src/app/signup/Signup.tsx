@@ -42,9 +42,9 @@ export default function Signup() {
       });
       router.push("/login");
     } catch (error) {
-      console.error("Error:", error);
-      // alert(error.response.data.alert);
-      alert("There was an error creating a new user.");
+      console.error("Error:", error.response.data.alert);
+      alert(error.response.data.alert);
+      // alert("There was an error creating a new user.");
     }
   };
 
