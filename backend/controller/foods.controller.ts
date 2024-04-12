@@ -1,6 +1,6 @@
 import { FoodsModel } from "../models/foods.model";
 
-export async function GetFoods(req: any, res: any) {
+export async function getFoods(req: any, res: any) {
   const foods = await FoodsModel.find();
 
   res.json(foods);
