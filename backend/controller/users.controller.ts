@@ -1,8 +1,9 @@
 import { UsersModel } from "../models/user.model";
 import jwt from "jsonwebtoken";
 import { checkAuth } from "../middlewares/check-auth";
+import type { Request, Response } from "express";
 
-export async function getUsers(require: any, res: any) {
+export async function getUsers(require: Request, res: Response) {
   const users = await UsersModel.find();
 
   res.json(users);
@@ -116,6 +117,22 @@ export async function deleteLogin(req: any, res: any) {
   const usersLogin = await UsersModel.findByIdAndDelete(id);
 
   res.json(usersLogin);
+}
+
+
+export const getUserById = async (req: Request, res: Response) => {
+  const accessToken = req.get("access-token");
+  if (!accessToken) {
+    res.json({ message: "unautorized" })
+    return
+  }
+
+  const decoded = jwt.verify(accessToken, "dmngo");
+  const userId = decoded._id
+
+  const user = await UsersModel.findById(userId).select('-password')
+
+  res.json(user)
 }
 
 

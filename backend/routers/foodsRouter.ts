@@ -6,6 +6,7 @@ import {
   updateFoods,
   deleteFoods,
 } from "../controller/foods.controller";
+import { checkAuth } from "../middlewares/check-auth";
 
 const foodsRouter = express.Router();
 

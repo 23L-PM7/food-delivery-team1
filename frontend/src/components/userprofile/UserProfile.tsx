@@ -16,20 +16,17 @@ export function UserProfile() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [theUser, setTheUser] = useState([]);
 
-  const createProfile = async () => {
-    console.log(name);
-
+  const getProfile = async (id: string) => {
+    console.log(name, email, phoneNumber);
     await axios
-      .post("http://localhost:9090/users/update/create", {
-        name,
-        email,
-        phoneNumber,
-      })
-      .then(() => {
+      .get(`http://localhost:9090/users/${id}`)
+      .then((response) => {
         setName("");
         setEmail("");
         setPhoneNumber("");
+        setTheUser(response.data)
       });
   }
 

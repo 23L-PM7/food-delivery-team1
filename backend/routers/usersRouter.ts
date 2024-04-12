@@ -5,6 +5,7 @@ import {
   createUsers,
   updateUsers,
   deleteUsers,
+  getUserById,
 } from "../controller/users.controller";
 
 import {
@@ -25,5 +26,5 @@ usersRouter.get("/signup", getUsers);
 usersRouter.post("/signup", createUsers);
 usersRouter.put("/signup/:id", updateUsers);
 usersRouter.delete("/signup/:id", deleteUsers);
-
+usersRouter.get("/:id", getUserById);
 export default usersRouter;
