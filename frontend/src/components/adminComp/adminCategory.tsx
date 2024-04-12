@@ -1,19 +1,20 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GreyAdd, GreenPlus } from "../icons/tripledot";
 import { SideCategory } from "./adminCategorySelect";
 import axios from "axios";
 import { Containers } from "@/app/foods/Containers";
 import { FoodCard } from "@/app/foods/FoodCard";
-import { Food } from "@/app/foods/FoodsCardModal";
+// import { Food } from "@/app/foods/FoodsCardModal";
 
 export function AdminCategory() {
   const [openCreate, setOpenCreate] = useState(false);
   const [name, setName] = useState("");
   const [category, setCategory] = useState([]);
   const [modalState, setModalState] = useState(false);
-  const [foods, setFoods] = useState<Food[]>([]);
-
+  // const theme = useContext();
+  // const [foods, setFoods] = useState<Food[]>([]);
+  const [foods, setFoods] = useState([]);
   const fetchFoods = async () => {
     await axios.get("http://localhost:9090/foods").then((response) => {
       setFoods(response.data);
@@ -114,8 +115,8 @@ export function AdminCategory() {
               className="grid grid-rows-12 grid-cols-1 sm:grid-rows-6 sm-grid-cols-2 md:grid-rows-6 md:grid-cols-2 lg:grid-rows-4 lg:grid-cols-3 xl:grid-rows-3 xl:grid-cols-4 2xl:grid-rows-3 2xl:grid-cols-4 2xl:gap-x-[24px] 2xl:gap-y-[60px] container mx-auto 2xl:max-w-[1200px]"
               id="my_modal_2"
             >
-              {foods.map((food: any) => (
-                <FoodCard food={food} key={food._id} />
+              {foods.map((foods: any) => (
+                <FoodCard food={foods} key={foods._id} id={foods._id} />
               ))}
             </div>
           </div>

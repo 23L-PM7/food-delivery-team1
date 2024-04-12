@@ -2,10 +2,12 @@
 import axios from "axios";
 import { SellChip } from "../mnde/Sellchip";
 import { useEffect, useState } from "react";
-import { Food, FoodsCardModal } from "./FoodsCardModal";
+// import { Food, FoodsCardModal } from "./FoodsCardModal";
+import { FoodsCardModal } from "./FoodsCardModal";
 
-export const FoodCard = ({ food }: { food: Food }) => {
-  const { id, name, image, ingredient, price, saleprice, category } = food;
+// export const FoodCard = ({ food }: { food: Food }) => {
+export const FoodCard = ({ food }: { food: any }) => {
+  // const { id, name, image, ingredient, price, saleprice, category } = food;
   const [open, setOpen] = useState(false);
 
   return (
@@ -32,18 +34,22 @@ export const FoodCard = ({ food }: { food: Food }) => {
           </main>
         </div>
         <div className="flex flex-col mt-[14px]">
-          <h1 className="font-semibold text-lg">{name}</h1>
+          <h1 className="font-semibold text-lg">{food.name}</h1>
 
           <div className="flex gap-2">
-            <p className="font-semibold text-lg text-green-600">{price + ""}</p>
+            <p className="font-semibold text-lg text-green-600">
+              {food.price + ""}
+            </p>
 
-            <p className="font-semibold text-lg line-through ">{saleprice}</p>
+            <p className="font-semibold text-lg line-through ">
+              {food.saleprice}
+            </p>
           </div>
         </div>
       </>
 
       <dialog className={`modal ${open ? "modal-open" : ""}`}>
-        <FoodsCardModal {...food} />
+        <FoodsCardModal foodmodal={food} key={food._id} />
         <button
           className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 "
           onClick={() => setOpen(false)}

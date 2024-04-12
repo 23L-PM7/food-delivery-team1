@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Select from "react-select";
 import axios from "axios";
-// import { collectGenerateParams } from "next/dist/build/utils";
+import { collectGenerateParams } from "next/dist/build/utils";
 
 type ChildProps = {
   openTheModal: () => void;
