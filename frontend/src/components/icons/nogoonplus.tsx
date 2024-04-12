@@ -1,22 +1,28 @@
 "use client";
 import Menu from "@/app/mnde/menu";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function Nogoonplus() {
   const [foods, setFoods] = useState([]);
-  // const [four, setFour] = useState([]);
+  const [four, setFour] = useState([]);
 
-  async function fetchFood() {
+  const fetchFood = async () => {
     await axios.get("http://localhost:9090/foods").then((response) => {
       setFoods(response.data);
-      console.log({ foods });
     });
-  }
+    foods.map((item) => {
+      setFour(item);
+    });
+  };
+
+  useEffect(() => {
+    fetchFood();
+  }, []);
 
   return (
     <div className="max-w-[1200px] mx-auto">
-      <button onClick={fetchFood}>TEST</button>
+      <button onClick={check}>Second</button>
       <div className="flex justify-between">
         <div className="flex gap-2">
           {" "}
