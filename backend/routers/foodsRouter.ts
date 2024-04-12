@@ -1,7 +1,7 @@
 import express from "express";
 
 import {
-  GetFoods,
+  getFoods,
   createFoods,
   updateFoods,
   deleteFoods,
@@ -10,7 +10,7 @@ import { checkAuth } from "../middlewares/check-auth";
 
 const foodsRouter = express.Router();
 
-foodsRouter.get("/", GetFoods);
+foodsRouter.get("/", getFoods);
 foodsRouter.post("/create", createFoods);
 foodsRouter.put("/update/:id", updateFoods);
 foodsRouter.delete("/delete/:id", deleteFoods);

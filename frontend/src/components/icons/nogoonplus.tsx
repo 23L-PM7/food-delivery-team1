@@ -1,19 +1,28 @@
 "use client";
 import Menu from "@/app/mnde/menu";
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export function Nogoonplus() {
-  const [hide, setHide] = useState(true);
-  const handleExtend = () => {
-    if (hide) {
-      setHide(false);
-    } else {
-      setHide(true);
-    }
+  const [foods, setFoods] = useState([]);
+  const [four, setFour] = useState([]);
+
+  const fetchFood = async () => {
+    await axios.get("http://localhost:9090/foods").then((response) => {
+      setFoods(response.data);
+    });
+    foods.map((item) => {
+      setFour(item);
+    });
   };
+
+  useEffect(() => {
+    fetchFood();
+  }, []);
 
   return (
     <div className="max-w-[1200px] mx-auto">
+      <button onClick={check}>Second</button>
       <div className="flex justify-between">
         <div className="flex gap-2">
           {" "}
@@ -31,11 +40,9 @@ export function Nogoonplus() {
           </svg>
           <h1 className="font-bold">Хямдралтай</h1>
         </div>
-        <button className="btn btn-link text-green-700">
-          {hide ? "Бүгдийг харах >" : "Нуух >"}
-        </button>
+        <button className="btn btn-link text-green-700"></button>
       </div>
-      <div className={`${hide ? "h-[280px]" : ""}`}>
+      <div className={``}>
         <Menu />
       </div>
     </div>

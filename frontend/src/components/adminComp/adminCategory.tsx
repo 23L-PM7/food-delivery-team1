@@ -3,22 +3,20 @@ import { useEffect, useState } from "react";
 import { GreyAdd, GreenPlus } from "../icons/tripledot";
 import { SideCategory } from "./adminCategorySelect";
 import axios from "axios";
-import { Containers } from "@/app/foods/containers";
-import FoodMap from "@/app/foods/createmodal";
-import { getFontOverrideCss } from "next/dist/server/font-utils";
+import { Containers } from "@/app/foods/Containers";
+import { FoodCard } from "@/app/foods/FoodCard";
+import { Food } from "@/app/foods/FoodsCardModal";
 
 export function AdminCategory() {
   const [openCreate, setOpenCreate] = useState(false);
   const [name, setName] = useState("");
   const [category, setCategory] = useState([]);
-  const [isOpenCategoryModal, setIsOpenCategoryModal] = useState(false);
   const [modalState, setModalState] = useState(false);
-  const [foods, setFoods] = useState([]);
-  const [getfoods, setGetFoods] = useState([]);
+  const [foods, setFoods] = useState<Food[]>([]);
 
   const fetchFoods = async () => {
     await axios.get("http://localhost:9090/foods").then((response) => {
-      setGetFoods(response.data);
+      setFoods(response.data);
     });
   };
 
@@ -116,8 +114,8 @@ export function AdminCategory() {
               className="grid grid-rows-12 grid-cols-1 sm:grid-rows-6 sm-grid-cols-2 md:grid-rows-6 md:grid-cols-2 lg:grid-rows-4 lg:grid-cols-3 xl:grid-rows-3 xl:grid-cols-4 2xl:grid-rows-3 2xl:grid-cols-4 2xl:gap-x-[24px] 2xl:gap-y-[60px] container mx-auto 2xl:max-w-[1200px]"
               id="my_modal_2"
             >
-              {getfoods.map((foodsmap) => (
-                <FoodMap foods={foodsmap} />
+              {foods.map((food: any) => (
+                <FoodCard food={food} key={food._id} />
               ))}
             </div>
           </div>
@@ -179,3 +177,70 @@ export function AdminCategory() {
     </div>
   );
 }
+
+// type Foods = {
+//   id: string;
+//   name: String;
+//   image: String;
+//   ingredient: String;
+//   price: Number;
+//   saleprice: Number;
+//   foodcategory: String;
+// };
+
+// const FoodsPage = () => {
+//   const [foods, setFoods] = useState<Foods[]>([]);
+
+//   const getFoods = async () => {
+//     const response = [];
+//     setFoods(response);
+//   };
+
+//   useEffect(() => {
+//     getFoods();
+//   });
+
+//   return (
+//     <>
+//       {foods.map((food) => {
+//         return (
+//           <FoodCard
+//             key={food._id}
+//             _id={food._id}
+//             name={food.name}
+//             price={food.price}
+//             img={food.img}
+//           />
+//         );
+//       })}
+//     </>
+//   );
+// };
+
+// const FoodCard = (props: Foods) => {
+//   const { name, price, img } = props;
+
+//   const showModal = () => {};
+
+//   return (
+//     <div onClick={showModal}>
+//       <div>
+//         <p>{name}</p>
+//         <p>{price}</p>
+//         <p>{img}</p>
+//       </div>
+//       <FoodCardModal {...props} />
+//     </div>
+//   );
+// };
+
+// const FoodCardModal = (props: Foods) => {
+//   const { name, price, img } = props;
+//   return (
+//     <>
+//       <p>{name}</p>
+//       <p>{price}</p>
+//       <p>{img}</p>
+//     </>
+//   );
+// };
