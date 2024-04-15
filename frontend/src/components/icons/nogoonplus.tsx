@@ -22,7 +22,7 @@ export function Nogoonplus() {
 
   return (
     <div className="max-w-[1200px] mx-auto">
-      <button onClick={check}>Second</button>
+      <button>Second</button>
       <div className="flex justify-between">
         <div className="flex gap-2">
           {" "}
