@@ -39,9 +39,7 @@ export function Nogoonplus() {
         </div>
         <button className="btn btn-link text-green-700"></button>
       </div>
-      <div className={``}>
-        <Menu />
-      </div>
+      <div className={``}></div>
     </div>
   );
 }
