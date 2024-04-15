@@ -11,9 +11,7 @@ export function Nogoonplus() {
     await axios.get("http://localhost:9090/foods").then((response) => {
       setFoods(response.data);
     });
-    foods.map((item) => {
-      setFour(item);
-    });
+    setFour(foods.slice(0, 4));
   };
 
   useEffect(() => {
@@ -22,7 +20,6 @@ export function Nogoonplus() {
 
   return (
     <div className="max-w-[1200px] mx-auto">
-      <button>Second</button>
       <div className="flex justify-between">
         <div className="flex gap-2">
           {" "}
