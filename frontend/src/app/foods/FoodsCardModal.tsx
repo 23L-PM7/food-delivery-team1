@@ -1,5 +1,6 @@
 import { useEffect, ReactNode, useState } from "react";
 import axios from "axios";
+import Select from "react-select";
 
 // export type Food = {
 //   id: string;
@@ -11,33 +12,31 @@ import axios from "axios";
 //   category: string;
 // };
 // export const FoodsCardModal = (props: Food) => {
-export const FoodsCardModal = ({ foodmodal }: { foodmodal: any }) => {
-  // const { id, name, image, ingredient, price, category } = props;
-  const [name, setFoodName] = useState("");
-  const [ingredient, setIngredient] = useState("");
-  const [price, setPrice] = useState("");
-  const [category, setCategory] = useState([]);
+export const FoodsCardModal = ({ food }: { food: any }) => {
+  // const { id, name, image, ingredient, price, category } = food;
+  const [name, setFoodName] = useState(food.name);
+  const [ingredient, setIngredient] = useState(food.ingredient);
+  const [price, setPrice] = useState(food.price);
+  const [category, setCategory] = useState(food.category);
+  const [selectedCategoryOption, setSelectedCategoryOption] = useState<any>();
 
-  const createFoods = async (id: string) => {
+  const createFoods = async () => {
     console.log(name);
     if (name == "" || name == null) {
     } else {
       await axios
-        .put(`http://localhost:9090/foods/update/${id}`, {
+        .put(`http://localhost:9090/foods/update/${food._id}`, {
           name,
           ingredient,
           price,
-          category,
-
-          // category: selectedCategoryOption.value,
+          category: selectedCategoryOption.name,
         })
         .then(() => {
           setFoodName("");
           setIngredient("");
           setPrice("");
-          // setCategory("1");
-
-          // setSelectedCategoryOption(undefined);
+          setCategory("");
+          setSelectedCategoryOption("");
         });
     }
   };
@@ -49,7 +48,7 @@ export const FoodsCardModal = ({ foodmodal }: { foodmodal: any }) => {
           className="object-cover w-[500px] h-[500px]"
           src="https://media.istockphoto.com/id/1690090007/photo/a-cropped-image-of-a-womans-hand-holding-a-piece-of-toasted-bread-with-scrambled-eggs-on-top.jpg?s=2048x2048&w=is&k=20&c=KYa9toFXQyJ_pWcikPGQ6qxHl127RRM7txLFfDv5SMM="
         />
-        {foodmodal.image}
+        {food.image}
       </div>
 
       <div className="flex flex-col gap-[32px] justify-center">
@@ -62,8 +61,7 @@ export const FoodsCardModal = ({ foodmodal }: { foodmodal: any }) => {
           <div className="font-semibold  text-[#000000] text-xl">
             <input
               type="text"
-              // placeholder={foodmodal.name}
-              className="input w-full max-w-xs"
+              className="input w-full max-w-xs input-bordered"
               value={name}
               // id={foodmodal._id}
               // key={foodmodal._id}
@@ -73,8 +71,7 @@ export const FoodsCardModal = ({ foodmodal }: { foodmodal: any }) => {
           <div className="font-semibold text-lg text-[#18ba51] mt-[2px]">
             <input
               type="number"
-              // placeholder={foodmodal.price}
-              className="input w-full max-w-xs"
+              className="input w-full max-w-xs input-bordered"
               value={price}
               // id={foodmodal._id}
               // key={foodmodal._id}
@@ -88,8 +85,7 @@ export const FoodsCardModal = ({ foodmodal }: { foodmodal: any }) => {
           <div className="bg-[#F6F6F6] p-[8px] rounded-[8px] text-[#767676]">
             <input
               type="text"
-              // placeholder={foodmodal.ingredient}
-              className="input w-full max-w-xs"
+              className="input w-full max-w-xs input-bordered"
               value={ingredient}
               // id={foodmodal._id}
               // key={foodmodal._id}
@@ -100,7 +96,7 @@ export const FoodsCardModal = ({ foodmodal }: { foodmodal: any }) => {
         <div className="font-semibold text-lg text-[#000000] block">
           Хоолны ангилал
           <h1 className="font-semibold text-lg text-[#18ba51] mt-[2px]">
-            {/* {foodmodal.category} */}
+            {category}
           </h1>
         </div>
         <div>

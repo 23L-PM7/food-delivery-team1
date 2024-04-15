@@ -15,6 +15,7 @@ export function AdminCategory() {
   // const theme = useContext();
   // const [foods, setFoods] = useState<Food[]>([]);
   const [foods, setFoods] = useState([]);
+
   const fetchFoods = async () => {
     await axios.get("http://localhost:9090/foods").then((response) => {
       setFoods(response.data);
@@ -116,7 +117,11 @@ export function AdminCategory() {
               id="my_modal_2"
             >
               {foods.map((foods: any) => (
-                <FoodCard food={foods} key={foods._id} id={foods._id} />
+                <FoodCard
+                  fetchFoods={fetchFoods}
+                  food={foods}
+                  key={foods._id}
+                />
               ))}
             </div>
           </div>

@@ -60,7 +60,7 @@ export function Containers(props: ChildProps) {
           setIngredient("");
           setPrice("");
           setSalePrice("");
-          setSelectedCategoryOption(undefined);
+          setSelectedCategoryOption("");
         });
     }
   };

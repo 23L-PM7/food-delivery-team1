@@ -2,19 +2,41 @@
 import axios from "axios";
 import { SellChip } from "../mnde/Sellchip";
 import { useEffect, useState } from "react";
-// import { Food, FoodsCardModal } from "./FoodsCardModal";
+
 import { FoodsCardModal } from "./FoodsCardModal";
 
-// export const FoodCard = ({ food }: { food: Food }) => {
-export const FoodCard = ({ food }: { food: any }) => {
-  // const { id, name, image, ingredient, price, saleprice, category } = food;
+type Props = {
+  fetchFoods: () => void;
+  food: any;
+};
+
+export const FoodCard = (props: Props) => {
   const [open, setOpen] = useState(false);
+  const { fetchFoods, food } = props;
+
+  const deleteButton = () => {
+    deleteFoods();
+    fetchFoods();
+  };
+
+  const deleteFoods = async () => {
+    await axios.delete(`http://localhost:9090/foods/delete/${food._id}`),
+      {
+        food,
+      };
+  };
 
   return (
     <div>
       <>
         <div className="relative overflow-hidden w-fit  ">
-          <main className="">
+          <main className="group">
+            <button
+              className="absolute bg-green-200 hidden group-hover:bg-white group-hover:inline-block z-10  justify-center rounded-box  w-fit btn btn-xs"
+              onClick={deleteButton}
+            >
+              delete
+            </button>
             <div className="absolute z-10 right-6 top-4 inline group-hover:hidden">
               <SellChip />
             </div>
@@ -49,7 +71,7 @@ export const FoodCard = ({ food }: { food: any }) => {
       </>
 
       <dialog className={`modal ${open ? "modal-open" : ""}`}>
-        <FoodsCardModal foodmodal={food} key={food._id} />
+        <FoodsCardModal food={food} key={food._id} />
         <button
           className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 "
           onClick={() => setOpen(false)}
