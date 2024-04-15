@@ -53,7 +53,7 @@ export function Containers(props: ChildProps) {
           ingredient,
           price,
           saleprice,
-          category: selectedCategoryOption.value,
+          categoryId: selectedCategoryOption.value,
         })
         .then(() => {
           setFoodName("");
@@ -104,7 +104,7 @@ export function Containers(props: ChildProps) {
               height: "45px",
             }),
           }}
-          defaultValue={selectedCategoryOption}
+          value={selectedCategoryOption}
           onChange={(value) => setSelectedCategoryOption(value)}
         />
         <h1>Хоолны орц</h1>

@@ -17,8 +17,38 @@ export const FoodsCardModal = ({ food }: { food: any }) => {
   const [name, setFoodName] = useState(food.name);
   const [ingredient, setIngredient] = useState(food.ingredient);
   const [price, setPrice] = useState(food.price);
-  const [category, setCategory] = useState(food.category);
+  const [category, setCategory] = useState([]);
+
   const [selectedCategoryOption, setSelectedCategoryOption] = useState<any>();
+
+  const fetchCategory = async () => {
+    await axios.get("http://localhost:9090/category").then((response) => {
+      setCategory(response.data);
+    });
+  };
+
+  useEffect(() => {
+    fetchCategory();
+  }, []);
+
+  const options = category.map((category: any) => {
+    return {
+      value: category._id,
+      label: category.name,
+    };
+  });
+
+  useEffect(() => {
+    if (category.length) {
+      console.log({ category, food });
+      const initialOption = options.find(
+        (one: any) => one.value === food.categoryId
+      );
+
+      console.log({ initialOption });
+      setSelectedCategoryOption(initialOption);
+    }
+  }, [category]);
 
   const createFoods = async () => {
     console.log(name);
@@ -29,7 +59,7 @@ export const FoodsCardModal = ({ food }: { food: any }) => {
           name,
           ingredient,
           price,
-          category: selectedCategoryOption.name,
+          category: selectedCategoryOption.value,
         })
         .then(() => {
           setFoodName("");
@@ -40,7 +70,7 @@ export const FoodsCardModal = ({ food }: { food: any }) => {
         });
     }
   };
-  console.log(name);
+  console.log({ selectedCategoryOption });
   return (
     <div className=" flex w-[981px] h-[564px] container mx-auto p-[32px] gap-[33px] bg-white rounded-2xl relative">
       <div>
@@ -96,7 +126,20 @@ export const FoodsCardModal = ({ food }: { food: any }) => {
         <div className="font-semibold text-lg text-[#000000] block">
           Хоолны ангилал
           <h1 className="font-semibold text-lg text-[#18ba51] mt-[2px]">
-            {category}
+            <Select
+              instanceId="1234567" //eniig ustgaj bolku ju :,)
+              options={options}
+              styles={{
+                control: (baseStyles, state) => ({
+                  ...baseStyles,
+                  borderColor: state.isFocused ? "grey" : "black",
+                  backgroundColor: "rgb(229 231 235)",
+                  height: "45px",
+                }),
+              }}
+              value={selectedCategoryOption}
+              onChange={(value) => setSelectedCategoryOption(value)}
+            />
           </h1>
         </div>
         <div>

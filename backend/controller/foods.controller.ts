@@ -7,8 +7,8 @@ export async function getFoods(req: any, res: any) {
 }
 
 export async function createFoods(req: any, res: any) {
-  const { name, image, ingredient, price, saleprice, foodcategory } = req.body;
-  console.log({ name, image, ingredient, price, saleprice, foodcategory });
+  const { name, image, ingredient, price, saleprice, categoryId } = req.body;
+  console.log({ name, image, ingredient, price, saleprice, categoryId });
 
   const foods = await FoodsModel.create({
     name: name,
@@ -16,7 +16,7 @@ export async function createFoods(req: any, res: any) {
     ingredient: ingredient,
     price: price,
     saleprice: saleprice,
-    foodcategory: foodcategory,
+    categoryId: categoryId,
   });
 
   console.log({ foods });
