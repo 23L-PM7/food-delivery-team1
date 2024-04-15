@@ -5,7 +5,10 @@ import Header from "../components/Header";
 import { Mainbutton } from "@/components/herobutton/Mainbutton";
 import Menu from "./mnde/menu";
 import { Desktop } from "@/components/Desktop";
-import { Nogoonplus } from "@/components/icons/nogoonplus";
+import {
+  HymdraltaiFour,
+  TraditionalFood,
+} from "@/components/icons/mainPageCategories";
 import { Category } from "@/components/category";
 import { useState } from "react";
 import { UserProfile } from "@/components/userprofile/UserProfile";
@@ -17,7 +20,8 @@ export default function Home() {
       <UserProfile />
       <Desktop />
       <Mainbutton />
-      <Nogoonplus />
+      <HymdraltaiFour />
+      <TraditionalFood />
 
       <Footer />
     </div>
