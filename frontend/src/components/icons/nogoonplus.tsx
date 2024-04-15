@@ -20,9 +20,8 @@ export function Nogoonplus() {
 
   return (
     <div className="max-w-[1200px] mx-auto">
-      <div className="flex justify-between">
+      <div className="flex flex-col justify-between">
         <div className="flex gap-2">
-          {" "}
           <svg
             width="22"
             height="22"
@@ -37,9 +36,13 @@ export function Nogoonplus() {
           </svg>
           <h1 className="font-bold">Хямдралтай</h1>
         </div>
-        <button className="btn btn-link text-green-700"></button>
+
+        <div>
+          <div className="pt-[5px]">
+            <img src="/images/hool.png" />
+          </div>
+        </div>
       </div>
-      <div className={``}></div>
     </div>
   );
 }
