@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UserData } from "./Userpro";
 import { Call, Exit, Mail, Pencil, Timer, Person } from "../icons/ProfileIcons";
 import axios from "axios";
 import { title } from "process";
+import { Toaster } from "sonner";
 
 function myFunction() {
   document.getElementById("myDialog").showModal();
@@ -18,17 +19,29 @@ export function UserProfile() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [theUser, setTheUser] = useState([]);
 
-  const getProfile = async (id: string) => {
-    console.log(name, email, phoneNumber);
-    await axios
-      .get(`http://localhost:9090/users/${id}`)
-      .then((response) => {
-        setName("");
-        setEmail("");
-        setPhoneNumber("");
-        setTheUser(response.data)
+  // const getProfile = async (id: string) => {
+  //   console.log(name, email, phoneNumber);
+  //   await axios
+  //     .get(`http://localhost:9090/users/${id}`)
+  //     .then((response) => {
+  //       setTheUser(response.data)
+  //       console.log(response.data)
+  //     });
+  // };
+
+
+  const createUsersPro = async () => {
+    await axios.post("http://localhost:9090/users/signup", {
+      name,
+      email,
+      phoneNumber,
+    })
+      .then(() => {
+        setName(""),
+          setEmail(""),
+          setPhoneNumber("")
       });
-  }
+  };
 
 
   const updateUsers = async (id: string) => {
@@ -42,6 +55,7 @@ export function UserProfile() {
         setName("");
         setEmail("");
         setPhoneNumber("");
+        // GetProfile();
       });
     setEdit(false)
   }
@@ -50,6 +64,9 @@ export function UserProfile() {
   //   alert("wefhwe");
   //   // alert("There was an error creating a new user.");
 
+  // useEffect(() => {
+  //   GetProfile();
+  // }, []);
 
 
   return (
@@ -128,7 +145,7 @@ export function UserProfile() {
             <Timer />
           </div>
           <div className="w-8/12">
-            <h1 className="text-base ">Захиалгын түүх</h1>
+            <a className="text-base ">Захиалгын түүх</a>
           </div>
         </div>
 
@@ -170,22 +187,8 @@ export function UserProfile() {
         Хадгалах
       </button>
       <dialog className="bg-transparent" id="myDialog">
-        <div role="alert" className="alert alert-success">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="stroke-current shrink-0 h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-          <span>Мэдээлэл амжилттай хадгалагдлаа</span>
-        </div>
+        <Toaster position="top-right" richColors />
+        toast.success('Event has been created')
       </dialog>
     </div >
   );

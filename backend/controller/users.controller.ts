@@ -90,7 +90,7 @@ export async function createLogin(req: any, res: any) {
 
   if (user.password !== password) {
     res.status(401)
-      .json({ message: "Username or password is incorrect." });
+      .json({ message: "Нэвтрэх нэр эсвэл нууц үг буруу байна." });
     return;
   }
 
