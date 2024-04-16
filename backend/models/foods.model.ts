@@ -8,6 +8,7 @@ const foodsSchema = new Schema({
   image: String,
   ingredient: String,
   price: Number,
+  sale: Boolean,
   saleprice: Number,
   categoryId: String,
 });
