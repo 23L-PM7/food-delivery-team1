@@ -5,10 +5,12 @@ import Select from "react-select";
 type Props = {
   deleteModal: () => void;
   food: any;
+  opener: any;
+  onClose: any;
 };
 
 export const FoodsCardModal = (props: Props) => {
-  const { deleteModal, food } = props;
+  const { deleteModal, food, opener, onClose } = props;
   const [name, setFoodName] = useState(food.name);
   const [ingredient, setIngredient] = useState(food.ingredient);
   const [price, setPrice] = useState(food.price);
@@ -79,7 +81,7 @@ export const FoodsCardModal = (props: Props) => {
         <form method="dialog">
           <button
             className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 "
-            onClick={() => deleteModal()}
+            onClick={() => onClose()}
           >
             X
           </button>
