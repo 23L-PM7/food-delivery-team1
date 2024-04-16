@@ -12,7 +12,7 @@ import { checkAuth } from "../middlewares/check-auth";
 const foodsRouter = express.Router();
 
 foodsRouter.get("/", getFoods);
-foodsRouter.get("/custom/:id", getCustomFoods);
+foodsRouter.post("/custom/:id", getCustomFoods);
 foodsRouter.post("/create", createFoods);
 foodsRouter.put("/update/:id", updateFoods);
 foodsRouter.delete("/delete/:id", deleteFoods);
