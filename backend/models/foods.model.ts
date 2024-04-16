@@ -10,7 +10,7 @@ const foodsSchema = new Schema({
   price: Number,
   sale: Boolean,
   saleprice: Number,
-  categoryId: String,
+  category: String,
 });
 
 export const FoodsModel = mongoose.model("Foods", foodsSchema);
