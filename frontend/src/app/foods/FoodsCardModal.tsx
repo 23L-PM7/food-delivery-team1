@@ -57,7 +57,7 @@ export const FoodsCardModal = (
           name,
           ingredient,
           price,
-          category: selectedCategoryOption.value,
+          category: selectedCategoryOption.label,
         })
         .then(() => {
           setFoodName("");
@@ -135,7 +135,7 @@ export const FoodsCardModal = (
                 }),
               }}
               value={selectedCategoryOption}
-              onChange={(value) => setSelectedCategoryOption(value)}
+              onChange={(label) => setSelectedCategoryOption(label)}
             />
           </h1>
         </div>
