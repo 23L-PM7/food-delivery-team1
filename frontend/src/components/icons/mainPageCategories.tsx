@@ -40,7 +40,7 @@ export function HymdraltaiFour() {
             <h1 className="font-bold">Хямдралтай</h1>
           </div>
           <div className="flex gap-x-2 items-center">
-            <Link className="link link-hover text-green-500" href="#">
+            <Link className="link link-hover text-green-500" href="/home">
               Бүгдийг харах
             </Link>
             <RightArrowMainPage />
@@ -89,7 +89,7 @@ export function TraditionalFood() {
             <h1 className="font-bold">Үндсэн хоол</h1>
           </div>
           <div className="flex gap-x-2 items-center">
-            <Link className="link link-hover text-green-500" href="#">
+            <Link className="link link-hover text-green-500" href="/home">
               Бүгдийг харах
             </Link>
             <RightArrowMainPage />

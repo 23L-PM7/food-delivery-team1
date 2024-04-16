@@ -13,14 +13,7 @@ export default function Home() {
   return (
     <div className="h-dvh">
       <Header />
-      {/* <Signup />
-      <PopupSignin /> */}
-      {/* <Forgot /> */}
-      {/* <Confirmation /> */}
-      {/* <NewPassword /> */}
-      {/* <PassSetAlert /> */}
-      <AdminDashboard />
-      <AdminCategory />
+      <Footer />
     </div>
   );
 }
