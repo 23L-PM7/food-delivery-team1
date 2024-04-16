@@ -2,18 +2,7 @@ import { useEffect, ReactNode, useState } from "react";
 import axios from "axios";
 import Select from "react-select";
 
-// export type Food = {
-//   id: string;
-//   name: string;
-//   image: string;
-//   ingredient: string;
-//   price: number;
-//   saleprice: number;
-//   category: string;
-// };
-// export const FoodsCardModal = (props: Food) => {
 export const FoodsCardModal = ({ food }: { food: any }) => {
-  // const { id, name, image, ingredient, price, category } = food;
   const [name, setFoodName] = useState(food.name);
   const [ingredient, setIngredient] = useState(food.ingredient);
   const [price, setPrice] = useState(food.price);
@@ -65,8 +54,7 @@ export const FoodsCardModal = ({ food }: { food: any }) => {
           setFoodName("");
           setIngredient("");
           setPrice("");
-          setCategory("");
-          setSelectedCategoryOption("");
+          setSelectedCategoryOption(undefined);
         });
     }
   };
