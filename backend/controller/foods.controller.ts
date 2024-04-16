@@ -3,7 +3,7 @@ import { FoodsModel } from "../models/foods.model";
 export async function getCustomFoods(req: any, res: any) {
   const { category } = req.param;
   const { sale, count } = req.body;
-  const foods = await FoodsModel.find().limit(4);
+  const foods = await FoodsModel.find({ category: category }).limit(count);
 
   res.json(foods);
 }
