@@ -1,5 +1,6 @@
 "use client";
 
+import { utilFetcher } from "@/util/mainUtility";
 import axios from "axios";
 
 import { useEffect, useState } from "react";
@@ -8,9 +9,11 @@ export function Category() {
   const [category, setCategory] = useState([]);
 
   const fetchCategory = async () => {
-    await axios.get("http://localhost:9090/category").then((response) => {
-      setCategory(response.data);
-    });
+    // await axios.get("http://localhost:9090/category").then((response) => {
+    //   setCategory(response.data);
+    // });
+    const data = await utilFetcher("category");
+    setCategory(data);
   };
 
   useEffect(() => {
