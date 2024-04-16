@@ -47,7 +47,7 @@ export function HymdraltaiFour() {
           </div>
         </div>
 
-        <div className="py-10 grid grid-cols-4 border gap-6">
+        <div className="py-10 grid grid-cols-4 gap-6">
           {foods.map((item, index) => (
             <FoodTemplateMain key={1000 - index} item={item} />
           ))}
