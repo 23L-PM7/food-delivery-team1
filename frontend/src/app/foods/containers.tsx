@@ -53,7 +53,7 @@ export function Containers(props: ChildProps) {
           ingredient,
           price,
           saleprice,
-          categoryId: selectedCategoryOption.value,
+          categoryId: selectedCategoryOption.label,
         })
         .then(() => {
           setFoodName("");
@@ -105,7 +105,7 @@ export function Containers(props: ChildProps) {
             }),
           }}
           value={selectedCategoryOption}
-          onChange={(value) => setSelectedCategoryOption(value)}
+          onChange={(label) => setSelectedCategoryOption(label)}
         />
         <h1>Хоолны орц</h1>
         <input
