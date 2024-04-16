@@ -75,7 +75,7 @@ export const FoodCard = (props: Props) => {
           <FoodsCardModal
             food={food}
             key={food._id}
-            onClick={() => setOpen(false)}
+            deleteModal={() => setOpen(false)}
           />
           {/* <button
             className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 "

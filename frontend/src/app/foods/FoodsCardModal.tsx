@@ -3,21 +3,18 @@ import axios from "axios";
 import Select from "react-select";
 
 type Props = {
-  onClick: () => void;
+  deleteModal: () => void;
   food: any;
 };
 
-export const FoodsCardModal = (
-  { food }: { food: any },
-  { props }: { props: Props }
-) => {
+export const FoodsCardModal = (props: Props) => {
+  const { deleteModal, food } = props;
   const [name, setFoodName] = useState(food.name);
   const [ingredient, setIngredient] = useState(food.ingredient);
   const [price, setPrice] = useState(food.price);
   const [category, setCategory] = useState([]);
   const [selectedCategoryOption, setSelectedCategoryOption] = useState<any>();
   const [open, setOpen] = useState(false);
-  const { onClick } = props;
 
   const fetchCategory = async () => {
     await axios.get("http://localhost:9090/category").then((response) => {
@@ -82,7 +79,7 @@ export const FoodsCardModal = (
         <form method="dialog">
           <button
             className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 "
-            onClick={() => setOpen(false)}
+            onClick={() => deleteModal()}
           >
             X
           </button>
