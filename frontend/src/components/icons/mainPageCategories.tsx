@@ -40,14 +40,14 @@ export function HymdraltaiFour() {
             <h1 className="font-bold">Хямдралтай</h1>
           </div>
           <div className="flex gap-x-2 items-center">
-            <Link className="link link-hover text-green-500" href="#">
+            <Link className="link link-hover text-green-500" href="/home">
               Бүгдийг харах
             </Link>
             <RightArrowMainPage />
           </div>
         </div>
 
-        <div className="py-10 grid grid-cols-4 border gap-6">
+        <div className="py-10 grid grid-cols-4 gap-6">
           {foods.map((item, index) => (
             <FoodTemplateMain key={1000 - index} item={item} />
           ))}
@@ -83,9 +83,17 @@ export function TraditionalFood() {
   return (
     <div className="max-w-[1200px] mx-auto">
       <div className="flex flex-col justify-between">
-        <div className="flex gap-2">
-          <GreenStar />
-          <h1 className="font-bold">Үндсэн хоол</h1>
+        <div className="w-full flex justify-between">
+          <div className="flex gap-2">
+            <GreenStar />
+            <h1 className="font-bold">Үндсэн хоол</h1>
+          </div>
+          <div className="flex gap-x-2 items-center">
+            <Link className="link link-hover text-green-500" href="/home">
+              Бүгдийг харах
+            </Link>
+            <RightArrowMainPage />
+          </div>
         </div>
         <div className="py-10 w-full grid grid-cols-4 gap-6">
           {foods.map((item, index) => (

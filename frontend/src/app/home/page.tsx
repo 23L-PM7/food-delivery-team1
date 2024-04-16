@@ -8,19 +8,14 @@ import { AdminDashboard } from "@/components/adminComp/adminDashboard";
 import Header from "@/components/Header";
 import { Footer } from "../Footer";
 import { AdminCategory } from "@/components/adminComp/adminCategory";
+import { Category } from "@/components/category";
 
 export default function Home() {
   return (
     <div className="h-dvh">
       <Header />
-      {/* <Signup />
-      <PopupSignin /> */}
-      {/* <Forgot /> */}
-      {/* <Confirmation /> */}
-      {/* <NewPassword /> */}
-      {/* <PassSetAlert /> */}
-      <AdminDashboard />
-      <AdminCategory />
+      <Category />
+      <Footer />
     </div>
   );
 }

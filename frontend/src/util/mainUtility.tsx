@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export async function categoryFetcher(path: string) {
+export async function utilFetcher(path: string) {
   const response: any = await axios.get(`http://localhost:9090/${path}`, {
     // headers: {
     //   "access-token": localStorage.getItem("accessToken") || "",
@@ -10,7 +10,7 @@ export async function categoryFetcher(path: string) {
   return response.data;
 }
 
-export async function categoryMutator(path: string, postData: {}) {
+export async function utilMutator(path: string, postData: {}) {
   const response: any = await axios
     .post(`http://localhost:9090/${path}`, postData, {
       // headers: {
