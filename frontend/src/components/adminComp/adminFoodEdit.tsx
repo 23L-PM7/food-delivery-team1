@@ -4,7 +4,7 @@ export function AdminFoodWithEdit() {
       <div className="flex flex-col gap-2">
         <div className="w-[282px] h-[186px] relative overflow-hidden rounded-xl">
           <div
-            className={`hidden absolute m-5 top-0 right-0 w-[69px] h-[35px] bg-green-500 rounded-full text-white border-[1px] border-white flex items-center justify-center`}
+            className={`hidden absolute m-5 top-0 right-0 w-[69px] h-[35px] bg-green-500 rounded-full text-white border-[1px] border-white md:flex items-center justify-center`}
           >
             <h1>20%</h1>
           </div>

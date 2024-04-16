@@ -2,13 +2,22 @@ import { useEffect, ReactNode, useState } from "react";
 import axios from "axios";
 import Select from "react-select";
 
-export const FoodsCardModal = ({ food }: { food: any }) => {
+type Props = {
+  onClick: () => void;
+  food: any;
+};
+
+export const FoodsCardModal = (
+  { food }: { food: any },
+  { props }: { props: Props }
+) => {
   const [name, setFoodName] = useState(food.name);
   const [ingredient, setIngredient] = useState(food.ingredient);
   const [price, setPrice] = useState(food.price);
   const [category, setCategory] = useState([]);
-
   const [selectedCategoryOption, setSelectedCategoryOption] = useState<any>();
+  const [open, setOpen] = useState(false);
+  const { onClick } = props;
 
   const fetchCategory = async () => {
     await axios.get("http://localhost:9090/category").then((response) => {
@@ -71,6 +80,12 @@ export const FoodsCardModal = ({ food }: { food: any }) => {
 
       <div className="flex flex-col gap-[32px] justify-center">
         <form method="dialog">
+          <button
+            className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 "
+            onClick={() => setOpen(false)}
+          >
+            X
+          </button>
           {/* <button className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 ">
             X
           </button> */}
@@ -81,8 +96,6 @@ export const FoodsCardModal = ({ food }: { food: any }) => {
               type="text"
               className="input w-full max-w-xs input-bordered"
               value={name}
-              // id={foodmodal._id}
-              // key={foodmodal._id}
               onChange={(e) => setFoodName(e.target.value)}
             />
           </div>
@@ -91,8 +104,6 @@ export const FoodsCardModal = ({ food }: { food: any }) => {
               type="number"
               className="input w-full max-w-xs input-bordered"
               value={price}
-              // id={foodmodal._id}
-              // key={foodmodal._id}
               onChange={(e) => setPrice(e.target.value)}
             />
           </div>
@@ -105,8 +116,6 @@ export const FoodsCardModal = ({ food }: { food: any }) => {
               type="text"
               className="input w-full max-w-xs input-bordered"
               value={ingredient}
-              // id={foodmodal._id}
-              // key={foodmodal._id}
               onChange={(e) => setIngredient(e.target.value)}
             />
           </div>

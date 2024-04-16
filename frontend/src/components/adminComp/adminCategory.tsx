@@ -5,15 +5,12 @@ import { SideCategory } from "./adminCategorySelect";
 import axios from "axios";
 import { Containers } from "@/app/foods/Containers";
 import { FoodCard } from "@/app/foods/FoodCard";
-// import { Food } from "@/app/foods/FoodsCardModal";
 
 export function AdminCategory() {
   const [openCreate, setOpenCreate] = useState(false);
   const [name, setName] = useState("");
   const [category, setCategory] = useState([]);
   const [modalState, setModalState] = useState(false);
-  // const theme = useContext();
-  // const [foods, setFoods] = useState<Food[]>([]);
   const [foods, setFoods] = useState([]);
 
   const fetchFoods = async () => {

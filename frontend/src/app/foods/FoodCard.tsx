@@ -72,13 +72,17 @@ export const FoodCard = (props: Props) => {
 
       {open && (
         <dialog className={`modal ${open ? "modal-open" : ""}`}>
-          <FoodsCardModal food={food} key={food._id} />
-          <button
+          <FoodsCardModal
+            food={food}
+            key={food._id}
+            onClick={() => setOpen(false)}
+          />
+          {/* <button
             className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 "
             onClick={() => setOpen(false)}
           >
             X
-          </button>
+          </button> */}
         </dialog>
       )}
     </div>
