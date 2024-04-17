@@ -2,15 +2,27 @@
 
 import { ReactNode, useState } from "react";
 import { Login } from "./Login";
-
 import { Navbar } from "./navbar";
+import { useRouter } from "next/navigation";
+import { UserProfile } from "./userprofile/UserProfile";
 
 export default function Header() {
   const [loginModal, setLoginModal] = useState(false);
+  const switchs = useRouter();
+
 
   function Access() {
     setLoginModal(!loginModal);
   }
+
+  // const UserLogin = () => {
+  //   const user: string | null = localStorage.getItem('user')
+  //   if (user) {
+  //     switchs.push('userprofile')
+  //   } else {
+  //     switchs.push('/login')
+  //   }
+  // }
 
   return (
     <div
@@ -92,6 +104,14 @@ export default function Header() {
             onClick={() => Access()}
           >
             Нэвтрэх
+          </button>
+          <button
+            // href="/login"
+            // passHref
+            onClick={() => UserProfile()}
+            className="btn border-none btn-outline hidden w-fit rounded-[5px] md:flex"
+          >
+            <span className="text-sm font-bold">{'Хэрэглэгч'}</span>
           </button>
           {/* 
           // 

@@ -98,7 +98,7 @@ export async function createLogin(req: any, res: any) {
     const accesstoken = jwt.sign({ email: email }, "dmngo");
     res.json({ accesstoken });
   }
-  res.sendStatus(401);
+  res.sendStatus(204);
 }
 
 export async function updateLogin(req: any, res: any) {
@@ -120,20 +120,20 @@ export async function deleteLogin(req: any, res: any) {
 }
 
 
-export const getUserById = async (req: Request, res: Response) => {
-  const accessToken = req.get("access-token");
-  if (!accessToken) {
-    res.json({ message: "unautorized" })
-    return
-  }
+// export const getUserById = async (req: Request, res: Response) => {
+//   const accessToken = req.get("access-token");
+//   if (!accessToken) {
+//     res.json({ message: "unautorized" })
+//     return
+//   }
 
-  const decoded = jwt.verify(accessToken, "dmngo");
-  const userId = decoded._id
+//   const decoded = jwt.verify(accessToken, "dmngo");
+//   const userId = decoded._id
 
-  const user = await UsersModel.findById(userId).select('-password')
+//   const user = await UsersModel.findById(userId).select('-password')
 
-  res.json(user)
-}
+//   res.json(user)
+// }
 
 
 

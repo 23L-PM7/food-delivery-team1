@@ -1,64 +1,64 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { UserData } from "./Userpro";
 import { Call, Exit, Mail, Pencil, Timer, Person } from "../icons/ProfileIcons";
 import axios from "axios";
 import { title } from "process";
-import { Toaster } from "sonner";
+import { Toaster, toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { Datanullandundef } from "../structure";
+import { UserPrinting } from "@/app/util";
 
-function myFunction() {
-  document.getElementById("myDialog").showModal();
-  // const myTimeout = setTimeout(myFunction, 5000);
-}
+
+
 
 export function UserProfile() {
-  const [edit, setEdit] = useState(false);
+  const [edit, setEdit] = useState<Boolean>(false);;
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [theUser, setTheUser] = useState([]);
+  const [theUser, setTheUser] = useState<any>(undefined);
+  const [loginModal, setLoginModal] = useState(false);
+  const router = useRouter();
 
-  // const getProfile = async (id: string) => {
-  //   console.log(name, email, phoneNumber);
-  //   await axios
-  //     .get(`http://localhost:9090/users/${id}`)
-  //     .then((response) => {
-  //       setTheUser(response.data)
-  //       console.log(response.data)
-  //     });
-  // };
+  function Access() {
+    setLoginModal(!loginModal);
+  }
 
+  useEffect(() => {
+    async function getData() {
+      const data: string | null = localStorage.getItem('user')
+      if (!Datanullandundef(data)) {
+        setTheUser(JSON.parse(data || ''));
+      } else {
+        router.push('/')
+        console.log(data)
+      }
+    }
+    getData();
+  }, []);
 
-  const createUsersPro = async () => {
-    await axios.post("http://localhost:9090/users/signup", {
-      name,
-      email,
-      phoneNumber,
-    })
-      .then(() => {
-        setName(""),
-          setEmail(""),
-          setPhoneNumber("")
-      });
-  };
-
-
-  const updateUsers = async (id: string) => {
-
-    await axios.put(`http://localhost:9090/users/update/${id}`, {
-      name,
-      email,
-      phoneNumber,
-    })
-      .then(() => {
-        setName("");
-        setEmail("");
-        setPhoneNumber("");
-        // GetProfile();
-      });
+  const SavageSave = async () => {
+    await UserPrinting(`signup/${theUser._id}`, theUser)
+    toast.success('Amjilttai khadgalagdlaa')
     setEdit(false)
   }
+
+  // const updateUsers = async (id: string) => {
+
+  //   await axios.put(`http://localhost:9090/users/update/${id}`, {
+  //     name,
+  //     email,
+  //     phoneNumber,
+  //   })
+  //     .then(() => {
+  //       setName("");
+  //       setEmail("");
+  //       setPhoneNumber("");
+  //       // GetProfile();
+  //     });
+  //   // setEdit(false)
+  // }
   // catch (error) {
   //   console.error("Error:", error);
   //   alert("wefhwe");
@@ -93,7 +93,7 @@ export function UserProfile() {
           <div className="w-8/12">
             <h1 className="text-xs text-[#888A99]">Таны нэр</h1>
             <input
-              // placeholder="Нэр..."
+              placeholder="Нэр..."
               type="text"
               value={name}
               onChange={(event) => setName(event.target.value)}
@@ -112,7 +112,7 @@ export function UserProfile() {
           <div className="w-8/12">
             <h1 className="text-xs text-[#888A99]">Утасны дугаар</h1>
             <input
-              // placeholder="Утасны дугаар..."
+              placeholder="Утасны дугаар..."
               type="text"
               value={phoneNumber}
               onChange={(event) => setPhoneNumber(event.target.value)}
@@ -129,13 +129,13 @@ export function UserProfile() {
           <div className="w-8/12">
             <h1 className="text-xs text-[#888A99]">Имэйл хаяг</h1>
             <input
-              // placeholder="Имэйл хаяг..."
+              placeholder="Имэйл хаяг..."
               type="text"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               className="bg-transition bg-[#F6F6F6]  rounded p-2" />
           </div>
-          <button className="w-2/12 justify-end flex" onClick={() => updateUsers}>
+          <button className="w-2/12 justify-end flex" >
             <Pencil />
           </button>
         </div>
@@ -156,19 +156,19 @@ export function UserProfile() {
           <div className="w-8/12">
             <h1
               className="text-base cursor-pointer"
-              onClick={() => document.getElementById("my_modal_1").showModal()}
+              onClick={() => Access()}
             >
               Гарах
             </h1>
           </div>
         </div>
-        <dialog id="my_modal_1" className="modal">
+        <dialog className={loginModal ? `modal modal-open` : `modal`}>
           <div className="modal-box w-[384px] p-0">
             <p className=" font-semibold text-xl p-10 flex flex-col justify-center">
               Та системээс гарахдаа итгэлтэй байна уу?
             </p>
             <div className="modal-action p-0 mt-0 justify-center ">
-              <form method="dialog" className="w-full ">
+              <form method="dialog" onClick={Access} className="w-full ">
                 <a className="btn bg-green-100 hover:bg-green-500 w-6/12" href="http://localhost:3000/login">
                   Тийм
                 </a>
@@ -181,14 +181,13 @@ export function UserProfile() {
         </dialog>
       </div>
       <button
-        className="btn w-full bg-green-400 hover:bg-green-600"
-        onClick={() => myFunction()}
+        className="btn w-full bg-green-400 hover:bg-green-600 mt-[40px]"
+        onClick={() => SavageSave()}
       >
         Хадгалах
       </button>
       <dialog className="bg-transparent" id="myDialog">
         <Toaster position="top-right" richColors />
-        toast.success('Event has been created')
       </dialog>
     </div >
   );
