@@ -2,7 +2,6 @@
 import axios from "axios";
 import { SellChip } from "../mnde/Sellchip";
 import { useEffect, useState } from "react";
-
 import { FoodsCardModal } from "./FoodsCardModal";
 
 type Props = {
@@ -75,8 +74,7 @@ export const FoodCard = (props: Props) => {
           <FoodsCardModal
             food={food}
             key={food._id}
-            opener={open}
-            onClose={() => setOpen(false)}
+            deleteModal={() => setOpen(false)}
           />
           {/* <button
             className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 "
