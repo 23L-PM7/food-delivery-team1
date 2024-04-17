@@ -50,14 +50,14 @@ const FoodCard = (props: FoodCardProps) => {
     <>
       <div>
         <div className="relative overflow-hidden w-fit">
-          <div className="absolute right-6 top-4">
+          <div className="-z-10 absolute right-6 top-4">
             <SellChip />
           </div>
           <div
             onClick={() => setMenuOpen(true)}
             className="w-[282px] h-[196px] ease-in cursor-pointer"
           >
-            <img className="object-fill rounded-lg" src={img}></img>
+            <img className="object-fill rounded-lg absolute -z-20" src={img}></img>
           </div>
         </div>
         <div className="flex flex-col mt-[14px]">

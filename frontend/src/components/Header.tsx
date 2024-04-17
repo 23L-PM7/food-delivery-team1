@@ -7,7 +7,6 @@ import { Navbar } from "./navbar";
 import { Card } from "@mui/material";
 
 export default function Header() {
-  
   const [loginModal, setLoginModal] = useState(false);
 
   function Access() {
@@ -59,34 +58,30 @@ export default function Header() {
         </label>
         <div className="flex py-2 px-5 gap-2  group">
           <Drawer>
-            <div className="flex flex-col	">
+            <div className="flex flex-col ">
               <div className="flex align-middle">
                 <div>
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 48 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M28.1125 14L29.8875 15.775L21.6625 24L29.8875 32.225L28.1125 34L18.1125 24L28.1125 14Z"
-                    fill="#1C1B1F"
-                  />
-                </svg>
+                  <svg
+                    width="48"
+                    height="48"
+                    viewBox="0 0 48 48"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M28.1125 14L29.8875 15.775L21.6625 24L29.8875 32.225L28.1125 34L18.1125 24L28.1125 14Z"
+                      fill="#1C1B1F"
+                    />
+                  </svg>
                 </div>
                 <div className="text-center text-[20px] align-middle m-0 p-0 text-[">
                   Таны сагс
                 </div>
               </div>
               <hr />
-              <FoodInfo>
-
-              </FoodInfo>
+              <FoodInfo></FoodInfo>
               <hr />
-              <div className="">
-
-              </div>
+              <div className=""></div>
             </div>
           </Drawer>
         </div>
@@ -184,7 +179,6 @@ type DrawerProps = {
   children: ReactNode;
 };
 const Drawer = ({ children }: DrawerProps) => {
-  
   return (
     <div className="drawer drawer-end">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -213,7 +207,7 @@ const Drawer = ({ children }: DrawerProps) => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu w-[586px] h-full bg-white p-[32px]  min-h-full text-base-content">
+        <ul className="menu w-[586px] h-full bg-white p-[32px]  min-h-full text-base-content z-40">
           {/* Sidebar content here */}
           {children}
         </ul>
@@ -235,54 +229,47 @@ const FoodInfo = () => {
     }
   };
   return (
-    <div className=" flex w-[981px] h-[564px] container mx-auto p-[32px] gap-[33px] bg-white rounded-2xl relative">
-            <div>
-              <img
-                className="object-cover w-[500px] h-[500px]"
-                src="https://images.unsplash.com/photo-1542691457-cbe4df041eb2?q=80&w=3840&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              ></img>
-            </div>
+    <div className=" flex  justify-center gap-[16px] bg-white rounded-2xl relative">
+      <div>
+        <img
+          className="object-cover w-[245px] h-[150px]"
+          src="https://images.unsplash.com/photo-1542691457-cbe4df041eb2?q=80&w=3840&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        />
+      </div>
 
-            <div className="flex flex-col gap-[32px] justify-center">
-              <button
-                className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4"
-                onClick={() => setMenuOpen(false)}
-              >
-                X
-              </button>
-              <div className="flex flex-col gap-[2px] w-[384px]">
-                <div className="font-semibold  text-[#000000] text-xl">
-                  Торт
-                </div>
-                <div className="font-semibold text-lg text-[#18ba51] mt-[2px]">
-                  122323 ₮
-                </div>
-              </div>
-              <div className="flex flex-col gap-[2px]">
-                <div className="font-semibold text-lg text-[#000000]">Орц</div>
-                <div className="bg-[#F6F6F6] p-[8px] rounded-[8px] text-[#767676]">
-                  Хулуу, төмс, давс
-                </div>
-              </div>
-             
-              <div className="flex justify-between items-center">
-                <button
-                  className="btn bg-[#18BA51] text-[#FFFFFF]"
-                  onClick={minusFoodQuantity}
-                >
-                  {" "}
-                  -{" "}
-                </button>
-                <div>{foodQuantity}</div>
-                <button
-                  className="btn bg-[#18BA51] text-[#FFFFFF]"
-                  onClick={incementFoodQuantity}
-                >
-                  {" "}
-                  +{" "}
-                </button>
-              </div>
-            </div>
+      <div className="flex flex-col gap-[8px] justify-center">
+        <button className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4">
+          X
+        </button>
+        <div className="flex flex-col gap-[2px] w-[384px]">
+          <div className="font-semibold  text-[#000000] text-[18px]">Торт</div>
+          <div className="font-semibold text-[18px] text-[#18ba51] mt-[2px]">
+            122323 ₮
           </div>
-  )
-}
+        </div>
+
+        <div className=" p-[8px] font-[400] rounded-[8px] text-[#767676] text-[16px]">
+          Хулуу, төмс, давс
+        </div>
+
+        <div className="flex flex-start gap-[8px] items-center">
+          <button
+            className="btn bg-[#18BA51] text-[14px] font-[900] text-[#FFFFFF] w-[45px] h-[40px]"
+            onClick={minusFoodQuantity}
+          >
+            {" "}
+            -{" "}
+          </button>
+          <button className="btn bg-white border-none font-[500] text-[16px]">{foodQuantity}</button>
+          <button
+            className="btn bg-[#18BA51] text-[14px] font-[900] text-[#FFFFFF] w-[45px] h-[40px]"
+            onClick={incementFoodQuantity}
+          >
+            {" "}
+            +{" "}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
