@@ -25,24 +25,24 @@ export function UserProfile() {
     setLoginModal(!loginModal);
   }
 
-  useEffect(() => {
-    async function getData() {
-      const data: string | null = localStorage.getItem('user')
-      if (!Datanullandundef(data)) {
-        setTheUser(JSON.parse(data || ''));
-      } else {
-        router.push('/')
-        console.log(data)
-      }
-    }
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   async function getData() {
+  //     const data: string | null = localStorage.getItem('user')
+  //     if (!Datanullandundef(data)) {
+  //       setTheUser(JSON.parse(data || ''));
+  //     } else {
+  //       router.push('/')
+  //       console.log(data)
+  //     }
+  //   }
+  //   getData();
+  // }, []);
 
-  const SavageSave = async () => {
-    await UserPrinting(`signup/${theUser._id}`, theUser)
-    toast.success('Amjilttai khadgalagdlaa')
-    setEdit(false)
-  }
+  // const SavageSave = async () => {
+  //   await UserPrinting(`signup/${theUser._id}`, theUser)
+  //   toast.success('Amjilttai khadgalagdlaa')
+  //   setEdit(false)
+  // }
 
   // const updateUsers = async (id: string) => {
 

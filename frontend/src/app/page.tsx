@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <UserProfile />
+      {/* <UserProfile /> */}
       <Desktop />
       <Mainbutton />
       <HymdraltaiFour />
