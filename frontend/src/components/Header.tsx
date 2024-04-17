@@ -4,8 +4,10 @@ import { ReactNode, useState } from "react";
 import { Login } from "./Login";
 
 import { Navbar } from "./navbar";
+import { Card } from "@mui/material";
 
 export default function Header() {
+  
   const [loginModal, setLoginModal] = useState(false);
 
   function Access() {
@@ -56,21 +58,37 @@ export default function Header() {
           <input type="text" className="grow " placeholder="Хайх" />
         </label>
         <div className="flex py-2 px-5 gap-2  group">
-          <svg
-            width="22"
-            height="20"
-            viewBox="0 0 22 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="group-hover:text-green-600"
-          >
-            <path
-              d="M21 7.48977H16.21L11.83 0.929766C11.64 0.649766 11.32 0.509766 11 0.509766C10.68 0.509766 10.36 0.649766 10.17 0.939766L5.79 7.48977H1C0.45 7.48977 0 7.93977 0 8.48977C0 8.57977 0.00999996 8.66977 0.04 8.75977L2.58 18.0298C2.81 18.8698 3.58 19.4898 4.5 19.4898H17.5C18.42 19.4898 19.19 18.8698 19.43 18.0298L21.97 8.75977L22 8.48977C22 7.93977 21.55 7.48977 21 7.48977ZM11 3.28977L13.8 7.48977H8.2L11 3.28977ZM17.5 17.4898L4.51 17.4998L2.31 9.48977H19.7L17.5 17.4898ZM11 11.4898C9.9 11.4898 9 12.3898 9 13.4898C9 14.5898 9.9 15.4898 11 15.4898C12.1 15.4898 13 14.5898 13 13.4898C13 12.3898 12.1 11.4898 11 11.4898Z"
-              fill="currentColor"
-            />
-          </svg>
+          <Drawer>
+            <div className="flex flex-col	">
+              <div className="flex align-middle">
+                <div>
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M28.1125 14L29.8875 15.775L21.6625 24L29.8875 32.225L28.1125 34L18.1125 24L28.1125 14Z"
+                    fill="#1C1B1F"
+                  />
+                </svg>
+                </div>
+                <div className="text-center text-[20px] align-middle m-0 p-0 text-[">
+                  Таны сагс
+                </div>
+              </div>
+              <hr />
+              <FoodInfo>
 
-          <h2 className=" group-hover:text-green-600">Сагс</h2>
+              </FoodInfo>
+              <hr />
+              <div className="">
+
+              </div>
+            </div>
+          </Drawer>
         </div>
 
         <div className="flex items-center  gap-2 group">
@@ -166,11 +184,12 @@ type DrawerProps = {
   children: ReactNode;
 };
 const Drawer = ({ children }: DrawerProps) => {
+  
   return (
     <div className="drawer drawer-end">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content out">
-        <label htmlFor="my-drawer" className=" flex py-2 px-5 gap-2  group">
+        <label htmlFor="my-drawer" className=" flex py-2 gap-2  group">
           <svg
             width="22"
             height="20"
@@ -202,3 +221,68 @@ const Drawer = ({ children }: DrawerProps) => {
     </div>
   );
 };
+
+const FoodInfo = () => {
+  let [foodQuantity, setFoodquantity] = useState(1);
+  function incementFoodQuantity() {
+    foodQuantity = foodQuantity + 1;
+    setFoodquantity(foodQuantity);
+  }
+  const minusFoodQuantity = () => {
+    if (foodQuantity > 1) {
+      foodQuantity = foodQuantity - 1;
+      setFoodquantity(foodQuantity);
+    }
+  };
+  return (
+    <div className=" flex w-[981px] h-[564px] container mx-auto p-[32px] gap-[33px] bg-white rounded-2xl relative">
+            <div>
+              <img
+                className="object-cover w-[500px] h-[500px]"
+                src="https://images.unsplash.com/photo-1542691457-cbe4df041eb2?q=80&w=3840&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              ></img>
+            </div>
+
+            <div className="flex flex-col gap-[32px] justify-center">
+              <button
+                className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4"
+                onClick={() => setMenuOpen(false)}
+              >
+                X
+              </button>
+              <div className="flex flex-col gap-[2px] w-[384px]">
+                <div className="font-semibold  text-[#000000] text-xl">
+                  Торт
+                </div>
+                <div className="font-semibold text-lg text-[#18ba51] mt-[2px]">
+                  122323 ₮
+                </div>
+              </div>
+              <div className="flex flex-col gap-[2px]">
+                <div className="font-semibold text-lg text-[#000000]">Орц</div>
+                <div className="bg-[#F6F6F6] p-[8px] rounded-[8px] text-[#767676]">
+                  Хулуу, төмс, давс
+                </div>
+              </div>
+             
+              <div className="flex justify-between items-center">
+                <button
+                  className="btn bg-[#18BA51] text-[#FFFFFF]"
+                  onClick={minusFoodQuantity}
+                >
+                  {" "}
+                  -{" "}
+                </button>
+                <div>{foodQuantity}</div>
+                <button
+                  className="btn bg-[#18BA51] text-[#FFFFFF]"
+                  onClick={incementFoodQuantity}
+                >
+                  {" "}
+                  +{" "}
+                </button>
+              </div>
+            </div>
+          </div>
+  )
+}
