@@ -1,16 +1,15 @@
 import { useEffect, ReactNode, useState } from "react";
 import axios from "axios";
 import Select from "react-select";
+import { toast } from "sonner";
 
 type Props = {
   deleteModal: () => void;
   food: any;
-  opener: any;
-  onClose: any;
 };
 
 export const FoodsCardModal = (props: Props) => {
-  const { deleteModal, food, opener, onClose } = props;
+  const { deleteModal, food } = props;
   const [name, setFoodName] = useState(food.name);
   const [ingredient, setIngredient] = useState(food.ingredient);
   const [price, setPrice] = useState(food.price);
@@ -56,7 +55,7 @@ export const FoodsCardModal = (props: Props) => {
           name,
           ingredient,
           price,
-          category: selectedCategoryOption.label,
+          categoryId: selectedCategoryOption.value,
         })
         .then(() => {
           setFoodName("");
@@ -81,7 +80,7 @@ export const FoodsCardModal = (props: Props) => {
         <form method="dialog">
           <button
             className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 "
-            onClick={() => onClose()}
+            onClick={() => deleteModal()}
           >
             X
           </button>
@@ -134,7 +133,7 @@ export const FoodsCardModal = (props: Props) => {
                 }),
               }}
               value={selectedCategoryOption}
-              onChange={(label) => setSelectedCategoryOption(label)}
+              onChange={(value) => setSelectedCategoryOption(value)}
             />
           </h1>
         </div>

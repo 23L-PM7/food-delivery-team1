@@ -9,13 +9,14 @@ export async function getCustomFoods(req: any, res: any) {
 }
 
 export async function getFoods(req: any, res: any) {
-  const foods = await FoodsModel.find();
+  const foods = await FoodsModel.find().populate("categoryId", "userId");
 
   res.json(foods);
 }
 
 export async function createFoods(req: any, res: any) {
-  const { name, image, ingredient, price, saleprice, categoryId } = req.body;
+  const { name, image, ingredient, price, saleprice, categoryId, userId } =
+    req.body;
   console.log({ name, image, ingredient, price, saleprice, categoryId });
 
   const foods = await FoodsModel.create({
@@ -25,6 +26,7 @@ export async function createFoods(req: any, res: any) {
     price: price,
     saleprice: saleprice,
     categoryId: categoryId,
+    userId: userId,
   });
 
   console.log({ foods });

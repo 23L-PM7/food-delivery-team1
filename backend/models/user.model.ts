@@ -2,6 +2,8 @@ import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
+export const userRef = "user";
+
 const usersSchema = new Schema({
   id: ObjectId,
   name: String,
@@ -15,4 +17,4 @@ const usersSchema = new Schema({
   },
 });
 
-export const UsersModel = mongoose.model("User", usersSchema);
+export const UsersModel = mongoose.model("User", usersSchema, userRef);
