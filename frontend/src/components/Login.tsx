@@ -26,10 +26,11 @@ export function Login() {
 
   const UserLogin = async () => {
     try {
-      const data = await LoginMutator("login", { email, password });
-      localStorage.setItem("accesstoken", data.accesstoken);
+      const data = await LoginMutator("authenticate", { email, password });
+      console.log({ data })
+      localStorage.setItem("newtoken", data);
       router.push("/");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error", error.response.data.alert, error.response.data.message);
       alert(error.response.data.alert || error.response.data.message);
     }

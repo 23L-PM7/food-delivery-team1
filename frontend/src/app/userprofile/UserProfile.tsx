@@ -1,23 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Call, Exit, Mail, Pencil, Timer, Person } from "../icons/ProfileIcons";
+import { Call, Exit, Mail, Pencil, Timer, Person } from "../../components/icons/ProfileIcons";
 import axios from "axios";
 import { title } from "process";
 import { Toaster, toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { Datanullandundef } from "../structure";
+import { Datanullandundef } from "../../components/structure";
 import { UserPrinting } from "@/app/util";
 
 
 
 
 export function UserProfile() {
-  const [edit, setEdit] = useState<Boolean>(false);;
+  const [edit, setEdit] = useState(false);;
   const [phoneNumber, setPhoneNumber] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [theUser, setTheUser] = useState<any>(undefined);
+  const [theUser, setTheUser] = useState([]);
   const [loginModal, setLoginModal] = useState(false);
   const router = useRouter();
 
@@ -38,11 +38,25 @@ export function UserProfile() {
   //   getData();
   // }, []);
 
-  // const SavageSave = async () => {
-  //   await UserPrinting(`signup/${theUser._id}`, theUser)
-  //   toast.success('Amjilttai khadgalagdlaa')
-  //   setEdit(false)
-  // }
+  const SavageSave = async () => {
+    await UserPrinting(`signup/${theUser._id}`, theUser)
+    toast.success("success")
+    setEdit(false)
+  }
+
+  const getProfile = async () => {
+    const newtoken = localStorage.getItem('newtoken')
+
+    await axios.post("http://localhost:9090/users/me", {
+      newtoken
+    }).then((response: any) => {
+      setTheUser(response.data)
+    })
+  }
+
+  useEffect(() => {
+    getProfile()
+  }, [])
 
   // const updateUsers = async (id: string) => {
 
@@ -55,7 +69,7 @@ export function UserProfile() {
   //       setName("");
   //       setEmail("");
   //       setPhoneNumber("");
-  //       // GetProfile();
+  //       getProfile();
   //     });
   //   // setEdit(false)
   // }
@@ -64,13 +78,13 @@ export function UserProfile() {
   //   alert("wefhwe");
   //   // alert("There was an error creating a new user.");
 
-  // useEffect(() => {
-  //   GetProfile();
-  // }, []);
+  //   useEffect(() => {
+  //     getProfile();
+  //   }, []);
 
 
   return (
-    <div className="container mx-auto  w-[432px] px-[20px] mb-[40px]">
+    <div className="container mx-auto  w-[432px] px-[20px] mb-[200px] mt-[76px]">
       <div className="">
         <div className="avatar flex justify-center relative">
           <div className="w-24 rounded-full">

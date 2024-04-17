@@ -1,7 +1,9 @@
 import { UsersModel } from "../models/user.model";
 import jwt from "jsonwebtoken";
 import { checkAuth } from "../middlewares/check-auth";
-import type { Request, Response } from "express";
+import { response, type Request, type Response } from "express";
+
+export const secret = "dmngo"
 
 export async function getUsers(require: Request, res: Response) {
   const users = await UsersModel.find();
@@ -132,10 +134,65 @@ export async function deleteLogin(req: any, res: any) {
 
 //   const user = await UsersModel.findById(userId).select('-password')
 
-//   res.json(user)
+//   response.json(user)
 // }
 
+export const me = async (req: Request, res: Response) => {
 
+
+
+  try {
+    const { newtoken } = req.body
+    const id: any = jwt.verify(newtoken, secret);
+
+
+    const user = await UsersModel.findById(id.userId)
+    if (!user) {
+      res.send("error ym irsengu")
+      return
+    }
+
+
+    res.json(user)
+  } catch (error) {
+    console.log(error)
+    res.send("error try ajilsangui")
+  }
+}
+
+export const login = async (req: Request, res: Response) => {
+  const { email, password } = req.body
+
+  if (!email || !password) {
+    return
+  }
+
+  try {
+    const user: any = await UsersModel.findOne({ email });
+
+    if (!user) {
+      console.log("user ireegui")
+      return;
+    }
+
+    console.log(user)
+
+    if (password == user.password) {
+      const accesstoken = jwt.sign({ userId: user._id }, secret)
+      res.json(accesstoken)
+    } else {
+      console.log("accesstoken ugj chadsangui")
+      res.send("Error")
+    }
+
+    res.send("ok")
+  } catch (error) {
+    console.log(error)
+    res.json("Error")
+  }
+
+
+}
 
 /////////////////FORGOT PASS//////////////////////////////
 

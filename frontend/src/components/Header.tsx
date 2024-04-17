@@ -5,7 +5,7 @@ import { Login } from "./Login";
 import { Navbar } from "./navbar";
 
 import { useRouter } from "next/navigation";
-import { UserProfile } from "./userprofile/UserProfile";
+import { UserProfile } from "../app/userprofile/UserProfile";
 
 import { Card } from "@mui/material";
 
@@ -121,14 +121,15 @@ export default function Header() {
           >
             Нэвтрэх
           </button>
-          <button
-            // href="/login"
+          <a href="http://localhost:3000/userprofile">Хэрэглэгч</a>
+          {/* <button
+            
             // passHref
             onClick={() => UserProfile()}
             className="btn border-none btn-outline hidden w-fit rounded-[5px] md:flex"
           >
             <span className="text-sm font-bold">{'Хэрэглэгч'}</span>
-          </button>
+          </button> */}
           {/* 
           // 
           // 

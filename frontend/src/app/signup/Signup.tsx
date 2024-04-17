@@ -41,7 +41,7 @@ export default function Signup() {
         secondpass,
       });
       router.push("/login");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error:", error.response.data.alert);
       alert(error.response.data.alert);
       // alert("There was an error creating a new user.");

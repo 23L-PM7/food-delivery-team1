@@ -11,11 +11,7 @@ export async function LoginFetcher(path: string) {
 
 
 export async function LoginMutator(path: string, postData: {}) {
-    const response: any = await axios.post(`http://localhost:9090/users/${path}`, postData, {
-        headers: {
-            "access-token": localStorage.getItem("accessToken") || "",
-        },
-    })
+    const response: any = await axios.post(`http://localhost:9090/users/${path}`, postData)
     return response.data;
 }
 
@@ -25,3 +21,10 @@ export async function UserPrinting(path: string, postData: {}) {
     })
     return response.data;
 }
+
+// mutator dotor bsn
+// {
+//     headers: {
+//         "access-token": localStorage.getItem("accessToken") || "",
+//     },
+// }
