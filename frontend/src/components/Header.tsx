@@ -100,12 +100,12 @@ export default function Header() {
                   34800 ₮
                 </div>
               </div>
-              <label
+              <a
                 className="btn bg-[#18BA51] text-[#FFFFFF] w-[256px]"
                 href="http://localhost:3000/confirmation"
               >
                 Захиалах
-              </label>
+              </a>
             </div>
           </Drawer>
         </div>
