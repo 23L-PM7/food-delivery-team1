@@ -9,11 +9,9 @@ import { UserProfile } from "../app/userprofile/UserProfile";
 
 import { Card } from "@mui/material";
 
-
 export default function Header() {
   const [loginModal, setLoginModal] = useState(false);
   const switchs = useRouter();
-
 
   function Access() {
     setLoginModal(!loginModal);
@@ -73,30 +71,41 @@ export default function Header() {
         </label>
         <div className="flex py-2 px-5 gap-2  group">
           <Drawer>
-            <div className="flex flex-col ">
-              <div className="flex align-middle">
-                <div>
-                  <svg
-                    width="48"
-                    height="48"
-                    viewBox="0 0 48 48"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M28.1125 14L29.8875 15.775L21.6625 24L29.8875 32.225L28.1125 34L18.1125 24L28.1125 14Z"
-                      fill="#1C1B1F"
-                    />
-                  </svg>
+            <div className="flex justify-start gap-[171px] items-center relative">
+              <div>
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M28.1125 14L29.8875 15.775L21.6625 24L29.8875 32.225L28.1125 34L18.1125 24L28.1125 14Z"
+                    fill="#1C1B1F"
+                  />
+                </svg>
+              </div>
+              <div className="text-[20px]">Таны сагс</div>
+            </div>
+
+            <FoodInfo></FoodInfo>
+
+            <div className="absolute bottom-0 px-[32px] py-[30px] flex">
+              <div className="w-[256px]">
+                <div className="leading-[27px] text-[18px] font-[400] text-[#5E6166]">
+                  Нийт төлөх дүн
                 </div>
-                <div className="text-center text-[20px] align-middle m-0 p-0 text-[">
-                  Таны сагс
+                <div className="leading-[27px] text-[18px] font-[700] text-[#121316]">
+                  34800 ₮
                 </div>
               </div>
-              <hr />
-              <FoodInfo></FoodInfo>
-              <hr />
-              <div className=""></div>
+              <a
+                className="btn bg-[#18BA51] text-[#FFFFFF] w-[256px]"
+                href="http://localhost:3000/confirmation"
+              >
+                Захиалах
+              </a>
             </div>
           </Drawer>
         </div>
@@ -231,7 +240,7 @@ const Drawer = ({ children }: DrawerProps) => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu w-[586px] h-full bg-white p-[32px]  min-h-full text-base-content z-40">
+        <ul className="menu w-[586px] h-full bg-white p-[24px]  min-h-full text-base-content z-40">
           {/* Sidebar content here */}
           {children}
         </ul>
@@ -253,47 +262,55 @@ const FoodInfo = () => {
     }
   };
   return (
-    <div className=" flex  justify-center gap-[16px] bg-white rounded-2xl relative">
-      <div>
-        <img
-          className="object-cover w-[245px] h-[150px]"
-          src="https://images.unsplash.com/photo-1542691457-cbe4df041eb2?q=80&w=3840&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        />
-      </div>
-
-      <div className="flex flex-col gap-[8px] justify-center">
+    <>
+      <hr className="mt-[40px]" />
+      <div className=" flex justify-center gap-[16px] relative py-[24px]">
         <button className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4">
           X
         </button>
-        <div className="flex flex-col gap-[2px] w-[384px]">
-          <div className="font-semibold  text-[#000000] text-[18px]">Торт</div>
-          <div className="font-semibold text-[18px] text-[#18ba51] mt-[2px]">
-            122323 ₮
+        <div>
+          <img
+            className="object-cover w-[245px] h-[150px]"
+            src="https://images.unsplash.com/photo-1542691457-cbe4df041eb2?q=80&w=3840&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          ></img>
+        </div>
+
+        <div className="flex flex-col gap-[8px] ">
+          <div className="flex flex-col gap-[2px] w-[245px]">
+            <div className="font-semibold  text-[#000000] text-[18px]">
+              Торт
+            </div>
+            <div className="font-semibold text-[18px] text-[#18ba51] mt-[2px]">
+              122323 ₮
+            </div>
+          </div>
+
+          <div className=" p-[8px] font-[400] rounded-[8px] text-[#767676] text-[16px]">
+            Хулуу, төмс, давс
+          </div>
+
+          <div className="flex flex-start gap-[8px] items-center">
+            <button
+              className="btn bg-[#18BA51] text-[14px] font-[900] text-[#FFFFFF] w-[45px] h-[40px]"
+              onClick={minusFoodQuantity}
+            >
+              {" "}
+              -{" "}
+            </button>
+            <button className="btn bg-white border-none font-[500] text-[16px]">
+              {foodQuantity}
+            </button>
+            <button
+              className="btn bg-[#18BA51] text-[14px] font-[900] text-[#FFFFFF] w-[45px] h-[40px]"
+              onClick={incementFoodQuantity}
+            >
+              {" "}
+              +{" "}
+            </button>
           </div>
         </div>
-
-        <div className=" p-[8px] font-[400] rounded-[8px] text-[#767676] text-[16px]">
-          Хулуу, төмс, давс
-        </div>
-
-        <div className="flex flex-start gap-[8px] items-center">
-          <button
-            className="btn bg-[#18BA51] text-[14px] font-[900] text-[#FFFFFF] w-[45px] h-[40px]"
-            onClick={minusFoodQuantity}
-          >
-            {" "}
-            -{" "}
-          </button>
-          <button className="btn bg-white border-none font-[500] text-[16px]">{foodQuantity}</button>
-          <button
-            className="btn bg-[#18BA51] text-[14px] font-[900] text-[#FFFFFF] w-[45px] h-[40px]"
-            onClick={incementFoodQuantity}
-          >
-            {" "}
-            +{" "}
-          </button>
-        </div>
       </div>
-    </div>
+      <hr />
+    </>
   );
 };
