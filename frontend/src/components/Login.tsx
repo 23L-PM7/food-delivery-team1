@@ -18,11 +18,7 @@ export function Login() {
   const [visible, setVisible] = useState("password");
 
 
-  // async function UserLogin() {
-  //   const data = await LoginMutator("login", { email, password });
-  //   localStorage.setItem("accessToken", data.accessToken);
-  //   window.location = "/";
-  // }
+
 
   const UserLogin = async () => {
     try {

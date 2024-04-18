@@ -77,30 +77,40 @@ export async function getLogin(req: any, res: any) {
   }
 }
 
-export async function createLogin(req: any, res: any) {
+export async function createLogin(req: Request, res: Response) {
   const { email, password } = req.body;
-  console.log(req.body);
 
-  const user = await UsersModel.findOne({ email: email });
-
-  if (!user) {
-    res
-      .status(401)
-      .json({ alert: "Та бүртгэлгүй байгаа учир бүртгүүлнэ үү" });
-    return;
+  if (!email || !password) {
+    response.send("");
+    return
   }
 
-  if (user.password !== password) {
-    res.status(401)
-      .json({ message: "Нэвтрэх нэр эсвэл нууц үг буруу байна." });
-    return;
-  }
+  try {
+    const user: any = await UsersModel.findOne({ email });
 
-  if (user) {
-    const accesstoken = jwt.sign({ email: email }, "dmngo");
-    res.json({ accesstoken });
+    if (!user) {
+      res
+        .status(401)
+        .json({ alert: "Та бүртгэлгүй байгаа учир бүртгүүлнэ үү" });
+      return;
+    }
+
+    if (password == user.password) {
+      res.status(401)
+        .json({ message: "Нэвтрэх нэр эсвэл нууц үг буруу байна." });
+      return;
+    }
+
+    if (user) {
+      const accesstoken = jwt.sign({ userId: user._id }, secret);
+      res.json({ accesstoken });
+    } else {
+      res.sendStatus(204);
+    }
+    res.send("ok")
+  } catch (error) {
+    console.log(error)
   }
-  res.sendStatus(204);
 }
 
 export async function updateLogin(req: any, res: any) {
@@ -164,6 +174,7 @@ export const login = async (req: Request, res: Response) => {
   const { email, password } = req.body
 
   if (!email || !password) {
+    response.send("");
     return
   }
 

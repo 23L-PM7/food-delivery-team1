@@ -58,29 +58,28 @@ export function UserProfile() {
     getProfile()
   }, [])
 
-  // const updateUsers = async (id: string) => {
+  const updateUsers = async (id: string) => {
+    try {
+      await axios.put(`http://localhost:9090/users/update/${id}`, {
+        name,
+        email,
+        phoneNumber,
+      })
+        .then(() => {
+          setName("");
+          setEmail("");
+          setPhoneNumber("");
+        });
+    } catch (error) {
+      console.error("Error:", error);
+      alert("wefhwe")
+    }
+  };
 
-  //   await axios.put(`http://localhost:9090/users/update/${id}`, {
-  //     name,
-  //     email,
-  //     phoneNumber,
-  //   })
-  //     .then(() => {
-  //       setName("");
-  //       setEmail("");
-  //       setPhoneNumber("");
-  //       getProfile();
-  //     });
-  //   // setEdit(false)
-  // }
-  // catch (error) {
-  //   console.error("Error:", error);
-  //   alert("wefhwe");
-  //   // alert("There was an error creating a new user.");
 
-  //   useEffect(() => {
-  //     getProfile();
-  //   }, []);
+  // alert("There was an error creating a new user.");
+
+
 
 
   return (
@@ -95,7 +94,7 @@ export function UserProfile() {
           </button>
         </div>
         <h1 className="flex justify-center font-bold text-[28px] mt-[40px]">
-          УгтахБаяр
+          {theUser.name}
         </h1>
       </div>
 
@@ -109,7 +108,7 @@ export function UserProfile() {
             <input
               placeholder="Нэр..."
               type="text"
-              value={name}
+              value={theUser.name}
               onChange={(event) => setName(event.target.value)}
               className="bg-transition rounded p-2" />
           </div>
@@ -128,7 +127,7 @@ export function UserProfile() {
             <input
               placeholder="Утасны дугаар..."
               type="text"
-              value={phoneNumber}
+              value={theUser.phoneNumber}
               onChange={(event) => setPhoneNumber(event.target.value)}
               className="bg-transition rounded p-2" />
           </div>
@@ -145,7 +144,7 @@ export function UserProfile() {
             <input
               placeholder="Имэйл хаяг..."
               type="text"
-              value={email}
+              value={theUser.email}
               onChange={(event) => setEmail(event.target.value)}
               className="bg-transition bg-[#F6F6F6]  rounded p-2" />
           </div>
