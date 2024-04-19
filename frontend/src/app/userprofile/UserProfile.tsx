@@ -66,8 +66,8 @@ export function UserProfile() {
         phoneNumber
       })
       console.log({ data })
+      toast.success(`"${name}"  updated.`);
       localStorage.setItem('newtoken', data);
-      toast.success("success")
     } catch (error) {
       console.error("Error:", error);
       alert("amjiltgui")
