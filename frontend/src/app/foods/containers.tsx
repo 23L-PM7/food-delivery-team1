@@ -16,7 +16,6 @@ export function Containers(props: ChildProps) {
   const [price, setPrice] = useState("");
   const [saleprice, setSalePrice] = useState("");
   const [category, setCategory] = useState([]);
-  const [categoryId, setCategoryId] = useState("");
   const [selectedCategoryOption, setSelectedCategoryOption] = useState<any>();
 
   console.log({ selectedCategoryOption });
@@ -44,10 +43,20 @@ export function Containers(props: ChildProps) {
   }, []);
 
   const createFoods = async () => {
-    setCategoryId(selectedCategoryOption.value);
+    const categoryId: string = selectedCategoryOption.value;
     const userId = "66224b6f98e6eb965ffc9027";
-    console.log(name);
-    if (name == "" || name == null) {
+    if (
+      name == "" ||
+      name == null ||
+      categoryId == "" ||
+      categoryId == null ||
+      ingredient == "" ||
+      ingredient == null ||
+      price == "" ||
+      price == null ||
+      saleprice == "" ||
+      saleprice == null
+    ) {
     } else {
       await axios
         .post("http://localhost:9090/foods/create", {

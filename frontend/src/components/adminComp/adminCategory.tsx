@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { GreyAdd, GreenPlus } from "../icons/tripledot";
 import { SideCategory } from "./adminCategorySelect";
 import axios from "axios";
-import { Containers } from "@/app/foods/Containers";
+import { Containers } from "@/app/foods/containers";
 import { FoodCard } from "@/app/foods/FoodCard";
 
 export function AdminCategory() {
@@ -40,8 +40,6 @@ export function AdminCategory() {
   }, []);
 
   const createCategory = async () => {
-    console.log(name);
-
     if (name == "" || name == null) {
       return;
     } else {
@@ -59,7 +57,6 @@ export function AdminCategory() {
 
   const clearField = () => {
     setName("");
-    console.log({ category });
   };
 
   return (
