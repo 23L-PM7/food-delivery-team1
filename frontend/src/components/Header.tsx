@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { UserProfile } from "../app/userprofile/UserProfile";
 
 import { Card } from "@mui/material";
+import { SearchBar } from "./headerComponents/searchBar";
 
 export default function Header() {
   const [loginModal, setLoginModal] = useState(false);
@@ -54,60 +55,9 @@ export default function Header() {
       </div>
 
       <div className=" items-center w-3/6 flex justify-end ">
-        <label className="input input-bordered border-black items-center gap-2 w-[260px] h-[36px]  hidden lg:flex">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            className="w-4 h-4 opacity-70"
-          >
-            <path
-              fillRule="evenodd"
-              d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-              clipRule="evenodd"
-            />
-          </svg>
-          <input type="text" className="grow " placeholder="Хайх" />
-        </label>
+        <SearchBar />
         <div className="flex py-2 px-5 gap-2  group">
-          <Drawer>
-            <div className="flex justify-start gap-[171px] items-center relative">
-              <div>
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 48 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M28.1125 14L29.8875 15.775L21.6625 24L29.8875 32.225L28.1125 34L18.1125 24L28.1125 14Z"
-                    fill="#1C1B1F"
-                  />
-                </svg>
-              </div>
-              <div className="text-[20px]">Таны сагс</div>
-            </div>
-
-            <FoodInfo></FoodInfo>
-
-            <div className="absolute bottom-0 px-[32px] py-[30px] flex">
-              <div className="w-[256px]">
-                <div className="leading-[27px] text-[18px] font-[400] text-[#5E6166]">
-                  Нийт төлөх дүн
-                </div>
-                <div className="leading-[27px] text-[18px] font-[700] text-[#121316]">
-                  34800 ₮
-                </div>
-              </div>
-              <a
-                className="btn bg-[#18BA51] text-[#FFFFFF] w-[256px]"
-                href="http://localhost:3000/confirmation"
-              >
-                Захиалах
-              </a>
-            </div>
-          </Drawer>
+          <Drawer />
         </div>
 
         <div className="flex items-center  gap-2 group">
@@ -158,62 +108,14 @@ export default function Header() {
         <div className="dropdown">
           <button></button>
         </div>
-        <div className="drawer drawer-end z-10 py-2 px-5 gap-2 flex lg:hidden justify-end w-11">
-          <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-          <div className="drawer-content">
-            <label htmlFor="my-drawer-4" className="">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block w-5 h-5 stroke-current hover:text-green-600"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
-              </svg>
-            </label>
-          </div>
-          <div className="drawer-side">
-            <label
-              htmlFor="my-drawer-4"
-              aria-label="close sidebar"
-              className="drawer-overlay"
-            ></label>
-            <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-              {/* Sidebar content here */}
-              <li>
-                <a href="http://localhost:3000">
-                  <h1 className=" hover:text-green-600">НҮҮР</h1>
-                </a>
-              </li>
-              <li>
-                <a href="http://localhost:3000/menu">
-                  <h1 className=" hover:text-green-600">ХООЛНЫ ЦЭС</h1>
-                </a>
-              </li>
-              <li>
-                <a href="http://localhost:3000/deliveryzone">
-                  <h1 className=" hover:text-green-600">ХҮРГЭЛТИЙН БҮС</h1>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   );
 }
 
-type DrawerProps = {
-  children: ReactNode;
-};
-const Drawer = ({ children }: DrawerProps) => {
+export const Drawer = () => {
   return (
-    <div className="drawer drawer-end">
+    <div className="drawer drawer-end z-50">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content out">
         <label htmlFor="my-drawer" className=" flex py-2 gap-2  group">
@@ -242,7 +144,6 @@ const Drawer = ({ children }: DrawerProps) => {
         ></label>
         <ul className="menu w-[586px] h-full bg-white p-[24px]  min-h-full text-base-content z-40">
           {/* Sidebar content here */}
-          {children}
         </ul>
       </div>
     </div>
