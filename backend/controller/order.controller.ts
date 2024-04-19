@@ -7,11 +7,11 @@ export async function getOrders(req: any, res: any) {
 }
 
 export async function createOrder(req: any, res: any) {
-  const { id, name } = req.body;
+  const { userId, name } = req.body;
   console.log(req.body);
 
   const category = await OrderModel.create({
-    id: id,
+    // id: id,
     name: name,
   });
   res.json(category);

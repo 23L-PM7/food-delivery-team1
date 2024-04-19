@@ -1,6 +1,7 @@
 import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
 import { userRef } from "./user.model";
+import { foodRef } from "./foods.model";
 const { Schema } = mongoose;
 
 const orderSchema = new Schema({
@@ -9,9 +10,11 @@ const orderSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: userRef,
   },
-  food: {
-    type: Schema.Types.ObjectId,
-    ref: userRef,
+  content: {
+    food: {
+      type: Schema.Types.ObjectId,
+      ref: foodRef,
+    },
     amount: Number,
   },
   totalPrice: Number,
