@@ -18,18 +18,15 @@ export function Login() {
   const [visible, setVisible] = useState("password");
 
 
-  // async function UserLogin() {
-  //   const data = await LoginMutator("login", { email, password });
-  //   localStorage.setItem("accessToken", data.accessToken);
-  //   window.location = "/";
-  // }
+
 
   const UserLogin = async () => {
     try {
       const data = await LoginMutator("login", { email, password });
-      localStorage.setItem("accesstoken", data.accesstoken);
+      console.log({ data })
+      localStorage.setItem("newtoken", data);
       router.push("/");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error", error.response.data.alert, error.response.data.message);
       alert(error.response.data.alert || error.response.data.message);
     }

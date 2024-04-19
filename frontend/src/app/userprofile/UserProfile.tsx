@@ -1,23 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Call, Exit, Mail, Pencil, Timer, Person } from "../icons/ProfileIcons";
+import { Call, Exit, Mail, Pencil, Timer, Person } from "../../components/icons/ProfileIcons";
 import axios from "axios";
 import { title } from "process";
 import { Toaster, toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { Datanullandundef } from "../structure";
+import { Datanullandundef } from "../../components/structure";
 import { UserPrinting } from "@/app/util";
 
 
 
 
 export function UserProfile() {
-  const [edit, setEdit] = useState<Boolean>(false);;
+  const [edit, setEdit] = useState(false);;
   const [phoneNumber, setPhoneNumber] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [theUser, setTheUser] = useState<any>(undefined);
+  const [theUser, setTheUser] = useState([]);
   const [loginModal, setLoginModal] = useState(false);
   const router = useRouter();
 
@@ -25,52 +25,53 @@ export function UserProfile() {
     setLoginModal(!loginModal);
   }
 
-  // useEffect(() => {
-  //   async function getData() {
-  //     const data: string | null = localStorage.getItem('user')
-  //     if (!Datanullandundef(data)) {
-  //       setTheUser(JSON.parse(data || ''));
-  //     } else {
-  //       router.push('/')
-  //       console.log(data)
-  //     }
-  //   }
-  //   getData();
-  // }, []);
 
-  // const SavageSave = async () => {
-  //   await UserPrinting(`signup/${theUser._id}`, theUser)
-  //   toast.success('Amjilttai khadgalagdlaa')
-  //   setEdit(false)
-  // }
+  const SavageSave = async () => {
+    await UserPrinting(`signup/${theUser._id}`, theUser)
+    toast.success("success")
+    setEdit(false)
+  }
 
-  // const updateUsers = async (id: string) => {
+  const getProfile = async () => {
+    const newtoken = localStorage.getItem('newtoken')
 
-  //   await axios.put(`http://localhost:9090/users/update/${id}`, {
-  //     name,
-  //     email,
-  //     phoneNumber,
-  //   })
-  //     .then(() => {
-  //       setName("");
-  //       setEmail("");
-  //       setPhoneNumber("");
-  //       // GetProfile();
-  //     });
-  //   // setEdit(false)
-  // }
-  // catch (error) {
-  //   console.error("Error:", error);
-  //   alert("wefhwe");
-  //   // alert("There was an error creating a new user.");
+    await axios.post("http://localhost:9090/users/me", {
+      newtoken
+    }).then((response: any) => {
+      setTheUser(response.data)
+    })
+  }
 
-  // useEffect(() => {
-  //   GetProfile();
-  // }, []);
+  useEffect(() => {
+    getProfile()
+  }, [])
+
+  const updateUsers = async (id: string) => {
+    try {
+      await axios.put(`http://localhost:9090/users/update/${id}`, {
+        name,
+        email,
+        phoneNumber,
+      })
+        .then(() => {
+          setName("");
+          setEmail("");
+          setPhoneNumber("");
+        });
+    } catch (error) {
+      console.error("Error:", error);
+      alert("wefhwe")
+    }
+  };
+
+
+  // alert("There was an error creating a new user.");
+
+
 
 
   return (
-    <div className="container mx-auto  w-[432px] px-[20px] mb-[40px]">
+    <div className="container mx-auto  w-[432px] px-[20px] mb-[200px] mt-[76px]">
       <div className="">
         <div className="avatar flex justify-center relative">
           <div className="w-24 rounded-full">
@@ -81,7 +82,7 @@ export function UserProfile() {
           </button>
         </div>
         <h1 className="flex justify-center font-bold text-[28px] mt-[40px]">
-          УгтахБаяр
+          {theUser.name}
         </h1>
       </div>
 
@@ -95,7 +96,7 @@ export function UserProfile() {
             <input
               placeholder="Нэр..."
               type="text"
-              value={name}
+              value={theUser.name}
               onChange={(event) => setName(event.target.value)}
               className="bg-transition rounded p-2" />
           </div>
@@ -114,7 +115,7 @@ export function UserProfile() {
             <input
               placeholder="Утасны дугаар..."
               type="text"
-              value={phoneNumber}
+              value={theUser.phoneNumber}
               onChange={(event) => setPhoneNumber(event.target.value)}
               className="bg-transition rounded p-2" />
           </div>
@@ -131,7 +132,7 @@ export function UserProfile() {
             <input
               placeholder="Имэйл хаяг..."
               type="text"
-              value={email}
+              value={theUser.email}
               onChange={(event) => setEmail(event.target.value)}
               className="bg-transition bg-[#F6F6F6]  rounded p-2" />
           </div>

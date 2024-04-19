@@ -11,7 +11,7 @@ import {
 } from "@/components/icons/mainPageCategories";
 import { Category } from "@/components/category";
 import { useState } from "react";
-import { UserProfile } from "@/components/userprofile/UserProfile";
+import { UserProfile } from "@/app/userprofile/UserProfile";
 
 export default function Home() {
   return (
