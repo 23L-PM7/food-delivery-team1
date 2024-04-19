@@ -19,6 +19,15 @@ export default function Header() {
     setLoginModal(!loginModal);
   }
 
+  const UserLogin = () => {
+    const user: string | null = localStorage.getItem('user')
+    if (user) {
+      switchs.push('userprofile')
+    } else {
+      switchs.push('/login')
+    }
+  }
+
   return (
     <div
       className="container mx-auto text-sm font-semibold flex h-[57px] gap-2 items-center lg:justify-between 
@@ -73,18 +82,7 @@ export default function Header() {
             Нэвтрэх
           </button>
           <a href="http://localhost:3000/userprofile">Хэрэглэгч</a>
-          {/* <button
-            
-            // passHref
-            onClick={() => UserProfile()}
-            className="btn border-none btn-outline hidden w-fit rounded-[5px] md:flex"
-          >
-            <span className="text-sm font-bold">{'Хэрэглэгч'}</span>
-          </button> */}
-          {/* 
-          // 
-          // 
-          //  */}
+
           <dialog
             id="Haruul"
             className={loginModal ? `modal modal-open` : `modal`}
