@@ -5,9 +5,7 @@ import {
   createUsers,
   updateUsers,
   deleteUsers,
-  // getUserById,
-  me,
-  login,
+  userMe,
 } from "../controller/users.controller";
 
 import {
@@ -16,6 +14,7 @@ import {
   updateLogin,
   createLogin,
 } from "../controller/users.controller";
+import { checkAuth } from "../middlewares/check-auth";
 
 const usersRouter = express.Router();
 
@@ -24,11 +23,9 @@ usersRouter.post("/login", createLogin);
 usersRouter.put("/login/:id", updateLogin);
 usersRouter.delete("/login/:id", deleteLogin);
 
-usersRouter.post("/authenticate", login);
-usersRouter.post("/me", me)
+usersRouter.post("/me", userMe)
 
 usersRouter.get("/signup", getUsers);
-// usersRouter.get("/:id", getUserById);
 usersRouter.post("/signup", createUsers);
 usersRouter.put("/signup/:id", updateUsers);
 usersRouter.delete("/signup/:id", deleteUsers);
