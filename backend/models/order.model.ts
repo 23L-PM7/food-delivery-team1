@@ -1,10 +1,14 @@
 import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
+import { userRef } from "./user.model";
 const { Schema } = mongoose;
 
 const orderSchema = new Schema({
   id: ObjectId,
-  userid: ObjectId,
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: userRef,
+  },
   orderNumber: Number,
   foods: Array,
   totalPrice: Number,
