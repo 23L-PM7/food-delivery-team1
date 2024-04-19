@@ -102,7 +102,7 @@ export function UserProfile() {
               type="text"
               value={name}
               onChange={(event) => setName(event.target.value)}
-              className="bg-transition rounded p-2" />
+              className="bg-[#F6F6F6]  rounded p-2" />
           </div>
           <button className="w-2/12 justify-end flex" onClick={() => updateUser()}>
             <Pencil />
@@ -121,7 +121,7 @@ export function UserProfile() {
               type="text"
               value={phoneNumber}
               onChange={(event) => setPhoneNumber(event.target.value)}
-              className="bg-transition rounded p-2" />
+              className="bg-[#F6F6F6]  rounded p-2" />
           </div>
           <button className="w-2/12 justify-end flex" onClick={updateUser}>
             <Pencil />
