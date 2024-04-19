@@ -75,36 +75,38 @@ const FoodCard = (props: FoodCardProps) => {
             className="absolute inset-[0]"
             onClick={() => setMenuOpen(false)}
           ></div>
-          <div className=" flex w-[981px] h-[564px] container mx-auto p-[32px] gap-[33px] bg-white rounded-2xl relative">
-            <div>
-              <img
-                className="object-cover w-[500px] h-[500px]"
-                src="https://images.unsplash.com/photo-1542691457-cbe4df041eb2?q=80&w=3840&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              ></img>
-            </div>
+          <div className="flex flex-col justify-center container mx-auto bg-white rounded-2xl relative h-[564px] w-[365px] p-[10px] gap-[5px] sm:gap-[20px] sm:p-[20px] sm:flex-row sm:w-[640px] md:w-[750px] md:p-[32px] md:gap-[33px] lg:w-[981px]">
+            <img
+              className="mx-auto object-cover w-[365px] h-[300px] sm:h-[500px] sm:w-[300px] md:w-[400px] lg:w-[500px] "
+              src="https://images.unsplash.com/photo-1542691457-cbe4df041eb2?q=80&w=3840&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            ></img>
 
-            <div className="flex flex-col gap-[32px] justify-center">
+            <div className="flex flex-col justify-center gap-[5px] lg:gap-[32px]">
               <button
-                className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4"
+                className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 lg:right-4 lg:top-4"
                 onClick={() => setMenuOpen(false)}
               >
                 X
               </button>
-              <div className="flex flex-col gap-[2px] w-[384px]">
-                <div className="font-semibold  text-[#000000] text-xl">
+              <div className="flex flex-col gap-[2px] sm:w-[280px] lg:w-[384px]">
+                <div className="text-[#000000] font-semibold text-base md:text-xl">
                   Торт
                 </div>
-                <div className="font-semibold text-lg text-[#18ba51] mt-[2px]">
+                <div className="text-[#18ba51] font-semibold text-base md:text-lg lg:mt-[2px]">
                   122323 ₮
                 </div>
               </div>
-              <div className="flex flex-col gap-[2px]">
-                <div className="font-semibold text-lg text-[#000000]">Орц</div>
-                <div className="bg-[#F6F6F6] p-[8px] rounded-[8px] text-[#767676]">
+              <div className="flex flex-col lg:gap-[2px]">
+                <div className="text-[#000000] font-semibold text-base md:text-lg">
+                  Орц
+                </div>
+                <div className="bg-[#F6F6F6] rounded-[8px] text-[#767676] lg:p-[8px] ">
                   Хулуу, төмс, давс
                 </div>
               </div>
-              <div className="font-semibold text-lg text-[#000000]">Тоо</div>
+              <div className="text-[#000000] font-semibold text-base md:text-lg">
+                Тоо
+              </div>
               <div className="flex justify-between items-center">
                 <button
                   className="btn bg-[#18BA51] text-[#FFFFFF]"
