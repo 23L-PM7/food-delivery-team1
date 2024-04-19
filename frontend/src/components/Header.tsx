@@ -113,7 +113,6 @@ export const Drawer = () => {
           className="cursor-pointer flex py-2 gap-2  group"
         >
           <Basket />
-
           <h2 className=" group-hover:text-green-600">Сагс</h2>
         </label>
       </div>
@@ -176,8 +175,7 @@ const FoodInfo = () => {
               className="btn bg-[#18BA51] text-[14px] font-[900] text-[#FFFFFF] w-[45px] h-[40px]"
               onClick={minusFoodQuantity}
             >
-              {" "}
-              -{" "}
+              -
             </button>
             <button className="btn bg-white border-none font-[500] text-[16px]">
               {foodQuantity}
@@ -186,8 +184,7 @@ const FoodInfo = () => {
               className="btn bg-[#18BA51] text-[14px] font-[900] text-[#FFFFFF] w-[45px] h-[40px]"
               onClick={incementFoodQuantity}
             >
-              {" "}
-              +{" "}
+              +
             </button>
           </div>
         </div>
