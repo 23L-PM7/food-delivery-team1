@@ -8,6 +8,8 @@ import { useRouter } from "next/navigation";
 import { UserProfile } from "../app/userprofile/UserProfile";
 
 import { Card } from "@mui/material";
+import { SearchBar } from "./headerComponents/searchBar";
+import { Basket } from "./icons/basket";
 
 export default function Header() {
   const [loginModal, setLoginModal] = useState(false);
@@ -54,60 +56,9 @@ export default function Header() {
       </div>
 
       <div className=" items-center w-3/6 flex justify-end ">
-        <label className="input input-bordered border-black items-center gap-2 w-[260px] h-[36px]  hidden lg:flex">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            className="w-4 h-4 opacity-70"
-          >
-            <path
-              fillRule="evenodd"
-              d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-              clipRule="evenodd"
-            />
-          </svg>
-          <input type="text" className="grow " placeholder="Хайх" />
-        </label>
+        <SearchBar />
         <div className="flex py-2 px-5 gap-2  group">
-          <Drawer>
-            <div className="flex justify-start gap-[171px] items-center relative">
-              <div>
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 48 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M28.1125 14L29.8875 15.775L21.6625 24L29.8875 32.225L28.1125 34L18.1125 24L28.1125 14Z"
-                    fill="#1C1B1F"
-                  />
-                </svg>
-              </div>
-              <div className="text-[20px]">Таны сагс</div>
-            </div>
-
-            <FoodInfo></FoodInfo>
-
-            <div className="absolute bottom-0 px-[32px] py-[30px] flex">
-              <div className="w-[256px]">
-                <div className="leading-[27px] text-[18px] font-[400] text-[#5E6166]">
-                  Нийт төлөх дүн
-                </div>
-                <div className="leading-[27px] text-[18px] font-[700] text-[#121316]">
-                  34800 ₮
-                </div>
-              </div>
-              <a
-                className="btn bg-[#18BA51] text-[#FFFFFF] w-[256px]"
-                href="http://localhost:3000/confirmation"
-              >
-                Захиалах
-              </a>
-            </div>
-          </Drawer>
+          <Drawer />
         </div>
 
         <div className="flex items-center  gap-2 group">
@@ -158,78 +109,21 @@ export default function Header() {
         <div className="dropdown">
           <button></button>
         </div>
-        <div className="drawer drawer-end z-10 py-2 px-5 gap-2 flex lg:hidden justify-end w-11">
-          <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-          <div className="drawer-content">
-            <label htmlFor="my-drawer-4" className="">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block w-5 h-5 stroke-current hover:text-green-600"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
-              </svg>
-            </label>
-          </div>
-          <div className="drawer-side">
-            <label
-              htmlFor="my-drawer-4"
-              aria-label="close sidebar"
-              className="drawer-overlay"
-            ></label>
-            <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-              {/* Sidebar content here */}
-              <li>
-                <a href="http://localhost:3000">
-                  <h1 className=" hover:text-green-600">НҮҮР</h1>
-                </a>
-              </li>
-              <li>
-                <a href="http://localhost:3000/menu">
-                  <h1 className=" hover:text-green-600">ХООЛНЫ ЦЭС</h1>
-                </a>
-              </li>
-              <li>
-                <a href="http://localhost:3000/deliveryzone">
-                  <h1 className=" hover:text-green-600">ХҮРГЭЛТИЙН БҮС</h1>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   );
 }
 
-type DrawerProps = {
-  children: ReactNode;
-};
-const Drawer = ({ children }: DrawerProps) => {
+export const Drawer = () => {
   return (
-    <div className="drawer drawer-end">
+    <div className="drawer drawer-end z-50">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content out">
-        <label htmlFor="my-drawer" className=" flex py-2 gap-2  group">
-          <svg
-            width="22"
-            height="20"
-            viewBox="0 0 22 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="group-hover:text-green-600"
-          >
-            <path
-              d="M21 7.48977H16.21L11.83 0.929766C11.64 0.649766 11.32 0.509766 11 0.509766C10.68 0.509766 10.36 0.649766 10.17 0.939766L5.79 7.48977H1C0.45 7.48977 0 7.93977 0 8.48977C0 8.57977 0.00999996 8.66977 0.04 8.75977L2.58 18.0298C2.81 18.8698 3.58 19.4898 4.5 19.4898H17.5C18.42 19.4898 19.19 18.8698 19.43 18.0298L21.97 8.75977L22 8.48977C22 7.93977 21.55 7.48977 21 7.48977ZM11 3.28977L13.8 7.48977H8.2L11 3.28977ZM17.5 17.4898L4.51 17.4998L2.31 9.48977H19.7L17.5 17.4898ZM11 11.4898C9.9 11.4898 9 12.3898 9 13.4898C9 14.5898 9.9 15.4898 11 15.4898C12.1 15.4898 13 14.5898 13 13.4898C13 12.3898 12.1 11.4898 11 11.4898Z"
-              fill="currentColor"
-            />
-          </svg>
+        <label
+          htmlFor="my-drawer"
+          className="cursor-pointer flex py-2 gap-2  group"
+        >
+          <Basket />
 
           <h2 className=" group-hover:text-green-600">Сагс</h2>
         </label>
@@ -242,7 +136,6 @@ const Drawer = ({ children }: DrawerProps) => {
         ></label>
         <ul className="menu w-[586px] h-full bg-white p-[24px]  min-h-full text-base-content z-40">
           {/* Sidebar content here */}
-          {children}
         </ul>
       </div>
     </div>

@@ -3,13 +3,38 @@
 import { Children, ReactNode, useEffect, useState } from "react";
 import { SellChip } from "./Sellchip";
 import { foodlist } from "./datalist";
+import axios from "axios";
+import { utilFetcher } from "@/util/mainUtility";
 
 export default function Menu() {
+  const [foods, setFoods] = useState([]);
+
+  const fetchFoods = async () => {
+    try {
+      const data: any = await utilFetcher("foods");
+      console.log(data);
+      setFoods(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchFoods();
+  }, []);
+
+  const check = () => {
+    console.log(foods);
+  };
+
   return (
     <div
       className=" container mx-auto items-center inset-1  mb-[82px] flex flex-col justify-center sm:grid sm:grid-cols-2 sm:gap-x-[24px] sm:gap-y-[60px] lg:grid-cols-3 xl:grid-cols-4 2xl:max-w-[1200px]"
       id="my_modal_2"
     >
+      <button onClick={check} className="btn btn-error">
+        Check
+      </button>
       {foodlist.map((food) => (
         <FoodCard key={food.id} {...food} />
       ))}
@@ -59,7 +84,7 @@ const FoodCard = (props: FoodCardProps) => {
           >
             <img
               className="object-fill rounded-lg absolute -z-20"
-              src={img}
+              src="https://media.istockphoto.com/id/1690090007/photo/a-cropped-image-of-a-womans-hand-holding-a-piece-of-toasted-bread-with-scrambled-eggs-on-top.jpg?s=2048x2048&w=is&k=20&c=KYa9toFXQyJ_pWcikPGQ6qxHl127RRM7txLFfDv5SMM="
             ></img>
           </div>
         </div>
