@@ -38,15 +38,14 @@ export async function createFoods(req: any, res: any) {
 
 export async function updateFoods(req: any, res: any) {
   const { id } = req.params;
-  const { name, image, ingeredient, price, saleprice, foodcategory } = req.body;
+  const { name, ingredient, price, saleprice, categoryId } = req.body;
 
   const foods = await FoodsModel.findByIdAndUpdate(id, {
     name: name,
-    image: image,
-    ingeredient: ingeredient,
+    ingredient: ingredient,
     price: price,
     saleprice: saleprice,
-    foodcategory: foodcategory,
+    categoryId: categoryId,
   });
 
   res.json(foods);
