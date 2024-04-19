@@ -16,6 +16,7 @@ export function Containers(props: ChildProps) {
   const [price, setPrice] = useState("");
   const [saleprice, setSalePrice] = useState("");
   const [category, setCategory] = useState([]);
+  const [categoryId, setCategoryId] = useState("");
   const [selectedCategoryOption, setSelectedCategoryOption] = useState<any>();
 
   console.log({ selectedCategoryOption });
@@ -43,6 +44,8 @@ export function Containers(props: ChildProps) {
   }, []);
 
   const createFoods = async () => {
+    setCategoryId(selectedCategoryOption.value);
+    const userId = "66224b6f98e6eb965ffc9027";
     console.log(name);
     if (name == "" || name == null) {
     } else {
@@ -52,7 +55,8 @@ export function Containers(props: ChildProps) {
           ingredient,
           price,
           saleprice,
-          categoryId: selectedCategoryOption.label,
+          categoryId,
+          userId,
         })
         .then(() => {
           setFoodName("");
@@ -104,7 +108,7 @@ export function Containers(props: ChildProps) {
             }),
           }}
           value={selectedCategoryOption}
-          onChange={(label) => setSelectedCategoryOption(label)}
+          onChange={(value) => setSelectedCategoryOption(value)}
         />
         <h1>Хоолны орц</h1>
         <input
