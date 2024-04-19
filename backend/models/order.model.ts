@@ -14,9 +14,7 @@ const orderSchema = new Schema({
   totalPrice: Number,
   process: ObjectId,
   createdDate: Date,
-  district: String,
-  Khoroo: String,
-  Apartments: String,
+  Address: String,
 });
 
 export const OrderModel = mongoose.model("Model", orderSchema);
