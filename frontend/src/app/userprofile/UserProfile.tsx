@@ -9,7 +9,14 @@ import { useRouter } from "next/navigation";
 import { Datanullandundef } from "../../components/structure";
 import { UserPrinting } from "@/app/util";
 
+type User = {
+  _id: string,
+  name: string,
+  email: string,
+  phoneNumber: number,
+  role: "admin" | 'user'
 
+}
 
 
 export function UserProfile() {
@@ -17,7 +24,7 @@ export function UserProfile() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [theUser, setTheUser] = useState([]);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [loginModal, setLoginModal] = useState(false);
   const router = useRouter();
 
@@ -26,49 +33,46 @@ export function UserProfile() {
   }
 
 
-  const SavageSave = async () => {
-    await UserPrinting(`signup/${theUser._id}`, theUser)
-    toast.success("success")
-    setEdit(false)
-  }
-
   const getProfile = async () => {
-    const newtoken = localStorage.getItem('newtoken')
-
-    await axios.post("http://localhost:9090/users/me", {
-      newtoken
-    }).then((response: any) => {
-      setTheUser(response.data)
-    })
+    const token = localStorage.getItem('newtoken')
+    console.log(token);
+    try {
+      await axios.post("http://localhost:9090/users/me", {
+        newtoken: token
+      }).then((response: any) => {
+        const user = response.data;
+        setCurrentUser(user);
+        setName(user.name);
+        setPhoneNumber(user.phoneNumber);
+        setEmail(user.email);
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   useEffect(() => {
     getProfile()
   }, [])
 
-  const updateUsers = async (id: string) => {
+  if (!currentUser) return <p>...loading</p>
+
+  const updateUser = async () => {
+    console.log(name, email, phoneNumber, currentUser._id)
     try {
-      await axios.put(`http://localhost:9090/users/update/${id}`, {
+      const data = await UserPrinting(`signup/${currentUser._id}`, {
         name,
         email,
-        phoneNumber,
+        phoneNumber
       })
-        .then(() => {
-          setName("");
-          setEmail("");
-          setPhoneNumber("");
-        });
+      console.log({ data })
+      localStorage.setItem('newtoken', data);
+      toast.success("success")
     } catch (error) {
       console.error("Error:", error);
-      alert("wefhwe")
+      alert("amjiltgui")
     }
-  };
-
-
-  // alert("There was an error creating a new user.");
-
-
-
+  }
 
   return (
     <div className="container mx-auto  w-[432px] px-[20px] mb-[200px] mt-[76px]">
@@ -77,12 +81,12 @@ export function UserProfile() {
           <div className="w-24 rounded-full">
             <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
           </div>
-          <button className="bg-[#FFFFFF] w-[34px] h-[34px] p-2 border rounded-full absolute bottom-0 right-[135px]">
+          <button className="bg-[#FFFFFF] w-[34px] h-[34px] p-2 border rounded-full absolute bottom-0 right-[135px]" onClick={updateUser}>
             <Pencil />
           </button>
         </div>
         <h1 className="flex justify-center font-bold text-[28px] mt-[40px]">
-          {theUser.name}
+          {currentUser.name}
         </h1>
       </div>
 
@@ -96,11 +100,11 @@ export function UserProfile() {
             <input
               placeholder="Нэр..."
               type="text"
-              value={theUser.name}
+              value={name}
               onChange={(event) => setName(event.target.value)}
               className="bg-transition rounded p-2" />
           </div>
-          <button className="w-2/12 justify-end flex">
+          <button className="w-2/12 justify-end flex" onClick={() => updateUser()}>
             <Pencil />
           </button>
         </div>
@@ -115,11 +119,11 @@ export function UserProfile() {
             <input
               placeholder="Утасны дугаар..."
               type="text"
-              value={theUser.phoneNumber}
+              value={phoneNumber}
               onChange={(event) => setPhoneNumber(event.target.value)}
               className="bg-transition rounded p-2" />
           </div>
-          <button className="w-2/12 justify-end flex">
+          <button className="w-2/12 justify-end flex" onClick={updateUser}>
             <Pencil />
           </button>
         </div>
@@ -132,11 +136,11 @@ export function UserProfile() {
             <input
               placeholder="Имэйл хаяг..."
               type="text"
-              value={theUser.email}
+              value={email}
               onChange={(event) => setEmail(event.target.value)}
               className="bg-transition bg-[#F6F6F6]  rounded p-2" />
           </div>
-          <button className="w-2/12 justify-end flex" >
+          <button className="w-2/12 justify-end flex" onClick={updateUser} >
             <Pencil />
           </button>
         </div>
@@ -183,7 +187,7 @@ export function UserProfile() {
       </div>
       <button
         className="btn w-full bg-green-400 hover:bg-green-600 mt-[40px]"
-        onClick={() => SavageSave()}
+        onClick={() => updateUser()}
       >
         Хадгалах
       </button>

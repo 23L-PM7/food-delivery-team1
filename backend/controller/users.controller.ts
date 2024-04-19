@@ -38,18 +38,25 @@ export async function createUsers(req: any, res: any) {
   res.json(newUser);
 }
 
+
+
 export async function updateUsers(req: any, res: any) {
-  const { name, email, password, phoneNumber, role } = req.body;
+  const { data } = req.body;
   const { id } = req.params;
 
-  const users = await UsersModel.findByIdAndUpdate(id, {
-    name: name,
-    email: email,
-    password: password,
-    phoneNumber: phoneNumber,
-    role: role,
-  });
-  res.json(users);
+  try {
+    const user = await UsersModel.findByIdAndUpdate(id, {
+      name: data.name,
+      email: data.email,
+      phoneNumber: data.phoneNumber,
+    });
+    res.json(user);
+
+  } catch (error) {
+    console.log(error)
+  }
+
+
 }
 export async function deleteUsers(req: any, res: any) {
   const { id } = req.params;
@@ -133,21 +140,6 @@ export async function deleteLogin(req: any, res: any) {
   res.json(usersLogin);
 }
 
-
-// export const getUserById = async (req: Request, res: Response) => {
-//   const accessToken = req.get("access-token");
-//   if (!accessToken) {
-//     res.json({ message: "unautorized" })
-//     return
-//   }
-
-//   const decoded = jwt.verify(accessToken, "dmngo");
-//   const userId = decoded._id
-
-//   const user = await UsersModel.findById(userId).select('-password')
-
-//   response.json(user)
-// }
 
 export const userMe = async (req: Request, res: Response) => {
 

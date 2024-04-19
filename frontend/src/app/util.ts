@@ -16,7 +16,7 @@ export async function LoginMutator(path: string, postData: {}) {
 }
 
 export async function UserPrinting(path: string, postData: {}) {
-    const response: any = await axios.put(`http://localhost:9090/users/${path}`, postData, {
+    const response: any = await axios.put(`http://localhost:9090/users/${path}`, {
         data: postData
     })
     return response.data;
