@@ -69,7 +69,7 @@ export async function getLogin(req: any, res: any) {
   }
 
   try {
-    const decoded = jwt.verify(accessToken, "dmngo");
+    const decoded = jwt.verify(accessToken, secret);
     console.log({ decoded });
     res.json(users);
   } catch (error) {
@@ -94,33 +94,25 @@ export async function createLogin(req: Request, res: Response) {
         .json({ alert: "Та бүртгэлгүй байгаа учир бүртгүүлнэ үү" });
       return;
     }
+
+    if (user.password !== password) {
+      res.status(400).json({ message: "Нэвтрэх нэр эсвэл нууц үг буруу байна." });
+      return;
+    }
+
     console.log(user)
+
     if (password == user.password) {
       const accesstoken = jwt.sign({ userId: user._id }, secret)
       res.json(accesstoken)
     } else {
-      console.log("accesstoken ugj chadsangui")
-      res.send("Error")
+      res.sendStatus(204)
     }
-
     response.send("ok")
   } catch (error) {
     console.log(error)
     res.json("Error")
   }
-
-    // if (password == user.password) {
-    //   res.status(401)
-    //     .json({ message: "Нэвтрэх нэр эсвэл нууц үг буруу байна." });
-    //   return;
-    // }
-
-    // if (user) {
-    //   const accesstoken = jwt.sign({ userId: user._id }, secret);
-    //   res.json({ accesstoken });
-    // } else {
-    //   res.sendStatus(204);
-    // }
 }
 
 export async function updateLogin(req: any, res: any) {
@@ -157,63 +149,26 @@ export async function deleteLogin(req: any, res: any) {
 //   response.json(user)
 // }
 
-export const me = async (req: Request, res: Response) => {
+export const userMe = async (req: Request, res: Response) => {
 
-
+  const authorization = req.header("Authorization");
+  const newtoken = authorization?.split(" ")[1];
 
   try {
     const { newtoken } = req.body
-    const id: any = jwt.verify(newtoken, secret);
+    const decoded: any = jwt.verify(newtoken, secret);
 
 
-    const user = await UsersModel.findById(id.userId)
-    if (!user) {
-      res.send("error ym irsengu")
-      return
-    }
-
+    const user = await UsersModel.findById(decoded.userId).select("-password");
 
     res.json(user)
   } catch (error) {
     console.log(error)
-    res.send("error try ajilsangui")
+    response.json({ message: "something wrong" });
   }
 }
 
-export const login = async (req: Request, res: Response) => {
-  const { email, password } = req.body
 
-  if (!email || !password) {
-    response.send("");
-    return
-  }
-
-  try {
-    const user: any = await UsersModel.findOne({ email });
-
-    if (!user) {
-      console.log("user ireegui")
-      return;
-    }
-
-    console.log(user)
-
-    if (password == user.password) {
-      const accesstoken = jwt.sign({ userId: user._id }, secret)
-      res.json(accesstoken)
-    } else {
-      console.log("accesstoken ugj chadsangui")
-      res.send("Error")
-    }
-
-    res.send("ok")
-  } catch (error) {
-    console.log(error)
-    res.json("Error")
-  }
-
-
-}
 
 /////////////////FORGOT PASS//////////////////////////////
 
