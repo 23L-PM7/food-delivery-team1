@@ -94,23 +94,33 @@ export async function createLogin(req: Request, res: Response) {
         .json({ alert: "Та бүртгэлгүй байгаа учир бүртгүүлнэ үү" });
       return;
     }
-
+    console.log(user)
     if (password == user.password) {
-      res.status(401)
-        .json({ message: "Нэвтрэх нэр эсвэл нууц үг буруу байна." });
-      return;
+      const accesstoken = jwt.sign({ userId: user._id }, secret)
+      res.json(accesstoken)
+    } else {
+      console.log("accesstoken ugj chadsangui")
+      res.send("Error")
     }
 
-    if (user) {
-      const accesstoken = jwt.sign({ userId: user._id }, secret);
-      res.json({ accesstoken });
-    } else {
-      res.sendStatus(204);
-    }
-    res.send("ok")
+    response.send("ok")
   } catch (error) {
     console.log(error)
+    res.json("Error")
   }
+
+    // if (password == user.password) {
+    //   res.status(401)
+    //     .json({ message: "Нэвтрэх нэр эсвэл нууц үг буруу байна." });
+    //   return;
+    // }
+
+    // if (user) {
+    //   const accesstoken = jwt.sign({ userId: user._id }, secret);
+    //   res.json({ accesstoken });
+    // } else {
+    //   res.sendStatus(204);
+    // }
 }
 
 export async function updateLogin(req: any, res: any) {

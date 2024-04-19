@@ -22,7 +22,7 @@ export function Login() {
 
   const UserLogin = async () => {
     try {
-      const data = await LoginMutator("authenticate", { email, password });
+      const data = await LoginMutator("login", { email, password });
       console.log({ data })
       localStorage.setItem("newtoken", data);
       router.push("/");
