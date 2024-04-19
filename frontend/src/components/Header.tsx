@@ -19,15 +19,6 @@ export default function Header() {
     setLoginModal(!loginModal);
   }
 
-  // const UserLogin = () => {
-  //   const user: string | null = localStorage.getItem('user')
-  //   if (user) {
-  //     switchs.push('userprofile')
-  //   } else {
-  //     switchs.push('/login')
-  //   }
-  // }
-
   return (
     <div
       className="container mx-auto text-sm font-semibold flex h-[57px] gap-2 items-center lg:justify-between 
