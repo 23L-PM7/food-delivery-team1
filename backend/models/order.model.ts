@@ -9,8 +9,11 @@ const orderSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: userRef,
   },
-  orderNumber: Number,
-  foods: Array,
+  food: {
+    type: Schema.Types.ObjectId,
+    ref: userRef,
+    amount: Number,
+  },
   totalPrice: Number,
   process: ObjectId,
   createdDate: Date,
