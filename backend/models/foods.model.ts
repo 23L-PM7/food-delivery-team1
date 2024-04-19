@@ -5,6 +5,8 @@ import mongoose from "mongoose";
 import { userInfo } from "os";
 const { Schema } = mongoose;
 
+export const foodRef = "food";
+
 const foodsSchema = new Schema({
   id: ObjectId,
   name: String,
@@ -23,4 +25,4 @@ const foodsSchema = new Schema({
   },
 });
 
-export const FoodsModel = mongoose.model("Foods", foodsSchema);
+export const FoodsModel = mongoose.model("Foods", foodsSchema, foodRef);
