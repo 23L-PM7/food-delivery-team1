@@ -36,18 +36,14 @@ export const FoodsCardModal = (props: Props) => {
 
   useEffect(() => {
     if (category.length) {
-      console.log({ category, food });
       const initialOption = options.find(
         (one: any) => one.value === food.categoryId
       );
-
-      console.log({ initialOption });
       setSelectedCategoryOption(initialOption);
     }
   }, [category]);
 
   const createFoods = async () => {
-    console.log(name);
     if (name == "" || name == null) {
     } else {
       await axios
@@ -55,7 +51,7 @@ export const FoodsCardModal = (props: Props) => {
           name,
           ingredient,
           price,
-          categoryId: selectedCategoryOption.label,
+          categoryId: selectedCategoryOption.value,
         })
         .then(() => {
           setFoodName("");
@@ -65,7 +61,7 @@ export const FoodsCardModal = (props: Props) => {
         });
     }
   };
-  console.log({ selectedCategoryOption });
+
   return (
     <div className=" flex w-[981px] h-[564px] container mx-auto p-[32px] gap-[33px] bg-white rounded-2xl relative">
       <div>
@@ -133,7 +129,7 @@ export const FoodsCardModal = (props: Props) => {
                 }),
               }}
               value={selectedCategoryOption}
-              onChange={(label) => setSelectedCategoryOption(label)}
+              onChange={(value) => setSelectedCategoryOption(value)}
             />
           </h1>
         </div>

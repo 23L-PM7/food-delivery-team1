@@ -16,7 +16,6 @@ export function Containers(props: ChildProps) {
   const [price, setPrice] = useState("");
   const [saleprice, setSalePrice] = useState("");
   const [category, setCategory] = useState([]);
-  const [categoryId, setCategoryId] = useState("");
   const [selectedCategoryOption, setSelectedCategoryOption] = useState<any>();
 
   console.log({ selectedCategoryOption });
@@ -44,28 +43,29 @@ export function Containers(props: ChildProps) {
   }, []);
 
   const createFoods = async () => {
-    setCategoryId(selectedCategoryOption.value);
+    const categoryId: string = selectedCategoryOption.value;
     const userId = "66224b6f98e6eb965ffc9027";
-    console.log(name);
-    if (name == "" || name == null) {
-    } else {
-      await axios
-        .post("http://localhost:9090/foods/create", {
-          name,
-          ingredient,
-          price,
-          saleprice,
-          categoryId,
-          userId,
-        })
-        .then(() => {
-          setFoodName("");
-          setIngredient("");
-          setPrice("");
-          setSalePrice("");
-          setSelectedCategoryOption("");
-        });
-    }
+    console.log({ categoryId, name, ingredient, price, saleprice, userId });
+    // if (name == "" || name == null) {
+    // } else {
+
+    // await axios
+    //   .post("http://localhost:9090/foods/create", {
+    //     name,
+    //     ingredient,
+    //     price,
+    //     saleprice,
+    //     categoryId,
+    //     userId,
+    //   })
+    //   .then(() => {
+    //     setFoodName("");
+    //     setIngredient("");
+    //     setPrice("");
+    //     setSalePrice("");
+    //     setSelectedCategoryOption("");
+    //   });
+    // }
   };
 
   return (
@@ -149,7 +149,10 @@ export function Containers(props: ChildProps) {
         </div>
       </div>
       <div className="flex h-[88px] justify-end items-center gap-5 pr-5 border-t-[1px]">
-        <button className="btn w-[109px]  h-[40px] bg-white text-zinc-800">
+        <button
+          onClick={createFoods}
+          className="btn w-[109px]  h-[40px] bg-white text-zinc-800"
+        >
           Clear
         </button>
         <button
