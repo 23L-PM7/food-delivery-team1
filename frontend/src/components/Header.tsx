@@ -186,8 +186,7 @@ const FoodInfo = () => {
               className="btn bg-[#18BA51] text-[14px] font-[900] text-[#FFFFFF] w-[45px] h-[40px]"
               onClick={minusFoodQuantity}
             >
-              {" "}
-              -{" "}
+              -
             </button>
             <button className="btn bg-white border-none font-[500] text-[16px]">
               {foodQuantity}
@@ -196,8 +195,7 @@ const FoodInfo = () => {
               className="btn bg-[#18BA51] text-[14px] font-[900] text-[#FFFFFF] w-[45px] h-[40px]"
               onClick={incementFoodQuantity}
             >
-              {" "}
-              +{" "}
+              +
             </button>
           </div>
         </div>
