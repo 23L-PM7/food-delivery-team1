@@ -45,27 +45,36 @@ export function Containers(props: ChildProps) {
   const createFoods = async () => {
     const categoryId: string = selectedCategoryOption.value;
     const userId = "66224b6f98e6eb965ffc9027";
-    console.log({ categoryId, name, ingredient, price, saleprice, userId });
-    // if (name == "" || name == null) {
-    // } else {
-
-    // await axios
-    //   .post("http://localhost:9090/foods/create", {
-    //     name,
-    //     ingredient,
-    //     price,
-    //     saleprice,
-    //     categoryId,
-    //     userId,
-    //   })
-    //   .then(() => {
-    //     setFoodName("");
-    //     setIngredient("");
-    //     setPrice("");
-    //     setSalePrice("");
-    //     setSelectedCategoryOption("");
-    //   });
-    // }
+    if (
+      name == "" ||
+      name == null ||
+      categoryId == "" ||
+      categoryId == null ||
+      ingredient == "" ||
+      ingredient == null ||
+      price == "" ||
+      price == null ||
+      saleprice == "" ||
+      saleprice == null
+    ) {
+    } else {
+      await axios
+        .post("http://localhost:9090/foods/create", {
+          name,
+          ingredient,
+          price,
+          saleprice,
+          categoryId,
+          userId,
+        })
+        .then(() => {
+          setFoodName("");
+          setIngredient("");
+          setPrice("");
+          setSalePrice("");
+          setSelectedCategoryOption("");
+        });
+    }
   };
 
   return (
@@ -149,10 +158,7 @@ export function Containers(props: ChildProps) {
         </div>
       </div>
       <div className="flex h-[88px] justify-end items-center gap-5 pr-5 border-t-[1px]">
-        <button
-          onClick={createFoods}
-          className="btn w-[109px]  h-[40px] bg-white text-zinc-800"
-        >
+        <button className="btn w-[109px]  h-[40px] bg-white text-zinc-800">
           Clear
         </button>
         <button
