@@ -124,7 +124,6 @@ export const Drawer = () => {
           className="cursor-pointer flex py-2 gap-2  group"
         >
           <Basket />
-
           <h2 className=" group-hover:text-green-600">Сагс</h2>
         </label>
       </div>
