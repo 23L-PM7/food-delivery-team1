@@ -15,23 +15,25 @@ export async function getFoods(req: any, res: any) {
 }
 
 export async function createFoods(req: any, res: any) {
-  const { name, image, ingredient, price, saleprice, categoryId, userId } =
-    req.body;
-  console.log({ name, image, ingredient, price, saleprice, categoryId });
+  const { name, ingredient, price, saleprice, categoryId, userId } = req.body;
+  console.log({ name, ingredient, price, saleprice, categoryId });
 
-  const foods = await FoodsModel.create({
-    name: name,
-    image: image,
-    ingredient: ingredient,
-    price: price,
-    saleprice: saleprice,
-    categoryId: categoryId,
-    userId: userId,
-  });
+  try {
+    const foods = await FoodsModel.create({
+      name: name,
+      ingredient: ingredient,
+      price: price,
+      saleprice: saleprice,
+      categoryId: categoryId,
+      userId: userId,
+    });
 
-  console.log({ foods });
+    console.log({ foods });
 
-  res.json(foods);
+    res.json(foods);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export async function updateFoods(req: any, res: any) {
