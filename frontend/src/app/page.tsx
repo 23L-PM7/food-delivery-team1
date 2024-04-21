@@ -1,6 +1,6 @@
 "use client";
 
-import { Footer } from "./Footer";
+import { Footer } from "../components/footer/Footer";
 import Header from "../components/Header";
 import { Mainbutton } from "@/components/herobutton/Mainbutton";
 import Menu from "./mnde/menu";
