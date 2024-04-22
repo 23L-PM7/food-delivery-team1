@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Signup from "./Signup";
-import { Footer } from "../Footer";
+import { Footer } from "../../components/footer/Footer";
 
 export default function Termsofservice() {
     return (

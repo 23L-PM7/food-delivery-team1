@@ -6,6 +6,8 @@ import React from "react";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { IoMdEye } from "react-icons/io";
+import { IoMdEyeOff } from "react-icons/io";
 
 export default function Signup() {
   const router = useRouter();
@@ -25,6 +27,7 @@ export default function Signup() {
   const [checkbox, setCheckbox] = useState(false);
 
   // password visible useState
+  const [icon, setIcon] = useState(false);
   const [visible, setVisible] = useState("password");
   const [visible2, setVisible2] = useState("password");
 
@@ -67,18 +70,20 @@ export default function Signup() {
 
   // visible passwords
   const visiblePassword = () => {
-    if (visible == "password") {
-      setVisible("text");
-    } else {
-      setVisible("password");
-    }
-  };
+    setIcon(!icon);
+   if (visible === "text") {
+    setVisible("password");
+  } else {
+    setVisible("text");
+  }
+};
   const visibleSecondpass = () => {
-    if (visible2 == "password") {
-      setVisible2("text");
-    } else {
-      setVisible2("password");
-    }
+    setIcon(!icon);
+    if (visible === "text") {
+     setVisible("password");
+   } else {
+     setVisible("text");
+   }
   };
 
   // checkbox check checker
@@ -174,8 +179,9 @@ export default function Signup() {
               onChange={changePassword}
               placeholder="Нууц үгээ оруулна уу"
             />
-            <button onClick={visiblePassword}>
-              <Eye />
+            <button onClick={visiblePassword}
+            className={`${icon ? "hidden" : "flex"}`}>
+            <IoMdEyeOff className="text-[25px]" />
             </button>
           </label>
         </label>
@@ -191,8 +197,9 @@ export default function Signup() {
               onChange={changeSecondpass}
               placeholder="Нууц үгээ оруулна уу"
             />
-            <button onClick={visibleSecondpass}>
-              <Eye />
+            <button onClick={visibleSecondpass}
+             className={`${icon ? "flex" : "hidden"}`}>
+             <IoMdEye className="text-[25px]"/>
             </button>
           </label>
         </label>

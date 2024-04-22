@@ -1,5 +1,5 @@
 import Header from "@/components/Header";
-import { Footer } from "../Footer";
+import { Footer } from "../../components/footer/Footer";
 import { Login } from "@/components/Login";
 
 export default function Home() {
@@ -9,7 +9,6 @@ export default function Home() {
             <div className="container mx-auto w-[549px]">
                 <Login />
             </div>
-
             <Footer />
         </div>
     );

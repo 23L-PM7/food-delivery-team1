@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import OrderCon from "@/components/orderconfirmation";
-import { Footer } from "../Footer";
+import { Footer } from "../../components/footer/Footer";
 
 export default function Conformation() {
   return (

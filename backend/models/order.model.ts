@@ -10,13 +10,14 @@ const orderSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: userRef,
   },
-  content: {
-    food: {
-      type: Schema.Types.ObjectId,
-      ref: foodRef,
+  items: [
+    {
+      foodId: ObjectId,
+      quantity: Number,
+      price: Number,
+      total: Number,
     },
-    amount: Number,
-  },
+  ],
   totalPrice: Number,
   process: ObjectId,
   createdDate: Date,

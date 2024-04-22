@@ -27,6 +27,7 @@ export function UserProfile() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [loginModal, setLoginModal] = useState(false);
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   function Access() {
     setLoginModal(!loginModal);
@@ -65,7 +66,6 @@ export function UserProfile() {
         email,
         phoneNumber
       })
-      console.log({ data })
       toast.success(`"${name}"  updated.`);
       localStorage.setItem('newtoken', data);
     } catch (error) {
@@ -118,7 +118,7 @@ export function UserProfile() {
             <h1 className="text-xs text-[#888A99]">Утасны дугаар</h1>
             <input
               placeholder="Утасны дугаар..."
-              type="text"
+              type="number"
               value={phoneNumber}
               onChange={(event) => setPhoneNumber(event.target.value)}
               className="bg-[#F6F6F6]  rounded p-2" />
@@ -135,7 +135,7 @@ export function UserProfile() {
             <h1 className="text-xs text-[#888A99]">Имэйл хаяг</h1>
             <input
               placeholder="Имэйл хаяг..."
-              type="text"
+              type="email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               className="bg-transition bg-[#F6F6F6]  rounded p-2" />
@@ -191,8 +191,8 @@ export function UserProfile() {
       >
         Хадгалах
       </button>
+      <Toaster position="top-right" richColors />
       <dialog className="bg-transparent" id="myDialog">
-        <Toaster position="top-right" richColors />
       </dialog>
     </div >
   );
