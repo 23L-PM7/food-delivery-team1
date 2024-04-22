@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Select from "react-select";
 import axios from "axios";
+import { Toaster, toast } from "sonner";
 
 type ChildProps = {
   openTheModal: () => void;
@@ -17,12 +18,15 @@ export function Containers(props: ChildProps) {
   const [saleprice, setSalePrice] = useState("");
   const [category, setCategory] = useState([]);
   const [selectedCategoryOption, setSelectedCategoryOption] = useState<any>();
+  const [loading, Setloading] = useState(false);
 
   console.log({ selectedCategoryOption });
 
-  const combined = () => {
+  const combined = (onClick: any) => {
+    Setloading(true);
     fetchFoods();
     createFoods();
+    toast.success("Хоол шинээр амжилттай үүслээ");
   };
 
   const fetchCategory = async () => {
@@ -68,6 +72,7 @@ export function Containers(props: ChildProps) {
           userId,
         })
         .then(() => {
+          Setloading(false);
           setFoodName("");
           setIngredient("");
           setPrice("");
@@ -102,6 +107,7 @@ export function Containers(props: ChildProps) {
           placeholder="Хоолны нэр"
           className="input h-[45px] border-none input-bordered input-lg w-full bg-gray-200"
           value={name}
+          disabled={loading}
           onChange={(e) => setFoodName(e.target.value)}
         />
         <h1>Хоолны ангилал</h1>
@@ -126,12 +132,14 @@ export function Containers(props: ChildProps) {
           className="input h-[45px] border-none input-bordered input-lg w-full bg-gray-200"
           value={ingredient}
           onChange={(e) => setIngredient(e.target.value)}
+          disabled={loading}
         />
         <h1>Хоолны үнэ</h1>
         <input
           type="text"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
+          disabled={loading}
           placeholder="Хоолны үнэ"
           className="input h-[45px] border-none input-bordered input-lg w-full bg-gray-200"
         />
@@ -146,6 +154,7 @@ export function Containers(props: ChildProps) {
             className="input h-[45px] border-none input-bordered input-lg w-full bg-gray-200"
             value={saleprice}
             onChange={(e) => setSalePrice(e.target.value)}
+            disabled={loading}
           />
 
           <h1 className="py-3">Хоолны зураг</h1>
@@ -163,10 +172,15 @@ export function Containers(props: ChildProps) {
         </button>
         <button
           onClick={combined}
-          className="btn w-[109px] h-[40px] bg-zinc-700 text-white"
+          className="btn w-[109px] h-[40px] bg-zinc-700 text-white flex p-2"
+          disabled={loading}
         >
+          <Toaster richColors />
           Continue
-        </button>
+          {loading && (
+            <span className="loading loading-spinner loading-sm"></span>
+          )}
+        </button>{" "}
       </div>
     </div>
   );

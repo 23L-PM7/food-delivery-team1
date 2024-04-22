@@ -19,6 +19,7 @@ export default function Header() {
     setLoginModal(!loginModal);
   }
 
+
   // const UserLogin = () => {
   //   const user: string | null = localStorage.getItem('user')
   //   if (user) {
@@ -27,6 +28,16 @@ export default function Header() {
   //     switchs.push('/login')
   //   }
   // }
+
+  const UserLogin = () => {
+    const user: string | null = localStorage.getItem("user");
+    if (user) {
+      switchs.push("userprofile");
+    } else {
+      switchs.push("/login");
+    }
+  };
+
 
   return (
     <div
@@ -55,32 +66,81 @@ export default function Header() {
         <Navbar />
       </div>
 
-      <div className=" items-center w-3/6 flex justify-end ">
+      <div className=" items-center w-3/6 flex justify-end">
         <SearchBar />
         <div className="flex py-2 px-5 gap-2  group">
           <Drawer />
         </div>
 
         <div className="flex items-center  gap-2 group">
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 18 18"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="group-hover:text-green-600"
-          >
-            <path
-              d="M8.99978 2.54145C10.1838 2.54145 11.1526 3.5102 11.1526 4.69423C11.1526 5.87825 10.1838 6.847 8.99978 6.847C7.81575 6.847 6.847 5.87825 6.847 4.69423C6.847 3.5102 7.81575 2.54145 8.99978 2.54145ZM8.99978 12.2289C11.906 12.2289 15.2428 13.6175 15.4581 14.3817V15.4581H2.54145V14.3925C2.75673 13.6175 6.09353 12.2289 8.99978 12.2289ZM8.99978 0.388672C6.62096 0.388672 4.69423 2.31541 4.69423 4.69423C4.69423 7.07305 6.62096 8.99978 8.99978 8.99978C11.3786 8.99978 13.3053 7.07305 13.3053 4.69423C13.3053 2.31541 11.3786 0.388672 8.99978 0.388672ZM8.99978 10.0762C6.12582 10.0762 0.388672 11.5185 0.388672 14.3817V17.6109H17.6109V14.3817C17.6109 11.5185 11.8737 10.0762 8.99978 10.0762Z"
-              fill="currentColor"
-            />{" "}
-          </svg>
-          <button
-            className="group-hover:text-green-600"
-            onClick={() => Access()}
-          >
-            Нэвтрэх
+          <div className="p-3 z-0 flex">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="group-hover:text-green-600 z-0"
+            >
+              <path
+                d="M8.99978 2.54145C10.1838 2.54145 11.1526 3.5102 11.1526 4.69423C11.1526 5.87825 10.1838 6.847 8.99978 6.847C7.81575 6.847 6.847 5.87825 6.847 4.69423C6.847 3.5102 7.81575 2.54145 8.99978 2.54145ZM8.99978 12.2289C11.906 12.2289 15.2428 13.6175 15.4581 14.3817V15.4581H2.54145V14.3925C2.75673 13.6175 6.09353 12.2289 8.99978 12.2289ZM8.99978 0.388672C6.62096 0.388672 4.69423 2.31541 4.69423 4.69423C4.69423 7.07305 6.62096 8.99978 8.99978 8.99978C11.3786 8.99978 13.3053 7.07305 13.3053 4.69423C13.3053 2.31541 11.3786 0.388672 8.99978 0.388672ZM8.99978 10.0762C6.12582 10.0762 0.388672 11.5185 0.388672 14.3817V17.6109H17.6109V14.3817C17.6109 11.5185 11.8737 10.0762 8.99978 10.0762Z"
+                fill="currentColor"
+              />{" "}
+            </svg>
+            <button
+              className="group-hover:text-green-600"
+              onClick={() => Access()}
+            >
+              Нэвтрэх
+            </button>{" "}
+          </div>
+          <button className="hover:text-green-600 p-3">
+            <a href="http://localhost:3000/userprofile">Хэрэглэгч</a>
           </button>
+          <button className="flex lg:hidden">
+            <div className="drawer drawer-end z-50">
+              <input
+                id="my-drawer-4"
+                type="checkbox"
+                className="drawer-toggle"
+              />
+              <div className="drawer-content">
+                {/* Page content here */}
+                <label htmlFor="my-drawer-4" className=" ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24"
+                    viewBox="0 -960 960 960"
+                    width="24"
+                  >
+                    <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                  </svg>
+                </label>
+              </div>
+              <div className="drawer-side">
+                <label
+                  htmlFor="my-drawer-4"
+                  aria-label="close sidebar"
+                  className="drawer-overlay"
+                ></label>
+                <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+                  {/* Sidebar content here */}
+                  <li>
+                    <a href="http://localhost:3000">НҮҮР</a>
+                  </li>
+                  <li>
+                    <a href="http://localhost:3000/menu">ХООЛНЫ ЦЭС</a>
+                  </li>
+                  <li>
+                    <a href="http://localhost:3000/deliveryzone">
+                      ХҮРГЭЛТИЙН БҮС
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </button>
+
           <a href="http://localhost:3000/userprofile">Хэрэглэгч</a>
           {/* <button
             onClick={UserLogin}
@@ -113,15 +173,17 @@ export default function Header() {
 
 export const Drawer = () => {
   return (
-    <div className="drawer drawer-end z-50">
+    <div className="drawer drawer-end z-40">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content out">
+      <div className="drawer-content out p-3">
         <label
           htmlFor="my-drawer"
           className="cursor-pointer flex py-2 gap-2  group"
         >
-          <Basket />
-          <h2 className=" group-hover:text-green-600">Сагс</h2>
+          <div className="z-0 flex">
+            <Basket />
+            <h2 className=" group-hover:text-green-600 z-0">Сагс</h2>
+          </div>
         </label>
       </div>
       <div className="drawer-side items-end justify-end ">
@@ -130,8 +192,28 @@ export const Drawer = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu w-[586px] h-full bg-white p-[24px]  min-h-full text-base-content z-40">
+
+        <ul className="w-[586px] h-full bg-white  min-h-full text-base-content z-40 flex flex-col justify-between">
           {/* Sidebar content here */}
+          <li>
+            <div className="w-full flex justify-center">
+              <h1 className="text-[20px]">Таны сагс</h1>
+            </div>
+          </li>
+          {/* top section */}
+
+          {/* bottom section */}
+          <li className="flex w-full shadow-md h-[130px] justify-around items-center">
+            <div>
+              <h1 className=" font-medium text-[18px] text-[#5E6166]">
+                Нийт төлөх дүн
+              </h1>
+              <h1 className="font-bold text-[18px]">34,800₮</h1>
+            </div>
+            <button className="bg-[#18BA51] w-[256px] h-[48px] btn rounded-md text-white">
+              Захиалах
+            </button>
+          </li>
         </ul>
       </div>
     </div>

@@ -22,7 +22,6 @@ export default function Home() {
       <Mainbutton />
       <HymdraltaiFour />
       <TraditionalFood />
-
       <Footer />
     </div>
   );

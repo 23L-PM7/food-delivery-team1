@@ -12,7 +12,7 @@ export const FoodsCardModal = (props: Props) => {
   const { deleteModal, food } = props;
   const [name, setFoodName] = useState(food.name);
   const [ingredient, setIngredient] = useState(food.ingredient);
-  const [price, setPrice] = useState<number>(food.price);
+  const [price, setPrice] = useState(food.price);
   const [category, setCategory] = useState([]);
   const [selectedCategoryOption, setSelectedCategoryOption] = useState<any>();
   const [saleprice, setSalePrice] = useState(food.saleprice);
