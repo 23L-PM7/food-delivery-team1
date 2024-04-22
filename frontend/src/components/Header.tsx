@@ -141,7 +141,7 @@ export default function Header() {
             </div>
           </button>
 
-          <a href="http://localhost:3000/userprofile">Хэрэглэгч</a>
+          {/* <a href="http://localhost:3000/userprofile">Хэрэглэгч</a> */}
           {/* <button
             onClick={UserLogin}
             className="btn btn-outline mt-2 flex w-full rounded-[5px]"
