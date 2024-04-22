@@ -171,8 +171,28 @@ export const Drawer = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu w-[586px] h-full bg-white p-[24px]  min-h-full text-base-content z-40">
+
+        <ul className="w-[586px] h-full bg-white  min-h-full text-base-content z-40 flex flex-col justify-between">
           {/* Sidebar content here */}
+          <li>
+            <div className="w-full flex justify-center">
+              <h1 className="text-[20px]">Таны сагс</h1>
+            </div>
+          </li>
+          {/* top section */}
+
+          {/* bottom section */}
+          <li className="flex w-full shadow-md h-[130px] justify-around items-center">
+            <div>
+              <h1 className=" font-medium text-[18px] text-[#5E6166]">
+                Нийт төлөх дүн
+              </h1>
+              <h1 className="font-bold text-[18px]">34,800₮</h1>
+            </div>
+            <button className="bg-[#18BA51] w-[256px] h-[48px] btn rounded-md text-white">
+              Захиалах
+            </button>
+          </li>
         </ul>
       </div>
     </div>
