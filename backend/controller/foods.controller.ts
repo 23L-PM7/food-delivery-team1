@@ -1,9 +1,11 @@
 import { FoodsModel } from "../models/foods.model";
 
 export async function getCustomFoods(req: any, res: any) {
-  const { category } = req.param;
+  const { categoryId } = req.param;
   const { sale, count } = req.body;
-  const foods = await FoodsModel.find({ category: category }).limit(count);
+  const foods = await FoodsModel.find({ categoryId: categoryId })
+    .limit(count)
+    .populate("categoryId", "userId");
 
   res.json(foods);
 }

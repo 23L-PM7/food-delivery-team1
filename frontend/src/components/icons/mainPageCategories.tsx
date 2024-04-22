@@ -18,11 +18,13 @@ export function HymdraltaiFour() {
 
   const fetchFood = async () => {
     try {
-      await axios.get("http://localhost:9090/foods/four").then((response) => {
-        setFoods(response.data);
-      });
-    } catch (err) {
-      console.log("Error");
+      await axios
+        .get("http://localhost:9090/custom/661fbb056da39d4f9de1b360")
+        .then((response) => {
+          setFoods(response.data);
+        });
+    } catch (error) {
+      console.log(error);
     }
   };
 
