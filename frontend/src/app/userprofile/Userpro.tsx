@@ -1,4 +1,4 @@
-import { Call, Exit, Mail, Pencil, Person, Timer } from "../icons/ProfileIcons";
+import { Call, Exit, Mail, Pencil, Person, Timer } from "../../components/icons/ProfileIcons";
 
 export const UserData =
     [

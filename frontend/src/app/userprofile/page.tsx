@@ -1,12 +1,12 @@
 import Header from "@/components/Header";
-import Signup from "./Signup";
 import { Footer } from "../../components/footer/Footer";
+import { UserProfile } from "./UserProfile";
 
-export default function Termsofservice() {
+export default function UserPro() {
     return (
         <div>
             <Header />
-            <Signup />
+            <UserProfile />
             <Footer />
         </div>
     );

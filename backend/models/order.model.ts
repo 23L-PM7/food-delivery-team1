@@ -1,18 +1,27 @@
 import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
+import { userRef } from "./user.model";
+import { foodRef } from "./foods.model";
 const { Schema } = mongoose;
 
 const orderSchema = new Schema({
   id: ObjectId,
-  userid: ObjectId,
-  orderNumber: Number,
-  foods: Array,
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: userRef,
+  },
+  items: [
+    {
+      foodId: ObjectId,
+      quantity: Number,
+      price: Number,
+      total: Number,
+    },
+  ],
   totalPrice: Number,
   process: ObjectId,
   createdDate: Date,
-  district: String,
-  Khoroo: String,
-  Apartments: String,
+  Address: String,
 });
 
 export const OrderModel = mongoose.model("Model", orderSchema);

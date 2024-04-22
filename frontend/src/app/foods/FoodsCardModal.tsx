@@ -1,22 +1,21 @@
 import { useEffect, ReactNode, useState } from "react";
 import axios from "axios";
 import Select from "react-select";
+import { toast } from "sonner";
 
 type Props = {
   deleteModal: () => void;
   food: any;
-  opener: any;
-  onClose: any;
 };
 
 export const FoodsCardModal = (props: Props) => {
-  const { deleteModal, food, opener, onClose } = props;
+  const { deleteModal, food } = props;
   const [name, setFoodName] = useState(food.name);
   const [ingredient, setIngredient] = useState(food.ingredient);
-  const [price, setPrice] = useState(food.price);
+  const [price, setPrice] = useState<number>(food.price);
   const [category, setCategory] = useState([]);
   const [selectedCategoryOption, setSelectedCategoryOption] = useState<any>();
-  const [open, setOpen] = useState(false);
+  const [saleprice, setSalePrice] = useState(food.saleprice);
 
   const fetchCategory = async () => {
     await axios.get("http://localhost:9090/category").then((response) => {
@@ -37,36 +36,47 @@ export const FoodsCardModal = (props: Props) => {
 
   useEffect(() => {
     if (category.length) {
-      console.log({ category, food });
       const initialOption = options.find(
         (one: any) => one.value === food.categoryId
       );
-
-      console.log({ initialOption });
       setSelectedCategoryOption(initialOption);
     }
   }, [category]);
 
-  const createFoods = async () => {
-    console.log(name);
-    if (name == "" || name == null) {
+  const updateFoods = async (id: string) => {
+    const categoryId: string = selectedCategoryOption.value;
+    console.log({ name, categoryId, ingredient, price, saleprice, id });
+    const userId = "66224b6f98e6eb965ffc9027";
+    if (
+      name == "" ||
+      name == null ||
+      categoryId == "" ||
+      categoryId == null ||
+      ingredient == "" ||
+      ingredient == null ||
+      price == null ||
+      saleprice == null
+    ) {
     } else {
       await axios
-        .put(`http://localhost:9090/foods/update/${food._id}`, {
+        .put(`http://localhost:9090/foods/update/${id}`, {
           name,
           ingredient,
           price,
-          category: selectedCategoryOption.label,
+          saleprice,
+          categoryId,
+          userId,
         })
         .then(() => {
           setFoodName("");
           setIngredient("");
           setPrice("");
-          setSelectedCategoryOption(undefined);
+          setSalePrice("");
+          setSelectedCategoryOption("");
         });
     }
   };
-  console.log({ selectedCategoryOption });
+
   return (
     <div className=" flex w-[981px] h-[564px] container mx-auto p-[32px] gap-[33px] bg-white rounded-2xl relative">
       <div>
@@ -81,7 +91,7 @@ export const FoodsCardModal = (props: Props) => {
         <form method="dialog">
           <button
             className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 "
-            onClick={() => onClose()}
+            onClick={() => deleteModal()}
           >
             X
           </button>
@@ -104,6 +114,14 @@ export const FoodsCardModal = (props: Props) => {
               className="input w-full max-w-xs input-bordered"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
+            />
+          </div>
+          <div className="font-semibold text-lg text-[#18ba51] mt-[2px]">
+            <input
+              type="number"
+              className="input w-full max-w-xs input-bordered"
+              value={saleprice}
+              onChange={(e) => setSalePrice(e.target.value)}
             />
           </div>
         </div>
@@ -134,13 +152,13 @@ export const FoodsCardModal = (props: Props) => {
                 }),
               }}
               value={selectedCategoryOption}
-              onChange={(label) => setSelectedCategoryOption(label)}
+              onChange={(value) => setSelectedCategoryOption(value)}
             />
           </h1>
         </div>
         <div>
           <button
-            onClick={createFoods}
+            onClick={() => updateFoods(food._id)}
             className="btn w-[109px] h-[40px] bg-zinc-700 text-white"
           >
             Continue

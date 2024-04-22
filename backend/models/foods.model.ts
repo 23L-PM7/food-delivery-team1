@@ -1,6 +1,11 @@
 import { ObjectId } from "mongodb";
+import { categoryRef } from "./category.model";
+import { userRef } from "./user.model";
 import mongoose from "mongoose";
+import { userInfo } from "os";
 const { Schema } = mongoose;
+
+export const foodRef = "food";
 
 const foodsSchema = new Schema({
   id: ObjectId,
@@ -10,7 +15,14 @@ const foodsSchema = new Schema({
   price: Number,
   sale: Boolean,
   saleprice: Number,
-  category: String,
+  categoryId: {
+    type: Schema.Types.ObjectId,
+    ref: categoryRef,
+  },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: userRef,
+  },
 });
 
-export const FoodsModel = mongoose.model("Foods", foodsSchema);
+export const FoodsModel = mongoose.model("Foods", foodsSchema, foodRef);

@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Select from "react-select";
 import axios from "axios";
-import { collectGenerateParams } from "next/dist/build/utils";
 
 type ChildProps = {
   openTheModal: () => void;
@@ -44,8 +43,20 @@ export function Containers(props: ChildProps) {
   }, []);
 
   const createFoods = async () => {
-    console.log(name);
-    if (name == "" || name == null) {
+    const categoryId: string = selectedCategoryOption.value;
+    const userId = "66224b6f98e6eb965ffc9027";
+    if (
+      name == "" ||
+      name == null ||
+      categoryId == "" ||
+      categoryId == null ||
+      ingredient == "" ||
+      ingredient == null ||
+      price == "" ||
+      price == null ||
+      saleprice == "" ||
+      saleprice == null
+    ) {
     } else {
       await axios
         .post("http://localhost:9090/foods/create", {
@@ -53,7 +64,8 @@ export function Containers(props: ChildProps) {
           ingredient,
           price,
           saleprice,
-          categoryId: selectedCategoryOption.label,
+          categoryId,
+          userId,
         })
         .then(() => {
           setFoodName("");
@@ -105,7 +117,7 @@ export function Containers(props: ChildProps) {
             }),
           }}
           value={selectedCategoryOption}
-          onChange={(label) => setSelectedCategoryOption(label)}
+          onChange={(value) => setSelectedCategoryOption(value)}
         />
         <h1>Хоолны орц</h1>
         <input

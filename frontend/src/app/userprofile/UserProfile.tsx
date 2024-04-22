@@ -1,23 +1,30 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Call, Exit, Mail, Pencil, Timer, Person } from "../icons/ProfileIcons";
+import { Call, Exit, Mail, Pencil, Timer, Person } from "../../components/icons/ProfileIcons";
 import axios from "axios";
 import { title } from "process";
 import { Toaster, toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { Datanullandundef } from "../structure";
+import { Datanullandundef } from "../../components/structure";
 import { UserPrinting } from "@/app/util";
 
+type User = {
+  _id: string,
+  name: string,
+  email: string,
+  phoneNumber: number,
+  role: "admin" | 'user'
 
+}
 
 
 export function UserProfile() {
-  const [edit, setEdit] = useState<Boolean>(false);;
+  const [edit, setEdit] = useState(false);;
   const [phoneNumber, setPhoneNumber] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [theUser, setTheUser] = useState<any>(undefined);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [loginModal, setLoginModal] = useState(false);
   const router = useRouter();
 
@@ -25,63 +32,61 @@ export function UserProfile() {
     setLoginModal(!loginModal);
   }
 
-  // useEffect(() => {
-  //   async function getData() {
-  //     const data: string | null = localStorage.getItem('user')
-  //     if (!Datanullandundef(data)) {
-  //       setTheUser(JSON.parse(data || ''));
-  //     } else {
-  //       router.push('/')
-  //       console.log(data)
-  //     }
-  //   }
-  //   getData();
-  // }, []);
 
-  // const SavageSave = async () => {
-  //   await UserPrinting(`signup/${theUser._id}`, theUser)
-  //   toast.success('Amjilttai khadgalagdlaa')
-  //   setEdit(false)
-  // }
+  const getProfile = async () => {
+    const token = localStorage.getItem('newtoken')
+    console.log(token);
+    try {
+      await axios.post("http://localhost:9090/users/me", {
+        newtoken: token
+      }).then((response: any) => {
+        const user = response.data;
+        setCurrentUser(user);
+        setName(user.name);
+        setPhoneNumber(user.phoneNumber);
+        setEmail(user.email);
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-  // const updateUsers = async (id: string) => {
+  useEffect(() => {
+    getProfile()
+  }, [])
 
-  //   await axios.put(`http://localhost:9090/users/update/${id}`, {
-  //     name,
-  //     email,
-  //     phoneNumber,
-  //   })
-  //     .then(() => {
-  //       setName("");
-  //       setEmail("");
-  //       setPhoneNumber("");
-  //       // GetProfile();
-  //     });
-  //   // setEdit(false)
-  // }
-  // catch (error) {
-  //   console.error("Error:", error);
-  //   alert("wefhwe");
-  //   // alert("There was an error creating a new user.");
+  if (!currentUser) return <p>...loading</p>
 
-  // useEffect(() => {
-  //   GetProfile();
-  // }, []);
-
+  const updateUser = async () => {
+    console.log(name, email, phoneNumber, currentUser._id)
+    try {
+      const data = await UserPrinting(`signup/${currentUser._id}`, {
+        name,
+        email,
+        phoneNumber
+      })
+      console.log({ data })
+      toast.success(`"${name}"  updated.`);
+      localStorage.setItem('newtoken', data);
+    } catch (error) {
+      console.error("Error:", error);
+      alert("amjiltgui")
+    }
+  }
 
   return (
-    <div className="container mx-auto  w-[432px] px-[20px] mb-[40px]">
+    <div className="container mx-auto  w-[432px] px-[20px] mb-[200px] mt-[76px]">
       <div className="">
         <div className="avatar flex justify-center relative">
           <div className="w-24 rounded-full">
             <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
           </div>
-          <button className="bg-[#FFFFFF] w-[34px] h-[34px] p-2 border rounded-full absolute bottom-0 right-[135px]">
+          <button className="bg-[#FFFFFF] w-[34px] h-[34px] p-2 border rounded-full absolute bottom-0 right-[135px]" onClick={updateUser}>
             <Pencil />
           </button>
         </div>
         <h1 className="flex justify-center font-bold text-[28px] mt-[40px]">
-          УгтахБаяр
+          {currentUser.name}
         </h1>
       </div>
 
@@ -97,9 +102,9 @@ export function UserProfile() {
               type="text"
               value={name}
               onChange={(event) => setName(event.target.value)}
-              className="bg-transition rounded p-2" />
+              className="bg-[#F6F6F6]  rounded p-2" />
           </div>
-          <button className="w-2/12 justify-end flex">
+          <button className="w-2/12 justify-end flex" onClick={() => updateUser()}>
             <Pencil />
           </button>
         </div>
@@ -116,9 +121,9 @@ export function UserProfile() {
               type="text"
               value={phoneNumber}
               onChange={(event) => setPhoneNumber(event.target.value)}
-              className="bg-transition rounded p-2" />
+              className="bg-[#F6F6F6]  rounded p-2" />
           </div>
-          <button className="w-2/12 justify-end flex">
+          <button className="w-2/12 justify-end flex" onClick={updateUser}>
             <Pencil />
           </button>
         </div>
@@ -135,7 +140,7 @@ export function UserProfile() {
               onChange={(event) => setEmail(event.target.value)}
               className="bg-transition bg-[#F6F6F6]  rounded p-2" />
           </div>
-          <button className="w-2/12 justify-end flex" >
+          <button className="w-2/12 justify-end flex" onClick={updateUser} >
             <Pencil />
           </button>
         </div>
@@ -182,7 +187,7 @@ export function UserProfile() {
       </div>
       <button
         className="btn w-full bg-green-400 hover:bg-green-600 mt-[40px]"
-        onClick={() => SavageSave()}
+        onClick={() => updateUser()}
       >
         Хадгалах
       </button>

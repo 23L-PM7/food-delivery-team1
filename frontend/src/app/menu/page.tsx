@@ -1,8 +1,7 @@
 import Header from "@/components/Header";
 import { Category } from "@/components/category";
-import { Footer } from "../Footer";
+import { Footer } from "../../components/footer/Footer";
 import Menu from "../mnde/menu";
-import { Nogoonplus } from "@/components/icons/mainPageCategories";
 
 export default function Home() {
   return (

@@ -1,7 +1,9 @@
 import { UsersModel } from "../models/user.model";
 import jwt from "jsonwebtoken";
 import { checkAuth } from "../middlewares/check-auth";
-import type { Request, Response } from "express";
+import { response, type Request, type Response } from "express";
+
+export const secret = "dmngo"
 
 export async function getUsers(require: Request, res: Response) {
   const users = await UsersModel.find();
@@ -36,18 +38,25 @@ export async function createUsers(req: any, res: any) {
   res.json(newUser);
 }
 
+
+
 export async function updateUsers(req: any, res: any) {
-  const { name, email, password, phoneNumber, role } = req.body;
+  const { data } = req.body;
   const { id } = req.params;
 
-  const users = await UsersModel.findByIdAndUpdate(id, {
-    name: name,
-    email: email,
-    password: password,
-    phoneNumber: phoneNumber,
-    role: role,
-  });
-  res.json(users);
+  try {
+    const user = await UsersModel.findByIdAndUpdate(id, {
+      name: data.name,
+      email: data.email,
+      phoneNumber: data.phoneNumber,
+    });
+    res.json(user);
+
+  } catch (error) {
+    console.log(error)
+  }
+
+
 }
 export async function deleteUsers(req: any, res: any) {
   const { id } = req.params;
@@ -67,7 +76,7 @@ export async function getLogin(req: any, res: any) {
   }
 
   try {
-    const decoded = jwt.verify(accessToken, "dmngo");
+    const decoded = jwt.verify(accessToken, secret);
     console.log({ decoded });
     res.json(users);
   } catch (error) {
@@ -75,30 +84,42 @@ export async function getLogin(req: any, res: any) {
   }
 }
 
-export async function createLogin(req: any, res: any) {
+export async function createLogin(req: Request, res: Response) {
   const { email, password } = req.body;
-  console.log(req.body);
 
-  const user = await UsersModel.findOne({ email: email });
-
-  if (!user) {
-    res
-      .status(401)
-      .json({ alert: "Та бүртгэлгүй байгаа учир бүртгүүлнэ үү" });
-    return;
+  if (!email || !password) {
+    response.send("");
+    return
   }
 
-  if (user.password !== password) {
-    res.status(401)
-      .json({ message: "Нэвтрэх нэр эсвэл нууц үг буруу байна." });
-    return;
-  }
+  try {
+    const user: any = await UsersModel.findOne({ email });
 
-  if (user) {
-    const accesstoken = jwt.sign({ email: email }, "dmngo");
-    res.json({ accesstoken });
+    if (!user) {
+      res
+        .status(401)
+        .json({ alert: "Та бүртгэлгүй байгаа учир бүртгүүлнэ үү" });
+      return;
+    }
+
+    if (user.password !== password) {
+      res.status(400).json({ message: "Нэвтрэх нэр эсвэл нууц үг буруу байна." });
+      return;
+    }
+
+    console.log(user)
+
+    if (password == user.password) {
+      const accesstoken = jwt.sign({ userId: user._id }, secret)
+      res.json(accesstoken)
+    } else {
+      res.sendStatus(204)
+    }
+    response.send("ok")
+  } catch (error) {
+    console.log(error)
+    res.json("Error")
   }
-  res.sendStatus(204);
 }
 
 export async function updateLogin(req: any, res: any) {
@@ -120,20 +141,24 @@ export async function deleteLogin(req: any, res: any) {
 }
 
 
-// export const getUserById = async (req: Request, res: Response) => {
-//   const accessToken = req.get("access-token");
-//   if (!accessToken) {
-//     res.json({ message: "unautorized" })
-//     return
-//   }
+export const userMe = async (req: Request, res: Response) => {
 
-//   const decoded = jwt.verify(accessToken, "dmngo");
-//   const userId = decoded._id
+  const authorization = req.header("Authorization");
+  const newtoken = authorization?.split(" ")[1];
 
-//   const user = await UsersModel.findById(userId).select('-password')
+  try {
+    const { newtoken } = req.body
+    const decoded: any = jwt.verify(newtoken, secret);
 
-//   res.json(user)
-// }
+
+    const user = await UsersModel.findById(decoded.userId).select("-password");
+
+    res.json(user)
+  } catch (error) {
+    console.log(error)
+    response.json({ message: "something wrong" });
+  }
+}
 
 
 

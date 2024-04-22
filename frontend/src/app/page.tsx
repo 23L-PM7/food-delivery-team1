@@ -1,6 +1,6 @@
 "use client";
 
-import { Footer } from "./Footer";
+import { Footer } from "../components/footer/Footer";
 import Header from "../components/Header";
 import { Mainbutton } from "@/components/herobutton/Mainbutton";
 import Menu from "./mnde/menu";
@@ -11,7 +11,7 @@ import {
 } from "@/components/icons/mainPageCategories";
 import { Category } from "@/components/category";
 import { useState } from "react";
-import { UserProfile } from "@/components/userprofile/UserProfile";
+import { UserProfile } from "@/app/userprofile/UserProfile";
 
 export default function Home() {
   return (
