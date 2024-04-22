@@ -19,14 +19,14 @@ export default function Header() {
     setLoginModal(!loginModal);
   }
 
-  const UserLogin = () => {
-    const user: string | null = localStorage.getItem('user')
-    if (user) {
-      switchs.push('userprofile')
-    } else {
-      switchs.push('/login')
-    }
-  }
+  // const UserLogin = () => {
+  //   const user: string | null = localStorage.getItem('user')
+  //   if (user) {
+  //     switchs.push('/userprofile')
+  //   } else {
+  //     switchs.push('/login')
+  //   }
+  // }
 
   return (
     <div
@@ -82,6 +82,14 @@ export default function Header() {
             Нэвтрэх
           </button>
           <a href="http://localhost:3000/userprofile">Хэрэглэгч</a>
+          {/* <button
+            onClick={UserLogin}
+            className="btn btn-outline mt-2 flex w-full rounded-[5px]"
+          >
+            <CgProfile size="20px" />
+            <span className="text-sm font-bold">{'Нэвтрэх'}</span>
+          </button> */}
+
 
           <dialog
             id="Haruul"

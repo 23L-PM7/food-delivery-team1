@@ -19,7 +19,7 @@ type User = {
 }
 
 
-export function UserProfile() {
+export function UserProfile({ editingId, onClose }: any) {
   const [edit, setEdit] = useState(false);;
   const [phoneNumber, setPhoneNumber] = useState("");
   const [name, setName] = useState("");
@@ -74,6 +74,8 @@ export function UserProfile() {
     }
   }
 
+
+
   return (
     <div className="container mx-auto  w-[432px] px-[20px] mb-[200px] mt-[76px]">
       <div className="">
@@ -81,7 +83,7 @@ export function UserProfile() {
           <div className="w-24 rounded-full">
             <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
           </div>
-          <button className="bg-[#FFFFFF] w-[34px] h-[34px] p-2 border rounded-full absolute bottom-0 right-[135px]" onClick={updateUser}>
+          <button className="bg-[#FFFFFF] w-[34px] h-[34px] p-2 border rounded-full absolute bottom-0 right-[135px]" onClick={getProfile}>
             <Pencil />
           </button>
         </div>
@@ -104,7 +106,7 @@ export function UserProfile() {
               onChange={(event) => setName(event.target.value)}
               className="bg-[#F6F6F6]  rounded p-2" />
           </div>
-          <button className="w-2/12 justify-end flex" onClick={() => updateUser()}>
+          <button className="w-2/12 justify-end flex" onClick={() => getProfile()}>
             <Pencil />
           </button>
         </div>
@@ -123,7 +125,7 @@ export function UserProfile() {
               onChange={(event) => setPhoneNumber(event.target.value)}
               className="bg-[#F6F6F6]  rounded p-2" />
           </div>
-          <button className="w-2/12 justify-end flex" onClick={updateUser}>
+          <button className="w-2/12 justify-end flex" onClick={getProfile}>
             <Pencil />
           </button>
         </div>
@@ -140,7 +142,7 @@ export function UserProfile() {
               onChange={(event) => setEmail(event.target.value)}
               className="bg-transition bg-[#F6F6F6]  rounded p-2" />
           </div>
-          <button className="w-2/12 justify-end flex" onClick={updateUser} >
+          <button className="w-2/12 justify-end flex" onClick={getProfile} >
             <Pencil />
           </button>
         </div>
@@ -194,6 +196,25 @@ export function UserProfile() {
       <Toaster position="top-right" richColors />
       <dialog className="bg-transparent" id="myDialog">
       </dialog>
+      {/* <dialog className={`modal ${editingId ? "modal-open" : ""}`}>
+        <div className="modal-box">
+          <h3 className="font-bold text-lg mb-4">Create new category ({editingId})</h3>
+          <input placeholder="Name" disabled={loading} className="input input-bordered" value={name} onChange={(e) => setName(e.target.value)} />
+          <br />
+          <input placeholder="Description" disabled={loading} className="input input-bordered" value={email} onChange={(e) => setEmail(e.target.value)} />
+
+          <div className="modal-action">
+            <button className="btn" onClick={() => onClose()} disabled={loading}>
+              Cancel
+            </button>
+            <button className="btn btn-primary" onClick={getProfile} disabled={loading}>
+              {loading && <span className="loading loading-spinner"></span>}
+              Save
+            </button>
+          </div>
+        </div>
+      </dialog> */}
     </div >
+
   );
 }
