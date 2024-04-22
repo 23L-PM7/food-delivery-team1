@@ -6,9 +6,8 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <div className="bg-green-500 bg- w-full relative">
-      <BackgroundPic />
-      <div className="p-[15px] sm:p-[20px] md:p-[50px] lg:p-[75px] xl:p-[100px] 2xl:p-[120px] inset-0 absolute pt-[30px] sm:pt[40px] md:pt-[100px] lg:pt-[125px] xl:pt-[150px] 2xl:pt-[180px] border-b">
+    <div className="bg-green-500  w-full  bg-[url('/back.png')]" >
+      <div className="container mx-auto p-[15px] sm:p-[20px] md:p-[50px] lg:p-[75px] xl:p-[100px] 2xl:p-[120px]   pt-[30px] sm:pt[40px] md:pt-[100px] lg:pt-[125px] xl:pt-[150px] 2xl:pt-[180px] border-b">
         <div className="flex  justify-center items-center gap-2">
           <Logo />
           <h1 className="text-white  font-medium">Food Delivery</h1>
@@ -25,7 +24,7 @@ export function Footer() {
           ))}
         </div>
         <div className="flex justify-center gap-1.5 sm:gap-2.5 2xl:gap-5 mt-[15px] 2xl:mt-[40px] ">
-        {SocialsLists.map((SocialsList) => (
+          {SocialsLists.map((SocialsList) => (
             <Link
               key={SocialsList.id}
               href={SocialsList.link}
