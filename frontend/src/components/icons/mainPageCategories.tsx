@@ -6,6 +6,7 @@ import { FoodTemplateMain } from "../foodTemplateMain";
 import { GreenStar } from "./greenStar";
 import Link from "next/link";
 import { RightArrowMainPage } from "./rightArrowMainPage";
+import { get } from "http";
 
 export function HymdraltaiFour() {
   const [foods, setFoods] = useState([]);
@@ -17,15 +18,22 @@ export function HymdraltaiFour() {
   // };
 
   const fetchFood = async () => {
+    const count = 4;
     try {
       await axios
-        .get("http://localhost:9090/custom/661fbb056da39d4f9de1b360")
+        .post("http://localhost:9090/foods/custom", {
+          count,
+        })
         .then((response) => {
           setFoods(response.data);
         });
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const check = () => {
+    console.log(foods);
   };
 
   useEffect(() => {
@@ -45,6 +53,7 @@ export function HymdraltaiFour() {
             <Link className="link link-hover text-green-500" href="/home">
               Бүгдийг харах
             </Link>
+
             <RightArrowMainPage />
           </div>
         </div>
@@ -69,10 +78,15 @@ export function TraditionalFood() {
   // };
 
   const fetchFood = async () => {
+    const count = 4;
     try {
-      await axios.get("http://localhost:9090/foods/four").then((response) => {
-        setFoods(response.data);
-      });
+      await axios
+        .post("http://localhost:9090/foods/custom", {
+          count,
+        })
+        .then((response) => {
+          setFoods(response.data);
+        });
     } catch (err) {
       console.log("Error");
     }
