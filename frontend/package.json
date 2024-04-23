@@ -25,6 +25,7 @@
     "react-dom": "^18",
     "react-dropdown-select": "^4.11.2",
     "react-icons-kit": "^2.0.0",
+    "react-number-format": "^5.3.4",
     "react-select": "^5.8.0",
     "sonner": "^1.4.41",
     "zustand": "^4.5.2"
