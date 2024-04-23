@@ -115,6 +115,7 @@ export function FoodTemplateMain(props: Props) {
           <button onClick={toggleCartModal}>close</button>
         </form>
       </dialog>
+      {/*  */}
     </div>
   );
 }
