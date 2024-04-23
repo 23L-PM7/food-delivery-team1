@@ -25,3 +25,22 @@ const orderSchema = new Schema({
 });
 
 export const OrderModel = mongoose.model("Model", orderSchema);
+
+// const cartItem = {
+//   id: 1,
+//   orderId: 2,
+//   userId: "ar",
+//   foodId: 123,
+//   quantity: 1,
+// };
+
+// const cart = {
+//   id: 2,
+//   totalPrice: 100,
+// };
+
+// const Food = {
+//   id: 123,
+//   name: "tsuivsan",
+//   price: 1,
+// };
