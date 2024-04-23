@@ -19,6 +19,27 @@ export function Containers(props: ChildProps) {
   const [category, setCategory] = useState([]);
   const [selectedCategoryOption, setSelectedCategoryOption] = useState<any>();
   const [loading, Setloading] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [image, setImage] = useState("");
+
+  async function handleUpload(e: any) {
+    setUploading(true);
+
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("file", file, file.name);
+
+    const res = await fetch("http://localhost:4000/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (res.ok) {
+      const { url } = await res.json();
+      setImage(url);
+      setUploading(false);
+    }
+  }
 
   console.log({ selectedCategoryOption });
 
@@ -161,7 +182,14 @@ export function Containers(props: ChildProps) {
           <div className="bg-gray-100 rounded-xl w-[284px] h-[122px] gap-3 flex flex-col items-center justify-center">
             <h1 className="font-bold text-zinc-700">Add image for the food</h1>
             <button className=" w-[114px] h-[40px] btn bg-zinc-700 text-white">
-              <input type="file" />
+              <input
+                type="file"
+                name="file"
+                disabled={uploading}
+                onChange={handleUpload}
+              />
+
+              {image && <img src={image} />}
             </button>
           </div>
         </div>

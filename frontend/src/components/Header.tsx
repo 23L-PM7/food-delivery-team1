@@ -19,7 +19,6 @@ export default function Header() {
     setLoginModal(!loginModal);
   }
 
-
   // const UserLogin = () => {
   //   const user: string | null = localStorage.getItem('user')
   //   if (user) {
@@ -37,7 +36,6 @@ export default function Header() {
       switchs.push("/login");
     }
   };
-
 
   return (
     <div
@@ -97,7 +95,7 @@ export default function Header() {
           <button className="hover:text-green-600 p-3">
             <a href="http://localhost:3000/userprofile">Хэрэглэгч</a>
           </button>
-          <button className="flex lg:hidden">
+          <button className="flex md:hidden">
             <div className="drawer drawer-end z-50">
               <input
                 id="my-drawer-4"
@@ -149,7 +147,6 @@ export default function Header() {
             <CgProfile size="20px" />
             <span className="text-sm font-bold">{'Нэвтрэх'}</span>
           </button> */}
-
 
           <dialog
             id="Haruul"
