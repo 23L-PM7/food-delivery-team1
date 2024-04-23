@@ -10,7 +10,11 @@ import { UserProfile } from "../app/userprofile/UserProfile";
 import { Card } from "@mui/material";
 import { SearchBar } from "./headerComponents/searchBar";
 import { Basket } from "./icons/basket";
+
 import { useCurrentUser } from "@/store/useCurrentUser";
+
+import { CartItem } from "./cartItem";
+
 
 export default function Header() {
   const { currentUser, login, logout } = useCurrentUser()
@@ -21,11 +25,10 @@ export default function Header() {
     setLoginModal(!loginModal);
   }
 
+
   console.log({
     currentUser
   });
-
-
 
   // const UserLogin = () => {
   //   const user: string | null = localStorage.getItem('user')
@@ -114,7 +117,7 @@ export default function Header() {
               />
               <div className="drawer-content">
                 {/* Page content here */}
-                <label htmlFor="my-drawer-4" className=" ">
+                <label htmlFor="my-drawer-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24"
@@ -156,7 +159,6 @@ export default function Header() {
 
             <span className="text-sm font-bold">{'Нэвтрэх'}</span>
           </button> */}
-
 
           <dialog
             id="Haruul"
@@ -202,12 +204,15 @@ export const Drawer = () => {
 
         <ul className="w-[586px] h-full bg-white  min-h-full text-base-content z-40 flex flex-col justify-between">
           {/* Sidebar content here */}
-          <li>
+          <li className="border-b-[2px]">
             <div className="w-full flex justify-center">
-              <h1 className="text-[20px]">Таны сагс</h1>
+              <h1 className="py-[40px] text-[20px]">Таны сагс</h1>
             </div>
           </li>
           {/* top section */}
+          <div className="grow">
+            <CartItem />
+          </div>
 
           {/* bottom section */}
           <li className="flex w-full shadow-md h-[130px] justify-around items-center">
