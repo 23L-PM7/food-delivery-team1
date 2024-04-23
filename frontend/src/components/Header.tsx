@@ -19,7 +19,6 @@ export default function Header() {
     setLoginModal(!loginModal);
   }
 
-
   // const UserLogin = () => {
   //   const user: string | null = localStorage.getItem('user')
   //   if (user) {
@@ -106,7 +105,7 @@ export default function Header() {
               />
               <div className="drawer-content">
                 {/* Page content here */}
-                <label htmlFor="my-drawer-4" className=" ">
+                <label htmlFor="my-drawer-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24"
@@ -149,7 +148,6 @@ export default function Header() {
             <CgProfile size="20px" />
             <span className="text-sm font-bold">{'Нэвтрэх'}</span>
           </button> */}
-
 
           <dialog
             id="Haruul"
@@ -197,7 +195,7 @@ export const Drawer = () => {
           {/* Sidebar content here */}
           <li>
             <div className="w-full flex justify-center">
-              <h1 className="text-[20px]">Таны сагс</h1>
+              <h1 className="pt-[40px] text-[20px]">Таны сагс</h1>
             </div>
           </li>
           {/* top section */}
