@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { LoginFetcher, LoginMutator } from "@/app/util";
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
+import { useCurrentUser } from "@/store/useCurrentUser";
 
 
 export function Login() {
@@ -18,17 +19,20 @@ export function Login() {
   const [error, setError] = useState("");
 
   const [visible, setVisible] = useState("password");
+  const { login } = useCurrentUser()
 
 
   const UserLogin = async () => {
     try {
       const data = await LoginMutator("login", { email, password });
-      console.log({ data })
-      localStorage.setItem("newtoken", data);
+      console.log(data)
+      login(data.email, data.password)
+
+      localStorage.setItem("newtoken", data.token);
       router.push("/");
     } catch (error: any) {
-      console.error("Error", error.response.data.alert, error.response.data.message);
-      alert(error.response.data.alert || error.response.data.message);
+      console.error("Error", error?.response?.data?.alert, error?.response?.data?.message);
+      alert(error?.response?.data?.alert || error?.response?.data?.message);
     }
   };
 
@@ -42,11 +46,11 @@ export function Login() {
     setPassword(event.target.value);
   };
 
-  
+
 
   const visiblePassword = () => {
-      setIcon(!icon);
-     if (visible === "text") {
+    setIcon(!icon);
+    if (visible === "text") {
       setVisible("password");
     } else {
       setVisible("text");
@@ -118,16 +122,16 @@ export function Login() {
             onChange={changePassword}
           />
           <button
-          type="button"
-           onClick={visiblePassword}
-           className={`${icon ? "hidden" : "flex"}`}>
+            type="button"
+            onClick={visiblePassword}
+            className={`${icon ? "hidden" : "flex"}`}>
             <IoMdEyeOff className="text-[25px]" />
           </button>
           <button
-          type="button"
-           onClick={visiblePassword}
-           className={`${icon ? "flex" : "hidden"}`}>
-            <IoMdEye className="text-[25px]"/>
+            type="button"
+            onClick={visiblePassword}
+            className={`${icon ? "flex" : "hidden"}`}>
+            <IoMdEye className="text-[25px]" />
           </button>
         </label>
         <a className="flex justify-end cursor-pointer mt-[8px]" href="http://localhost:3000/forgotpass">Нууц үг сэргээх</a>

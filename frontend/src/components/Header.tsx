@@ -10,15 +10,25 @@ import { UserProfile } from "../app/userprofile/UserProfile";
 import { Card } from "@mui/material";
 import { SearchBar } from "./headerComponents/searchBar";
 import { Basket } from "./icons/basket";
+
+import { useCurrentUser } from "@/store/useCurrentUser";
+
 import { CartItem } from "./cartItem";
 
+
 export default function Header() {
+  const { currentUser, login, logout } = useCurrentUser()
   const [loginModal, setLoginModal] = useState(false);
   const switchs = useRouter();
 
   function Access() {
     setLoginModal(!loginModal);
   }
+
+
+  console.log({
+    currentUser
+  });
 
   // const UserLogin = () => {
   //   const user: string | null = localStorage.getItem('user')
@@ -30,20 +40,21 @@ export default function Header() {
   // }
 
   const UserLogin = () => {
-    const user: string | null = localStorage.getItem("user");
+    const user: string | null = localStorage.getItem('user');
     if (user) {
       switchs.push("userprofile");
     } else {
       switchs.push("/login");
     }
   };
-  // qwdqwfwqf
 
   return (
     <div
       className="container mx-auto text-sm font-semibold flex h-[57px] gap-2 items-center lg:justify-between 
     max-w-[1200px]"
     >
+      <button onClick={login}>login</button>
+      <button onClick={logout}>logout</button>
       <div className="lg:flex items-center w-3/6 block justify-start">
         <a href="http://localhost:3000">
           <svg
@@ -124,7 +135,6 @@ export default function Header() {
                   className="drawer-overlay"
                 ></label>
                 <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-                  {/* Sidebar content here */}
                   <li>
                     <a href="http://localhost:3000">НҮҮР</a>
                   </li>
@@ -146,7 +156,7 @@ export default function Header() {
             onClick={UserLogin}
             className="btn btn-outline mt-2 flex w-full rounded-[5px]"
           >
-            <CgProfile size="20px" />
+
             <span className="text-sm font-bold">{'Нэвтрэх'}</span>
           </button> */}
 

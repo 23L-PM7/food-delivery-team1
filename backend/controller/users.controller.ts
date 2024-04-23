@@ -107,11 +107,9 @@ export async function createLogin(req: Request, res: Response) {
       return;
     }
 
-    console.log(user)
-
     if (password == user.password) {
       const accesstoken = jwt.sign({ userId: user._id }, secret)
-      res.json(accesstoken)
+      res.json({ email: user.email, name: user.name, password: user.password, token: accesstoken })
     } else {
       res.sendStatus(204)
     }
