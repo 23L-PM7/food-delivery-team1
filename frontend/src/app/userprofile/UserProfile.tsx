@@ -29,6 +29,7 @@ export function UserProfile({ editingId, onClose }: any) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
+
   function Access() {
     setLoginModal(!loginModal);
   }
@@ -36,12 +37,12 @@ export function UserProfile({ editingId, onClose }: any) {
 
   const getProfile = async () => {
     const token = localStorage.getItem('newtoken')
-    console.log(token);
     try {
       await axios.post("http://localhost:9090/users/me", {
         newtoken: token
       }).then((response: any) => {
         const user = response.data;
+        console.log(response.data)
         setCurrentUser(user);
         setName(user.name);
         setPhoneNumber(user.phoneNumber);

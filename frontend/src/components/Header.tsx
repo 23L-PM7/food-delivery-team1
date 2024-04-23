@@ -11,7 +11,13 @@ import { Card } from "@mui/material";
 import { SearchBar } from "./headerComponents/searchBar";
 import { Basket } from "./icons/basket";
 
+import { useCurrentUser } from "@/store/useCurrentUser";
+
+import { CartItem } from "./cartItem";
+
+
 export default function Header() {
+  const { currentUser, login, logout } = useCurrentUser()
   const [loginModal, setLoginModal] = useState(false);
   const switchs = useRouter();
 
@@ -19,6 +25,14 @@ export default function Header() {
     setLoginModal(!loginModal);
   }
 
+<<<<<<< HEAD
+=======
+
+  console.log({
+    currentUser
+  });
+
+>>>>>>> eacf584a7d65f11ff74909ea3d39334092ef5ce5
   // const UserLogin = () => {
   //   const user: string | null = localStorage.getItem('user')
   //   if (user) {
@@ -29,7 +43,7 @@ export default function Header() {
   // }
 
   const UserLogin = () => {
-    const user: string | null = localStorage.getItem("user");
+    const user: string | null = localStorage.getItem('user');
     if (user) {
       switchs.push("userprofile");
     } else {
@@ -42,6 +56,8 @@ export default function Header() {
       className="container mx-auto text-sm font-semibold flex h-[57px] gap-2 items-center lg:justify-between 
     max-w-[1200px]"
     >
+      <button onClick={login}>login</button>
+      <button onClick={logout}>logout</button>
       <div className="lg:flex items-center w-3/6 block justify-start">
         <a href="http://localhost:3000">
           <svg
@@ -104,7 +120,7 @@ export default function Header() {
               />
               <div className="drawer-content">
                 {/* Page content here */}
-                <label htmlFor="my-drawer-4" className=" ">
+                <label htmlFor="my-drawer-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24"
@@ -122,7 +138,6 @@ export default function Header() {
                   className="drawer-overlay"
                 ></label>
                 <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-                  {/* Sidebar content here */}
                   <li>
                     <a href="http://localhost:3000">НҮҮР</a>
                   </li>
@@ -144,7 +159,7 @@ export default function Header() {
             onClick={UserLogin}
             className="btn btn-outline mt-2 flex w-full rounded-[5px]"
           >
-            <CgProfile size="20px" />
+
             <span className="text-sm font-bold">{'Нэвтрэх'}</span>
           </button> */}
 
@@ -192,12 +207,15 @@ export const Drawer = () => {
 
         <ul className="w-[586px] h-full bg-white  min-h-full text-base-content z-40 flex flex-col justify-between">
           {/* Sidebar content here */}
-          <li>
+          <li className="border-b-[2px]">
             <div className="w-full flex justify-center">
-              <h1 className="text-[20px]">Таны сагс</h1>
+              <h1 className="py-[40px] text-[20px]">Таны сагс</h1>
             </div>
           </li>
           {/* top section */}
+          <div className="grow">
+            <CartItem />
+          </div>
 
           {/* bottom section */}
           <li className="flex w-full shadow-md h-[130px] justify-around items-center">
