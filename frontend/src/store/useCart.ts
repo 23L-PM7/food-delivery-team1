@@ -35,6 +35,7 @@ export const useCart = create<State & Action>((set) => ({
         cart: {
           ...state.cart,
           cartItems: [...state.cart.cartItems, food],
+          totalAmount: +food.price,
         },
       };
     });
