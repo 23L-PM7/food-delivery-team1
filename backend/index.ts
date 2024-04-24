@@ -13,6 +13,7 @@ import express from "express";
 import { Schema, connect, model } from "mongoose";
 import multer from "multer";
 import { nanoid } from "nanoid";
+import tempCartRouter from "./routers/tempCartRouter";
 
 const app = express();
 const port = 9090;
@@ -41,12 +42,9 @@ const upload = multer({
   }),
 });
 
-
-
 connect(`${process.env.MONGO_URL}`).then(() => {
   console.log("MongoDB started");
 });
-
 
 app.use(cors());
 app.use(express.json());
@@ -57,29 +55,25 @@ app.use("/foods", foodsRouter);
 app.use("/orders", orderRouter);
 app.use("/cart", cartRouter);
 app.use("/cartItem", cartItemRouter);
+app.use("/tempCart", tempCartRouter);
 
 // connectDB();
 
-app.post(
-  "/upload",
-  upload.single("file"),
-  async (req: any, res: any) => {
-    // req.file
+app.post("/upload", upload.single("file"), async (req: any, res: any) => {
+  // req.file
 
-    const filePath = req.file?.path;
+  const filePath = req.file?.path;
 
-    if (filePath) {
-      const result = await cloudinary.uploader.upload(filePath);
-      console.log(result);
-      res.json({ url: result.secure_url });
-    }
+  if (filePath) {
+    const result = await cloudinary.uploader.upload(filePath);
+    console.log(result);
+    res.json({ url: result.secure_url });
   }
-);
+});
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
 });
-
 
 // app.listen(port, () => {
 //   console.log(`Listening on port ${port}...`);
