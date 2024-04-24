@@ -46,7 +46,7 @@ export function Drawer() {
               <h1 className=" font-medium text-[18px] text-[#5E6166]">
                 Нийт төлөх дүн
               </h1>
-              <h1 className="font-bold text-[18px]">34,800₮</h1>
+              <h1 className="font-bold text-[18px]">{cart.totalAmount}₮</h1>
             </div>
             <button className="bg-[#18BA51] w-[256px] h-[48px] btn rounded-md text-white">
               Захиалах
