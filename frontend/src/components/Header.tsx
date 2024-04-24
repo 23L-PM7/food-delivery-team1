@@ -25,14 +25,11 @@ export default function Header() {
     setLoginModal(!loginModal);
   }
 
-<<<<<<< HEAD
-=======
 
   console.log({
     currentUser
   });
 
->>>>>>> eacf584a7d65f11ff74909ea3d39334092ef5ce5
   // const UserLogin = () => {
   //   const user: string | null = localStorage.getItem('user')
   //   if (user) {
