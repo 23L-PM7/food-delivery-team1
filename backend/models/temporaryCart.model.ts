@@ -22,9 +22,9 @@ const tempCartSchema = new Schema({
   totalPrice: Number,
   expiresAt: {
     type: Date,
-    // The index will expire documents after 4 hours
+    // The index will expire documents after 1 min
     default: Date.now,
-    index: { expires: "4h" },
+    index: { expires: "1m" },
   },
 });
 

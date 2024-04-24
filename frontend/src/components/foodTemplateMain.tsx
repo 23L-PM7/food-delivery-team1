@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useCart } from "@/store/useCart";
 
 type Props = {
   item: any;
@@ -12,12 +13,17 @@ export function FoodTemplateMain(props: Props) {
   const [amount, setAmount] = useState(1);
   const { item } = props;
 
+  // zustand
+  const { addCart } = useCart();
+  //
+
   const saleCheck = () => {
     setSalePercent(Math.trunc(100 - (item.saleprice / item.price) * 100));
   };
 
   const toggleCartModal = () => {
     setModal(!modal);
+    setAmount(1);
   };
 
   const subtract = () => {
@@ -104,7 +110,19 @@ export function FoodTemplateMain(props: Props) {
                 +
               </button>
             </div>
-            <button className="btn bg-[#18BA51] text-center text-white w-full h-[48px] rounded-lg">
+            <button
+              onClick={() =>
+                addCart({
+                  tempId: Date.now().toString(),
+                  foodId: item._id,
+                  name: item.name,
+                  ingredient: item.ingredient,
+                  price: item.saleprice,
+                  amount: amount,
+                })
+              }
+              className="btn bg-[#18BA51] text-center text-white w-full h-[48px] rounded-lg"
+            >
               Сагслах
             </button>
           </div>

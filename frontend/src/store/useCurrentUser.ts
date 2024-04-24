@@ -8,6 +8,8 @@ type User = {
 
 type CurrentUserState = {
     currentUser: User | null,
+    loading: boolean,
+    handleLoading: () => void,
     login: (email: string, name: string) => void;
     logout: () => void
 }
@@ -15,6 +17,10 @@ type CurrentUserState = {
 
 export const useCurrentUser = create<CurrentUserState>((set) => ({
     currentUser: null,
+    loading: true,
+    handleLoading: () => {
+        set((state) => ({ ...state, loading: !state.loading }))
+    },
     login: (email, name) => {
         set((state) => ({
             ...state,
@@ -25,8 +31,10 @@ export const useCurrentUser = create<CurrentUserState>((set) => ({
         }))
     },
     logout: () => {
+        localStorage.removeItem('newtoken')
         set((state) => ({
             ...state,
+            loading: false,
             currentUser: null
         }))
     }

@@ -14,35 +14,28 @@ import { Basket } from "./icons/basket";
 import { useCurrentUser } from "@/store/useCurrentUser";
 
 import { CartItem } from "./cartItem";
+<<<<<<< HEAD
 
 import { Drawer } from "./drawer";
+=======
+import { Drawer } from "./drawer";
+import Link from "next/link";
+
+>>>>>>> d6cc40df870267343ef5982149a381cbd7be1fe9
 
 export default function Header() {
-  const { currentUser, login, logout } = useCurrentUser();
   const [loginModal, setLoginModal] = useState(false);
   const switchs = useRouter();
+  const { currentUser, loading, handleLoading, login, logout } = useCurrentUser()
 
   function Access() {
     setLoginModal(!loginModal);
   }
 
-  console.log({
-    currentUser,
-  });
-
-  // const UserLogin = () => {
-  //   const user: string | null = localStorage.getItem('user')
-  //   if (user) {
-  //     switchs.push('/userprofile')
-  //   } else {
-  //     switchs.push('/login')
-  //   }
-  // }
-
   const UserLogin = () => {
-    const user: string | null = localStorage.getItem("user");
-    if (user) {
-      switchs.push("userprofile");
+    const currentUser: string | null = localStorage.getItem('user');
+    if (!currentUser) {
+      switchs.push("/userprofile");
     } else {
       switchs.push("/login");
     }
@@ -53,8 +46,6 @@ export default function Header() {
       className="container mx-auto text-sm font-semibold flex h-[57px] gap-2 items-center lg:justify-between 
     max-w-[1200px]"
     >
-      {/* <button onClick={login}>login</button>
-      <button onClick={logout}>logout</button> */}
       <div className="lg:flex items-center w-3/6 block justify-start">
         <a href="http://localhost:3000">
           <svg
@@ -105,8 +96,9 @@ export default function Header() {
               Нэвтрэх
             </button>{" "}
           </div>
+          <button onClick={UserLogin}>{currentUser ? currentUser.name : 'Нэвтрэх'}</button>
           <button className="hover:text-green-600 p-3 flex">
-            <a href="http://localhost:3000/userprofile">Хэрэглэгч</a>
+
             <div className="drawer drawer-end z-50  block lg:hidden">
               <input
                 id="my-drawer-4"
@@ -114,7 +106,6 @@ export default function Header() {
                 className="drawer-toggle"
               />
               <div className="drawer-content">
-                {/* Page content here */}
                 <label htmlFor="my-drawer-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -148,16 +139,13 @@ export default function Header() {
               </div>
             </div>
           </button>{" "}
-          {/* <a href="http://localhost:3000/userprofile">Хэрэглэгч</a> */}
           {/* <button
             onClick={UserLogin}
             className="btn btn-outline mt-2 flex w-full rounded-[5px]"
           >
-
-            <span className="text-sm font-bold">{'Нэвтрэх'}</span>
+            <span className="text-sm font-bold"></span>
           </button> */}
           <dialog
-            id="Haruul"
             className={loginModal ? `modal modal-open` : `modal`}
           >
             <div className="modal-box max-w-none w-[549px]">
@@ -176,6 +164,11 @@ export default function Header() {
   );
 }
 
+
+
+
+
+
 const FoodInfo = () => {
   let [foodQuantity, setFoodquantity] = useState(1);
   function incementFoodQuantity() {
@@ -190,7 +183,7 @@ const FoodInfo = () => {
   };
   return (
     <>
-      <hr className="mt-[40px]" />
+      <div className="mt-[40px]" />
       <div className=" flex justify-center gap-[16px] relative py-[24px]">
         <button className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4">
           X
@@ -235,7 +228,7 @@ const FoodInfo = () => {
           </div>
         </div>
       </div>
-      <hr />
+      <div />
     </>
   );
 };

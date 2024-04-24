@@ -1,7 +1,10 @@
 import { CartItem } from "./cartItem";
 import { Basket } from "./icons/basket";
+import { useCart } from "@/store/useCart";
 
 export function Drawer() {
+  const { addCart, cart, clearCart } = useCart();
+
   return (
     <div className="drawer drawer-end z-40">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -32,7 +35,9 @@ export function Drawer() {
           </li>
           {/* top section */}
           <div className="grow border-b-[1px]">
-            <CartItem />
+            {cart.cartItems.map((item) => (
+              <CartItem item={item} />
+            ))}
           </div>
 
           {/* bottom section */}
@@ -41,7 +46,7 @@ export function Drawer() {
               <h1 className=" font-medium text-[18px] text-[#5E6166]">
                 Нийт төлөх дүн
               </h1>
-              <h1 className="font-bold text-[18px]">34,800₮</h1>
+              <h1 className="font-bold text-[18px]">{cart.totalAmount}₮</h1>
             </div>
             <button className="bg-[#18BA51] w-[256px] h-[48px] btn rounded-md text-white">
               Захиалах
