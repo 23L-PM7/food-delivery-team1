@@ -3,7 +3,7 @@ import { Basket } from "./icons/basket";
 import { useCart } from "@/store/useCart";
 
 export function Drawer() {
-  const { addCart, cart, removeCart, clearCart } = useCart();
+  const { addCart, cart, clearCart } = useCart();
 
   return (
     <div className="drawer drawer-end z-40">

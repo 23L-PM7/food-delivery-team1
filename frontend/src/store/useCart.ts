@@ -6,6 +6,7 @@ type Cart = {
 };
 
 type CartItem = {
+  tempId: string;
   foodId: string;
   price: number;
   amount: number;
@@ -19,7 +20,7 @@ type State = {
 
 type Action = {
   addCart: (food: CartItem) => void;
-  removeCart: () => void;
+  removeCart: (id: string) => void;
   clearCart: () => void;
 };
 
@@ -35,11 +36,27 @@ export const useCart = create<State & Action>((set) => ({
         cart: {
           ...state.cart,
           cartItems: [...state.cart.cartItems, food],
-          totalAmount: +food.price,
+          totalAmount: state.cart.totalAmount + food.price * food.amount,
         },
       };
     });
   },
-  removeCart: () => {},
+  removeCart: (id) => {
+    set((state) => {
+      const newList = state.cart.cartItems.filter((item) => item.tempId !== id);
+      const newPrice = newList.reduce((totalPrice, item) => {
+        return totalPrice + item.price;
+      }, 0);
+
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          cartItems: newList,
+          totalAmount: 0 + newPrice,
+        },
+      };
+    });
+  },
   clearCart: () => {},
 }));

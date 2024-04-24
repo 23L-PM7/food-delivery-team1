@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-
+import { useCart } from "@/store/useCart";
 import { Xmark } from "./icons/chrom";
 
 type CartProps = {
@@ -8,6 +8,7 @@ type CartProps = {
 };
 
 export function CartItem(props: CartProps) {
+  const { removeCart } = useCart();
   const { item } = props;
   const [amount, setAmount] = useState(1);
 
@@ -25,7 +26,10 @@ export function CartItem(props: CartProps) {
       <img className="rounded" src="/images/pizza.png" />
       <div className="w-full flex flex-col justify-between relative">
         <h1 className="font-bold text-[18px]">{item.name}</h1>
-        <button className="absolute right-2">
+        <button
+          onClick={() => removeCart(item.tempId)}
+          className="absolute right-2"
+        >
           <Xmark />
         </button>
 

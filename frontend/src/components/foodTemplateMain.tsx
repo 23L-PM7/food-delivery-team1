@@ -23,6 +23,7 @@ export function FoodTemplateMain(props: Props) {
 
   const toggleCartModal = () => {
     setModal(!modal);
+    setAmount(1);
   };
 
   const subtract = () => {
@@ -112,6 +113,7 @@ export function FoodTemplateMain(props: Props) {
             <button
               onClick={() =>
                 addCart({
+                  tempId: Date.now().toString(),
                   foodId: item._id,
                   name: item.name,
                   ingredient: item.ingredient,
