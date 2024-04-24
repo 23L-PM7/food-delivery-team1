@@ -20,7 +20,7 @@ type User = {
 }
 
 
-export function UserProfile({ editingId, onClose }: any) {
+export function UserProfile() {
   const router = useRouter()
   const { currentUser, loading, handleLoading, login, logout } = useCurrentUser()
   const [edit, setEdit] = useState(false);;

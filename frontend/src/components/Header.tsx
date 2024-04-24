@@ -15,21 +15,22 @@ import { useCurrentUser } from "@/store/useCurrentUser";
 
 import { CartItem } from "./cartItem";
 import { Drawer } from "./drawer";
+import Link from "next/link";
 
 
 export default function Header() {
   const [loginModal, setLoginModal] = useState(false);
   const switchs = useRouter();
+  const { currentUser, loading, handleLoading, login, logout } = useCurrentUser()
 
   function Access() {
     setLoginModal(!loginModal);
   }
 
-
   const UserLogin = () => {
-    const user: string | null = localStorage.getItem("user");
+    const user: string | null = localStorage.getItem('user');
     if (user) {
-      switchs.push("userprofile");
+      switchs.push("/userprofile");
     } else {
       switchs.push("/login");
     }
@@ -91,7 +92,7 @@ export default function Header() {
             </button>{" "}
           </div>
           <button className="hover:text-green-600 p-3 flex">
-            <a href="http://localhost:3000/userprofile">Хэрэглэгч</a>
+            <a href="http://localhost:3000/userprofile">{currentUser ? currentUser.name : 'Нэвтрэх'}</a>
             <div className="drawer drawer-end z-50  block lg:hidden">
               <input
                 id="my-drawer-4"
@@ -99,7 +100,6 @@ export default function Header() {
                 className="drawer-toggle"
               />
               <div className="drawer-content">
-                {/* Page content here */}
                 <label htmlFor="my-drawer-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -133,16 +133,13 @@ export default function Header() {
               </div>
             </div>
           </button>{" "}
-          {/* <a href="http://localhost:3000/userprofile">Хэрэглэгч</a> */}
           {/* <button
             onClick={UserLogin}
             className="btn btn-outline mt-2 flex w-full rounded-[5px]"
           >
-
-            <span className="text-sm font-bold">{'Нэвтрэх'}</span>
+            <span className="text-sm font-bold"></span>
           </button> */}
           <dialog
-            id="Haruul"
             className={loginModal ? `modal modal-open` : `modal`}
           >
             <div className="modal-box max-w-none w-[549px]">
@@ -160,6 +157,11 @@ export default function Header() {
     </div>
   );
 }
+
+
+
+
+
 
 const FoodInfo = () => {
   let [foodQuantity, setFoodquantity] = useState(1);
