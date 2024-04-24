@@ -14,7 +14,7 @@ export function FoodTemplateMain(props: Props) {
   const { item } = props;
 
   // zustand
-  const { cart, addCart } = useCart();
+  const { addCart } = useCart();
   //
 
   const saleCheck = () => {
