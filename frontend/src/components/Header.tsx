@@ -28,8 +28,9 @@ export default function Header() {
   }
 
   const UserLogin = () => {
-    const user: string | null = localStorage.getItem('user');
-    if (user) {
+    const currentUser: string | null = localStorage.getItem('user');
+    if (!currentUser) {
+      console.log(currentUser)
       switchs.push("/userprofile");
     } else {
       switchs.push("/login");
@@ -91,8 +92,9 @@ export default function Header() {
               Нэвтрэх
             </button>{" "}
           </div>
+          <button onClick={UserLogin}>{currentUser ? currentUser.name : 'Нэвтрэх'}</button>
           <button className="hover:text-green-600 p-3 flex">
-            <a href="http://localhost:3000/userprofile">{currentUser ? currentUser.name : 'Нэвтрэх'}</a>
+
             <div className="drawer drawer-end z-50  block lg:hidden">
               <input
                 id="my-drawer-4"
