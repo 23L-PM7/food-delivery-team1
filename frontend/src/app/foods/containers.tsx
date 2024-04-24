@@ -29,16 +29,16 @@ export function Containers(props: ChildProps) {
     const formData = new FormData();
     formData.append("file", file, file.name);
 
-    const res = await fetch("http://localhost:4000/upload", {
-      method: "POST",
-      body: formData,
-    });
+    // const res = await fetch("http://localhost:9090/upload", {
+    //   method: "POST",
+    //   body: formData,
+    // });
 
-    if (res.ok) {
-      const { url } = await res.json();
-      setImage(url);
-      setUploading(false);
-    }
+    // if (res.ok) {
+    //   const { url } = await res.json();
+    //   setImage(url);
+    //   setUploading(false);
+    // }
   }
 
   console.log({ selectedCategoryOption });

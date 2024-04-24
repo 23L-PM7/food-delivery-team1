@@ -14,10 +14,8 @@ import { Basket } from "./icons/basket";
 import { useCurrentUser } from "@/store/useCurrentUser";
 
 import { CartItem } from "./cartItem";
-<<<<<<< HEAD
-=======
+
 import { Drawer } from "./drawer";
->>>>>>> b0ab201ab0ca2611935b96e2a833b9c6ae104de9
 
 export default function Header() {
   const { currentUser, login, logout } = useCurrentUser();

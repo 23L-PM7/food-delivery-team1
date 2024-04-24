@@ -1,5 +1,6 @@
 // import express from "express";
 import cors from "cors";
+import type { Request, Response, Express } from "express";
 import { connectDB } from "./database/connect";
 import usersRouter from "./routers/usersRouter";
 import categoryRouter from "./routers/categoryRouter";
@@ -8,22 +9,20 @@ import orderRouter from "./routers/orderRouter";
 import cartRouter from "./routers/cartRouter";
 import cartItemRouter from "./routers/cartItemRouter";
 import { v2 as cloudinary } from "cloudinary";
-import dotenv from "dotenv";
 import express from "express";
-import { Schema, connect, model } from "mongoose";
 import multer from "multer";
 import { nanoid } from "nanoid";
 import tempCartRouter from "./routers/tempCartRouter";
 
-const app = express();
+const app: Express = express();
+
 const port = 9090;
 
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_NAME,
-  api_key: process.env.CLOUDINARY_KEY,
-  api_secret: process.env.CLOUDINARY_SECRET,
+  cloud_name: "datkkanof",
+  api_key: "987748353861582",
+  api_secret: "5793yyCpTMkUxztroDEty08PeL4",
 });
-
 function getExtension(filename: string) {
   const names = filename.split(".");
   if (names.length > 1) {
@@ -42,12 +41,35 @@ const upload = multer({
   }),
 });
 
-// connect(`${process.env.MONGO_URL}`).then(() => {
-//   console.log("MongoDB started");
-// });
-
 app.use(cors());
 app.use(express.json());
+
+app.post(
+  "/upload",
+  upload.single("file"),
+  async (req: Request, res: Response) => {
+    const filePath = req?.file?.path;
+
+    if (filePath) {
+      const result = await cloudinary.uploader.upload(filePath);
+      console.log(result);
+      res.json({ url: result.secure_url });
+    }
+  }
+);
+// app.get(
+//   "/upload",
+//   upload.single("file"),
+//   async (req: Request, res: Response) => {
+//     const filePath = req?.file?.path;
+
+//     if (filePath) {
+//       const result = await cloudinary.uploader.upload(filePath);
+//       console.log(result);
+//       res.json({ url: result.secure_url });
+//     }
+//   }
+// );
 
 app.use("/users", usersRouter);
 app.use("/category", categoryRouter);
@@ -58,18 +80,6 @@ app.use("/cartItem", cartItemRouter);
 app.use("/tempCart", tempCartRouter);
 
 connectDB();
-
-app.post("/upload", upload.single("file"), async (req: any, res: any) => {
-  // req.file
-
-  const filePath = req.file?.path;
-
-  if (filePath) {
-    const result = await cloudinary.uploader.upload(filePath);
-    console.log(result);
-    res.json({ url: result.secure_url });
-  }
-});
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
