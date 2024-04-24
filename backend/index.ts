@@ -42,12 +42,6 @@ const upload = multer({
 });
 
 
-
-connect(`${process.env.MONGO_URL}`).then(() => {
-  console.log("MongoDB started");
-});
-
-
 app.use(cors());
 app.use(express.json());
 
@@ -58,16 +52,15 @@ app.use("/orders", orderRouter);
 app.use("/cart", cartRouter);
 app.use("/cartItem", cartItemRouter);
 
-// connectDB();
 
 app.post(
   "/upload",
   upload.single("file"),
   async (req: any, res: any) => {
     // req.file
-
+    
     const filePath = req.file?.path;
-
+    
     if (filePath) {
       const result = await cloudinary.uploader.upload(filePath);
       console.log(result);
@@ -75,6 +68,8 @@ app.post(
     }
   }
 );
+
+connectDB();
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
