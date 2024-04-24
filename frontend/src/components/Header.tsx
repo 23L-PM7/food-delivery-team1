@@ -14,10 +14,8 @@ import { Basket } from "./icons/basket";
 import { useCurrentUser } from "@/store/useCurrentUser";
 
 import { CartItem } from "./cartItem";
-<<<<<<< HEAD
-=======
 import { Drawer } from "./drawer";
->>>>>>> b0ab201ab0ca2611935b96e2a833b9c6ae104de9
+
 
 export default function Header() {
   const { currentUser, login, logout } = useCurrentUser();
@@ -192,7 +190,7 @@ const FoodInfo = () => {
   };
   return (
     <>
-      <hr className="mt-[40px]" />
+      <div className="mt-[40px]" />
       <div className=" flex justify-center gap-[16px] relative py-[24px]">
         <button className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4">
           X
@@ -237,7 +235,7 @@ const FoodInfo = () => {
           </div>
         </div>
       </div>
-      <hr />
+      <div />
     </>
   );
 };
