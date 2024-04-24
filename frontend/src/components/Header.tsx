@@ -15,9 +15,8 @@ import { useCurrentUser } from "@/store/useCurrentUser";
 
 import { CartItem } from "./cartItem";
 
-
 export default function Header() {
-  const { currentUser, login, logout } = useCurrentUser()
+  const { currentUser, login, logout } = useCurrentUser();
   const [loginModal, setLoginModal] = useState(false);
   const switchs = useRouter();
 
@@ -25,9 +24,8 @@ export default function Header() {
     setLoginModal(!loginModal);
   }
 
-
   console.log({
-    currentUser
+    currentUser,
   });
 
   // const UserLogin = () => {
@@ -40,7 +38,7 @@ export default function Header() {
   // }
 
   const UserLogin = () => {
-    const user: string | null = localStorage.getItem('user');
+    const user: string | null = localStorage.getItem("user");
     if (user) {
       switchs.push("userprofile");
     } else {
@@ -53,8 +51,8 @@ export default function Header() {
       className="container mx-auto text-sm font-semibold flex h-[57px] gap-2 items-center lg:justify-between 
     max-w-[1200px]"
     >
-      <button onClick={login}>login</button>
-      <button onClick={logout}>logout</button>
+      {/* <button onClick={login}>login</button>
+      <button onClick={logout}>logout</button> */}
       <div className="lg:flex items-center w-3/6 block justify-start">
         <a href="http://localhost:3000">
           <svg
@@ -105,11 +103,9 @@ export default function Header() {
               Нэвтрэх
             </button>{" "}
           </div>
-          <button className="hover:text-green-600 p-3">
+          <button className="hover:text-green-600 p-3 flex">
             <a href="http://localhost:3000/userprofile">Хэрэглэгч</a>
-          </button>
-          <button className="flex md:hidden">
-            <div className="drawer drawer-end z-50">
+            <div className="drawer drawer-end z-50  block lg:hidden">
               <input
                 id="my-drawer-4"
                 type="checkbox"
@@ -149,8 +145,7 @@ export default function Header() {
                 </ul>
               </div>
             </div>
-          </button>
-
+          </button>{" "}
           {/* <a href="http://localhost:3000/userprofile">Хэрэглэгч</a> */}
           {/* <button
             onClick={UserLogin}
@@ -159,7 +154,6 @@ export default function Header() {
 
             <span className="text-sm font-bold">{'Нэвтрэх'}</span>
           </button> */}
-
           <dialog
             id="Haruul"
             className={loginModal ? `modal modal-open` : `modal`}
