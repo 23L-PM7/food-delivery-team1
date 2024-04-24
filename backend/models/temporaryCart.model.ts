@@ -5,7 +5,7 @@ import { foodRef } from "./foods.model";
 import { cartItemRef } from "./cartItem.model";
 const { Schema } = mongoose;
 
-const cartSchema = new Schema({
+const tempCartSchema = new Schema({
   id: ObjectId,
   items: [
     {
@@ -20,6 +20,16 @@ const cartSchema = new Schema({
     ref: userRef,
   },
   totalPrice: Number,
+  expiresAt: {
+    type: Date,
+    // The index will expire documents after 4 hours
+    default: Date.now,
+    index: { expires: "4h" },
+  },
 });
 
-export const CartModel = mongoose.model("CartModel", cartSchema, cartItemRef);
+export const TempCartModel = mongoose.model(
+  "TempCartModel",
+  tempCartSchema,
+  cartItemRef
+);
