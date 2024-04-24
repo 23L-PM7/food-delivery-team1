@@ -45,7 +45,7 @@ export const useCart = create<State & Action>((set) => ({
     set((state) => {
       const newList = state.cart.cartItems.filter((item) => item.tempId !== id);
       const newPrice = newList.reduce((totalPrice, item) => {
-        return totalPrice + item.price;
+        return totalPrice + item.price * item.amount;
       }, 0);
 
       return {
