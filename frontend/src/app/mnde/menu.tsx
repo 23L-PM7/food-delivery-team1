@@ -12,7 +12,7 @@ export default function Menu() {
   const fetchFoods = async () => {
     try {
       const data: any = await utilFetcher("foods");
-      console.log(data);
+      console.log("shalgah",data);
       setFoods(data);
     } catch (error) {
       console.log(error);
@@ -35,8 +35,8 @@ export default function Menu() {
       <button onClick={check} className="btn btn-error">
         Check
       </button>
-      {foodlist.map((food) => (
-        <FoodCard key={food.id} {...food} />
+      {foods.map((food:any) => (
+        <FoodCard key={food._id} {...food} />
       ))}
     </div>
   );
@@ -45,7 +45,7 @@ export default function Menu() {
 type FoodCardProps = {
   id: number;
   img: string;
-  title: string;
+  name: string;
   price: number;
   saleprice?: number;
 };
@@ -69,14 +69,14 @@ const FoodCard = (props: FoodCardProps) => {
     }
   };
 
-  const { id, img, title, price, saleprice } = props;
+  const { id, img, name, price, saleprice } = props;
 
   return (
     <>
       <div>
         <div className="relative overflow-hidden w-fit">
           <div className="-z-10 absolute right-6 top-4">
-            <SellChip />
+            <SellChip {...props} />
           </div>
           <div
             onClick={() => setMenuOpen(true)}
@@ -84,15 +84,15 @@ const FoodCard = (props: FoodCardProps) => {
           >
             <img
               className="object-fill rounded-lg absolute -z-20"
-              src="https://media.istockphoto.com/id/1690090007/photo/a-cropped-image-of-a-womans-hand-holding-a-piece-of-toasted-bread-with-scrambled-eggs-on-top.jpg?s=2048x2048&w=is&k=20&c=KYa9toFXQyJ_pWcikPGQ6qxHl127RRM7txLFfDv5SMM="
+              src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             ></img>
           </div>
         </div>
         <div className="flex flex-col mt-[14px]">
-          <h1 className="font-semibold text-lg">{title}</h1>
+          <h1 className="font-semibold text-lg">{name}</h1>
           <div className="flex gap-2">
-            <p className="font-semibold text-lg text-green-600">{price}₮</p>
-            <p className="font-semibold text-lg line-through ">{saleprice}₮</p>
+            <p className="font-semibold text-lg text-green-600">{saleprice}₮</p>
+            <p className="font-semibold text-lg line-through ">{price}₮</p>
           </div>
         </div>
         <dialog className={`modal ${menuOpen ? "modal-open" : ""}`}>

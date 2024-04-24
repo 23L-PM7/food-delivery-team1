@@ -14,14 +14,9 @@ import { Basket } from "./icons/basket";
 import { useCurrentUser } from "@/store/useCurrentUser";
 
 import { CartItem } from "./cartItem";
-<<<<<<< HEAD
-
-import { Drawer } from "./drawer";
-=======
 import { Drawer } from "./drawer";
 import Link from "next/link";
 
->>>>>>> d6cc40df870267343ef5982149a381cbd7be1fe9
 
 export default function Header() {
   const [loginModal, setLoginModal] = useState(false);

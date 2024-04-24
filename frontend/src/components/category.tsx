@@ -14,6 +14,8 @@ export function Category() {
     // });
     const data = await utilFetcher("category");
     setCategory(data);
+    console.log("mm",data);
+    
   };
 
   useEffect(() => {
