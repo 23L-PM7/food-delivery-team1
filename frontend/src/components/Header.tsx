@@ -18,7 +18,10 @@ import { Drawer } from "./drawer";
 
 
 export default function Header() {
+<<<<<<< Updated upstream
   const { currentUser, login, logout } = useCurrentUser();
+=======
+>>>>>>> Stashed changes
   const [loginModal, setLoginModal] = useState(false);
   const switchs = useRouter();
 
@@ -26,6 +29,7 @@ export default function Header() {
     setLoginModal(!loginModal);
   }
 
+<<<<<<< Updated upstream
   console.log({
     currentUser,
   });
@@ -38,6 +42,9 @@ export default function Header() {
   //     switchs.push('/login')
   //   }
   // }
+=======
+
+>>>>>>> Stashed changes
 
   const UserLogin = () => {
     const user: string | null = localStorage.getItem("user");
@@ -53,8 +60,11 @@ export default function Header() {
       className="container mx-auto text-sm font-semibold flex h-[57px] gap-2 items-center lg:justify-between 
     max-w-[1200px]"
     >
+<<<<<<< Updated upstream
       {/* <button onClick={login}>login</button>
       <button onClick={logout}>logout</button> */}
+=======
+>>>>>>> Stashed changes
       <div className="lg:flex items-center w-3/6 block justify-start">
         <a href="http://localhost:3000">
           <svg

@@ -8,6 +8,7 @@ import { Toaster, toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Datanullandundef } from "../../components/structure";
 import { UserPrinting } from "@/app/util";
+import { useCurrentUser } from "@/store/useCurrentUser";
 
 type User = {
   _id: string,
@@ -20,14 +21,15 @@ type User = {
 
 
 export function UserProfile({ editingId, onClose }: any) {
+  const router = useRouter()
+  const { currentUser, loading, handleLoading, login, logout } = useCurrentUser()
   const [edit, setEdit] = useState(false);;
   const [phoneNumber, setPhoneNumber] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [loginModal, setLoginModal] = useState(false);
-  const router = useRouter();
-  const [loading, setLoading] = useState(false);
+
+
 
 
   function Access() {
@@ -37,21 +39,31 @@ export function UserProfile({ editingId, onClose }: any) {
 
   const getProfile = async () => {
     const token = localStorage.getItem('newtoken')
+    if (!token) {
+      return
+    }
+    handleLoading()
     try {
-      await axios.post("http://localhost:9090/users/me", {
+      const { data } = await axios.post("http://localhost:9090/users/me", {
         newtoken: token
-      }).then((response: any) => {
-        const user = response.data;
-        console.log(response.data)
-        setCurrentUser(user);
-        setName(user.name);
-        setPhoneNumber(user.phoneNumber);
-        setEmail(user.email);
       })
+      setName(data.name);
+      setPhoneNumber(data.phoneNumber);
+      setEmail(data.email);
+
+      login(data.email, data.name)
+      handleLoading()
     } catch (error) {
       console.log(error)
+      handleLoading()
     }
   }
+
+  if (!currentUser && !loading) {
+    router.push('/')
+  }
+
+
 
   useEffect(() => {
     getProfile()
@@ -73,6 +85,10 @@ export function UserProfile({ editingId, onClose }: any) {
       console.error("Error:", error);
       alert("amjiltgui")
     }
+  }
+
+  if (!currentUser) {
+    return <p>...loading</p>
   }
 
 
@@ -177,9 +193,9 @@ export function UserProfile({ editingId, onClose }: any) {
             </p>
             <div className="modal-action p-0 mt-0 justify-center ">
               <form method="dialog" onClick={Access} className="w-full ">
-                <a className="btn bg-green-100 hover:bg-green-500 w-6/12" href="http://localhost:3000/login">
+                <button className="btn bg-green-100 hover:bg-green-500 w-6/12" onClick={logout}>
                   Тийм
-                </a>
+                </button>
                 <button className="btn w-6/12 bg-green-100 hover:bg-green-500">
                   Үгүй
                 </button>
