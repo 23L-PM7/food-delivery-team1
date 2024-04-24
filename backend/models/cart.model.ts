@@ -5,7 +5,6 @@ import { foodRef } from "./foods.model";
 import { cartItemRef } from "./cartItem.model";
 const { Schema } = mongoose;
 
-export const cartRef = "cart";
 
 const cartSchema = new Schema({
   id: ObjectId,
@@ -28,4 +27,4 @@ const cartSchema = new Schema({
   totalPrice: Number,
 });
 
-export const CartModel = mongoose.model("cart", cartSchema, cartRef);
+export const CartModel = mongoose.model("CartModel", cartSchema,cartItemRef);

@@ -9,10 +9,13 @@ import cartRouter from "./routers/cartRouter";
 import cartItemRouter from "./routers/cartItemRouter";
 import { v2 as cloudinary } from "cloudinary";
 import dotenv from "dotenv";
-import express, { Express, Request, Response } from "express";
+import express from "express";
 import { Schema, connect, model } from "mongoose";
 import multer from "multer";
 import { nanoid } from "nanoid";
+
+const app = express();
+const port = 9090;
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
@@ -38,8 +41,12 @@ const upload = multer({
   }),
 });
 
-const app = express();
-const port = 9090;
+
+
+connect(`${process.env.MONGO_URL}`).then(() => {
+  console.log("MongoDB started");
+});
+
 
 app.use(cors());
 app.use(express.json());
@@ -51,12 +58,12 @@ app.use("/orders", orderRouter);
 app.use("/cart", cartRouter);
 app.use("/cartItem", cartItemRouter);
 
-connectDB();
+// connectDB();
 
 app.post(
   "/upload",
   upload.single("file"),
-  async (req: Request, res: Response) => {
+  async (req: any, res: any) => {
     // req.file
 
     const filePath = req.file?.path;
@@ -73,9 +80,6 @@ app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
 });
 
-connect(`${process.env.MONGODB_STRING}`).then(() => {
-  console.log("MongoDB started");
-});
 
 // app.listen(port, () => {
 //   console.log(`Listening on port ${port}...`);
