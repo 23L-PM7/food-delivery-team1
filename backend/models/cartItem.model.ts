@@ -20,7 +20,7 @@ const cartItemSchema = new Schema({
 });
 
 export const CartItemModel = mongoose.model(
-  "cart",
+  "CartItem",
   cartItemSchema,
   cartItemRef
 );
