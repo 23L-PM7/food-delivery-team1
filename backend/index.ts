@@ -42,9 +42,9 @@ const upload = multer({
   }),
 });
 
-connect(`${process.env.MONGO_URL}`).then(() => {
-  console.log("MongoDB started");
-});
+// connect(`${process.env.MONGO_URL}`).then(() => {
+//   console.log("MongoDB started");
+// });
 
 app.use(cors());
 app.use(express.json());
@@ -57,7 +57,7 @@ app.use("/cart", cartRouter);
 app.use("/cartItem", cartItemRouter);
 app.use("/tempCart", tempCartRouter);
 
-// connectDB();
+connectDB();
 
 app.post("/upload", upload.single("file"), async (req: any, res: any) => {
   // req.file
