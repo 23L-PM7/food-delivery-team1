@@ -9,6 +9,8 @@ type CartItem = {
   foodId: string;
   price: number;
   amount: number;
+  name: string;
+  ingredient: string;
 };
 
 type State = {

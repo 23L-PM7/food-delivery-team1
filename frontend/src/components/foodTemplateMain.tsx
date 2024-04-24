@@ -113,6 +113,8 @@ export function FoodTemplateMain(props: Props) {
               onClick={() =>
                 addCart({
                   foodId: item._id,
+                  name: item.name,
+                  ingredient: item.ingredient,
                   price: item.saleprice,
                   amount: amount,
                 })

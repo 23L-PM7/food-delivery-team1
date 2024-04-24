@@ -1,7 +1,10 @@
 import { CartItem } from "./cartItem";
 import { Basket } from "./icons/basket";
+import { useCart } from "@/store/useCart";
 
 export function Drawer() {
+  const { addCart, cart, removeCart, clearCart } = useCart();
+
   return (
     <div className="drawer drawer-end z-40">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -32,7 +35,9 @@ export function Drawer() {
           </li>
           {/* top section */}
           <div className="grow border-b-[1px]">
-            <CartItem />
+            {cart.cartItems.map((item) => (
+              <CartItem item={item} />
+            ))}
           </div>
 
           {/* bottom section */}
