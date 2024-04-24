@@ -1,4 +1,3 @@
-import { useCart } from "@/store/useCart";
 import "./globals.css";
 
 export default function RootLayout({
