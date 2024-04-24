@@ -30,7 +30,6 @@ export default function Header() {
   const UserLogin = () => {
     const currentUser: string | null = localStorage.getItem('user');
     if (!currentUser) {
-      console.log(currentUser)
       switchs.push("/userprofile");
     } else {
       switchs.push("/login");
