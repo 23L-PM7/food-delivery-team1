@@ -5,7 +5,9 @@ export function ZuStandTest() {
   const { cart, addCart } = useCart();
   return (
     <div>
-      <button onClick={() => addCart({ name: "", price: 1 })}>add</button>
+      <button onClick={() => addCart({ foodId: "", price: 1, amount: 4 })}>
+        add
+      </button>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useCart } from "@/store/useCart";
 
 type Props = {
   item: any;
@@ -11,6 +12,10 @@ export function FoodTemplateMain(props: Props) {
   const [disable, setDisable] = useState(false);
   const [amount, setAmount] = useState(1);
   const { item } = props;
+
+  // zustand
+  const { cart, addCart } = useCart();
+  //
 
   const saleCheck = () => {
     setSalePercent(Math.trunc(100 - (item.saleprice / item.price) * 100));
@@ -104,7 +109,16 @@ export function FoodTemplateMain(props: Props) {
                 +
               </button>
             </div>
-            <button className="btn bg-[#18BA51] text-center text-white w-full h-[48px] rounded-lg">
+            <button
+              onClick={() =>
+                addCart({
+                  foodId: item._id,
+                  price: item.saleprice,
+                  amount: amount,
+                })
+              }
+              className="btn bg-[#18BA51] text-center text-white w-full h-[48px] rounded-lg"
+            >
               Сагслах
             </button>
           </div>
