@@ -58,5 +58,18 @@ export const useCart = create<State & Action>((set) => ({
       };
     });
   },
-  clearCart: () => {},
+  clearCart: () => {
+    set((state) => {
+      const clearList: any = [];
+
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          cartItems: clearList,
+          totalAmount: 0,
+        },
+      };
+    });
+  },
 }));
