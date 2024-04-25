@@ -67,10 +67,7 @@ export function FoodTemplateMain(props: Props) {
           >
             <h1>{salePercent}%</h1>
           </div>
-          <img
-            alt="food photo"
-            src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          />
+          <img alt="food photo" src={item.image} />
         </div>
 
         <div className="flex flex-col gap-1">
@@ -88,10 +85,7 @@ export function FoodTemplateMain(props: Props) {
         <div className="modal-box max-w-[984px] flex items-center gap-5">
           {/* content */}
           <div className="w-[500px] h-[500px]">
-            <img
-              className="h-full"
-              src="https://s3-alpha-sig.figma.com/img/1f91/a1b6/d973c90c192043aefe86e4258acae7e6?Expires=1714953600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=M-TvDpGXGvdRQZH4XglEVcgcFNTGeYJYmTHfibycEohsC9Q99m2WGp6yev0rjyE4i60VMVu0h1ew5ye0k4TkWqVSHiiEvCqRMaWSeOWvXmJQ1d3V7zi1ZeOLYWsWRq0oyiKY25i-DprsA0VuqB5uog0fpr4e3E2OZZ32RtsZ4juVCutVD9G4lYgjNyE0CALaTHD74yWtrd~8GauLez-lg7uK1Ps59nk4yPx7rWP2Bva6t7rl2MNOWWHXYG1BPPGkpG6Qp05rdxMHW-S3p52hbyxcVNSjcll1UdIFr3rrpm7N9xJCoE6lmJr66mGch60BC0mAiLfl-rYADJGrJ~Ct~w__"
-            />
+            <img className="h-full" src={item.image} />
           </div>
           <div className="w-[384px] h-[398px] flex flex-col justify-between">
             <div>
