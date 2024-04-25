@@ -7,9 +7,12 @@ import { GreenStar } from "./greenStar";
 import Link from "next/link";
 import { RightArrowMainPage } from "./rightArrowMainPage";
 import { get } from "http";
+import { useRouter } from "next/navigation";
+import { Button } from "@mui/material";
 
 export function HymdraltaiFour() {
   const [foods, setFoods] = useState([]);
+  const router = useRouter();
   // const [four, setFour] = useState([]);
 
   // const testRun = () => {
@@ -50,9 +53,9 @@ export function HymdraltaiFour() {
             <h1 className="font-bold">Хямдралтай</h1>
           </div>
           <div className="flex gap-x-2 items-center">
-            <Link className="link link-hover text-green-500" href="/home">
+            <div className="link link-hover text-green-500" onClick={() => router.push("/sale")}>
               Бүгдийг харах
-            </Link>
+            </div>
 
             <RightArrowMainPage />
           </div>
