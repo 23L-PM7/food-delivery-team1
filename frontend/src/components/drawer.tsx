@@ -26,15 +26,25 @@ export function Drawer() {
           className="drawer-overlay"
         ></label>
 
-        <ul className="w-[586px] h-full bg-white  min-h-full text-base-content z-40 flex flex-col justify-between">
+        <ul className="w-[586px] h-full bg-white text-base-content z-40 flex flex-col justify-between">
           {/* Sidebar content here */}
-          <li className="border-b-[2px]">
-            <div className="w-full flex justify-center">
-              <h1 className="py-[40px] text-[20px]">Таны сагс</h1>
+          <li className="border-b-[1px] w-full">
+            <div className="flex justify-around items-center py-[30px]">
+              <div className="w-[132px]">
+                <h1 className="text-[20px]">Таны сагс</h1>
+              </div>
+              <div className="w-[256px] flex justify-end">
+                <button
+                  onClick={clearCart}
+                  className="btn btn-sm w-[120px] bg-[#18BA51] text-white font-bold"
+                >
+                  Цэвэрлэх
+                </button>
+              </div>
             </div>
           </li>
           {/* top section */}
-          <div className="grow border-b-[1px]">
+          <div className="overflow-scroll h-full border-b-[1px]">
             {cart.cartItems.map((item) => (
               <CartItem item={item} />
             ))}
