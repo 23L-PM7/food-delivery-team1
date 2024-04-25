@@ -8,19 +8,23 @@ type CartProps = {
 };
 
 export function CartItem(props: CartProps) {
-  const { removeCart } = useCart();
+  const { removeCart, subtractCartItem, addCartItem } = useCart();
   const { item } = props;
-  const [amount, setAmount] = useState(1);
+  const [amount, setAmount] = useState(item.amount);
 
-  const subtract = () => {
+  const subtract = async (id: string) => {
     if (amount > 1) {
-      setAmount((prevValue) => prevValue - 1);
+      setAmount((prevValue: number) => prevValue - 1);
+      subtractCartItem(id);
     }
   };
 
-  const add = () => {
-    setAmount((prevValue) => prevValue + 1);
+  const add = (id: string) => {
+    setAmount((prevValue: number) => prevValue + 1);
+
+    addCartItem(id);
   };
+
   return (
     <div className="flex gap-5 p-3">
       <img className="rounded" src="/images/pizza.png" />
@@ -40,14 +44,14 @@ export function CartItem(props: CartProps) {
 
         <div className="flex gap-3 items-center">
           <button
-            onClick={subtract}
+            onClick={() => subtract(item.tempId)}
             className="btn btn-sm bg-[#18BA51] font-bold text-white text-[21px] rounded-lg w-[45px] h-[40px] "
           >
             -
           </button>
-          <h1>{item.amount}</h1>
+          <h1>{amount}</h1>
           <button
-            onClick={add}
+            onClick={() => add(item.tempId)}
             className="btn btn-sm bg-[#18BA51] font-bold text-white text-[21px] rounded-lg w-[45px] h-[40px] "
           >
             +
