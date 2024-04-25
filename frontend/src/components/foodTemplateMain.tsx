@@ -132,14 +132,11 @@ export function FoodTemplateMain(props: Props) {
               Сагслах
             </button>
           </div>
-
-          {/*  */}
         </div>
         <form method="dialog" className="modal-backdrop">
           <button onClick={toggleCartModal}>close</button>
         </form>
       </dialog>
-      {/*  */}
     </div>
   );
 }
