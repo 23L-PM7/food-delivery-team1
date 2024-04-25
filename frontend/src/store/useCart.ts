@@ -22,6 +22,7 @@ type Action = {
   addCart: (food: CartItem) => void;
   removeCart: (id: string) => void;
   clearCart: () => void;
+  updateCart: (id: string, amount: number) => void;
 };
 
 export const useCart = create<State & Action>((set) => ({
@@ -59,6 +60,20 @@ export const useCart = create<State & Action>((set) => ({
     });
   },
   clearCart: () => {
+    set((state) => {
+      const clearList: any = [];
+
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          cartItems: clearList,
+          totalAmount: 0,
+        },
+      };
+    });
+  },
+  updateCart: (id, amount) => {
     set((state) => {
       const clearList: any = [];
 
