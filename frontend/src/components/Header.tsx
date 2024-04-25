@@ -27,8 +27,8 @@ export default function Header() {
   }
 
   const UserLogin = () => {
-    const currentUser: string | null = localStorage.getItem("user");
-    if (!currentUser) {
+    const currentUser: string | null = localStorage.getItem('newtoken');
+    if (currentUser) {
       switchs.push("/userprofile");
     } else {
       switchs.push("/login");
@@ -83,12 +83,6 @@ export default function Header() {
                 fill="currentColor"
               />{" "}
             </svg>
-            <button
-              className="group-hover:text-green-600"
-              onClick={() => Access()}
-            >
-              Нэвтрэх
-            </button>{" "}
             <button className="group-hover:text-green-600" onClick={UserLogin}>
               {currentUser ? currentUser.name : "Нэвтрэх"}
             </button>
