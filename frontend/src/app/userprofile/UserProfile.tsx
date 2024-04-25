@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { Datanullandundef } from "../../components/structure";
 import { UserPrinting } from "@/app/util";
 import { useCurrentUser } from "@/store/useCurrentUser";
+import { EditModalEmail, EditModalImage, EditModalName, EditModalNumber, EditModals } from "./userEditModals";
 
 type User = {
   _id: string,
@@ -23,11 +24,22 @@ type User = {
 export function UserProfile() {
   const router = useRouter()
   const { currentUser, loading, handleLoading, login, logout } = useCurrentUser()
-  const [edit, setEdit] = useState(false);;
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [editModal, setEditModal] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
+
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [editNumber, setEditNumber] = useState(false);
+
+  const [name, setName] = useState("");
+  const [editName, setEditName] = useState(false);
+
+  const [email, setEmail] = useState("");
+  const [editEmail, setEditEmail] = useState(false);
+
+  const [image, setImage] = useState("");
+  const [editImage, setEditImage] = useState(false);
+
+
 
 
 
@@ -37,7 +49,7 @@ export function UserProfile() {
   }
 
 
-  const getProfile = async () => {
+  const PostProfile = async () => {
     const token = localStorage.getItem('newtoken')
     if (!token) {
       return
@@ -66,7 +78,7 @@ export function UserProfile() {
 
 
   useEffect(() => {
-    getProfile()
+    PostProfile()
   }, [])
 
   if (!currentUser) return <p>...loading</p>
@@ -100,7 +112,7 @@ export function UserProfile() {
           <div className="w-24 rounded-full">
             <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
           </div>
-          <button className="bg-[#FFFFFF] w-[34px] h-[34px] p-2 border rounded-full absolute bottom-0 right-[135px]" onClick={getProfile}>
+          <button className="bg-[#FFFFFF] w-[34px] h-[34px] p-2 border rounded-full absolute bottom-0 right-[135px]" onClick={() => setEditImage(true)}>
             <Pencil />
           </button>
         </div>
@@ -123,7 +135,7 @@ export function UserProfile() {
               onChange={(event) => setName(event.target.value)}
               className="bg-[#F6F6F6]  rounded p-2" />
           </div>
-          <button className="w-2/12 justify-end flex" onClick={() => getProfile()}>
+          <button className="w-2/12 justify-end flex" onClick={() => setEditName(true)}>
             <Pencil />
           </button>
         </div>
@@ -142,7 +154,7 @@ export function UserProfile() {
               onChange={(event) => setPhoneNumber(event.target.value)}
               className="bg-[#F6F6F6]  rounded p-2" />
           </div>
-          <button className="w-2/12 justify-end flex" onClick={getProfile}>
+          <button className="w-2/12 justify-end flex" onClick={() => setEditNumber(true)}>
             <Pencil />
           </button>
         </div>
@@ -159,7 +171,7 @@ export function UserProfile() {
               onChange={(event) => setEmail(event.target.value)}
               className="bg-transition bg-[#F6F6F6]  rounded p-2" />
           </div>
-          <button className="w-2/12 justify-end flex" onClick={getProfile} >
+          <button className="w-2/12 justify-end flex" onClick={() => setEditEmail(true)} >
             <Pencil />
           </button>
         </div>
@@ -210,28 +222,17 @@ export function UserProfile() {
       >
         Хадгалах
       </button>
-      <Toaster position="top-right" richColors />
-      <dialog className="bg-transparent" id="myDialog">
-      </dialog>
-      {/* <dialog className={`modal ${editingId ? "modal-open" : ""}`}>
-        <div className="modal-box">
-          <h3 className="font-bold text-lg mb-4">Create new category ({editingId})</h3>
-          <input placeholder="Name" disabled={loading} className="input input-bordered" value={name} onChange={(e) => setName(e.target.value)} />
-          <br />
-          <input placeholder="Description" disabled={loading} className="input input-bordered" value={email} onChange={(e) => setEmail(e.target.value)} />
+      {/* <Toaster position="top-right" richColors /> */}
 
-          <div className="modal-action">
-            <button className="btn" onClick={() => onClose()} disabled={loading}>
-              Cancel
-            </button>
-            <button className="btn btn-primary" onClick={getProfile} disabled={loading}>
-              {loading && <span className="loading loading-spinner"></span>}
-              Save
-            </button>
-          </div>
-        </div>
-      </dialog> */}
+
+      <EditModalName name={name} open={editName} onClose={() => setEditName(false)} />
+      <EditModalEmail email={email} open={editEmail} onClose={() => setEditEmail(false)} />
+      <EditModalImage image={image} open={editImage} onClose={() => setEditImage(false)} />
+      <EditModalNumber phoneNumber={phoneNumber} open={editNumber} onClose={() => setEditNumber(false)} />
+
+
     </div >
 
   );
 }
+
