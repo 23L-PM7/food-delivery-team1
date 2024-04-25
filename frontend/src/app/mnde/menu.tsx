@@ -11,19 +11,19 @@ export default function Menu() {
   // const [foods, setFoods] = useState([]);
   const {category, setCategory}: any = useCategory();
   const {foods, setFoods}: any = useFood();
-  // const fetchFoods = async () => {
-  //   try {
-  //     const data: any = await utilFetcher("foods");
-  //     console.log("shalgah",data);
-  //     setFoods(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const fetchFoods = async () => {
+    try {
+      const data: any = await utilFetcher("foods");
+      console.log("shalgah",data);
+      setFoods(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  // useEffect(() => {
-  //   fetchFoods();
-  // }, []);
+  useEffect(() => {
+    fetchFoods();
+  }, []);
 
   const check = () => {
     console.log(foods);

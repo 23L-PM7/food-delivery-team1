@@ -61,12 +61,12 @@ export default function Home() {
             <h1 className="font-bold">{category.name}</h1>
           </div>
           <div className="flex gap-x-2 items-center">
-            <Link className="link link-hover text-green-500" onClick={() => {
+            <div className="link link-hover text-green-500" onClick={() => {
               setCategory(category._id);
               router.push("/menu");
             }}>
               Бүгдийг харах
-            </Link>
+            </div>
             <RightArrowMainPage />
           </div>
         </div>
