@@ -35,6 +35,18 @@ export function FoodTemplateMain(props: Props) {
     }
   };
 
+  const dualFunction = () => {
+    addCart({
+      tempId: Date.now().toString(),
+      foodId: item._id,
+      name: item.name,
+      ingredient: item.ingredient,
+      price: item.saleprice,
+      amount: amount,
+    });
+    toggleCartModal();
+  };
+
   const add = () => {
     setAmount((prevValue) => prevValue + 1);
   };
@@ -55,8 +67,11 @@ export function FoodTemplateMain(props: Props) {
           >
             <h1>{salePercent}%</h1>
           </div>
-          <img alt="food photo" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
-        </div> 
+          <img
+            alt="food photo"
+            src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          />
+        </div>
 
         <div className="flex flex-col gap-1">
           <h1 className="font-bold text-lg">{item.name}</h1>
@@ -111,16 +126,7 @@ export function FoodTemplateMain(props: Props) {
               </button>
             </div>
             <button
-              onClick={() =>
-                addCart({
-                  tempId: Date.now().toString(),
-                  foodId: item._id,
-                  name: item.name,
-                  ingredient: item.ingredient,
-                  price: item.saleprice,
-                  amount: amount,
-                })
-              }
+              onClick={() => dualFunction()}
               className="btn bg-[#18BA51] text-center text-white w-full h-[48px] rounded-lg"
             >
               Сагслах
