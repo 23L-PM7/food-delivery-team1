@@ -5,10 +5,11 @@ import { SellChip } from "./Sellchip";
 import { foodlist } from "./datalist";
 import axios from "axios";
 import { utilFetcher } from "@/util/mainUtility";
+import { useCategory } from "../globals";
 
 export default function Menu() {
   const [foods, setFoods] = useState([]);
-
+  const {category, setCategory}: any = useCategory();
   const fetchFoods = async () => {
     try {
       const data: any = await utilFetcher("foods");
@@ -32,12 +33,16 @@ export default function Menu() {
       className="sm:mx-auto container mx-auto items-center inset-1  mb-[82px] flex flex-col justify-center sm:grid sm:grid-cols-2 sm:gap-x-[24px] sm:gap-y-[60px] lg:grid-cols-3 xl:grid-cols-4 2xl:max-w-[1200px]"
       id="my_modal_2"
     >
-      <button onClick={check} className="btn btn-error">
-        Check
-      </button>
-      {foods.map((food:any) => (
+      {/* {foods.filter((food: any) => food.categoryId._id === category).map((food:any) => (
         <FoodCard key={food._id} {...food} />
-      ))}
+      ))} */}
+      {
+        category === "" ? foods.map((food:any) => (
+          <FoodCard key={food._id} {...food} />
+        )) : foods.filter((food: any) => food.categoryId._id === category).map((food:any) => (
+          <FoodCard key={food._id} {...food} />
+        ))
+      }
     </div>
   );
 }
