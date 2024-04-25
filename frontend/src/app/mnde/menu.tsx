@@ -5,24 +5,25 @@ import { SellChip } from "./Sellchip";
 import { foodlist } from "./datalist";
 import axios from "axios";
 import { utilFetcher } from "@/util/mainUtility";
-import { useCategory } from "../globals";
+import { useCategory, useFood } from "../globals";
 
 export default function Menu() {
-  const [foods, setFoods] = useState([]);
+  // const [foods, setFoods] = useState([]);
   const {category, setCategory}: any = useCategory();
-  const fetchFoods = async () => {
-    try {
-      const data: any = await utilFetcher("foods");
-      console.log("shalgah",data);
-      setFoods(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const {foods, setFoods}: any = useFood();
+  // const fetchFoods = async () => {
+  //   try {
+  //     const data: any = await utilFetcher("foods");
+  //     console.log("shalgah",data);
+  //     setFoods(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchFoods();
-  }, []);
+  // useEffect(() => {
+  //   fetchFoods();
+  // }, []);
 
   const check = () => {
     console.log(foods);
