@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Select from "react-select";
 import axios from "axios";
 import { Toaster, toast } from "sonner";
+import { ImageField } from "../confirmation/imageFeild";
 
 type ChildProps = {
   openTheModal: () => void;
@@ -19,33 +20,12 @@ export function Containers(props: ChildProps) {
   const [category, setCategory] = useState([]);
   const [selectedCategoryOption, setSelectedCategoryOption] = useState<any>();
   const [loading, Setloading] = useState(false);
-  const [uploading, setUploading] = useState(false);
   const [image, setImage] = useState("");
-
-  async function handleUpload(e: any) {
-    setUploading(true);
-
-    const file = e.target.files[0];
-    const formData = new FormData();
-    formData.append("file", file, file.name);
-
-    // const res = await fetch("http://localhost:9090/upload", {
-    //   method: "POST",
-    //   body: formData,
-    // });
-
-    // if (res.ok) {
-    //   const { url } = await res.json();
-    //   setImage(url);
-    //   setUploading(false);
-    // }
-  }
 
   console.log({ selectedCategoryOption });
 
   const combined = (onClick: any) => {
     Setloading(true);
-    fetchFoods();
     createFoods();
     toast.success("Хоол шинээр амжилттай үүслээ");
   };
@@ -91,6 +71,7 @@ export function Containers(props: ChildProps) {
           saleprice,
           categoryId,
           userId,
+          image,
         })
         .then(() => {
           Setloading(false);
@@ -99,6 +80,8 @@ export function Containers(props: ChildProps) {
           setPrice("");
           setSalePrice("");
           setSelectedCategoryOption("");
+          setImage("");
+          fetchFoods();
         });
     }
   };
@@ -182,14 +165,10 @@ export function Containers(props: ChildProps) {
           <div className="bg-gray-100 rounded-xl w-[284px] h-[122px] gap-3 flex flex-col items-center justify-center">
             <h1 className="font-bold text-zinc-700">Add image for the food</h1>
             <button className=" w-[114px] h-[40px] btn bg-zinc-700 text-white">
-              <input
-                type="file"
-                name="file"
-                disabled={uploading}
-                onChange={handleUpload}
+              <ImageField
+                value={image}
+                onChange={(value: string) => setImage(value)}
               />
-
-              {image && <img src={image} />}
             </button>
           </div>
         </div>

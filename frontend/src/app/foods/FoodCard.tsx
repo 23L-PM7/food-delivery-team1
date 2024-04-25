@@ -1,9 +1,8 @@
 "use client";
 import axios from "axios";
 import { SellChip } from "../mnde/Sellchip";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FoodsCardModal } from "./FoodsCardModal";
-import { nanoid } from "nanoid";
 
 type Props = {
   fetchFoods: () => void;
@@ -13,23 +12,6 @@ type Props = {
 export const FoodCard = (props: Props) => {
   const [open, setOpen] = useState(false);
   const { fetchFoods, food } = props;
-  const [image, setImage] = useState("");
-
-  async function handleUpload(e: any) {
-    const file = e.target.files[0];
-    const formData = new FormData();
-    formData.append("file", file, file.name);
-
-    const res = await fetch(`http://localhost:9090/upload`, {
-      method: "POST",
-      // body: formData,
-    });
-
-    if (res.ok) {
-      const { url } = await res.json();
-      setImage(url);
-    }
-  }
 
   const deleteButton = () => {
     deleteFoods();
@@ -58,10 +40,9 @@ export const FoodCard = (props: Props) => {
               <SellChip />
             </div>
             <div className="w-[282px] h-[196px] ease-in cursor-pointer group">
-              <img
-                className="rounded-lg relative  "
-                src="http://localhost:9090/upload"
-              />
+              <div className="rounded-lg relative">
+                <img src={food.image} />
+              </div>
               <button
                 onClick={() => setOpen(true)}
                 className="absolute bg-green-200 hidden group-hover:bg-white group-hover:inline-block z-10 w-30 inset-20  justify-center rounded-box "

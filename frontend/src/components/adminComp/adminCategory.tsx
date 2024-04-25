@@ -12,10 +12,12 @@ export function AdminCategory() {
   const [category, setCategory] = useState([]);
   const [modalState, setModalState] = useState(false);
   const [foods, setFoods] = useState([]);
+  const [image, setImage] = useState("");
 
   const fetchFoods = async () => {
     await axios.get("http://localhost:9090/foods").then((response) => {
       setFoods(response.data);
+      setImage(image);
     });
   };
 
