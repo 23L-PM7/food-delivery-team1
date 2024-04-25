@@ -7,12 +7,13 @@ export async function getCategory(req: any, res: any) {
 }
 
 export async function createCategory(req: any, res: any) {
-  const { id, name } = req.body;
+  const { id, name, mglname } = req.body;
   console.log(req.body);
 
   const category = await CategoryModel.create({
     id: id,
     name: name,
+    mglname: mglname,
   });
   res.json(category);
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCategory } from "@/app/globals";
+import { useCategories, useCategory } from "@/app/globals";
 import { utilFetcher } from "@/util/mainUtility";
 import axios from "axios";
 
@@ -8,22 +8,22 @@ import { useEffect, useState } from "react";
 import { create } from "zustand";
 
 export function Category() {
-  const [categories, setCategories] = useState([]);
+  // const [categories, setCategories] = useState([]);
   const {category, setCategory}: any = useCategory();
+  const {categories, setCategories}:any = useCategories();
 
-  const fetchCategory = async () => {
-    // await axios.get("http://localhost:9090/category").then((response) => {
-    //   setCategory(response.data);
-    // });
-    const data = await utilFetcher("category");
-    setCategories(data);
-    console.log("mm",data);
-    
-  };
+  // const fetchCategory = async () => {
+  //   // await axios.get("http://localhost:9090/category").then((response) => {
+  //   //   setCategory(response.data);
+  //   // });
+  //   const data = await utilFetcher("category");
+  //   setCategories(data);
+  //   console.log("mm",data);
+  // };
 
-  useEffect(() => {
-    fetchCategory();
-  }, []);
+  // useEffect(() => {
+  //   fetchCategory();
+  // }, []);
 
   const handleClick = (id: string) => {
     if(category === id){

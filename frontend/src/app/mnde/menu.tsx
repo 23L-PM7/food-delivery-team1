@@ -5,11 +5,12 @@ import { SellChip } from "./Sellchip";
 import { foodlist } from "./datalist";
 import axios from "axios";
 import { utilFetcher } from "@/util/mainUtility";
-import { useCategory } from "../globals";
+import { useCategory, useFood } from "../globals";
 
 export default function Menu() {
-  const [foods, setFoods] = useState([]);
+  // const [foods, setFoods] = useState([]);
   const {category, setCategory}: any = useCategory();
+  const {foods, setFoods}: any = useFood();
   const fetchFoods = async () => {
     try {
       const data: any = await utilFetcher("foods");

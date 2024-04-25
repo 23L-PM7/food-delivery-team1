@@ -7,6 +7,7 @@ export const categoryRef = "category";
 const categorySchema = new Schema({
   id: ObjectId,
   name: String,
+  mglname: String,
 });
 
 export const CategoryModel = mongoose.model(
