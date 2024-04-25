@@ -21,7 +21,7 @@ import Link from "next/link";
 export default function Header() {
   const [loginModal, setLoginModal] = useState(false);
   const switchs = useRouter();
-  const { currentUser, loading, handleLoading, login, logout } = useCurrentUser()
+  const { currentUser} = useCurrentUser()
 
   function Access() {
     setLoginModal(!loginModal);
@@ -90,10 +90,9 @@ export default function Header() {
             >
               Нэвтрэх
             </button>{" "}
+            <button  className="group-hover:text-green-600" onClick={UserLogin}>{currentUser ? currentUser.name : 'Нэвтрэх'}</button>
           </div>
-          <button onClick={UserLogin}>{currentUser ? currentUser.name : 'Нэвтрэх'}</button>
           <button className="hover:text-green-600 p-3 flex">
-
             <div className="drawer drawer-end z-50  block lg:hidden">
               <input
                 id="my-drawer-4"
