@@ -2,7 +2,6 @@
 
 import { Children, ReactNode, useEffect, useState } from "react";
 import { SellChip } from "./Sellchip";
-import { foodlist } from "./datalist";
 import axios from "axios";
 import { utilFetcher } from "@/util/mainUtility";
 import { useCategory, useFood } from "../globals";
@@ -50,7 +49,7 @@ export default function Menu() {
 
 type FoodCardProps = {
   id: number;
-  img: string;
+  image: string;
   name: string;
   price: number;
   saleprice?: number;
@@ -75,7 +74,7 @@ const FoodCard = (props: FoodCardProps) => {
     }
   };
 
-  const { id, img, name, price, saleprice } = props;
+  const { id, image, name, price, saleprice } = props;
 
   return (
     <>
@@ -90,7 +89,7 @@ const FoodCard = (props: FoodCardProps) => {
           >
             <img
               className="object-fill rounded-lg absolute -z-20"
-              src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              src={image}
             ></img>
           </div>
         </div>
