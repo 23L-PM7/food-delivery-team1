@@ -26,7 +26,7 @@ export function AdminDashboard() {
   }, []);
 
   const check = () => {
-    console.log({ orders });
+    console.log({ orders, currentUser });
   };
 
   return (

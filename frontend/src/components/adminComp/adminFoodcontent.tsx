@@ -14,7 +14,7 @@ export function AdminFoodContent(props: ChildProps) {
 
   const date = new Date(item.createdDate);
   const year = date.getFullYear();
-  const month = ("0" + (date.getMonth() + 1)).slice(-2); // Adding 1 because getMonth() returns zero-based months
+  const month = ("0" + (date.getMonth() + 1)).slice(-2);
   const day = ("0" + date.getDate()).slice(-2);
   const parsedDate = `${year}/${month}/${day}`;
 
@@ -30,7 +30,7 @@ export function AdminFoodContent(props: ChildProps) {
       </div>
       {/*  */}
       <div className="w-[15%] h-full flex flex-col justify-center pl-3">
-        <h3 className="font-semibold text-sm">{user.phonenumber}</h3>
+        <h3 className="font-semibold text-sm">{user.phoneNumber}</h3>
         <h3 className="text-gray-700 text-sm">{user.name}</h3>
       </div>
       {/*  */}
