@@ -6,6 +6,7 @@ const { Schema } = mongoose;
 
 const orderSchema = new Schema({
   id: ObjectId,
+  adminId: String,
   userId: {
     type: Schema.Types.ObjectId,
     ref: userRef,

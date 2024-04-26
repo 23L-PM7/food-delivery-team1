@@ -160,7 +160,7 @@ function OrderCon() {
                 ))}
               </select>
             </div>
-            <label className={` form-control`}>
+            <label className={`form-control`}>
               <div className="label">
                 <span className="label-text">Нэмэлт мэдээлэл</span>
                 <span className="label-text-alt"></span>
@@ -168,13 +168,9 @@ function OrderCon() {
               <textarea
                 onChange={(e) => setHouseLocation(e.target.value)}
                 value={houseLocation}
-                className={` ${houseLocation} textarea textarea-bordered h-24 bg-[#ECEDF0]`}
+                className={`${houseLocation} textarea textarea-bordered h-24 bg-[#ECEDF0]`}
                 placeholder="Орц, давхар, орцны код ..."
               ></textarea>
-              <div className="label">
-                <span className="label-text-alt"></span>
-                <span className="label-text-alt"></span>
-              </div>
             </label>
             <label className="form-control w-full max-w-xs">
               <div className="label">
@@ -184,14 +180,10 @@ function OrderCon() {
               <input
                 onChange={(e) => setPhone(e.target.value)}
                 value={phone}
-                className={` ${phone} input input-bordered w-full max-w-xs bg-[#ECEDF0]`}
+                className={`${phone} input input-bordered w-full max-w-xs bg-[#ECEDF0]`}
                 type="number"
                 placeholder="Утасны дугаараа оруулна уу"
               />
-              <div className="label">
-                <span className="label-text-alt"></span>
-                <span className="label-text-alt"></span>
-              </div>
             </label>
             <p>Төлбөр төлөх</p>
             <div className="flex">
