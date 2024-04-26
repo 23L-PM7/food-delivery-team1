@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import { QuickCircle } from "./icons/quickfix";
 import { utilFetcher } from "@/util/mainUtility";
@@ -30,9 +31,9 @@ export function StepTwo() {
         </div>
       </main>
       <main className={`w-[432px] h-[612px]  border-2 p-6 block `}>
-        <h1>Захиалгын дэлгэрэнгүй</h1>
+        <h1 className="mb-3">Захиалгын дэлгэрэнгүй</h1>
         <div>
-          {orders.items.map((item, index) => (
+          {orders.map((item, index) => (
             <RightSideContent key={8888 - index} item={item} />
           ))}
         </div>
