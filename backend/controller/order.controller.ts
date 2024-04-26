@@ -43,7 +43,11 @@ export async function updateOrder(req: any, res: any) {
 }
 export async function deleteOrder(req: any, res: any) {
   const { id } = req.params;
-
-  const category = await OrderModel.findByIdAndDelete(id);
-  res.send("Successfully deleted.");
+  try {
+    const data = await OrderModel.findByIdAndDelete(id);
+    res.send("Successfully deleted.");
+  } catch (error) {
+    console.log(error);
+    res.send("error");
+  }
 }

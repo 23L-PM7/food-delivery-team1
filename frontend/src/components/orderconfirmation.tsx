@@ -13,8 +13,11 @@ import { CircleSelect } from "./icons/circleSelect";
 import { utilMutator } from "@/util/mainUtility";
 import { useCurrentUser } from "@/store/useCurrentUser";
 import { Circular } from "./icons/circular";
+import { useRouter } from "next/router";
 
 function OrderCon() {
+  const router = useRouter();
+
   const [districtId, setDistrictId] = useState("");
   const [microDistrictId, setMicroDistrictid] = useState("");
   const [street, setStreet] = useState("");
@@ -36,7 +39,7 @@ function OrderCon() {
 
   const handleNextStop = () => {
     createOrder();
-    setStep(step + 1);
+    router.push("/orderdetail/steptwo");
   };
 
   if (step === 2) {
@@ -61,7 +64,7 @@ function OrderCon() {
           totalPrice: cart.totalAmount,
           payment: payment,
           createdDate: Date.now(),
-          items: [cart.cartItems],
+          items: cart.cartItems,
         });
       } catch (error) {
         console.log(error);

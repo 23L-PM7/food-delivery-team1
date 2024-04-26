@@ -11,7 +11,7 @@ const orderSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: userRef,
   },
-  items: [{}],
+  items: [],
   totalPrice: Number,
   payment: {
     type: String,
