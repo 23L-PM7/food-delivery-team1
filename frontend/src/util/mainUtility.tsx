@@ -20,6 +20,16 @@ export async function utilMutator(path: string, postData: {}) {
   return response.data;
 }
 
+export async function utilDeleter(path: string) {
+  const response: any = await axios
+    .delete(`http://localhost:9090/${path}`)
+    .catch((error) => {
+      console.error("Category Error", error);
+    });
+
+  return response.data;
+}
+
 // useEffect(() => {
 //     categoryFetcher("foods").then((data) => {
 //       console.log(data);

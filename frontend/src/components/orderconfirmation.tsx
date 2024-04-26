@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import * as React from "react";
 
 import Checkbox from "@mui/material/Checkbox";
 
@@ -13,6 +12,7 @@ import { CircleSelect } from "./icons/circleSelect";
 import { utilMutator } from "@/util/mainUtility";
 import { useCurrentUser } from "@/store/useCurrentUser";
 import { Circular } from "./icons/circular";
+import Link from "next/link";
 
 function OrderCon() {
   const [districtId, setDistrictId] = useState("");
@@ -22,7 +22,6 @@ function OrderCon() {
   const [phone, setPhone] = useState("");
   const [payment, setPayment] = useState("");
 
-  const [step, setStep] = useState(1);
   const [allDone, setAllDone] = useState("btn-disabled");
   const [wait, setWait] = useState("Хүлээгдэж байна");
   const [icon, setIcon] = useState("flex");
@@ -36,16 +35,7 @@ function OrderCon() {
 
   const handleNextStop = () => {
     createOrder();
-    setStep(step + 1);
   };
-
-  if (step === 2) {
-    return (
-      <div>
-        <StepTwo />
-      </div>
-    );
-  }
 
   const createOrder = async () => {
     const address =
@@ -61,7 +51,7 @@ function OrderCon() {
           totalPrice: cart.totalAmount,
           payment: payment,
           createdDate: Date.now(),
-          items: [cart.cartItems],
+          items: cart.cartItems,
         });
       } catch (error) {
         console.log(error);
@@ -223,12 +213,13 @@ function OrderCon() {
                 </h1>
               </div>
 
-              <button
+              <Link
+                href="/orderdetail/steptwo"
                 onClick={handleNextStop}
                 className={`px-2 py-3 w-[187px] h-[47px] btn hover:bg-green-500 bg-green-600 text-white text-center ${allDone} `}
               >
                 Захиалах
-              </button>
+              </Link>
             </div>
           </div>
         </main>
