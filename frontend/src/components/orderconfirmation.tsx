@@ -2,9 +2,7 @@
 
 import { useEffect, useState } from "react";
 import * as React from "react";
-
 import Checkbox from "@mui/material/Checkbox";
-
 import { locations, district, horoo } from "../data/data";
 import { StepTwo } from "./stepTwo";
 import { OrderMainTemplate } from "./orderConfirmMain";
@@ -120,21 +118,8 @@ function OrderCon() {
             </div>
           </div>
           <main className="w-[432px] h-[612px] block border-[1px] rounded-xl shadow-md  p-6 gap-4 ">
-            <div className="gap-4">
+            <div className="">
               Хаяг аа оруулна уу
-              <select
-                value={districtId}
-                onChange={(e) => setDistrictId(e.target.value)}
-                className={`${
-                  districtId ? "bg-green-500 text-white" : ""
-                } select select-ghost max-w-xs w-[384px] h-12 bg-[#ECEDF0]`}
-              >
-                {locations.map((horoo) => (
-                  <option> {horoo.title}</option>
-                ))}
-              </select>
-            </div>
-            <div className="py-4">
               <select
                 onChange={(e) => setMicroDistrictid(e.target.value)}
                 value={microDistrictId}
@@ -147,6 +132,20 @@ function OrderCon() {
                 ))}
               </select>
             </div>
+            <div className="py-4">
+              <select
+                value={districtId}
+                onChange={(e) => setDistrictId(e.target.value)}
+                className={`${
+                  districtId ? "bg-green-500 text-white" : ""
+                } select select-ghost max-w-xs w-[384px] h-12 bg-[#ECEDF0]`}
+              >
+                {locations.map((horoo) => (
+                  <option> {horoo.title}</option>
+                ))}
+              </select>
+            </div>
+
             <div className="mb-8 w-[420px] h-12">
               <select
                 onChange={(e) => setStreet(e.target.value)}
