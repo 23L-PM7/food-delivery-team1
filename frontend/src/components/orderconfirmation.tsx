@@ -39,7 +39,7 @@ function OrderCon() {
     setStep(step + 1);
   };
 
-  if (step === 3) {
+  if (step === 2) {
     return (
       <div>
         <StepTwo />
@@ -51,9 +51,10 @@ function OrderCon() {
     const address =
       districtId + " " + microDistrictId + " " + street + " " + houseLocation;
     const userId = currentUser._id;
+    console.log({ payment });
     if (cart.cartItems) {
       try {
-        await utilMutator("orders", {
+        await utilMutator("orders/create", {
           address: address,
           userId: userId,
           adminId: Date.now(),
