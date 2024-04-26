@@ -21,6 +21,11 @@ export function Containers(props: ChildProps) {
   const [selectedCategoryOption, setSelectedCategoryOption] = useState<any>();
   const [loading, Setloading] = useState(false);
   const [image, setImage] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleOnChange = () => {
+    setIsChecked(!isChecked);
+  };
 
   console.log({ selectedCategoryOption });
 
@@ -28,6 +33,15 @@ export function Containers(props: ChildProps) {
     Setloading(true);
     createFoods();
     toast.success("Хоол шинээр амжилттай үүслээ");
+  };
+
+  const Clearnames = () => {
+    setFoodName("");
+    setIngredient("");
+    setPrice("");
+    setSalePrice("");
+    setSelectedCategoryOption("");
+    setImage("");
   };
 
   const fetchCategory = async () => {
@@ -146,14 +160,21 @@ export function Containers(props: ChildProps) {
           className="input h-[45px] border-none input-bordered input-lg w-full bg-gray-200"
         />
         <div className="flex gap-2 ">
-          <input type="checkbox" className="toggle" />
+          <input
+            type="checkbox"
+            className="toggle"
+            checked={isChecked}
+            onChange={handleOnChange}
+          />
           <h1>Хямдралтай эсэх</h1>
         </div>
         <div>
           <input
             type="text"
             placeholder="Хямдралтай эсэх"
-            className="input h-[45px] border-none input-bordered input-lg w-full bg-gray-200"
+            className={`" input h-[45px] border-none input-bordered input-lg w-full bg-gray-200" ${
+              isChecked ? "disabled" : isChecked
+            } `}
             value={saleprice}
             onChange={(e) => setSalePrice(e.target.value)}
             disabled={loading}
@@ -162,7 +183,7 @@ export function Containers(props: ChildProps) {
           <h1 className="py-3">Хоолны зураг</h1>
           <div className="bg-gray-100 rounded-xl w-[350px] h-[150px] gap-3 flex flex-col items-center justify-center ">
             <h1 className="font-bold text-zinc-700">Add image for the food</h1>{" "}
-            <button className=" bg-zinc-700 text-white min-w-fit">
+            <button className={` text-white min-w-fit `}>
               {" "}
               <ImageField
                 value={image}
@@ -173,7 +194,10 @@ export function Containers(props: ChildProps) {
         </div>
       </div>
       <div className="flex h-[88px] justify-end items-center gap-5 pr-5 border-t-[1px]">
-        <button className="btn w-[109px]  h-[40px] bg-white text-zinc-800">
+        <button
+          className="btn w-[109px]  h-[40px] bg-white text-zinc-800"
+          onClick={Clearnames}
+        >
           Clear
         </button>
         <button

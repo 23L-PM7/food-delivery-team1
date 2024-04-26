@@ -12,7 +12,7 @@ export function CircleSelect() {
         <circle cx="24" cy="24" r="12" fill="#0468C8" />
       </svg>
       <div className="block">
-        <h5>Алхам 1</h5>
+        <h5>Алхам 2</h5>
         <h1>Хаягийн мэдээлэл оруулах</h1>
         <h5>Хүлээгдэж байна</h5>
       </div>

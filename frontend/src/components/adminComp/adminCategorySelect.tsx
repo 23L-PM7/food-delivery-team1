@@ -78,7 +78,7 @@ export function SideCategory(props: ChildProps) {
         >
           {label}
         </h3>
-        <div className="dropdown dropdown-end z-10">
+        <div className="dropdown dropdown-end z-10 ">
           <button tabIndex={0} role="button" className="m-1">
             {selected ? <TripleDotWhite /> : <TripleDotBlack />}
           </button>
