@@ -45,7 +45,6 @@ export default function Home() {
   return (
     <div>
       <Header />
-      
       <Desktop />
       <Mainbutton />
       <HymdraltaiFour />
