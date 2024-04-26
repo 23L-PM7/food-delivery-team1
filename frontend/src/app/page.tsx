@@ -50,7 +50,7 @@ export default function Home() {
       {categories.map((category: any) => {
         return (
           <>
-            <div className="max-w-[1200px] mx-auto">
+            <div className=" max-w-[1200px] mx-auto ">
               <div className="flex flex-col justify-between">
                 <div className="w-full flex justify-between">
                   <div className="flex gap-2">
@@ -70,7 +70,7 @@ export default function Home() {
                     <RightArrowMainPage />
                   </div>
                 </div>
-                <div className="py-10 w-full grid grid-cols-4 gap-6">
+                <div className="py-10 w-full grid grid-col-1 md:grid-cols-4 gap-6">
                   {foods
                     .filter((food: any) => food.categoryId._id === category._id)
                     .slice(0, 4)
