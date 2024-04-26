@@ -1,6 +1,8 @@
+import { useCurrentUser } from "@/store/useCurrentUser"
 import { useState } from "react"
 
 export function EditModalName({ open, name, onClose, setName }: any) {
+    const { loading } = useCurrentUser()
     return (
         <dialog className={`modal ${open ? "modal-open" : ""}`}>
             <div className="modal-box">
@@ -9,6 +11,7 @@ export function EditModalName({ open, name, onClose, setName }: any) {
                     placeholder="User name"
                     className="input input-bordered w-full max-w-xs"
                     value={name}
+                    disabled={loading}
                     onChange={(e) => setName(e.target.value)} />
                 <div className="modal-action">
                     <form method="dialog">
@@ -21,6 +24,7 @@ export function EditModalName({ open, name, onClose, setName }: any) {
 }
 
 export function EditModalEmail({ open, email, onClose, setEmail }: any) {
+    const { loading } = useCurrentUser()
     return (
         <dialog className={`modal ${open ? "modal-open" : ""}`}>
             <div className="modal-box">
@@ -29,6 +33,7 @@ export function EditModalEmail({ open, email, onClose, setEmail }: any) {
                     placeholder="Email"
                     className="input input-bordered w-full max-w-xs"
                     value={email}
+                    disabled={loading}
                     onChange={(e) => setEmail(e.target.value)} />
                 <div className="modal-action">
                     <form method="dialog">
@@ -41,6 +46,7 @@ export function EditModalEmail({ open, email, onClose, setEmail }: any) {
 }
 
 export function EditModalImage({ open, image, onClose, setImage }: any) {
+    const { loading } = useCurrentUser()
     return (
         <dialog className={`modal ${open ? "modal-open" : ""}`}>
             <div className="modal-box">
@@ -49,6 +55,7 @@ export function EditModalImage({ open, image, onClose, setImage }: any) {
                     placeholder="User name"
                     className="input input-bordered w-full max-w-xs"
                     value={image}
+                    disabled={loading}
                     onChange={(e) => setImage(e.target.value)} />
                 <div className="modal-action">
                     <form method="dialog">
@@ -61,6 +68,7 @@ export function EditModalImage({ open, image, onClose, setImage }: any) {
 }
 
 export function EditModalNumber({ open, phoneNumber, onClose, setPhoneNumber }: any) {
+    const { loading } = useCurrentUser()
     return (
         <dialog className={`modal ${open ? "modal-open" : ""}`}>
             <div className="modal-box">
@@ -69,6 +77,7 @@ export function EditModalNumber({ open, phoneNumber, onClose, setPhoneNumber }: 
                     placeholder="User number"
                     className="input input-bordered w-full max-w-xs"
                     value={phoneNumber}
+                    disabled={loading}
                     onChange={(e) => setPhoneNumber(e.target.value)} />
                 <div className="modal-action">
                     <form method="dialog">
