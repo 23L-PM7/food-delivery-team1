@@ -18,7 +18,7 @@ export function StepTwo() {
 
   useEffect(() => {
     fetchOrder();
-  });
+  }, []);
 
   return (
     <li className=" justify-center mb-[80px] lg:gap-1/10 my-10 block lg:flex gap-x-10 mx-auto">

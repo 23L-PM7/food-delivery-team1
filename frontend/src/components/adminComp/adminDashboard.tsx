@@ -1,15 +1,21 @@
+"use client";
 import { useEffect, useState } from "react";
 import { AdminFoodContent } from "./adminFoodcontent";
 import { AdminGreyhead } from "./adminGreyhead";
-import { utilFetcher } from "@/util/mainUtility";
+import { utilFetcher, utiloneFetcher } from "@/util/mainUtility";
+import { useCurrentUser } from "@/store/useCurrentUser";
 
 export function AdminDashboard() {
   const [orders, setOrders] = useState([]);
+  // const [user, setUser] = useState([]);
+  const { currentUser } = useCurrentUser();
 
   const fetchOrder = async () => {
     try {
       const data = await utilFetcher("orders");
+      // const user = await utiloneFetcher(`users`, currentUser._id);
       setOrders(data);
+      // setUser(user);
     } catch (error) {
       console.log(error);
     }
@@ -19,12 +25,18 @@ export function AdminDashboard() {
     fetchOrder();
   }, []);
 
+  const check = () => {
+    console.log({ orders, currentUser });
+  };
+
   return (
     <div className="bg-gray-100 flex flex-col items-center gap-y-5 h-full pt-10">
       <div className="w-[1024px] h-[624px] bg-white rounded-3xl drop-shadow-sm">
         {/* title with search bar */}
         <div className="flex w-full justify-between p-5 items-center">
-          <h1 className="font-bold text-xl">Admin Dashboard</h1>
+          <h1 onClick={check} className="font-bold text-xl">
+            Admin Dashboard
+          </h1>
           {/* search */}
           <label className="input input-bordered flex items-center gap-2 w-[356px] h-[36px] bg-gray-100">
             <svg
@@ -48,7 +60,11 @@ export function AdminDashboard() {
         {/* contents mapped */}
         <div className="w-full h-full">
           {orders.map((item, index) => (
-            <AdminFoodContent key={333 - index} item={item} />
+            <AdminFoodContent
+              key={333 - index}
+              item={item}
+              user={currentUser}
+            />
           ))}
         </div>
       </div>

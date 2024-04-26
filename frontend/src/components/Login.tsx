@@ -1,6 +1,5 @@
 "use client";
 
-
 import { useEffect, useState } from "react";
 import { Eye } from "./icons/eyeclosed";
 import { useRouter } from "next/navigation";
@@ -8,7 +7,6 @@ import { LoginFetcher, LoginMutator } from "@/app/util";
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 import { useCurrentUser } from "@/store/useCurrentUser";
-
 
 export function Login() {
   const [check, setCheck] = useState("disabled");
@@ -19,23 +17,24 @@ export function Login() {
   const [error, setError] = useState("");
 
   const [visible, setVisible] = useState("password");
-  const { login } = useCurrentUser()
-
+  const { login } = useCurrentUser();
 
   const UserLogin = async () => {
     try {
       const data = await LoginMutator("login", { email, password });
-      login(data.email, data.password)
+      login(data.email, data.password, data.phoneNumber);
       localStorage.setItem("newtoken", data.token);
 
       router.push("/");
     } catch (error: any) {
-      console.error("Error", error?.response?.data?.alert, error?.response?.data?.message);
+      console.error(
+        "Error",
+        error?.response?.data?.alert,
+        error?.response?.data?.message
+      );
       alert(error?.response?.data?.alert || error?.response?.data?.message);
     }
   };
-
-
 
   const changeEmail = (event: any) => {
     setEmail(event.target.value);
@@ -44,8 +43,6 @@ export function Login() {
   const changePassword = (event: any) => {
     setPassword(event.target.value);
   };
-
-
 
   const visiblePassword = () => {
     setIcon(!icon);
@@ -123,17 +120,24 @@ export function Login() {
           <button
             type="button"
             onClick={visiblePassword}
-            className={`${icon ? "hidden" : "flex"}`}>
+            className={`${icon ? "hidden" : "flex"}`}
+          >
             <IoMdEyeOff className="text-[25px]" />
           </button>
           <button
             type="button"
             onClick={visiblePassword}
-            className={`${icon ? "flex" : "hidden"}`}>
+            className={`${icon ? "flex" : "hidden"}`}
+          >
             <IoMdEye className="text-[25px]" />
           </button>
         </label>
-        <a className="flex justify-end cursor-pointer mt-[8px]" href="http://localhost:3000/forgotpass">Нууц үг сэргээх</a>
+        <a
+          className="flex justify-end cursor-pointer mt-[8px]"
+          href="http://localhost:3000/forgotpass"
+        >
+          Нууц үг сэргээх
+        </a>
       </div>
       <div className="mt-[48px] flex flex-col items-center cursor-pointer">
         <button
@@ -150,7 +154,6 @@ export function Login() {
           href="http://localhost:3000/signup"
           className="w-full btn btn-outline btn-success"
         >
-
           <button>Бүртгүүлэх</button>
         </a>
       </div>

@@ -1,7 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Call, Exit, Mail, Pencil, Timer, Person } from "../../components/icons/ProfileIcons";
+import {
+  Call,
+  Exit,
+  Mail,
+  Pencil,
+  Timer,
+  Person,
+} from "../../components/icons/ProfileIcons";
 import axios from "axios";
 import { title } from "process";
 import { Toaster, toast } from "sonner";
@@ -9,24 +16,27 @@ import { useRouter } from "next/navigation";
 import { Datanullandundef } from "../../components/structure";
 import { UserPrinting } from "@/app/util";
 import { useCurrentUser } from "@/store/useCurrentUser";
-import { EditModalEmail, EditModalImage, EditModalName, EditModalNumber, } from "./userEditModals";
+import {
+  EditModalEmail,
+  EditModalImage,
+  EditModalName,
+  EditModalNumber,
+} from "./userEditModals";
 
 type User = {
-  _id: string,
-  name: string,
-  email: string,
-  phoneNumber: number,
-  role: "admin" | 'user'
-
-}
-
+  _id: string;
+  name: string;
+  email: string;
+  phoneNumber: number;
+  role: "admin" | "user";
+};
 
 export function UserProfile() {
-  const router = useRouter()
-  const { currentUser, loading, handleLoading, login, logout } = useCurrentUser()
+  const router = useRouter();
+  const { currentUser, loading, handleLoading, login, logout } =
+    useCurrentUser();
   const [loginModal, setLoginModal] = useState(false);
   const [loadingg, setLoadingg] = useState(false);
-
 
   const [phoneNumber, setPhoneNumber] = useState("");
   const [editNumber, setEditNumber] = useState(false);
@@ -42,51 +52,43 @@ export function UserProfile() {
 
   const [id, setId] = useState("");
 
-
-
-
-
-
   function Access() {
     setLoginModal(!loginModal);
   }
 
-
   const PostProfile = async () => {
     // reset();
-    const token = localStorage.getItem('newtoken')
+    const token = localStorage.getItem("newtoken");
     if (!token) {
-      return
+      return;
     }
-    handleLoading()
+    handleLoading();
     try {
       const { data } = await axios.post("http://localhost:9090/users/me", {
-        newtoken: token
-      })
+        newtoken: token,
+      });
       setName(data.name);
       setPhoneNumber(data.phoneNumber);
       setEmail(data.email);
       setId(data._id)
 
-      login(data.email, data.name)
-      handleLoading()
+      login(data.email, data.name, data.phoneNumber);
+      handleLoading();
     } catch (error) {
-      console.log(error)
-      handleLoading()
+      console.log(error);
+      handleLoading();
     }
-  }
+  };
 
   if (!currentUser && !loading) {
-    router.push('/')
+    router.push("/");
   }
 
-
-
   useEffect(() => {
-    PostProfile()
-  }, [])
+    PostProfile();
+  }, []);
 
-  if (!currentUser) return <p>...loading</p>
+  if (!currentUser) return <p>...loading</p>;
 
   const updateUser = async () => {
     // setLoadingg(true);
@@ -94,18 +96,18 @@ export function UserProfile() {
       const data = await UserPrinting(`signup/${id}`, {
         name,
         email,
-        phoneNumber
-      })
+        phoneNumber,
+      });
       toast.success(`"${name}"  updated.`);
-      localStorage.setItem('newtoken', data);
+      localStorage.setItem("newtoken", data);
     } catch (error) {
       console.error("Error:", error);
-      alert("amjiltgui")
+      alert("amjiltgui");
     }
-  }
+  };
 
   if (!currentUser) {
-    return <p>...loading</p>
+    return <p>...loading</p>;
   }
 
   function reset() {
@@ -122,7 +124,10 @@ export function UserProfile() {
           <div className="w-24 rounded-full">
             <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
           </div>
-          <button className="bg-[#FFFFFF] w-[34px] h-[34px] p-2 border rounded-full absolute bottom-0 right-[135px]" onClick={() => setEditImage(true)}>
+          <button
+            className="bg-[#FFFFFF] w-[34px] h-[34px] p-2 border rounded-full absolute bottom-0 right-[135px]"
+            onClick={() => setEditImage(true)}
+          >
             <Pencil />
           </button>
         </div>
@@ -143,13 +148,16 @@ export function UserProfile() {
               type="text"
               value={name}
               onChange={(event) => setName(event.target.value)}
-              className="bg-[#F6F6F6]  rounded p-2" />
+              className="bg-[#F6F6F6]  rounded p-2"
+            />
           </div>
-          <button className="w-2/12 justify-end flex" onClick={() => setEditName(true)}>
+          <button
+            className="w-2/12 justify-end flex"
+            onClick={() => setEditName(true)}
+          >
             <Pencil />
           </button>
         </div>
-
 
         <div className="bg-[#F6F6F6] w-full rounded px-[20px] py-[8px] flex items-center  gap-[8px] mt-[16px]">
           <div className="bg-[#FFFFFF] w-[48px] h-[48px] p-3 rounded-full">
@@ -162,9 +170,13 @@ export function UserProfile() {
               type="number"
               value={phoneNumber}
               onChange={(event) => setPhoneNumber(event.target.value)}
-              className="bg-[#F6F6F6]  rounded p-2" />
+              className="bg-[#F6F6F6]  rounded p-2"
+            />
           </div>
-          <button className="w-2/12 justify-end flex" onClick={() => setEditNumber(true)}>
+          <button
+            className="w-2/12 justify-end flex"
+            onClick={() => setEditNumber(true)}
+          >
             <Pencil />
           </button>
         </div>
@@ -179,9 +191,13 @@ export function UserProfile() {
               type="email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
-              className="bg-transition bg-[#F6F6F6]  rounded p-2" />
+              className="bg-transition bg-[#F6F6F6]  rounded p-2"
+            />
           </div>
-          <button className="w-2/12 justify-end flex" onClick={() => setEditEmail(true)} >
+          <button
+            className="w-2/12 justify-end flex"
+            onClick={() => setEditEmail(true)}
+          >
             <Pencil />
           </button>
         </div>
@@ -200,10 +216,7 @@ export function UserProfile() {
             <Exit />
           </div>
           <div className="w-8/12">
-            <h1
-              className="text-base cursor-pointer"
-              onClick={() => Access()}
-            >
+            <h1 className="text-base cursor-pointer" onClick={() => Access()}>
               Гарах
             </h1>
           </div>
@@ -215,7 +228,10 @@ export function UserProfile() {
             </p>
             <div className="modal-action p-0 mt-0 justify-center ">
               <form method="dialog" onClick={Access} className="w-full ">
-                <button className="btn bg-green-100 hover:bg-green-500 w-6/12" onClick={logout}>
+                <button
+                  className="btn bg-green-100 hover:bg-green-500 w-6/12"
+                  onClick={logout}
+                >
                   Тийм
                 </button>
                 <button className="btn w-6/12 bg-green-100 hover:bg-green-500">
@@ -234,15 +250,30 @@ export function UserProfile() {
       </button>
       {/* <Toaster position="top-right" richColors /> */}
 
-
-      <EditModalName name={name} open={editName} setName={setName} onClose={() => setEditName(false)} />
-      <EditModalEmail email={email} setEmail={setEmail} open={editEmail} onClose={() => setEditEmail(false)} />
-      <EditModalImage image={image} open={editImage} setImage={setImage} onClose={() => setEditImage(false)} />
-      <EditModalNumber phoneNumber={phoneNumber} setPhoneNumber={setPhoneNumber} open={editNumber} onClose={() => setEditNumber(false)} />
-
-
-    </div >
-
+      <EditModalName
+        name={name}
+        open={editName}
+        setName={setName}
+        onClose={() => setEditName(false)}
+      />
+      <EditModalEmail
+        email={email}
+        setEmail={setEmail}
+        open={editEmail}
+        onClose={() => setEditEmail(false)}
+      />
+      <EditModalImage
+        image={image}
+        open={editImage}
+        setImage={setImage}
+        onClose={() => setEditImage(false)}
+      />
+      <EditModalNumber
+        phoneNumber={phoneNumber}
+        setPhoneNumber={setPhoneNumber}
+        open={editNumber}
+        onClose={() => setEditNumber(false)}
+      />
+    </div>
   );
 }
-
