@@ -7,35 +7,74 @@ import Checkbox from "@mui/material/Checkbox";
 
 import { locations, district, horoo } from "../data/data";
 import { StepTwo } from "./stepTwo";
+import { OrderMainTemplate } from "./orderConfirmMain";
+import { useCart } from "@/store/useCart";
+import { CircleSelect } from "./icons/circleSelect";
+import { utilMutator } from "@/util/mainUtility";
+import { useCurrentUser } from "@/store/useCurrentUser";
+import { Circular } from "./icons/circular";
+import { useRouter } from "next/router";
 
 function OrderCon() {
+  const router = useRouter();
+
   const [districtId, setDistrictId] = useState("");
   const [microDistrictId, setMicroDistrictid] = useState("");
   const [street, setStreet] = useState("");
   const [houseLocation, setHouseLocation] = useState("");
   const [phone, setPhone] = useState("");
+  const [payment, setPayment] = useState("");
 
   const [step, setStep] = useState(1);
   const [allDone, setAllDone] = useState("btn-disabled");
   const [wait, setWait] = useState("Хүлээгдэж байна");
   const [icon, setIcon] = useState("flex");
   const [green, setGreen] = useState("hidden");
+  const { currentUser } = useCurrentUser();
+  const { cart } = useCart();
 
   useEffect(() => {
     checkFields();
   });
 
   const handleNextStop = () => {
-    setStep(step + 1);
+    createOrder();
+    router.push("/orderdetail/steptwo");
   };
 
-  if (step === 3) {
+  if (step === 2) {
     return (
       <div>
         <StepTwo />
       </div>
     );
   }
+
+  const createOrder = async () => {
+    const address =
+      districtId + " " + microDistrictId + " " + street + " " + houseLocation;
+    const userId = currentUser._id;
+    console.log({ payment });
+    if (cart.cartItems) {
+      try {
+        await utilMutator("orders/create", {
+          address: address,
+          userId: userId,
+          adminId: Date.now(),
+          totalPrice: cart.totalAmount,
+          payment: payment,
+          createdDate: Date.now(),
+          items: cart.cartItems,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const handleCheckboxChange = (event: any) => {
+    setPayment(event.target.value);
+  };
 
   function checkFields() {
     if (
@@ -70,43 +109,7 @@ function OrderCon() {
       >
         <main className=" block rounded-xl">
           <div className="flex gap-2 px-4 py-6">
-            <svg
-              width="48"
-              height="48"
-              viewBox="0 0 48 48"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className={`flex ${icon} `}
-            >
-              <circle cx="24" cy="24" r="23.5" stroke="#0468C8" />
-              <circle cx="24" cy="24" r="12" fill="#0468C8" />
-            </svg>
-            <svg
-              width="48"
-              height="48"
-              viewBox="0 0 48 48"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className={`flex ${green} `}
-            >
-              <circle cx="24" cy="24" r="24" fill="#18BA51" />
-              <mask
-                id="mask0_1_1728"
-                maskUnits="userSpaceOnUse"
-                x="12"
-                y="12"
-                width="24"
-                height="24"
-              >
-                <rect x="12" y="12" width="24" height="24" fill="#D9D9D9" />
-              </mask>
-              <g mask="url(#mask0_1_1728)">
-                <path
-                  d="M21.5496 29.9996L15.8496 24.2996L17.2746 22.8746L21.5496 27.1496L30.7246 17.9746L32.1496 19.3996L21.5496 29.9996Z"
-                  fill="white"
-                />
-              </g>
-            </svg>
+            <Circular icon={icon} green={green} />
 
             <div className="block">
               <h5>Алхам 1</h5>
@@ -114,10 +117,7 @@ function OrderCon() {
               <option>{wait}</option>
             </div>
           </div>
-          <main
-            className="w-[432px] h-[612px] block border-2  p-6 gap-4
-        "
-          >
+          <main className="w-[432px] h-[612px] block border-[1px] rounded-xl shadow-md  p-6 gap-4 ">
             <div className="gap-4">
               Хаяг аа оруулна уу
               <select
@@ -158,7 +158,7 @@ function OrderCon() {
                 ))}
               </select>
             </div>
-            <label className={` form-control`}>
+            <label className={`form-control`}>
               <div className="label">
                 <span className="label-text">Нэмэлт мэдээлэл</span>
                 <span className="label-text-alt"></span>
@@ -166,13 +166,9 @@ function OrderCon() {
               <textarea
                 onChange={(e) => setHouseLocation(e.target.value)}
                 value={houseLocation}
-                className={` ${houseLocation} textarea textarea-bordered h-24 bg-[#ECEDF0]`}
+                className={`${houseLocation} textarea textarea-bordered h-24 bg-[#ECEDF0]`}
                 placeholder="Орц, давхар, орцны код ..."
               ></textarea>
-              <div className="label">
-                <span className="label-text-alt"></span>
-                <span className="label-text-alt"></span>
-              </div>
             </label>
             <label className="form-control w-full max-w-xs">
               <div className="label">
@@ -182,75 +178,53 @@ function OrderCon() {
               <input
                 onChange={(e) => setPhone(e.target.value)}
                 value={phone}
-                className={` ${phone} input input-bordered w-full max-w-xs bg-[#ECEDF0]`}
+                className={`${phone} input input-bordered w-full max-w-xs bg-[#ECEDF0]`}
                 type="number"
                 placeholder="Утасны дугаараа оруулна уу"
               />
-              <div className="label">
-                <span className="label-text-alt"></span>
-                <span className="label-text-alt"></span>
-              </div>
             </label>
             <p>Төлбөр төлөх</p>
             <div className="flex">
               <div className="block">
-                <span>
-                  <Checkbox color="default" />
-                </span>
+                <Checkbox
+                  value="Cash"
+                  checked={payment === "Cash"}
+                  onChange={handleCheckboxChange}
+                  color="default"
+                />
                 <span className="label-text justify-start">Бэлнээр </span>
               </div>
               <div className="block">
-                <span>
-                  <Checkbox defaultChecked color="default" />
-                </span>
+                <Checkbox
+                  value="Card"
+                  checked={payment === "Card"}
+                  onChange={handleCheckboxChange}
+                  defaultChecked
+                  color="default"
+                />
                 <span className="label-text justify-end">Картаар</span>
               </div>
             </div>
           </main>
         </main>
-        <main className="block rounded-xl">
-          <div className="flex gap-2 px-4 py-6">
-            <svg
-              width="48"
-              height="48"
-              viewBox="0 0 48 48"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle cx="24" cy="24" r="23.5" stroke="#0468C8" />
-              <circle cx="24" cy="24" r="12" fill="#0468C8" />
-            </svg>
-            <div className="block">
-              <h5>Алхам 1</h5>
-              <h1>Хаягийн мэдээлэл оруулах</h1>
-              <h5>Хүлээгдэж байна</h5>
+        <main className="block">
+          <CircleSelect />
+          <div className="w-[432px] h-[612px] border-[1px] rounded-xl shadow-md p-6 flex flex-col justify-between">
+            <div className="overflow-scroll">
+              {cart.cartItems.map((item) => (
+                <OrderMainTemplate item={item} />
+              ))}
             </div>
-          </div>
-          <main className="w-[432px] h-[612px]  border-2 p-6">
-            <div className="flex gap-2 ">
-              <img
-                src="/images/Image.png"
-                className="w-[184px] h-[121px] object-cover"
-              />
 
+            <div className="flex w-[384px] h-[54px] justify-between">
               <div>
-                <h1 className="font-semibold text-lg">Main Pizza </h1>
-                <h2
-                  className="font-semibold text-lg text-green-600 mb-2
-            "
-                >
-                  34,800₮
-                </h2>
-                <h4 className="text-neutral-500">
-                  Хулуу, төмс, лууван , сонгино, цөцгийн тос, самрын үр{" "}
-                </h4>{" "}
+                <h1>
+                  <u>Нийт төлөх дүн</u>
+                </h1>
+                <h1 className="font-bold text-green-600">
+                  {cart.totalAmount}₮
+                </h1>
               </div>
-            </div>
-            <main className="flex gap-3 w-[384px] h-[54px] mt-[369px] justify-center">
-              <span>
-                <h1>Нийт төлөх дүн</h1>
-                <h1 className="font-bold">34,800₮</h1>
-              </span>
 
               <button
                 onClick={handleNextStop}
@@ -258,8 +232,8 @@ function OrderCon() {
               >
                 Захиалах
               </button>
-            </main>
-          </main>
+            </div>
+          </div>
         </main>
       </div>
     </main>

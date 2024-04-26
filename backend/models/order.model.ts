@@ -6,22 +6,19 @@ const { Schema } = mongoose;
 
 const orderSchema = new Schema({
   id: ObjectId,
+  adminId: String,
   userId: {
     type: Schema.Types.ObjectId,
     ref: userRef,
   },
-  items: [
-    {
-      foodId: ObjectId,
-      quantity: Number,
-      price: Number,
-      total: Number,
-    },
-  ],
+  items: [],
   totalPrice: Number,
-  process: ObjectId,
+  payment: {
+    type: String,
+    enum: ["Card", "Cash"],
+  },
   createdDate: Date,
-  Address: String,
+  address: String,
 });
 
 export const OrderModel = mongoose.model("Model", orderSchema);

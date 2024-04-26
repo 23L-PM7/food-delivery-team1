@@ -80,11 +80,7 @@ export const FoodsCardModal = (props: Props) => {
   return (
     <div className=" flex w-[981px] h-[564px] container mx-auto p-[32px] gap-[33px] bg-white rounded-2xl relative">
       <div>
-        <img
-          className="object-cover w-[500px] h-[500px]"
-          src="https://media.istockphoto.com/id/1690090007/photo/a-cropped-image-of-a-womans-hand-holding-a-piece-of-toasted-bread-with-scrambled-eggs-on-top.jpg?s=2048x2048&w=is&k=20&c=KYa9toFXQyJ_pWcikPGQ6qxHl127RRM7txLFfDv5SMM="
-        />
-        {food.image}
+        <img className="object-cover w-[500px] h-[500px]" src={food.image} />
       </div>
 
       <div className="flex flex-col gap-[32px] justify-center">

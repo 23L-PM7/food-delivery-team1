@@ -54,7 +54,7 @@ export function HymdraltaiFour() {
           </div>
           <div className="flex gap-x-2 items-center">
             <div
-              className="link link-hover text-green-500"
+              className="link link-hover text-green-500 hover:text-green-300"
               onClick={() => router.push("/sale")}
             >
               Бүгдийг харах

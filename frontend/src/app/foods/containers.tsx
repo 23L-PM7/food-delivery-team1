@@ -57,8 +57,6 @@ export function Containers(props: ChildProps) {
       categoryId == null ||
       ingredient == "" ||
       ingredient == null ||
-      price == "" ||
-      price == null ||
       saleprice == "" ||
       saleprice == null
     ) {
@@ -162,9 +160,10 @@ export function Containers(props: ChildProps) {
           />
 
           <h1 className="py-3">Хоолны зураг</h1>
-          <div className="bg-gray-100 rounded-xl w-[284px] h-[122px] gap-3 flex flex-col items-center justify-center">
-            <h1 className="font-bold text-zinc-700">Add image for the food</h1>
-            <button className=" w-[114px] h-[40px] btn bg-zinc-700 text-white">
+          <div className="bg-gray-100 rounded-xl w-[350px] h-[150px] gap-3 flex flex-col items-center justify-center ">
+            <h1 className="font-bold text-zinc-700">Add image for the food</h1>{" "}
+            <button className=" bg-zinc-700 text-white min-w-fit">
+              {" "}
               <ImageField
                 value={image}
                 onChange={(value: string) => setImage(value)}

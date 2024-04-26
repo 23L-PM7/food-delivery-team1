@@ -43,6 +43,7 @@ export function FoodTemplateMain(props: Props) {
       ingredient: item.ingredient,
       price: item.saleprice,
       amount: amount,
+      image: item.image,
     });
     toggleCartModal();
   };

@@ -20,6 +20,7 @@ import { RightArrowMainPage } from "@/components/icons/rightArrowMainPage";
 import { FoodTemplateMain } from "@/components/foodTemplateMain";
 import { useRouter } from "next/navigation";
 
+
 export default function Home() {
   const { categories, setCategories }: any = useCategories();
   const { category, setCategory }: any = useCategory();
@@ -59,7 +60,7 @@ export default function Home() {
                   </div>
                   <div className="flex gap-x-2 items-center">
                     <div
-                      className="link link-hover text-green-500"
+                      className="link link-hover text-green-500 hover:text-green-300"
                       onClick={() => {
                         setCategory(category._id);
                         router.push("/menu");

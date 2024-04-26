@@ -27,7 +27,7 @@ export function CartItem(props: CartProps) {
 
   return (
     <div className="flex gap-5 p-3">
-      <img className="rounded" src="/images/pizza.png" />
+      <img className="h-[150px] w-[245px] rounded" src={item.image} />
       <div className="w-full flex flex-col justify-between relative">
         <h1 className="font-bold text-[18px]">{item.name}</h1>
         <button
