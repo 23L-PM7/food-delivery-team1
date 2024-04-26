@@ -1,13 +1,31 @@
+import { useEffect, useState } from "react";
 import { AdminFoodContent } from "./adminFoodcontent";
 import { AdminGreyhead } from "./adminGreyhead";
+import { utilFetcher } from "@/util/mainUtility";
 
 export function AdminDashboard() {
+  const [orders, setOrders] = useState([]);
+
+  const fetchOrder = async () => {
+    try {
+      const data = await utilFetcher("orders");
+      setOrders(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchOrder();
+  }, []);
+
   return (
     <div className="bg-gray-100 flex flex-col items-center gap-y-5 h-full pt-10">
       <div className="w-[1024px] h-[624px] bg-white rounded-3xl drop-shadow-sm">
         {/* title with search bar */}
         <div className="flex w-full justify-between p-5 items-center">
           <h1 className="font-bold text-xl">Admin Dashboard</h1>
+          {/* search */}
           <label className="input input-bordered flex items-center gap-2 w-[356px] h-[36px] bg-gray-100">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -23,12 +41,15 @@ export function AdminDashboard() {
             </svg>
             <input type="text" className="grow" placeholder="Search" />
           </label>
+          {/* end of search */}
         </div>
         {/* table of contents titles */}
         <AdminGreyhead />
         {/* contents mapped */}
         <div className="w-full h-full">
-          <AdminFoodContent />
+          {orders.map((item, index) => (
+            <AdminFoodContent key={333 - index} item={item} />
+          ))}
         </div>
       </div>
       {/* page selector with numbers */}

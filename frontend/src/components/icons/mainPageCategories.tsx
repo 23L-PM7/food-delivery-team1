@@ -44,7 +44,7 @@ export function HymdraltaiFour() {
   }, []);
 
   return (
-    <div className="max-w-[1200px] mx-auto">
+    <div className="max-w-[1200px] mx-auto grid grid-rows-1 grid-col-6">
       <div className="flex flex-col justify-between">
         <div className="w-full flex justify-between">
           {" "}
@@ -53,7 +53,10 @@ export function HymdraltaiFour() {
             <h1 className="font-bold">Хямдралтай</h1>
           </div>
           <div className="flex gap-x-2 items-center">
-            <div className="link link-hover text-green-500 hover:text-green-300" onClick={() => router.push("/sale")}>
+            <div
+              className="link link-hover text-green-500 hover:text-green-300"
+              onClick={() => router.push("/sale")}
+            >
               Бүгдийг харах
             </div>
 
@@ -61,7 +64,7 @@ export function HymdraltaiFour() {
           </div>
         </div>
 
-        <div className="py-10 grid grid-cols-4 gap-6">
+        <div className="py-10 items-center grid grid-col-1 md:grid-cols-4 gap-6 sm:justify-center">
           {foods.map((item, index) => (
             <FoodTemplateMain key={1000 - index} item={item} />
           ))}
@@ -114,7 +117,7 @@ export function TraditionalFood() {
             <RightArrowMainPage />
           </div>
         </div>
-        <div className="py-10 w-full grid grid-cols-4 gap-6">
+        <div className="py-10 w-full grid grid-cols-4 gap-6 ">
           {foods.map((item, index) => (
             <FoodTemplateMain key={1000 - index} item={item} />
           ))}

@@ -7,7 +7,7 @@ type User = {
 }
 
 type CurrentUserState = {
-    currentUser: User | null,
+    currentUser: User | "",
     loading: boolean,
     handleLoading: () => void,
     login: (email: string, name: string) => void;
@@ -16,7 +16,7 @@ type CurrentUserState = {
 
 
 export const useCurrentUser = create<CurrentUserState>((set) => ({
-    currentUser: null,
+    currentUser: "",
     loading: true,
     handleLoading: () => {
         set((state) => ({ ...state, loading: !state.loading }))
@@ -35,7 +35,7 @@ export const useCurrentUser = create<CurrentUserState>((set) => ({
         set((state) => ({
             ...state,
             loading: false,
-            currentUser: null
+            currentUser: "",
         }))
     }
 }))
