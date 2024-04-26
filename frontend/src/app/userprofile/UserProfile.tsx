@@ -66,7 +66,6 @@ export function UserProfile() {
       setName(data.name);
       setPhoneNumber(data.phoneNumber);
       setEmail(data.email);
-      setId(data._id)
 
       login(data.email, data.name)
       handleLoading()
@@ -89,9 +88,9 @@ export function UserProfile() {
   if (!currentUser) return <p>...loading</p>
 
   const updateUser = async () => {
-    setLoadingg(true);
+    // setLoadingg(true);
     try {
-      const data = await UserPrinting(`signup/${id}`, {
+      const data = await UserPrinting(`signup/${currentUser._id}`, {
         name,
         email,
         phoneNumber
