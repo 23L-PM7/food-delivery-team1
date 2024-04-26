@@ -12,6 +12,7 @@ type CartItem = {
   amount: number;
   name: string;
   ingredient: string;
+  image: string;
 };
 
 type State = {
