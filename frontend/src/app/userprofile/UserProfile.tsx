@@ -40,7 +40,7 @@ export function UserProfile() {
   const [image, setImage] = useState("");
   const [editImage, setEditImage] = useState(false);
 
-  const [id, setId] = useState("")
+  const [id, setId] = useState("");
 
 
 
@@ -66,6 +66,7 @@ export function UserProfile() {
       setName(data.name);
       setPhoneNumber(data.phoneNumber);
       setEmail(data.email);
+      setId(data._id)
 
       login(data.email, data.name)
       handleLoading()
@@ -90,7 +91,7 @@ export function UserProfile() {
   const updateUser = async () => {
     // setLoadingg(true);
     try {
-      const data = await UserPrinting(`signup/${currentUser._id}`, {
+      const data = await UserPrinting(`signup/${id}`, {
         name,
         email,
         phoneNumber
