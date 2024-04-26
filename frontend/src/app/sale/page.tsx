@@ -11,13 +11,13 @@ export default function Sale() {
         <div className="flex justify-center">
           <a
             href="/"
-            className="text-sm font-normal lg:py-2 lg:px-3 rounded flex items-center text-green-600 hover:text-green-300"
+            className="link link-hover text-sm font-normal lg:py-2 lg:px-3 rounded flex items-center text-green-600 hover:text-green-300"
           >
             Буцах
           </a>
           <a
             href="/menu"
-            className="text-sm font-normal lg:py-2 lg:px-3 rounded flex items-center text-green-600 hover:text-green-300"
+            className="link link-hover text-sm font-normal lg:py-2 lg:px-3 rounded flex items-center text-green-600 hover:text-green-300"
           >
             Бүгд
           </a>
