@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { Datanullandundef } from "../../components/structure";
 import { UserPrinting } from "@/app/util";
 import { useCurrentUser } from "@/store/useCurrentUser";
-import { EditModalEmail, EditModalImage, EditModalName, EditModalNumber, EditModals } from "./userEditModals";
+import { EditModalEmail, EditModalImage, EditModalName, EditModalNumber, } from "./userEditModals";
 
 type User = {
   _id: string,
@@ -24,8 +24,8 @@ type User = {
 export function UserProfile() {
   const router = useRouter()
   const { currentUser, loading, handleLoading, login, logout } = useCurrentUser()
-  const [editingId, setEditingId] = useState("");
   const [loginModal, setLoginModal] = useState(false);
+  const [loadingg, setLoadingg] = useState(false);
 
 
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -40,6 +40,8 @@ export function UserProfile() {
   const [image, setImage] = useState("");
   const [editImage, setEditImage] = useState(false);
 
+  const [id, setId] = useState("")
+
 
 
 
@@ -51,6 +53,7 @@ export function UserProfile() {
 
 
   const PostProfile = async () => {
+    // reset();
     const token = localStorage.getItem('newtoken')
     if (!token) {
       return
@@ -63,6 +66,7 @@ export function UserProfile() {
       setName(data.name);
       setPhoneNumber(data.phoneNumber);
       setEmail(data.email);
+      setId(data._id)
 
       login(data.email, data.name)
       handleLoading()
@@ -85,8 +89,9 @@ export function UserProfile() {
   if (!currentUser) return <p>...loading</p>
 
   const updateUser = async () => {
+    setLoadingg(true);
     try {
-      const data = await UserPrinting(`signup/${currentUser._id}`, {
+      const data = await UserPrinting(`signup/${id}`, {
         name,
         email,
         phoneNumber
@@ -103,7 +108,12 @@ export function UserProfile() {
     return <p>...loading</p>
   }
 
-
+  function reset() {
+    setName("");
+    setEmail("");
+    setImage("");
+    setPhoneNumber("");
+  }
 
   return (
     <div className="container mx-auto  w-[432px] px-[20px] mb-[200px] mt-[76px]">
