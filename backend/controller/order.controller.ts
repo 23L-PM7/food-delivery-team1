@@ -7,14 +7,29 @@ export async function getOrders(req: any, res: any) {
 }
 
 export async function createOrder(req: any, res: any) {
-  const { userId, name } = req.body;
+  const { userId, address, adminId, totalPrice, payment, createdDate, items } =
+    req.body;
   console.log(req.body);
+  if (items) {
+    try {
+      const data = await OrderModel.create({
+        address: address,
+        userId: userId,
+        adminId: adminId,
+        totalPrice: totalPrice,
+        payment: payment,
+        createdDate: createdDate,
+        items: items,
+      });
 
-  const category = await OrderModel.create({
-    // id: id,
-    name: name,
-  });
-  res.json(category);
+      res.json(data);
+    } catch (error) {
+      console.log(error);
+      res.send("error");
+    }
+  } else {
+    res.send("error");
+  }
 }
 
 export async function updateOrder(req: any, res: any) {
