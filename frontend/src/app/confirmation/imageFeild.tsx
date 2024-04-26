@@ -24,9 +24,12 @@ export function ImageField({ value, onChange }: any) {
 
   return (
     <div>
-      <input type="file" disabled={uploading} onChange={handleUpload} />
-
-      {/* {value && <img src={value} />} */}
+      <input
+        type="file"
+        className="file-input file-input-bordered file-input-success w-full max-w-xs"
+        disabled={uploading}
+        onChange={handleUpload}
+      />
     </div>
   );
 }

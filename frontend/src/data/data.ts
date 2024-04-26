@@ -21,7 +21,10 @@ export const locations = [
 
 export const district = [
   {
-    title: "Баянзүрх дүүрэг",
+    title: "Дүүрэг сонгоно уу",
+  },
+  {
+    title: "Сүхбаатар дүүрэг",
   },
   {
     title: "Баянзүрх дүүрэг",

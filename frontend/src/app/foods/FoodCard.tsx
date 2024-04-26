@@ -36,8 +36,9 @@ export const FoodCard = (props: Props) => {
             >
               delete
             </button>
+
             <div className="absolute z-10 right-6 top-4 inline group-hover:hidden">
-              <SellChip />
+              <SellChip saleprice={food.saleprice} price={food.price} />
             </div>
             <div className="w-[282px] h-[196px] ease-in cursor-pointer group">
               <div className="rounded-lg relative">
@@ -75,12 +76,6 @@ export const FoodCard = (props: Props) => {
             key={food._id}
             deleteModal={() => setOpen(false)}
           />
-          {/* <button
-            className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 "
-            onClick={() => setOpen(false)}
-          >
-            X
-          </button> */}
         </dialog>
       )}
     </div>
