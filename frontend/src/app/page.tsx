@@ -20,6 +20,7 @@ import { RightArrowMainPage } from "@/components/icons/rightArrowMainPage";
 import { FoodTemplateMain } from "@/components/foodTemplateMain";
 import { useRouter } from "next/navigation";
 
+
 export default function Home() {
   const { categories, setCategories }: any = useCategories();
   const { category, setCategory }: any = useCategory();
@@ -44,6 +45,7 @@ export default function Home() {
   return (
     <div>
       <Header />
+      
       <Desktop />
       <Mainbutton />
       <HymdraltaiFour />
