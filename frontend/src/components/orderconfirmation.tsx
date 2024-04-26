@@ -7,6 +7,9 @@ import Checkbox from "@mui/material/Checkbox";
 
 import { locations, district, horoo } from "../data/data";
 import { StepTwo } from "./stepTwo";
+import { OrderMainTemplate } from "./orderConfirmMain";
+import { useCart } from "@/store/useCart";
+import { CircleSelect } from "./icons/circleSelect";
 
 function OrderCon() {
   const [districtId, setDistrictId] = useState("");
@@ -20,6 +23,8 @@ function OrderCon() {
   const [wait, setWait] = useState("Хүлээгдэж байна");
   const [icon, setIcon] = useState("flex");
   const [green, setGreen] = useState("hidden");
+
+  const { cart } = useCart();
 
   useEffect(() => {
     checkFields();
@@ -114,10 +119,7 @@ function OrderCon() {
               <option>{wait}</option>
             </div>
           </div>
-          <main
-            className="w-[432px] h-[612px] block border-2  p-6 gap-4
-        "
-          >
+          <main className="w-[432px] h-[612px] block border-[1px] rounded-xl shadow-md  p-6 gap-4 ">
             <div className="gap-4">
               Хаяг аа оруулна уу
               <select
@@ -208,49 +210,24 @@ function OrderCon() {
             </div>
           </main>
         </main>
-        <main className="block rounded-xl">
-          <div className="flex gap-2 px-4 py-6">
-            <svg
-              width="48"
-              height="48"
-              viewBox="0 0 48 48"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle cx="24" cy="24" r="23.5" stroke="#0468C8" />
-              <circle cx="24" cy="24" r="12" fill="#0468C8" />
-            </svg>
-            <div className="block">
-              <h5>Алхам 1</h5>
-              <h1>Хаягийн мэдээлэл оруулах</h1>
-              <h5>Хүлээгдэж байна</h5>
+        <main className="block">
+          <CircleSelect />
+          <div className="w-[432px] h-[612px] border-[1px] rounded-xl shadow-md p-6 flex flex-col justify-between">
+            <div className="overflow-scroll">
+              {cart.cartItems.map((item) => (
+                <OrderMainTemplate item={item} />
+              ))}
             </div>
-          </div>
-          <main className="w-[432px] h-[612px]  border-2 p-6">
-            <div className="flex gap-2 ">
-              <img
-                src="/images/Image.png"
-                className="w-[184px] h-[121px] object-cover"
-              />
 
+            <div className="flex w-[384px] h-[54px] justify-between">
               <div>
-                <h1 className="font-semibold text-lg">Main Pizza </h1>
-                <h2
-                  className="font-semibold text-lg text-green-600 mb-2
-            "
-                >
-                  34,800₮
-                </h2>
-                <h4 className="text-neutral-500">
-                  Хулуу, төмс, лууван , сонгино, цөцгийн тос, самрын үр{" "}
-                </h4>{" "}
+                <h1>
+                  <u>Нийт төлөх дүн</u>
+                </h1>
+                <h1 className="font-bold text-green-600">
+                  {cart.totalAmount}₮
+                </h1>
               </div>
-            </div>
-            <main className="flex gap-3 w-[384px] h-[54px] mt-[369px] justify-center">
-              <span>
-                <h1>Нийт төлөх дүн</h1>
-                <h1 className="font-bold">34,800₮</h1>
-              </span>
 
               <button
                 onClick={handleNextStop}
@@ -258,8 +235,8 @@ function OrderCon() {
               >
                 Захиалах
               </button>
-            </main>
-          </main>
+            </div>
+          </div>
         </main>
       </div>
     </main>

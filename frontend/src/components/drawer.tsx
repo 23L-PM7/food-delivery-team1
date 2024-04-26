@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CartItem } from "./cartItem";
 import { Basket } from "./icons/basket";
 import { useCart } from "@/store/useCart";
@@ -58,9 +59,12 @@ export function Drawer() {
               </h1>
               <h1 className="font-bold text-[18px]">{cart.totalAmount}₮</h1>
             </div>
-            <button className="bg-[#18BA51] w-[256px] h-[48px] btn rounded-md text-white">
+            <Link
+              href="/orderdetail"
+              className="bg-[#18BA51] w-[256px] h-[48px] btn rounded-md text-white"
+            >
               Захиалах
-            </button>
+            </Link>
           </li>
         </ul>
       </div>
