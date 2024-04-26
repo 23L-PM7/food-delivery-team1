@@ -6,6 +6,8 @@ type ChildProps = {
 };
 
 export function AdminFoodContent(props: ChildProps) {
+  const { item } = props;
+
   return (
     <div className="w-full h-[72px] flex">
       {/*  */}
