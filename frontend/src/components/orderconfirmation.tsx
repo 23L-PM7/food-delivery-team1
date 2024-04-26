@@ -188,15 +188,11 @@ function OrderCon() {
             <p>Төлбөр төлөх</p>
             <div className="flex">
               <div className="block">
-                <span>
-                  <Checkbox color="default" />
-                </span>
+                <Checkbox color="default" />
                 <span className="label-text justify-start">Бэлнээр </span>
               </div>
               <div className="block">
-                <span>
-                  <Checkbox defaultChecked color="default" />
-                </span>
+                <Checkbox defaultChecked color="default" />
                 <span className="label-text justify-end">Картаар</span>
               </div>
             </div>
