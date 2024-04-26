@@ -101,7 +101,7 @@ export function Desktop() {
       <div id="slide4" className="carousel-item relative w-full">
         <div
           onClick={() => {
-            router.push("/deliveryzone");
+            router.push("https://www.instagram.com/boredurus/");
           }}
           className="bg-green-500  w-full h-[600px] relative"
         >
