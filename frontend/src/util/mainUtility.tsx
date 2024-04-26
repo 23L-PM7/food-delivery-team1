@@ -10,6 +10,15 @@ export async function utilFetcher(path: string) {
   return response.data;
 }
 
+export async function utiloneFetcher(path: string, postData: {}) {
+  const response: any = await axios.post(
+    `http://localhost:9090/${path}`,
+    postData
+  );
+
+  return response.data;
+}
+
 export async function utilMutator(path: string, postData: {}) {
   const response: any = await axios
     .post(`http://localhost:9090/${path}`, postData)
