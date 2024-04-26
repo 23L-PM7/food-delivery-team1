@@ -1,7 +1,11 @@
 import { TripleDot } from "../icons/tripledot";
 import { Paid, Progress } from "./iconsForDashboard";
 
-export function AdminFoodContent() {
+type ChildProps = {
+  item: any;
+};
+
+export function AdminFoodContent(props: ChildProps) {
   return (
     <div className="w-full h-[72px] flex">
       {/*  */}
