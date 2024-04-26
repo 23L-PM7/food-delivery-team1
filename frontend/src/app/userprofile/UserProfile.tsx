@@ -24,7 +24,7 @@ type User = {
 export function UserProfile() {
   const router = useRouter()
   const { currentUser, loading, handleLoading, login, logout } = useCurrentUser()
-  const [editModal, setEditModal] = useState(false);
+  const [editingId, setEditingId] = useState("");
   const [loginModal, setLoginModal] = useState(false);
 
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -84,7 +84,6 @@ export function UserProfile() {
   if (!currentUser) return <p>...loading</p>
 
   const updateUser = async () => {
-    console.log(name, email, phoneNumber, currentUser._id)
     try {
       const data = await UserPrinting(`signup/${currentUser._id}`, {
         name,
@@ -225,10 +224,10 @@ export function UserProfile() {
       {/* <Toaster position="top-right" richColors /> */}
 
 
-      <EditModalName name={name} open={editName} onClose={() => setEditName(false)} />
-      <EditModalEmail email={email} open={editEmail} onClose={() => setEditEmail(false)} />
-      <EditModalImage image={image} open={editImage} onClose={() => setEditImage(false)} />
-      <EditModalNumber phoneNumber={phoneNumber} open={editNumber} onClose={() => setEditNumber(false)} />
+      <EditModalName name={name} open={editName} setName={setName} onClose={() => setEditName(false)} />
+      <EditModalEmail email={email} setEmail={setEmail} open={editEmail} onClose={() => setEditEmail(false)} />
+      <EditModalImage image={image} open={editImage} setImage={setImage} onClose={() => setEditImage(false)} />
+      <EditModalNumber phoneNumber={phoneNumber} setPhoneNumber={setPhoneNumber} open={editNumber} onClose={() => setEditNumber(false)} />
 
 
     </div >
