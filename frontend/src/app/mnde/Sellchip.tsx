@@ -1,5 +1,5 @@
 type FoodCardProps = {
-  id: number;
+  _id: number;
   image: string;
   name: string;
   price: number;
@@ -7,7 +7,7 @@ type FoodCardProps = {
 };
 
 export const SellChip = (props: FoodCardProps) => {
-  const { id, image, name, price, saleprice } = props;
+  const { _id, image, name, price, saleprice } = props;
 
   return (
     <button className="bg-green-500 rounded-full py-[4px] px-[16px] text-white border border-white">
