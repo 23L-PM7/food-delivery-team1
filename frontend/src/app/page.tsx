@@ -20,7 +20,6 @@ import { RightArrowMainPage } from "@/components/icons/rightArrowMainPage";
 import { FoodTemplateMain } from "@/components/foodTemplateMain";
 import { useRouter } from "next/navigation";
 
-
 export default function Home() {
   const { categories, setCategories }: any = useCategories();
   const { category, setCategory }: any = useCategory();
@@ -71,7 +70,7 @@ export default function Home() {
                     <RightArrowMainPage />
                   </div>
                 </div>
-                <div className="py-10 w-full grid grid-col-1 md:grid-cols-4 gap-6">
+                <div className="py-10 w-full grid grid-col-1 md:grid-cols-4 gap-6 sm:justify-center">
                   {foods
                     .filter((food: any) => food.categoryId._id === category._id)
                     .slice(0, 4)

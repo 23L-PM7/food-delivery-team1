@@ -64,7 +64,7 @@ export function HymdraltaiFour() {
           </div>
         </div>
 
-        <div className="py-10 items-center grid grid-col-1 md:grid-cols-4 gap-6">
+        <div className="py-10 items-center grid grid-col-1 md:grid-cols-4 gap-6 sm:justify-center">
           {foods.map((item, index) => (
             <FoodTemplateMain key={1000 - index} item={item} />
           ))}
@@ -117,7 +117,7 @@ export function TraditionalFood() {
             <RightArrowMainPage />
           </div>
         </div>
-        <div className="py-10 w-full grid grid-cols-4 gap-6">
+        <div className="py-10 w-full grid grid-cols-4 gap-6 ">
           {foods.map((item, index) => (
             <FoodTemplateMain key={1000 - index} item={item} />
           ))}
