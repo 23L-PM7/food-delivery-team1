@@ -7,7 +7,7 @@ type Cart = {
 
 type CartItem = {
   tempId: string;
-  foodId: string;
+  foodId: number;
   price: number;
   amount: number;
   name: string;
