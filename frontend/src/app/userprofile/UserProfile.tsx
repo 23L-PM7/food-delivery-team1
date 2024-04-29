@@ -92,6 +92,7 @@ export function UserProfile() {
 
   const updateUser = async () => {
     // setLoadingg(true);
+    
     try {
       const data = await UserPrinting(`signup/${id}`, {
         name,
