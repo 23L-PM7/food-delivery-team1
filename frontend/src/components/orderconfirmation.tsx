@@ -1,11 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-<<<<<<< HEAD
-import * as React from "react";
-=======
 
->>>>>>> 5269680db4e55c2aa28663e251a986048d49fab5
+import * as React from "react";
+
 import Checkbox from "@mui/material/Checkbox";
 import { locations, district, horoo } from "../data/data";
 import { StepTwo } from "./stepTwo";
