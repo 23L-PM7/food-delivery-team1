@@ -17,7 +17,7 @@ export default function RootLayout({
 
 
 
-  const getProfile = async () => {
+  const PostProfile = async () => {
     const token = localStorage.getItem('newtoken')
     if (!token) {
       return
@@ -26,7 +26,7 @@ export default function RootLayout({
       const { data } = await axios.post("http://localhost:9090/users/me", {
         newtoken: token
       })
-      login(data.email, data.name)
+      login(data.email, data.name, data.phoneNumber)
     } catch (error) {
       console.log(error)
 
@@ -34,7 +34,7 @@ export default function RootLayout({
   }
 
   useEffect(() => {
-    getProfile()
+    PostProfile()
   }, [])
 
   return (
