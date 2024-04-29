@@ -115,7 +115,9 @@ export function Desktop() {
                 {""}
                 Pinecone Food Delivery
               </h1>
-              <h1 className="font-serif text-white text-[22px]">
+              <h1 onClick={() => {
+            router.push("https://www.instagram.com/boredurus/");
+          }} className="font-serif text-white cursor-pointer text-[22px]">
                 Тогооч ажилд авна @boredurus
               </h1>
             </div>
