@@ -28,6 +28,7 @@ export default function Signup() {
 
   // password visible useState
   const [icon, setIcon] = useState(false);
+  const [icon2, setIcon2] = useState(false);
   const [visible, setVisible] = useState("password");
   const [visible2, setVisible2] = useState("password");
 
@@ -78,11 +79,11 @@ export default function Signup() {
   }
 };
   const visibleSecondpass = () => {
-    setIcon(!icon);
-    if (visible === "text") {
-     setVisible("password");
+    setIcon2(!icon2);
+    if (visible2 === "text") {
+     setVisible2("password");
    } else {
-     setVisible("text");
+     setVisible2("text");
    }
   };
 
@@ -183,6 +184,10 @@ export default function Signup() {
             className={`${icon ? "hidden" : "flex"}`}>
             <IoMdEyeOff className="text-[25px]" />
             </button>
+            <button onClick={visiblePassword}
+            className={`${icon ? "flex" : "hidden"}`}>
+             <IoMdEye className="text-[25px]"/>
+            </button>
           </label>
         </label>
         {/* repeat password */}
@@ -198,8 +203,12 @@ export default function Signup() {
               placeholder="Нууц үгээ оруулна уу"
             />
             <button onClick={visibleSecondpass}
-             className={`${icon ? "flex" : "hidden"}`}>
-             <IoMdEye className="text-[25px]"/>
+             className={`${icon2 ? "hidden" : "flex"}`}>
+             <IoMdEyeOff className="text-[25px]"/>
+            </button>
+            <button onClick={visibleSecondpass}
+            className={`${icon2 ? "flex" : "hidden"} `}>
+              <IoMdEye className="text-[25px]"/>
             </button>
           </label>
         </label>

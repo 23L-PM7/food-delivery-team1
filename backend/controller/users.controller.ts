@@ -12,7 +12,7 @@ export async function getUsers(require: Request, res: Response) {
 }
 
 export async function createUsers(req: any, res: any) {
-  const { name, email, password, phoneNumber, role } = req.body;
+  const { name, email, password, phoneNumber, image,role } = req.body;
   console.log(req.body);
 
   // findOne
@@ -31,6 +31,7 @@ export async function createUsers(req: any, res: any) {
     email: email,
     password: password,
     phoneNumber: phoneNumber,
+    image: image,
     role: role,
   });
 
@@ -49,6 +50,7 @@ export async function updateUsers(req: any, res: any) {
       name: data.name,
       email: data.email,
       phoneNumber: data.phoneNumber,
+      // image: image,
     });
     res.json(user);
 

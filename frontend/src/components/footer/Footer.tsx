@@ -6,9 +6,10 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <div className="bg-green-500  w-full " >
+    <div className="bg-green-500  w-full  bg-[url('/')]" >
+      {/* <BackgroundPic/> */}
       <div className="container mx-auto p-[15px] sm:p-[20px] md:p-[50px] lg:p-[75px] xl:p-[100px] 2xl:p-[120px]   pt-[30px] sm:pt[40px] md:pt-[100px] lg:pt-[125px] xl:pt-[150px] 2xl:pt-[180px] border-b">
-        <div className="flex  justify-center items-center gap-2">
+        <div className="flex  justify-center items-center gap-2 ">
           <Logo />
           <h1 className="text-white  font-medium">Food Delivery</h1>
         </div>
